@@ -22,7 +22,7 @@
 ### Infraestrutura e orquestração
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) | Deploy, exposição, escala, atualização e depuração de aplicações em cluster | Intermediário | Inglês, gratuito 📚 |
 | [Terraform Tutorials](https://developer.hashicorp.com/terraform/tutorials) | Infraestrutura como código em cloud, Docker e outros provedores | Iniciante → avançado | Inglês, tutoriais gratuitos 📚 |
 | [CNCF Landscape](https://landscape.cncf.io/) | Mapa do ecossistema cloud native; use para referência, não como checklist de estudo | Intermediário | Inglês, gratuito 📚 |
@@ -41,7 +41,7 @@ Uma suíte saudável combina testes rápidos de unidade, integração nos limite
 ## Observabilidade
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [OpenTelemetry — Getting Started](https://opentelemetry.io/docs/getting-started/) | Instrumentação padronizada de logs, métricas e traces | Intermediário | Inglês, gratuito 📚 |
 | [Prometheus — Getting Started](https://prometheus.io/docs/tutorials/getting_started/) | Coleta de métricas e consultas com PromQL | Intermediário | Inglês, gratuito 📚 |
 | [Grafana Tutorials](https://grafana.com/tutorials/) | Dashboards, alertas e investigação de telemetria | Iniciante → intermediário | Inglês, parte dos tutoriais usa Grafana Cloud 📚 |

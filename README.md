@@ -20,7 +20,7 @@ Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequ�
 ## Guias
 
 | Guia | Conteúdo |
-|---|---|
+| --- | --- |
 | [00 — Começando](guias/00-comecando.md) | Ordem de estudo, mapas e modelo de acompanhamento |
 | [01 — Fundamentos e linguagens](guias/01-fundamentos-e-linguagens.md) | Lógica, computação, C#, Java, Python, JavaScript, C/C++ e outras linguagens |
 | [02 — Backend, APIs e arquitetura](guias/02-backend-apis-e-arquitetura.md) | HTTP, REST, GraphQL, gRPC, AsyncAPI, documentação e system design |

@@ -44,7 +44,7 @@
 ## Aprendizado profundo e MLOps
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Practical Deep Learning for Coders](https://course.fast.ai/) | Construção prática de modelos de deep learning | Intermediário; requer Python | Inglês, gratuito 📚 |
 | [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) | Treinamento, experimentos, deploy, pipelines e monitoramento de modelos | Intermediário | Inglês, gratuito 🧩 |
 | [Made With ML](https://madewithml.com/) | Desenvolvimento de produtos de ML com testes, dados e produção | Intermediário → avançado | Inglês, gratuito 📚 |

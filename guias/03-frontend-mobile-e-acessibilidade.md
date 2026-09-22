@@ -25,7 +25,7 @@ Escolha um framework depois de dominar componentes, estado, eventos, formulário
 ## Acessibilidade, performance e PWA
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Learn Accessibility](https://web.dev/learn/accessibility) | HTML semântico, foco, contraste, formulários e testes com tecnologias assistivas | Iniciante → intermediário | Inglês, gratuito; quiz com badge 📚 |
 | [Learn Performance](https://web.dev/learn/performance) | Métricas, carregamento, imagens, fontes, JavaScript e responsividade | Intermediário | Inglês, gratuito 📚 |
 | [Learn PWA](https://web.dev/learn/pwa) | Service workers, cache, instalação, modo offline e integração com o sistema | Intermediário | Inglês, gratuito; quiz com badge 📚 |

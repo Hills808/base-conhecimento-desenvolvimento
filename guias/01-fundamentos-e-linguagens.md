@@ -5,7 +5,7 @@
 ## Fundamentos que valem para toda área
 
 | Tema | Melhor ponto de entrada | Prática |
-|---|---|---|
+| --- | --- | --- |
 | Lógica | [Curso de Algoritmos — Curso em Vídeo](https://www.cursoemvideo.com/curso/curso-de-algoritmo/) 📚 | [beecrowd](https://judge.beecrowd.com/pt/login) |
 | Estruturas de dados | [VisuAlgo](https://visualgo.net/en) 📚 🌐 | [LeetCode](https://leetcode.com/) |
 | Ciência da computação | [CS50x — Harvard](https://cs50.harvard.edu/x/) 📚 🌐 | exercícios do próprio curso |

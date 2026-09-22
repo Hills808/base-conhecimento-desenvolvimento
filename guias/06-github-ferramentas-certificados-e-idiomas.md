@@ -33,7 +33,7 @@ Antes de contribuir, leia `README`, `CONTRIBUTING`, Código de Conduta, licença
 ## Ferramentas úteis
 
 | Necessidade | Ferramentas |
-|---|---|
+| --- | --- |
 | Editor/IDE | [VS Code](https://code.visualstudio.com/), [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download/) |
 | Organização | [Notion](https://www.notion.so/), [Obsidian](https://obsidian.md/), [Trello](https://trello.com/) |
 | APIs | [Bruno](https://www.usebruno.com/), [Postman](https://www.postman.com/), [Hoppscotch](https://hoppscotch.io/), [Hurl](https://hurl.dev/), [httpYac](https://httpyac.github.io/) |
@@ -47,7 +47,7 @@ Antes de contribuir, leia `README`, `CONTRIBUTING`, Código de Conduta, licença
 ## Documentação técnica
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Diátaxis](https://diataxis.fr/) | Organizar documentação em tutorial, how-to, referência e explicação | Iniciante → intermediário | Inglês, gratuito 📚 |
 | [Write the Docs — Documentation Guide](https://www.writethedocs.org/guide/) | Boas práticas de documentação de software e escrita técnica | Iniciante → intermediário | Inglês, gratuito 📚 |
 | [Google Developer Documentation Style Guide](https://developers.google.com/style) | Clareza, consistência, voz e formatação para documentação técnica | Intermediário | Inglês, gratuito 📚 |

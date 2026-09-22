@@ -15,7 +15,7 @@ Antes de escolher um framework, entenda request/response, idempotência, autenti
 ## APIs modernas
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Learn GraphQL](https://graphql.org/learn/) | Consultas tipadas, schemas, mutations e boas práticas de APIs GraphQL | Iniciante → intermediário | Inglês, gratuito 📚 |
 | [gRPC Documentation](https://grpc.io/docs/) | RPC baseado em Protocol Buffers, streaming e comunicação eficiente entre serviços | Intermediário | Inglês, gratuito 📚 |
 | [AsyncAPI Docs](https://www.asyncapi.com/docs) | Documentação e design de APIs orientadas a eventos | Intermediário | Inglês, gratuito 📚 |
@@ -37,7 +37,7 @@ Não trate REST, GraphQL, gRPC e mensageria como concorrentes universais. Compar
 ## Arquitetura de software
 
 | Recurso | Finalidade | Nível | Idioma/acesso |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [Architect Modern Web Applications with ASP.NET Core and Azure](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/) | Decisões arquiteturais, modularidade, testes e deploy em aplicações .NET | Intermediário | Inglês, gratuito 📚 |
 | [System Design Primer](https://github.com/donnemartin/system-design-primer) | Conceitos e exercícios de projeto de sistemas escaláveis | Intermediário → avançado | Inglês, gratuito 🧩 |
 | [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/) | Padrões, arquiteturas de referência e trade-offs para sistemas em cloud | Intermediário → avançado | Inglês, gratuito 📚 |
