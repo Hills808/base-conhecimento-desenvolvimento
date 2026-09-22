@@ -12,4 +12,5 @@ exclude = [
   '^https://coolors[.]co/$',
   '^https://www[.]open[.]edu/openlearn/languages$',
   '^https://www[.]cursoemvideo[.]com/curso/curso-de-algoritmo/$',
+  '^https://dictionary[.]cambridge[.]org/$',
 ]
