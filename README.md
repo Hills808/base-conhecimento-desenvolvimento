@@ -28,7 +28,8 @@ Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequ�
 | [04 — Bancos de dados, dados e machine learning](guias/04-bancos-dados-e-ia.md) | SQL, modelagem, ciência de dados, ML, deep learning e MLOps |
 | [05 — IA generativa, RAG, tools e agentes](guias/05-ia-generativa-agentes-e-mlops.md) | Como funciona, formas de uso, prompting, RAG, ferramentas, agentes, segurança e avaliações |
 | [06 — Cloud, DevOps, qualidade e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
-| [07 — GitHub, ferramentas, certificados e idiomas](guias/07-github-ferramentas-certificados-e-idiomas.md) | Open source, prática, ferramentas, benefícios e inglês técnico |
+| [07 — GitHub, ferramentas e certificados](guias/07-github-ferramentas-e-certificados.md) | Open source, prática, ferramentas, benefícios e credenciais |
+| [08 — Idiomas para tecnologia](guias/08-idiomas-para-tecnologia.md) | Inglês técnico, leitura, escrita, conversação, certificações e outros idiomas |
 
 ## Legenda
 

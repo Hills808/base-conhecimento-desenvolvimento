@@ -1,4 +1,4 @@
-# 07 — GitHub, ferramentas, certificados e idiomas
+# 07 — GitHub, ferramentas e certificados
 
 [← Voltar ao início](../README.md)
 
@@ -75,29 +75,6 @@ Documente para uma tarefa e um público definidos. Um README deve explicar o pro
 
 Certificados ajudam a registrar uma etapa, mas projetos, explicações claras e capacidade de resolver problemas demonstram melhor o conhecimento.
 
-## Idiomas para tecnologia
+## Próximo guia
 
-Para desenvolvimento, o objetivo é entender documentação, vídeos, erros, README e tickets, além de explicar o próprio código. Inglês é a prioridade prática; outros idiomas podem entrar depois por interesse ou oportunidade.
-
-### Base estruturada
-
-- [Kultivi — Inglês](https://kultivi.com/curso/ingles?lang=pt) — curso em português; confira as condições atuais do certificado. 🎓
-- [Kultivi — Aprendizado acelerado de idiomas](https://kultivi.com/curso/aprendizado-acelerado-de-idiomas) — método, revisão e prática. 🎓
-- [OpenLearn — Languages](https://www.open.edu/openlearn/languages) — cursos livres; declarações e badges variam por curso. 🏅 🌐
-
-### Inglês real: ouvir, ler e falar
-
-- [engVid](https://www.engvid.com/english-lessons/) — aulas filtráveis por nível e tema. 📚 🌐
-- [Breaking News English](https://breakingnewsenglish.com/) — notícias por nível, com áudio e exercícios. 📚 🌐
-- [BBC Learning English](https://www.bbc.co.uk/learningenglish/) — vídeos e lições curtas. 📚 🌐
-- [YouGlish](https://youglish.com/) — pronúncia em exemplos reais de vídeo. 📚 🌐
-- [Cambridge Dictionary](https://dictionary.cambridge.org/) — significado, pronúncia e exemplos. 📚 🌐
-- [Anki](https://apps.ankiweb.net/) — revisão espaçada com cartões próprios. 📚 🌐
-
-### Rotina de 25 minutos para dev
-
-1. **10 min — curso estruturado:** Kultivi ou OpenLearn.
-2. **10 min — conteúdo real:** documentação, engVid ou Breaking News English.
-3. **5 min — produção:** registre três expressões e escreva uma frase sobre o código estudado.
-
-Mude gradualmente ferramentas e mensagens de commit para inglês. Não traduza cada palavra; pesquise apenas o que bloquear o entendimento.
+Para uma trilha completa de inglês técnico, conversação, escrita, certificações e outros idiomas, continue em [Idiomas para tecnologia](08-idiomas-para-tecnologia.md).

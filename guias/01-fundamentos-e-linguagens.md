@@ -11,7 +11,7 @@
 | Ciência da computação | [CS50x — Harvard](https://cs50.harvard.edu/x/) 📚 🌐 | exercícios do próprio curso |
 | Como computadores funcionam | [Nand2Tetris](https://www.nand2tetris.org/) 📚 🌐 | monte um computador virtual |
 | Linux e terminal | [The Missing Semester](https://missing.csail.mit.edu/) 📚 🌐 | use o terminal todos os dias |
-| Inglês técnico | [Idiomas para tecnologia](07-github-ferramentas-certificados-e-idiomas.md#idiomas-para-tecnologia) | leia README e documentação em inglês |
+| Inglês técnico | [Idiomas para tecnologia](08-idiomas-para-tecnologia.md) | leia README e documentação em inglês |
 
 ### Repositórios de prática
 

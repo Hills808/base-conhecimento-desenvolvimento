@@ -13,4 +13,6 @@ exclude = [
   '^https://www[.]open[.]edu/openlearn/languages$',
   '^https://www[.]cursoemvideo[.]com/curso/curso-de-algoritmo/$',
   '^https://dictionary[.]cambridge[.]org/$',
+  '^https://www[.]deeplearning[.]ai/courses/agentic-ai$',
+  '^https://academy[.]langchain[.]com/$',
 ]

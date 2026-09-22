@@ -196,7 +196,7 @@ Use tracing para localizar a etapa que falhou. Não publique uma porcentagem agr
 | [DeepLearning.AI — Agentic AI](https://www.deeplearning.ai/courses/agentic-ai) | Reflexão, tools, planejamento, multiagente, evals e produção | Intermediário; requer Python | Inglês; acesso e certificado dependem do plano 🌐 |
 | [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/unit0/introduction) | Fundamentos, frameworks, agentic RAG, observabilidade e projeto final | Iniciante → intermediário | Inglês, gratuito com certificados por requisitos 🎓 🌐 |
 | [Microsoft Learn — AI Engineer](https://learn.microsoft.com/en-us/training/career-paths/ai-engineer) | IA generativa, agentes, linguagem, visão e preparação para credenciais Azure | Iniciante → intermediário | Inglês, treinamento gratuito; provas podem ser pagas 📚 🌐 |
-| [Google Cloud — Introduction to Generative AI](https://www.cloudskillsboost.google/paths/118) | LLMs, IA responsável e fundamentos de IA generativa | Iniciante | Inglês, trilha indicada como sem custo; confira badges 🏅 🌐 |
+| [Google Cloud — Introduction to Generative AI](https://www.skills.google/paths/118) | LLMs, IA responsável e fundamentos de IA generativa | Iniciante | Inglês, trilha indicada como sem custo; confira badges 🏅 🌐 |
 | [IBM SkillsBuild](https://skillsbuild.org/adult-learners/try-it-before-you-register) | Fundamentos de IA e IA generativa com credenciais digitais em trilhas elegíveis | Iniciante | Inclui português em parte do catálogo, gratuito 🏅 |
 | [AWS Educate](https://aws.amazon.com/education/awseducate/) | Trilhas gratuitas de cloud e IA, vídeos e laboratórios sem cartão | Iniciante | Inglês, gratuito 📚 🌐 |
 
@@ -205,14 +205,14 @@ Use tracing para localizar a etapa que falhou. Não publique uma porcentagem agr
 | Recurso | Finalidade | Nível | Idioma/acesso |
 | --- | --- | --- | --- |
 | [OpenAI — Agents](https://developers.openai.com/api/docs/guides/agents) | Arquitetura, Agents API, SDK, orquestração, guardrails, tracing e evals | Intermediário | Inglês, documentação gratuita; API pode ser paga 📚 🌐 |
-| [OpenAI — Tools](https://developers.openai.com/pt-BR/api/docs/guides/tools) | Function calling, busca, execução de código, MCP e outras ferramentas | Intermediário | Português, documentação gratuita; API pode ser paga 📚 |
+| [OpenAI — Tools](https://developers.openai.com/api/docs/guides/tools) | Function calling, busca, execução de código, MCP e outras ferramentas | Intermediário | Inglês, documentação gratuita; API pode ser paga 📚 🌐 |
 | [OpenAI Cookbook](https://developers.openai.com/cookbook) | Exemplos práticos de APIs, embeddings, RAG, evals e agentes | Intermediário | Inglês, gratuito 📚 🌐 |
 | [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents) | Diferença entre workflows e agentes e padrões de composição | Intermediário | Inglês, artigo gratuito 📚 🌐 |
 | [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) | Conceitos e implementação do padrão para conectar dados e ferramentas | Intermediário | Inglês, documentação gratuita 📚 🌐 |
 | [LangGraph Academy](https://academy.langchain.com/) | Agentes com estado, memória, human-in-the-loop e observabilidade | Intermediário | Inglês, cursos gratuitos mediante cadastro 📚 🌐 |
-| [LlamaIndex Agents](https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/) | Agentes orientados a dados, RAG e ferramentas | Intermediário | Inglês, documentação gratuita 📚 🌐 |
+| [LlamaIndex Agents](https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/) | Agentes orientados a dados, RAG e ferramentas | Intermediário | Inglês, documentação gratuita 📚 🌐 |
 | [Microsoft AutoGen](https://microsoft.github.io/autogen/stable/) | Framework e padrões para aplicações agentic e multiagente | Intermediário → avançado | Inglês, open source 🧩 🌐 |
-| [Google Agent Development Kit](https://google.github.io/adk-docs/) | Construção, avaliação e implantação de agentes modulares | Intermediário | Inglês, open source 🧩 🌐 |
+| [Google Agent Development Kit](https://adk.dev/) | Construção, avaliação e implantação de agentes modulares | Intermediário | Inglês, open source 🧩 🌐 |
 
 Frameworks aceleram protótipos, mas não substituem entendimento do loop, das tools e das avaliações. Implemente ao menos um workflow pequeno sem framework antes de comparar abstrações.
 
@@ -221,7 +221,7 @@ Frameworks aceleram protótipos, mas não substituem entendimento do loop, das t
 | Recurso | Finalidade | Nível | Idioma/acesso |
 | --- | --- | --- | --- |
 | [MIT 6.S191 — Introduction to Deep Learning](https://ocw.mit.edu/courses/6-s191-introduction-to-deep-learning-january-iap-2020/) | Aulas, slides e laboratórios sobre redes neurais e aplicações | Intermediário | Inglês, gratuito 📚 🌐 |
-| [Neural Networks — 3Blue1Brown](https://www.3blue1brown.com/topics/neural-networks) | Intuição visual para redes, gradiente e backpropagation | Iniciante | Inglês, vídeos gratuitos 📚 🌐 |
+| [Neural Networks — 3Blue1Brown](https://www.3blue1brown.com/?topic=neural-networks) | Intuição visual para redes, gradiente e backpropagation | Iniciante | Inglês, vídeos gratuitos 📚 🌐 |
 | [Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html) | Construção de redes e modelos de linguagem do zero | Intermediário; requer Python | Inglês, vídeos e notebooks gratuitos 🧩 🌐 |
 | [Full Stack LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/) | Prompting, augmented language models, LLMOps e produto | Intermediário | Inglês, aulas e materiais gratuitos 📚 🌐 |
 | [OpenAI Academy](https://academy.openai.com/) | Conteúdo, eventos e vídeos sobre uso e desenvolvimento com IA | Todos os níveis | Inglês, acesso gratuito mediante cadastro 📚 🌐 |
@@ -239,7 +239,7 @@ Não trate todos como equivalentes:
 | [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/unit1/get-your-certificate) | Fundamentos ou conclusão prática de agentes | Certificados gratuitos mediante quiz, atividades e desafio aplicáveis 🎓 |
 | [CS50 AI Certificate](https://cs50.harvard.edu/ai/certificate/) | Conclusão dos projetos de IA com Python | Certificado CS50 gratuito; versão verificada da edX é separada 🎓 |
 | [IBM SkillsBuild](https://www.ibm.com/academic/) | Fundamentos e trilhas técnicas de IA elegíveis | Cursos gratuitos com credenciais digitais em atividades elegíveis 🏅 |
-| [Google Cloud Skills Boost](https://www.cloudskillsboost.google/paths) | Trilhas e laboratórios de IA generativa e cloud | Alguns cursos e badges são sem custo; catálogo completo pode exigir créditos ou assinatura 🏅 |
+| [Google Skills](https://www.skills.google/paths) | Trilhas e laboratórios de IA generativa e cloud | Alguns cursos e badges são sem custo; catálogo completo pode exigir créditos ou assinatura 🏅 |
 | [Microsoft Credentials — IA](https://learn.microsoft.com/en-us/credentials/browse/?credential_types=certification&subjects=artificial-intelligence) | Fundamentos, desenvolvimento, agentes e funções profissionais | Preparação gratuita; exames de certificação normalmente pagos 🎓 |
 | [AWS Certified AI Practitioner](https://aws.amazon.com/certification/certified-ai-practitioner/) | Conceitos e casos de uso de IA, ML e IA generativa na AWS | Conteúdo de preparação parcialmente gratuito; exame pago 🎓 |
 
@@ -250,7 +250,7 @@ Verifique sempre idioma, validade, preço regional, requisitos e política de re
 | Benefício | Como ajuda | Condições |
 | --- | --- | --- |
 | [GitHub Student Developer Pack](https://education.github.com/pack) | GitHub Pro, Copilot Student e ofertas educacionais como DataCamp | Exige verificação estudantil; ofertas e duração mudam |
-| [Microsoft Learn Student Hub](https://learn.microsoft.com/en-us/training/student-hub/certifications) | Trilhas, credenciais e descontos elegíveis em exames | Requer perfil e verificação acadêmica para benefícios estudantis |
+| [Microsoft Learn Student Hub](https://learn.microsoft.com/en-us/training/student-hub/credentials) | Trilhas, credenciais e descontos elegíveis em exames | Requer perfil e verificação acadêmica para benefícios estudantis |
 | [Azure for Students](https://azure.microsoft.com/en-us/free/students/) | Créditos e serviços para experimentar cloud e IA | Elegibilidade e disponibilidade regional |
 | [AWS Educate](https://aws.amazon.com/education/awseducate/) | Laboratórios gratuitos sem cartão de crédito | Limites definidos pela plataforma |
 | [Google Colab](https://colab.research.google.com/) | Notebooks hospedados para Python e experimentos | Plano gratuito com recursos e disponibilidade variáveis |
