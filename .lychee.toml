@@ -15,4 +15,9 @@ exclude = [
   '^https://dictionary[.]cambridge[.]org/$',
   '^https://www[.]deeplearning[.]ai/courses/agentic-ai$',
   '^https://academy[.]langchain[.]com/$',
+  '^https://www[.]open[.]edu/openlearn/languages/free-courses$',
+  '^https://learnenglish[.]britishcouncil[.]org/',
+  '^https://forvo[.]com/$',
+  '^https://apprendre[.]tv5monde[.]com/$',
+  '^https://www[.]iksi[.]or[.]kr/lms/main/main[.]do$',
 ]

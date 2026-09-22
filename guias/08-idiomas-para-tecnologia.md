@@ -121,7 +121,7 @@ Legendas em português ajudam no início, mas migre gradualmente para legendas n
 | [YouGlish](https://youglish.com/) | Ouvir palavras e expressões em vídeos reais e diferentes sotaques | Todos | Inglês e outros idiomas, gratuito com limites 📚 🌐 |
 | [Cambridge Dictionary](https://dictionary.cambridge.org/) | Significado, transcrição fonética, áudio britânico/americano e exemplos | Todos | Inglês, gratuito 📚 🌐 |
 | [Forvo](https://forvo.com/) | Comparar pronúncias gravadas por falantes de vários países | Todos | Vários idiomas, freemium 🌐 |
-| [Tandem](https://www.tandem.net/) | Troca linguística por texto, áudio e chamadas | A2 → C1 | Vários idiomas, freemium 🌐 |
+| [Tandem](https://tandem.net/en) | Troca linguística por texto, áudio e chamadas | A2 → C1 | Vários idiomas, freemium 🌐 |
 | [HelloTalk](https://www.hellotalk.com/) | Prática com falantes e correções comunitárias | A2 → C1 | Vários idiomas, freemium 🌐 |
 
 ### Prática sem parceiro
@@ -195,7 +195,7 @@ Peça feedback separado para gramática, naturalidade e clareza. Não envie info
 | --- | --- | --- |
 | [EF SET](https://www.efset.org/4-skill/?lang=en) | Resultado CEFR em leitura, escuta, escrita e fala | Teste e certificado gratuitos; útil para diagnóstico e perfil profissional 🎓 |
 | [freeCodeCamp English for Developers](https://www.freecodecamp.org/learn) | Conclusão das certificações disponíveis no currículo | Gratuito; confira requisitos e status atual de cada nível 🎓 |
-| [Cisco English for IT](https://prelogin-authoring.netacad.com/careers/badges-and-certifications) | Curso e badge de inglês aplicado a TI; trilha alinhada ao B2 | Condições dependem da oferta da Networking Academy 🏅 |
+| [Cisco English for IT](https://www.netacad.com/courses/english-for-it-1) | Curso e badge de inglês aplicado a TI; trilha alinhada ao B2 | Condições dependem da oferta da Networking Academy 🏅 |
 | [OpenLearn](https://www.open.edu/openlearn/languages/free-courses) | Declaração de participação e badge em cursos elegíveis | Gratuito; não equivale a crédito acadêmico 🏅 |
 | [Cambridge English Qualifications](https://www.cambridgeenglish.org/exams-and-tests/qualifications/) | Proficiência por nível em exame supervisionado | Normalmente pago; aceitação e preço variam 🎓 |
 | [IELTS](https://ielts.org/) | Proficiência para estudo, trabalho ou migração conforme instituição | Pago; confirme modalidade e nota exigida 🎓 |
@@ -208,7 +208,7 @@ Um certificado não substitui a habilidade de trabalhar no idioma. Faça exame p
 | Idioma/recurso | Finalidade | Nível | Acesso |
 | --- | --- | --- | --- |
 | [OpenLearn Languages](https://www.open.edu/openlearn/languages/free-courses) | Catálogo de francês, alemão, espanhol, italiano, chinês e outros | Iniciante → avançado | Cursos gratuitos; alguns com badge 🌐 |
-| [DW Learn German](https://learngerman.dw.com/) | Cursos, notícias, áudio e vídeo de alemão | A1 → C1 | Gratuito; interface em vários idiomas 🌐 |
+| [DW Learn German](https://learngerman.dw.com/en/learn-german/s-9528) | Cursos, notícias, áudio e vídeo de alemão | A1 → C1 | Gratuito; interface em vários idiomas 🌐 |
 | [TV5MONDE — Apprendre le français](https://apprendre.tv5monde.com/) | Francês com vídeos autênticos e milhares de exercícios | A1 → B2 | Gratuito e sem publicidade 🌐 |
 | [NHK World — Learn Japanese](https://www3.nhk.or.jp/nhkworld/en/learnjapanese/) | Lições, áudio, frases e cultura japonesa | Iniciante | Gratuito; interface em vários idiomas 🌐 |
 | [Centro Virtual Cervantes — AVE](https://cvc.cervantes.es/ensenanza/actividades_ave/) | Atividades de espanhol organizadas por níveis e temas | A1 → C1 | Gratuito 🌐 |
