@@ -33,7 +33,7 @@ Aprenda Docker, redes, DNS, TLS, processos e CI antes de Kubernetes. Use infraes
 
 - [Testing in .NET](https://learn.microsoft.com/en-us/dotnet/core/testing/) — testes unitários, integração, carga e plataformas de teste .NET. 📚 🌐
 - [Testcontainers for .NET](https://github.com/testcontainers/testcontainers-dotnet) — dependências reais e descartáveis em testes de integração. 🧩 🌐
-- [Testing JavaScript](https://testingjavascript.com/) — conteúdo introdutório gratuito e material complementar pago. 📚 🌐
+- [Testing JavaScript](https://www.testingjavascript.com/) — conteúdo introdutório gratuito e material complementar pago. 📚 🌐
 - [Grafana k6](https://grafana.com/docs/k6/latest/) — testes de carga, stress, spike e desempenho automatizado. 📚 🌐
 
 Uma suíte saudável combina testes rápidos de unidade, integração nos limites importantes, poucos testes ponta a ponta e testes de desempenho baseados em metas.
@@ -45,20 +45,20 @@ Uma suíte saudável combina testes rápidos de unidade, integração nos limite
 | [OpenTelemetry — Getting Started](https://opentelemetry.io/docs/getting-started/) | Instrumentação padronizada de logs, métricas e traces | Intermediário | Inglês, gratuito 📚 |
 | [Prometheus — Getting Started](https://prometheus.io/docs/tutorials/getting_started/) | Coleta de métricas e consultas com PromQL | Intermediário | Inglês, gratuito 📚 |
 | [Grafana Tutorials](https://grafana.com/tutorials/) | Dashboards, alertas e investigação de telemetria | Iniciante → intermediário | Inglês, parte dos tutoriais usa Grafana Cloud 📚 |
-| [Sentry](https://sentry.io/) | Rastreamento de erros e desempenho; verifique os limites do plano gratuito | Iniciante | Inglês, freemium 📚 |
+| [Sentry](https://sentry.io/welcome/) | Rastreamento de erros e desempenho; verifique os limites do plano gratuito | Iniciante | Inglês, freemium 📚 |
 
 Instrumente primeiro um fluxo crítico. Use correlação de logs, métricas com significado de negócio e traces apenas onde ajudam a responder perguntas reais.
 
 ## Segurança de aplicações
 
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/) — conscientização sobre riscos frequentes em aplicações web. 📚 🌐
+- [OWASP Top 10](https://owasp.org/projects/top-ten) — conscientização sobre riscos frequentes em aplicações web. 📚 🌐
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/) — orientação prática de implementação. 📚 🌐
 - [OWASP ASVS](https://owasp.org/projects/asvs) — requisitos verificáveis para controles técnicos de segurança. 📚 🌐
 - [OWASP Juice Shop](https://owasp.org/projects/juice-shop) — aplicação intencionalmente vulnerável para treinamento legal e controlado. 🧩 🌐
 - [PortSwigger Web Security Academy](https://portswigger.net/web-security) — laboratórios gratuitos de segurança web. 📚 🌐
 - [OverTheWire](https://overthewire.org/wargames/) — desafios de Linux e segurança. 📚 🌐
 - [TryHackMe](https://tryhackme.com/) — possui salas gratuitas e planos pagos; pratique apenas em ambientes autorizados. 📚 🌐
-- [Cisco Skills for All](https://skillsforall.com/) — redes e cibersegurança; badges dependem da trilha. 🏅 🌐
+- [Cisco Networking Academy](https://www.netacad.com/) — redes e cibersegurança; badges dependem da trilha. 🏅 🌐
 - [Awesome Hacking](https://github.com/Hack-with-Github/Awesome-Hacking) — coleção extensa; avalie cada recurso antes de usar. 🧩 🌐
 
 ### Regras éticas

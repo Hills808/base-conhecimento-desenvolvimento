@@ -43,7 +43,7 @@ Não trate REST, GraphQL, gRPC e mensageria como concorrentes universais. Compar
 | [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/) | Padrões, arquiteturas de referência e trade-offs para sistemas em cloud | Intermediário → avançado | Inglês, gratuito 📚 |
 | [Microsoft eShop](https://github.com/dotnet/eShop) | Aplicação de referência moderna para serviços em .NET | Intermediário → avançado | Inglês, gratuito 🧩 |
 | [Ardalis Clean Architecture](https://github.com/ardalis/CleanArchitecture) | Template ASP.NET Core para estudar separação de responsabilidades | Intermediário | Inglês, gratuito 🧩 |
-| [RealWorld](https://github.com/gothinkster/realworld) | A mesma aplicação implementada em diversas stacks para comparação | Intermediário | Inglês, gratuito 🧩 |
+| [RealWorld](https://github.com/realworld-apps/realworld) | A mesma aplicação implementada em diversas stacks para comparação | Intermediário | Inglês, gratuito 🧩 |
 
 ### Ordem recomendada
 

@@ -35,7 +35,7 @@ Antes de contribuir, leia `README`, `CONTRIBUTING`, Código de Conduta, licença
 | Necessidade | Ferramentas |
 | --- | --- |
 | Editor/IDE | [VS Code](https://code.visualstudio.com/), [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download/) |
-| Organização | [Notion](https://www.notion.so/), [Obsidian](https://obsidian.md/), [Trello](https://trello.com/) |
+| Organização | [Notion](https://www.notion.com/), [Obsidian](https://obsidian.md/), [Trello](https://trello.com/) |
 | APIs | [Bruno](https://www.usebruno.com/), [Postman](https://www.postman.com/), [Hoppscotch](https://hoppscotch.io/), [Hurl](https://hurl.dev/), [httpYac](https://httpyac.github.io/) |
 | Dados rápidos | [DevToys](https://github.com/DevToys-app/DevToys) — JSON, JWT, Base64, regex, hashes e outras ferramentas locais. 🧩 |
 | Banco | [DBeaver](https://dbeaver.io/), [DB Fiddle](https://dbfiddle.uk/), [SQLite Online](https://sqliteonline.com/) |
@@ -59,17 +59,17 @@ Documente para uma tarefa e um público definidos. Um README deve explicar o pro
 ### Certificados e credenciais
 
 - [IFRS — Cursos Online Abertos](https://moodle.ifrs.edu.br/course/index.php?categoryid=38) — cursos gratuitos; confira requisitos e prazo do certificado. 🎓
-- [freeCodeCamp](https://www.freecodecamp.org/learn/) — certificações baseadas em projetos. 🎓 🌐
+- [freeCodeCamp](https://www.freecodecamp.org/learn) — certificações baseadas em projetos. 🎓 🌐
 - [Kaggle Learn](https://www.kaggle.com/learn) — microcursos com comprovantes de conclusão, conforme a plataforma. 🎓 🌐
 - [DIO](https://www.dio.me/) — bootcamps patrocinados variam ao longo do tempo. 🎓
 - [Santander Open Academy](https://www.santanderopenacademy.com/) — cursos e bolsas variam por edital. 🎓
 - [IBM SkillsBuild](https://skillsbuild.org/) — cursos e credenciais conforme a trilha. 🏅 🌐
-- [Cisco Skills for All](https://skillsforall.com/) — badges ou conclusão conforme o curso. 🏅 🌐
+- [Cisco Networking Academy](https://www.netacad.com/) — badges ou conclusão conforme o curso. 🏅 🌐
 
 ### Benefícios para estudantes
 
 - [GitHub Student Developer Pack](https://education.github.com/pack) — ofertas para estudantes verificados; benefícios mudam com o tempo.
-- [Azure for Students](https://azure.microsoft.com/free/students/) — créditos e serviços sujeitos à elegibilidade e disponibilidade regional.
+- [Azure for Students](https://azure.microsoft.com/en-us/free/students/) — créditos e serviços sujeitos à elegibilidade e disponibilidade regional.
 - [JetBrains Student License](https://www.jetbrains.com/community/education/#students) — ferramentas para estudantes elegíveis.
 - [Free for Dev](https://github.com/ripienaar/free-for-dev) — catálogo comunitário de planos gratuitos; confirme as condições no fornecedor.
 

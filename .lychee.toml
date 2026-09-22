@@ -5,3 +5,11 @@ retry_wait_time = 2
 timeout = 30
 accept = [200, 206, 429]
 exclude_loopback = true
+exclude = [
+  '^https://leetcode[.]com/$',
+  '^https://academy[.]postman[.]com/$',
+  '^https://exercism[.]org/',
+  '^https://coolors[.]co/$',
+  '^https://www[.]open[.]edu/openlearn/languages$',
+  '^https://www[.]cursoemvideo[.]com/curso/curso-de-algoritmo/$',
+]

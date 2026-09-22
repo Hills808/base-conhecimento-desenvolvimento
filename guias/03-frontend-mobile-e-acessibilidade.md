@@ -5,7 +5,7 @@
 ## Fundamentos da web
 
 - [The Odin Project](https://www.theodinproject.com/) — currículo completo e baseado em projetos. 📚 🌐
-- [freeCodeCamp](https://www.freecodecamp.org/learn/) — HTML, CSS, JavaScript e projetos; confira as certificações disponíveis. 🎓 🌐
+- [freeCodeCamp](https://www.freecodecamp.org/learn) — HTML, CSS, JavaScript e projetos; confira as certificações disponíveis. 🎓 🌐
 - [MDN Learn Web Development](https://developer.mozilla.org/en-US/docs/Learn_web_development) — trilha mantida pela comunidade MDN. 📚 🌐
 - [Frontend Mentor](https://www.frontendmentor.io/) — desafios com design pronto; possui conteúdo gratuito e pago. 📚 🌐
 - [Frontend Practice](https://www.frontendpractice.com/) — prática recriando interfaces. 📚 🌐
@@ -18,7 +18,7 @@ Aprenda HTML semântico, CSS responsivo e JavaScript da plataforma antes de depe
 - [React Learn](https://react.dev/learn) — documentação oficial orientada a prática. 📚 🌐
 - [Vue Tutorial](https://vuejs.org/tutorial/) — tutorial oficial interativo. 📚 🌐
 - [Angular Tutorials](https://angular.dev/tutorials) — tutoriais oficiais. 📚 🌐
-- [Svelte Tutorial](https://svelte.dev/tutorial) — tutorial oficial interativo. 📚 🌐
+- [Svelte Tutorial](https://svelte.dev/tutorial/svelte/welcome-to-svelte) — tutorial oficial interativo. 📚 🌐
 
 Escolha um framework depois de dominar componentes, estado, eventos, formulários, requisições, roteamento e o modelo de execução do navegador.
 
@@ -44,7 +44,7 @@ Escolha um framework depois de dominar componentes, estado, eventos, formulário
 
 ## Mobile
 
-- [Flutter Codelabs](https://docs.flutter.dev/codelabs) — exercícios oficiais para Flutter. 📚 🌐
+- [Flutter Learning Resources](https://docs.flutter.dev/reference/learning-resources) — tutoriais, exercícios e recursos oficiais para Flutter. 📚 🌐
 - [React Native Docs](https://reactnative.dev/docs/getting-started) — documentação oficial. 📚 🌐
 - [Android Basics with Compose](https://developer.android.com/courses/android-basics-compose/course) — trilha oficial Android. 📚 🌐
 - [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui) — tutoriais oficiais para plataformas Apple. 📚 🌐

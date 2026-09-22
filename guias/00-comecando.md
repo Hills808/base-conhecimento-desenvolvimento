@@ -13,7 +13,7 @@
 ## Mapas para não se perder
 
 - [roadmap.sh](https://roadmap.sh/) — mapas de carreira e tecnologia: frontend, backend, DevOps, QA, segurança e IA. 📚 🌐
-- [Developer Roadmaps](https://github.com/kamranahmedse/developer-roadmap) — repositório que mantém os roadmaps. 🧩 🌐
+- [Developer Roadmaps](https://github.com/nilbuild/developer-roadmap) — repositório que mantém os roadmaps. 🧩 🌐
 - [OSSU Computer Science](https://github.com/ossu/computer-science) — currículo universitário gratuito de Ciência da Computação. Use como mapa de fundamentos, não como obrigação. 🧩 🌐
 - [Teach Yourself CS](https://teachyourselfcs.com/) — guia curto para estudar fundamentos importantes. 📚 🌐
 

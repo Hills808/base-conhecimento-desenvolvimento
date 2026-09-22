@@ -9,7 +9,7 @@
 - [SQLBolt](https://sqlbolt.com/) — SQL interativo para começar. 📚 🌐
 - [SQLZoo](https://sqlzoo.net/wiki/SQL_Tutorial) — exercícios de SQL. 📚 🌐
 - [PGExercises](https://pgexercises.com/) — desafios com PostgreSQL. 📚 🌐
-- [Mode SQL Tutorial](https://mode.com/sql-tutorial/) — SQL aplicado à análise de dados. 📚 🌐
+- [ThoughtSpot SQL Tutorial](https://www.thoughtspot.com/sql-tutorial) — SQL aplicado à análise de dados. 📚 🌐
 - [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html) — tutorial oficial do PostgreSQL. 📚 🌐
 - [Use The Index, Luke](https://use-the-index-luke.com/) — índices e desempenho de consultas. 📚 🌐
 - [Database Design Course](https://www.youtube.com/watch?v=ztHopE5Wnpc) — modelagem e normalização. 📚 🌐
@@ -38,7 +38,7 @@
 - [Hugging Face Learn](https://huggingface.co/learn) — NLP, transformers, agentes e modelos generativos. 📚 🌐
 - [Microsoft AI for Beginners](https://github.com/microsoft/AI-For-Beginners) — currículo introdutório baseado em projetos. 🧩 🌐
 - [Microsoft Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners) — fundamentos e aplicações de IA generativa. 🧩 🌐
-- [OpenAI Cookbook](https://cookbook.openai.com/) — exemplos de APIs, embeddings, RAG e ferramentas. 📚 🌐
+- [OpenAI Cookbook](https://developers.openai.com/cookbook) — exemplos de APIs, embeddings, RAG e ferramentas. 📚 🌐
 - [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) — engenharia de dados de ponta a ponta. 🧩 🌐
 
 ## Aprendizado profundo e MLOps
