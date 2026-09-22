@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Validar Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v20
+        uses: DavidAnson/markdownlint-cli2-action@v24.2.0
 
   links:
     name: Links
@@ -32,13 +32,12 @@ jobs:
 
       - name: Verificar links
         id: lychee
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >-
             --config .lychee.toml
             --verbose
             --no-progress
-            --output ./lychee-out.md
             "**/*.md"
           fail: true
           jobSummary: true
@@ -48,4 +47,4 @@ jobs:
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Links quebrados detectados pela verificação automática"
-          content-filepath: ./lychee-out.md
+          content-filepath: ./lychee/out.md
