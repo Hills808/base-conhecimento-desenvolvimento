@@ -1,0 +1,51 @@
+name: Informar link quebrado
+description: Informe um link removido, redirecionado incorretamente ou desatualizado.
+title: "[Link quebrado]: "
+labels: [manutencao, links]
+body:
+  - type: input
+    id: pagina
+    attributes:
+      label: Página do repositório
+      placeholder: guias/02-backend-apis-e-arquitetura.md
+    validations:
+      required: true
+
+  - type: input
+    id: recurso
+    attributes:
+      label: Nome do recurso
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL com problema
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problema
+    attributes:
+      label: Problema observado
+      options:
+        - Página não encontrada
+        - Domínio indisponível
+        - Redirecionamento incorreto
+        - Conteúdo deixou de ser gratuito
+        - Certificado ou badge não está mais disponível
+        - Descrição não corresponde ao conteúdo
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: detalhes
+    attributes:
+      label: Detalhes ou possível substituição
+      description: Inclua a data da verificação e, se souber, uma URL oficial substituta.
+    validations:
+      required: true
+

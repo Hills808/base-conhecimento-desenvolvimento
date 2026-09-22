@@ -1,0 +1,83 @@
+name: Sugerir recurso
+description: Sugira um curso, documentação, laboratório ou projeto para a curadoria.
+title: "[Recurso]: "
+labels: [curadoria]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado pela sugestão. Não envie links afiliados ou promocionais.
+
+  - type: input
+    id: nome
+    attributes:
+      label: Nome do recurso
+      placeholder: Exemplo — Documentação oficial do projeto
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL canônica
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: nivel
+    attributes:
+      label: Nível aproximado
+      options:
+        - Iniciante
+        - Intermediário
+        - Avançado
+        - Do iniciante ao avançado
+    validations:
+      required: true
+
+  - type: input
+    id: idioma
+    attributes:
+      label: Idioma predominante
+      placeholder: Português do Brasil
+    validations:
+      required: true
+
+  - type: dropdown
+    id: acesso
+    attributes:
+      label: Modelo de acesso
+      options:
+        - Totalmente gratuito
+        - Gratuito com conteúdo pago opcional
+        - Documentação ou projeto open source
+    validations:
+      required: true
+
+  - type: textarea
+    id: finalidade
+    attributes:
+      label: Finalidade e diferencial
+      description: Explique o que a pessoa aprende e por que este recurso agrega à base.
+    validations:
+      required: true
+
+  - type: input
+    id: secao
+    attributes:
+      label: Seção sugerida
+      placeholder: Backend, APIs e arquitetura
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmacoes
+    attributes:
+      label: Confirmações
+      options:
+        - label: A sugestão não contém link afiliado ou encurtador promocional.
+          required: true
+        - label: Verifiquei que o recurso está acessível na URL informada.
+          required: true
+
