@@ -1,4 +1,4 @@
-# 05 — Cloud, DevOps, qualidade e segurança
+# 06 — Cloud, DevOps, qualidade e segurança
 
 [← Voltar ao início](../README.md)
 

@@ -25,9 +25,10 @@ Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequ�
 | [01 — Fundamentos e linguagens](guias/01-fundamentos-e-linguagens.md) | Lógica, computação, C#, Java, Python, JavaScript, C/C++ e outras linguagens |
 | [02 — Backend, APIs e arquitetura](guias/02-backend-apis-e-arquitetura.md) | HTTP, REST, GraphQL, gRPC, AsyncAPI, documentação e system design |
 | [03 — Frontend, mobile e acessibilidade](guias/03-frontend-mobile-e-acessibilidade.md) | Web, frameworks, mobile, performance, PWA e acessibilidade |
-| [04 — Bancos de dados, dados e IA](guias/04-bancos-dados-e-ia.md) | SQL, modelagem, ciência de dados, IA generativa e MLOps |
-| [05 — Cloud, DevOps, qualidade e segurança](guias/05-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
-| [06 — GitHub, ferramentas, certificados e idiomas](guias/06-github-ferramentas-certificados-e-idiomas.md) | Open source, prática, ferramentas, benefícios e inglês técnico |
+| [04 — Bancos de dados, dados e machine learning](guias/04-bancos-dados-e-ia.md) | SQL, modelagem, ciência de dados, ML, deep learning e MLOps |
+| [05 — IA generativa, RAG, tools e agentes](guias/05-ia-generativa-agentes-e-mlops.md) | Como funciona, formas de uso, prompting, RAG, ferramentas, agentes, segurança e avaliações |
+| [06 — Cloud, DevOps, qualidade e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
+| [07 — GitHub, ferramentas, certificados e idiomas](guias/07-github-ferramentas-certificados-e-idiomas.md) | Open source, prática, ferramentas, benefícios e inglês técnico |
 
 ## Legenda
 

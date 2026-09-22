@@ -1,4 +1,4 @@
-# 04 — Bancos de dados, dados e IA
+# 04 — Bancos de dados, dados e machine learning
 
 [← Voltar ao início](../README.md)
 
@@ -31,14 +31,12 @@
 6. migrações, backup e restauração;
 7. escolha consciente entre relacional, documento, chave-valor e outros modelos.
 
-## IA e dados
+## Dados e machine learning
 
 - [Kaggle Learn](https://www.kaggle.com/learn) — microcursos de Python, dados, ML e visão computacional; confira os comprovantes disponíveis. 🎓 🌐
 - [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) — fundamentos e exercícios de ML. 📚 🌐
-- [Hugging Face Learn](https://huggingface.co/learn) — NLP, transformers, agentes e modelos generativos. 📚 🌐
+- [Hugging Face Learn](https://huggingface.co/learn) — machine learning, NLP, áudio, visão computacional e modelos generativos. 📚 🌐
 - [Microsoft AI for Beginners](https://github.com/microsoft/AI-For-Beginners) — currículo introdutório baseado em projetos. 🧩 🌐
-- [Microsoft Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners) — fundamentos e aplicações de IA generativa. 🧩 🌐
-- [OpenAI Cookbook](https://developers.openai.com/cookbook) — exemplos de APIs, embeddings, RAG e ferramentas. 📚 🌐
 - [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) — engenharia de dados de ponta a ponta. 🧩 🌐
 
 ## Aprendizado profundo e MLOps
@@ -60,6 +58,8 @@
 6. privacidade, vieses, segurança e avaliação contínua.
 
 Não comece pelo framework mais popular. Defina o problema, a métrica, o conjunto de comparação e os riscos antes do modelo.
+
+Para modelos de linguagem, RAG, ferramentas e agentes, continue em [IA generativa, RAG, tools e agentes](05-ia-generativa-agentes-e-mlops.md).
 
 ## Projeto sugerido
 

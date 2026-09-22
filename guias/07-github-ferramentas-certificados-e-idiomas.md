@@ -1,4 +1,4 @@
-# 06 — GitHub, ferramentas, certificados e idiomas
+# 07 — GitHub, ferramentas, certificados e idiomas
 
 [← Voltar ao início](../README.md)
 
