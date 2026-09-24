@@ -23,13 +23,20 @@ Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequ�
 | --- | --- |
 | [00 — Começando](guias/00-comecando.md) | Ordem de estudo, mapas e modelo de acompanhamento |
 | [01 — Fundamentos e linguagens](guias/01-fundamentos-e-linguagens.md) | Lógica, computação, C#, Java, Python, JavaScript, C/C++ e outras linguagens |
-| [02 — Backend, APIs e arquitetura](guias/02-backend-apis-e-arquitetura.md) | HTTP, REST, GraphQL, gRPC, AsyncAPI, documentação e system design |
+| [02 — Backend, APIs e arquitetura](guias/02-backend-apis-e-arquitetura.md) | HTTP, Swagger/OpenAPI, Bruno, ASP.NET Core, testes, GraphQL, gRPC e arquitetura |
 | [03 — Frontend, mobile e acessibilidade](guias/03-frontend-mobile-e-acessibilidade.md) | Web, frameworks, mobile, performance, PWA e acessibilidade |
 | [04 — Bancos de dados, dados e machine learning](guias/04-bancos-dados-e-ia.md) | SQL, modelagem, ciência de dados, ML, deep learning e MLOps |
-| [05 — IA generativa, RAG, tools e agentes](guias/05-ia-generativa-agentes-e-mlops.md) | Como funciona, formas de uso, prompting, RAG, ferramentas, agentes, segurança e avaliações |
+| [05 — IA generativa, RAG, tools e agentes](guias/05-ia-generativa-agentes-e-mlops.md) | Fundamentos, RAG, agentes, MCP em C#, criação de skills, segurança e avaliações |
 | [06 — Cloud, DevOps, qualidade e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
 | [07 — GitHub, ferramentas e certificados](guias/07-github-ferramentas-e-certificados.md) | Open source, prática, ferramentas, benefícios e credenciais |
 | [08 — Idiomas para tecnologia](guias/08-idiomas-para-tecnologia.md) | Inglês técnico, leitura, escrita, conversação, certificações e outros idiomas |
+
+## Trilhas práticas em destaque
+
+- [APIs para o trabalho: HTTP → Swagger/OpenAPI → Bruno → .NET](guias/02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho)
+- [MCP: aprender e implementar com C#](guias/05-ia-generativa-agentes-e-mlops.md#mcp-aprender-e-implementar)
+- [Criação e avaliação de Agent Skills](guias/05-ia-generativa-agentes-e-mlops.md#criação-de-agent-skills)
+- [Projeto integrado: API .NET + Bruno + MCP + skill](guias/05-ia-generativa-agentes-e-mlops.md#projeto-integrado-de-ia-e-apis)
 
 ## Legenda
 
