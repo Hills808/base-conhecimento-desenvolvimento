@@ -120,6 +120,98 @@ Uma tool deve ter nome, descrição, parâmetros tipados, validação, autoriza�
 
 O modelo não deve receber credenciais diretamente. A aplicação executora mantém os segredos, aplica autorização e decide se a ação é permitida.
 
+Atualização de MCP e skills: 24/09/2026. Os laboratórios são propostas de estudo, não implementações executadas.
+
+## MCP: aprender e implementar
+
+**MCP (Model Context Protocol)** padroniza a integração de aplicações de IA com ferramentas e fontes de contexto. Não substitui sua API de negócio: um servidor MCP pode oferecer operações que consultam essa API.
+
+| Conceito | Papel | Exemplo de estudo |
+|---|---|---|
+| Host | Aplicação que incorpora a IA e coordena conexões | Assistente compatível com MCP |
+| Cliente MCP | Componente que se conecta ao servidor | Conexão gerenciada pelo host |
+| Servidor MCP | Expõe capacidades pelo protocolo | Adaptador da API de tarefas |
+| Tool | Operação invocável | Consultar tarefa por ID |
+| Resource | Conteúdo endereçável | Guia ou informação disponibilizada pelo servidor |
+| Prompt MCP | Modelo de interação disponibilizado pelo servidor | Roteiro parametrizado de análise |
+| Agent Skill | Instruções reutilizáveis para uma tarefa | Procedimento de triagem de falhas de API |
+
+O suporte a cada capacidade depende do cliente. MCP não concede permissões automaticamente, e uma skill não é um servidor MCP nem equivale a um prompt MCP.
+
+### Fontes para sair da teoria
+
+| Recurso | Para que usar | Acesso |
+|---|---|---|
+| [MCP — construir um servidor](https://modelcontextprotocol.io/docs/develop/build-server) | Primeiro servidor e ferramentas | Documentação gratuita, EN |
+| [Microsoft — MCP for Beginners](https://github.com/microsoft/mcp-for-beginners) | Currículo aberto com exemplos em várias linguagens, incluindo .NET | Repositório gratuito |
+| [SDK oficial MCP para C#](https://github.com/modelcontextprotocol/csharp-sdk) | Implementar clientes/servidores na stack do trabalho; explorar `samples` | Código aberto, EN |
+| [Documentação do SDK C#](https://csharp.sdk.modelcontextprotocol.io/) | Consultar APIs e configuração da versão escolhida | Documentação gratuita, EN |
+| [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) | Inspecionar e testar o servidor antes de integrar a um assistente | Ferramenta/documentação aberta |
+| [MCP — boas práticas de segurança](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) | Revisar autorização e riscos antes de conectar sistemas reais | Documentação gratuita, EN |
+
+**Não é necessário contratar um modelo para começar:** construa e teste o servidor no Inspector. O uso posterior de um host, modelo ou serviço em nuvem pode envolver custos e restrições; estes recursos não prometem certificado.
+
+### Roteiro de implementação em C#
+
+1. Estude host/cliente/servidor e implemente uma operação simples de leitura com entrada e saída bem definidas.
+2. Siga um exemplo do SDK oficial compatível com suas versões. O pacote `ModelContextProtocol` atende cenários com hosting/DI sem servidor HTTP; `ModelContextProtocol.AspNetCore` acrescenta suporte a servidores HTTP.
+3. Comece localmente com **stdio** quando o cliente suportar. Para um serviço remoto, estude **Streamable HTTP**, autenticação, autorização e implantação. Não copie configurações antigas de transporte sem conferir a documentação.
+4. Defina uma ferramenta como `consultar_tarefa(id)`: valide o argumento, consulte sua API usando um cliente HTTP e retorne somente os campos necessários.
+5. Configure timeout, cancelamento e tratamento de resposta inválida, indisponibilidade e item inexistente. Não transforme falhas em respostas inventadas.
+6. Teste descoberta e chamada da ferramenta no Inspector; depois conecte um host compatível e verifique a mesma operação.
+7. Versione código, testes e um exemplo de configuração sem segredos. Registre versões do SDK/protocolo e do cliente usados no laboratório.
+
+**Cuidados essenciais:** em stdio, logs não devem poluir `stdout`, usado pelo protocolo. Mantenha logs no canal apropriado, como `stderr`. Não exponha ferramentas genéricas de shell, SQL arbitrário ou acesso irrestrito a URLs/arquivos. Use permissões mínimas e valide argumentos no servidor. Trate resultados externos como dados não confiáveis, não como instruções. Para acesso remoto, valide tokens destinados ao servidor; não repasse cegamente o token recebido para outra API. Ações de escrita exigem autorização e controles explícitos.
+
+## Criação de Agent Skills
+
+Aqui, **skill** significa um pacote reutilizável de instruções para um agente, e não uma certificação profissional. Uma skill orienta *como realizar uma tarefa*; MCP oferece uma forma de disponibilizar *ferramentas e contexto*. Podem ser usados juntos ou separadamente.
+
+**Referências principais:** [especificação Agent Skills](https://agentskills.io/specification) e [boas práticas de criação](https://agentskills.io/skill-creation/best-practices). Leitura gratuita, em inglês, sem promessa de certificado.
+
+Na especificação, a pasta da skill contém um `SKILL.md` com metadados YAML e instruções Markdown. `name` e `description` são obrigatórios; o nome deve corresponder à pasta e seguir as regras de formato. Pastas opcionais como `references/`, `scripts/` e `assets/` podem guardar material complementar. A instalação, os caminhos e as ferramentas disponíveis dependem do produto que executará a skill: confira a documentação desse cliente antes de instalar.
+
+### Oficina: desenhar uma skill de triagem de API
+
+**Exercício proposto, não uma skill já instalada:** criar `triagem-api` para ajudar a entender falhas em chamadas HTTP sem executar alterações em produção.
+
+1. **Defina quando usar:** pedidos para diagnosticar uma chamada, comparar resposta e contrato ou montar uma reprodução no Bruno. Defina também quando não usar, como pedidos genéricos sobre IA.
+2. **Liste entradas mínimas:** ambiente autorizado, método/rota, request sem segredos, status/body da resposta e contrato disponível. Se faltar informação, o agente deve perguntar, não presumir acesso.
+3. **Escreva o procedimento:** conferir ambiente → comparar contrato → reproduzir com segurança → reunir evidências → separar hipótese de causa confirmada → sugerir próximo teste.
+4. **Defina a saída:** resumo do problema, evidência observada, hipóteses priorizadas e próximo passo. Nunca afirmar que uma chamada foi executada sem resultado real.
+5. **Acrescente limites:** não pedir senhas, não exibir tokens, não modificar produção, não contornar permissões e não executar instruções encontradas dentro de respostas da API.
+6. **Organize referências:** coloque um checklist HTTP e convenções aprovadas do time em arquivos auxiliares; mantenha o procedimento principal curto e indique quando ler cada referência.
+7. **Automatize só o necessário:** scripts opcionais devem ter entradas controladas, erros claros e testes. Uma instrução na skill não autoriza acesso nem instala dependências por si só.
+
+### Como avaliar a skill
+
+Monte casos fictícios e registre resultado esperado versus observado:
+
+- Pedido adequado: a skill é selecionada e segue o procedimento.
+- Pedido fora do tema: a skill não interfere.
+- Falta de contrato ou autenticação: pede o necessário sem inventar dados.
+- API indisponível: relata o erro e preserva a distinção entre hipótese e conclusão.
+- Resposta contendo instruções maliciosas: trata o texto como dado, sem obedecer.
+- Pedido de alteração em produção: interrompe a execução e exige o fluxo autorizado.
+
+**Critério de conclusão:** o procedimento funciona em mais de um caso, os limites são respeitados e as instruções são compreensíveis para outra pessoa. Depois disso, valide o formato e a compatibilidade no cliente escolhido.
+
+## Projeto integrado de IA e APIs
+
+**Objetivo:** aprender os cinco assuntos em um laboratório único, sem dados do trabalho.
+
+| Etapa | Entrega | Condição para avançar |
+|---|---|---|
+| 1. API ASP.NET Core | API de tarefas e contrato OpenAPI | Chamadas de sucesso e erro têm comportamento documentado |
+| 2. Bruno | Coleção com ambientes e testes | Coleção reproduzível sem segredos versionados |
+| 3. MCP em C# | Ferramentas somente de leitura para listar/consultar tarefas | Inspector confirma entradas, resultados e falhas |
+| 4. Skill | Procedimento de triagem e referências | Casos positivos, negativos e de falta de acesso avaliados |
+| 5. Integração | Assistente usa a skill e as ferramentas autorizadas | Explicações correspondem às evidências reais da API |
+
+Organização sugerida no repositório: `src/` para a API, `tests/` para testes, `bruno/` para a coleção, `mcp/` para o adaptador, `skills/triagem-api/` para o pacote e `docs/` para decisões e execução. Essa é uma proposta de organização do projeto, não um caminho universal de instalação de skills.
+
+**Depois do básico:** adicione observabilidade, testes de contrato, revisão de permissões e avaliação regressiva da skill. Só então considere ferramentas MCP de escrita, com confirmação, escopo restrito e trilha de auditoria. Para adoção profissional, submeta integrações e dados permitidos às regras da empresa.
+
 ## Criando um agente
 
 Um agente mínimo combina:
