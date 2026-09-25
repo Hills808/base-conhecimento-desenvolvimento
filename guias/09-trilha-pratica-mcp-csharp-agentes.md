@@ -18,28 +18,51 @@ Usuário → aplicação conversacional/host → cliente MCP → servidor MCP em
 
 O host gerencia a experiência e a conexão; o servidor MCP disponibiliza capacidades. Uma **tool** executa uma operação definida. Um **resource** disponibiliza conteúdo endereçável; um **prompt MCP** fornece um modelo de interação; uma **Agent Skill** guarda instruções reutilizáveis para a tarefa. **RAG** recupera trechos de documentos para fundamentar respostas. Esses conceitos se relacionam, mas cada um resolve uma necessidade diferente.
 
-## O que estudar primeiro
+## A ordem única desta trilha
 
-| Prioridade | Aprenda o suficiente para | Material principal | Prática de saída |
-| --- | --- | --- | --- |
-| 1. HTTP e API | Ler método, rota, JSON, status e autenticação | [MDN HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) e [guia 02](02-backend-apis-e-arquitetura.md) | Explicar um GET e reproduzi-lo no Bruno |
-| 2. C# essencial | Criar projeto, método assíncrono, tipo de retorno, DI e logging | [Microsoft Learn — primeira Web API](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0) | Executar e alterar um endpoint local |
-| 3. MCP essencial | Entender host, cliente, servidor, tool e stdio | [MCP — construir servidor](https://modelcontextprotocol.io/docs/develop/build-server) | Rodar uma tool simples no Inspector |
-| 4. SDK C# | Registrar tools e selecionar transporte | [SDK oficial — Getting Started](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html) | Server com uma tool e validação de argumentos |
-| 5. Integração | Consumir API e lidar com falhas | [IHttpClientFactory](https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory) | Tool de consulta que usa uma API fictícia |
-| 6. RAG e skill | Recuperar contexto e guiar um procedimento | [RAG em .NET](https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/rag) e [Agent Skills](https://agentskills.io/specification) | Resposta com fonte e procedimento avaliado |
+Siga a sequência abaixo. **Comece pela Etapa 1** e avance apenas após cumprir a entrega. Não é necessário concluir os outros oito guias nem estudar todo C# antes de iniciar MCP.
 
-**Regra para manter o foco:** enquanto a tool de leitura não funcionar e não tiver testes de erro, deixe frameworks de agentes, banco vetorial, múltiplos agentes e deploy remoto para depois. Não é preciso dominar ciência de dados para iniciar um servidor MCP de integração.
+| Etapa | Faça isto | Entrega para avançar |
+| --- | --- | --- |
+| 1. Hoje: HTTP no Bruno | Execute um GET em uma API fictícia pública | Consegue explicar método, URL, status e JSON |
+| 2. Primeiro MCP | Crie servidor C# com tool simples e teste no Inspector | Inspector lista e executa a tool |
+| 3. API local | Crie GET fictício em ASP.NET Core e teste no Bruno | API devolve sucesso e ausência de registro |
+| 4. Integração | Faça a tool MCP consultar a API com `HttpClient` | Resultado e falhas batem com a API |
+| 5. Conversa | Conecte um host compatível e observe a chamada da tool | Sabe demonstrar a origem da resposta |
+| 6. RAG | Recupere trecho de três documentos fictícios com fonte | Responde com fonte ou declara ausência |
+| 7. Skill | Escreva e avalie um procedimento de triagem | Casos adequados, inadequados e de erro passam |
 
-## Primeiro encontro: 60 a 90 minutos
+A próxima etapa usa a entrega anterior. Se a sua experiência já cobrir o critério de uma etapa, reproduza a evidência em poucos minutos e siga adiante. Leia a documentação indicada somente quando precisar executar aquele passo.
 
-1. Abra [Getting Started do SDK C#](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html). Confira a versão de .NET instalada com `dotnet --info`; se houver projeto existente, confira `TargetFramework` e `global.json`.
-2. Crie um projeto separado para o laboratório com `dotnet new console -n ServidorMcpLab`. Entre na pasta e instale `ModelContextProtocol` e `Microsoft.Extensions.Hosting` usando `dotnet add package` conforme o guia oficial.
-3. Use o exemplo mínimo de servidor **stdio** da documentação do SDK como ponto de partida. Mantenha a primeira tool pequena, por exemplo `saudar(nome)`, e execute o projeto.
-4. Abra o [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector), configure o comando para iniciar o projeto e confira: conexão, lista de tools, esquema dos argumentos, chamada válida e chamada inválida.
-5. Anote em um README: o comando que inicia o servidor, a entrada, o resultado obtido, a versão do SDK e uma falha que você conseguiu reproduzir.
+### Etapa 1: hoje, uma chamada HTTP no Bruno
 
-**Entrega do primeiro encontro:** o Inspector descobre e chama uma tool local. Nenhum modelo, chave de API ou servidor HTTP é necessário para essa entrega. Em stdio, logs precisam ir para `stderr`: escrever no `stdout` mistura logs com mensagens do protocolo.
+**Tempo sugerido: 20–30 minutos.** Abra o [Bruno](https://docs.usebruno.com/), crie uma coleção de estudo e uma requisição `GET https://jsonplaceholder.typicode.com/todos/1`. Essa [API fictícia](https://jsonplaceholder.typicode.com/) é pública para testes. Envie a chamada e anote método, URL, status, corpo JSON e o valor do campo `id`. Troque o `1` por `2` e observe qual campo muda. Não é preciso autenticação para este exercício.
+
+**Entrega:** duas chamadas salvas no Bruno e uma frase sua explicando “enviei um GET para uma rota; recebi status e JSON com campos”. Se a API pública estiver indisponível, use qualquer GET público autorizado que devolva JSON; o objetivo é entender a chamada, não depender desse serviço específico.
+
+**Depois de concluir, vá direto para a Etapa 2.** Para dúvidas pontuais sobre método e status, consulte [MDN HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) ou o [guia de API](02-backend-apis-e-arquitetura.md). Não comece um curso longo antes do primeiro teste.
+
+### Etapa 2: primeiro servidor MCP em C\#
+
+**Tempo sugerido: 60–90 minutos.** Confira o SDK instalado com `dotnet --info`; em um projeto existente, veja também `TargetFramework` e `global.json`. Siga o [Getting Started oficial do SDK C#](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html): crie um console `dotnet new console -n ServidorMcpLab`, adicione os pacotes `ModelContextProtocol` e `Microsoft.Extensions.Hosting` e use o exemplo mínimo de servidor stdio.
+
+Mantenha uma tool como `saudar(nome)`. No [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector), conecte-se ao servidor, liste as tools e execute uma chamada válida e outra sem argumento. Anote no README o comando, a entrada, a saída, o SDK usado e a falha observada. Se faltar conhecimento de C#, aprenda apenas o conceito que apareceu nesse exemplo: classe, método, atributo, `async` ou DI.
+
+**Entrega:** o Inspector descobre e executa a tool. O servidor stdio escreve mensagens do protocolo no `stdout`; direcione logs para `stderr`. Você ainda não precisa de modelo, chave, RAG ou servidor remoto.
+
+### Etapas 3 e 4: API local e tool que a consulta
+
+**Etapa 3:** siga [a primeira Web API da Microsoft](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0) apenas até conseguir iniciar e chamar um GET local. Adapte o exemplo para dados fictícios. Salve no Bruno uma chamada com registro existente e outra com ID inexistente; documente o JSON e os status no OpenAPI. Escolha a versão da documentação correspondente ao `TargetFramework` do projeto.
+
+**Etapa 4:** faça uma tool `consultar_solicitacao(id)` chamar esse GET com `HttpClient` configurado por DI; use [IHttpClientFactory](https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory) como referência. Teste no Inspector ID válido, ID ausente e API fora do ar. Compare o resultado com o Bruno.
+
+**Entrega:** a tool retorna os dados da API e distingue registro ausente de falha de conexão. Termine isso antes de adicionar RAG ou skills.
+
+### Etapas 5 a 7: agente, RAG e skill
+
+**Etapa 5:** conecte o servidor a um host compatível, pergunte pelo status do registro e verifique se a tool foi de fato chamada. **Etapa 6:** adicione três documentos fictícios e uma busca que informe o trecho e a fonte; confira também o caso sem resposta confiável. **Etapa 7:** escreva um `SKILL.md` de triagem e teste quando deve ser selecionado, quando não deve e o que fazer sem dados. Veja as seções de [RAG e skill](#depois-da-primeira-tool-resources-rag-e-skill) abaixo somente ao chegar a essas etapas.
+
+**Entrega final:** uma demonstração reproduzível em que a resposta tem origem verificável e o procedimento não inventa dados.
 
 ## Projeto de estudo: catálogo de procedimentos fictícios
 
@@ -65,18 +88,18 @@ Imagine um catálogo de solicitações com campos `id`, `titulo`, `status` e `at
 
 **Escolha de pacote:** o SDK oficial indica `ModelContextProtocol` para o começo com hosting/DI e stdio; `ModelContextProtocol.AspNetCore` é destinado a servidor MCP sobre HTTP. Não confunda o endpoint da API de negócio com o endpoint de transporte MCP. A migração para HTTP remoto é uma etapa posterior, com autenticação e implantação próprias.
 
-## Sequência de estudo e entrega
+## Tempo e ritmo
 
-As sessões podem ser distribuídas conforme a rotina. Passe para a próxima etapa quando a entrega estiver pronta, sem obrigação de cumprir uma semana fixa.
+A ordem acima é obrigatória para este laboratório; a duração é flexível. Estas sessões são uma estimativa, não uma lista de cursos adicionais.
 
 | Etapa | Sessões sugeridas | Aprendizado e entrega | Pode avançar quando... |
 | --- | --- | --- | --- |
-| A. Base útil | 2–3 | HTTP, Bruno, C# assíncrono; API GET local | Consegue explicar request/response e reproduzir `200`/`404` |
-| B. MCP mínimo | 2 | Servidor stdio e uma tool simples | Inspector lista a tool e a chama com entrada válida/inválida |
-| C. MCP + API | 3–4 | Tool `consultar_solicitacao`, DI, `HttpClient`, falhas e testes | Resultado MCP bate com o Bruno; erros são distintos |
-| D. Uso conversacional | 2 | Host compatível, teste com e sem necessidade de tool | Sabe mostrar quando houve chamada e de onde veio a resposta |
-| E. Recuperação | 2–3 | Busca em 3 documentos fictícios, fonte e abstinência | Resposta aponta trecho; ausência de fonte é informada |
-| F. Skill e operação | 2–3 | Procedimento, casos de avaliação, logs e segurança | Fluxo resiste a dados faltantes e conteúdo adversarial |
+| 1. HTTP no Bruno | 1 | GET público e leitura da resposta | Consegue explicar request/response e JSON |
+| 2. MCP mínimo | 1–2 | Servidor stdio e uma tool simples | Inspector lista a tool e a chama com entrada válida/inválida |
+| 3–4. API e integração | 3–4 | API GET local; tool `consultar_solicitacao`, DI, `HttpClient` e testes | Resultado MCP bate com o Bruno; erros são distintos |
+| 5. Uso conversacional | 1–2 | Host compatível, teste com e sem necessidade de tool | Sabe mostrar quando houve chamada e de onde veio a resposta |
+| 6. Recuperação | 2–3 | Busca em 3 documentos fictícios, fonte e abstinência | Resposta aponta trecho; ausência de fonte é informada |
+| 7. Skill e operação | 2–3 | Procedimento, casos de avaliação, logs e segurança | Fluxo resiste a dados faltantes e conteúdo adversarial |
 
 **Rotina por sessão curta:** 10 minutos para ler o trecho necessário da documentação, 30–45 minutos para alterar e rodar algo, 10 minutos para registrar evidência e o próximo impedimento. Caso haja erro, o objetivo da sessão pode ser apenas reproduzi-lo e entendê-lo.
 
@@ -114,4 +137,4 @@ Consulte [práticas de segurança do MCP](https://modelcontextprotocol.io/docs/t
 
 ## Próxima ação concreta
 
-Comece pelo **primeiro encontro** acima. Guarde três artefatos: um servidor que o Inspector consegue chamar, a captura ou registro da tool descoberta e um README com o comando de execução. O passo seguinte é fazer essa mesma tool consultar uma API fictícia testada no Bruno.
+Comece pela **Etapa 1 no Bruno**. Guarde as duas requisições GET e sua explicação de método, status e JSON. Na Etapa 2, crie o servidor MCP e guarde a evidência da tool no Inspector. Use a tabela de entregas no início como seu marcador de progresso.
