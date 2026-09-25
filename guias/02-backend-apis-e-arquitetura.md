@@ -9,7 +9,7 @@ Se o objetivo é construir um servidor MCP em C# ligado a uma API, siga a [trilh
 **Atualização: 24/09/2026.** Prioridade: conseguir entender, consumir, testar e diagnosticar APIs existentes; depois construir e automatizar. As etapas e os laboratórios abaixo são sugestões de estudo, não implementações já executadas.
 
 | Peça | O que representa | O que aprender a fazer |
-|---|---|---|
+| --- | --- | --- |
 | HTTP/API | Comunicação entre sistemas | Montar uma requisição e interpretar a resposta |
 | OpenAPI | Contrato legível por ferramentas | Encontrar rotas, parâmetros, schemas, autenticação e respostas |
 | Swagger UI | Interface interativa para um contrato OpenAPI | Explorar endpoints e testar chamadas autorizadas |
@@ -30,7 +30,7 @@ Se o objetivo é construir um servidor MCP em C# ligado a uma API, siga a [trilh
 Conteúdo de leitura gratuito; não há promessa de certificado nestes links. Alguns produtos têm recursos pagos: confirme a edição antes de depender deles.
 
 | Recurso | Idioma | Uso prático |
-|---|---|---|
+| --- | --- | --- |
 | [MDN — HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) | PT/EN | Fundamentos, headers, métodos, cache e status |
 | [Swagger — estrutura OpenAPI](https://swagger.io/docs/specification/v3_0/basic-structure/) | EN | Ler um contrato YAML/JSON; esta referência usa OpenAPI 3.0 |
 | [ASP.NET Core — visão geral de OpenAPI](https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0) | PT | Entender a geração de documentos no .NET |
@@ -51,7 +51,7 @@ Conteúdo de leitura gratuito; não há promessa de certificado nestes links. Al
 **Projeto sugerido:** API de tarefas com dados fictícios. Primeiro siga o tutorial oficial; depois adapte o domínio. Comece pequeno, sem microsserviços.
 
 | Cenário | Endpoint sugerido | Evidência a produzir |
-|---|---|---|
+| --- | --- | --- |
 | Listar e filtrar | `GET /api/tarefas?status=aberta` | Retorno coerente, lista vazia e paginação definida |
 | Consultar | `GET /api/tarefas/{id}` | Sucesso e identificador inexistente |
 | Criar | `POST /api/tarefas` | Validação e resposta `201` com localização do recurso |
