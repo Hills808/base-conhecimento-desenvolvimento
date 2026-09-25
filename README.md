@@ -7,7 +7,7 @@ Curadoria gratuita de trilhas, documentação, cursos e projetos para aprender d
 
 Este repositório foi criado para transformar links dispersos em caminhos de estudo. Escolha uma área, siga **fundamentos → prática → projeto** e registre o que você conseguiu construir. Não tente consumir tudo de uma vez.
 
-## Comece por aqui: caminho para MCP em C#
+## Comece por aqui: caminho para MCP em C\#
 
 Siga **esta ordem**, uma entrega de cada vez. Os guias 00–08 são referências para consultar quando uma etapa exigir, não pré-requisitos para ler por inteiro.
 
