@@ -129,7 +129,7 @@ Atualização de MCP e skills: 24/09/2026. Os laboratórios são propostas de es
 **MCP (Model Context Protocol)** padroniza a integração de aplicações de IA com ferramentas e fontes de contexto. Não substitui sua API de negócio: um servidor MCP pode oferecer operações que consultam essa API.
 
 | Conceito | Papel | Exemplo de estudo |
-|---|---|---|
+| --- | --- | --- |
 | Host | Aplicação que incorpora a IA e coordena conexões | Assistente compatível com MCP |
 | Cliente MCP | Componente que se conecta ao servidor | Conexão gerenciada pelo host |
 | Servidor MCP | Expõe capacidades pelo protocolo | Adaptador da API de tarefas |
@@ -143,7 +143,7 @@ O suporte a cada capacidade depende do cliente. MCP não concede permissões aut
 ### Fontes para sair da teoria
 
 | Recurso | Para que usar | Acesso |
-|---|---|---|
+| --- | --- | --- |
 | [MCP — construir um servidor](https://modelcontextprotocol.io/docs/develop/build-server) | Primeiro servidor e ferramentas | Documentação gratuita, EN |
 | [Microsoft — MCP for Beginners](https://github.com/microsoft/mcp-for-beginners) | Currículo aberto com exemplos em várias linguagens, incluindo .NET | Repositório gratuito |
 | [SDK oficial MCP para C#](https://github.com/modelcontextprotocol/csharp-sdk) | Implementar clientes/servidores na stack do trabalho; explorar `samples` | Código aberto, EN |
@@ -153,7 +153,7 @@ O suporte a cada capacidade depende do cliente. MCP não concede permissões aut
 
 **Não é necessário contratar um modelo para começar:** construa e teste o servidor no Inspector. O uso posterior de um host, modelo ou serviço em nuvem pode envolver custos e restrições; estes recursos não prometem certificado.
 
-### Roteiro de implementação em C#
+### Roteiro de implementação em C\#
 
 1. Estude host/cliente/servidor e implemente uma operação simples de leitura com entrada e saída bem definidas.
 2. Siga um exemplo do SDK oficial compatível com suas versões. O pacote `ModelContextProtocol` atende cenários com hosting/DI sem servidor HTTP; `ModelContextProtocol.AspNetCore` acrescenta suporte a servidores HTTP.
@@ -203,7 +203,7 @@ Monte casos fictícios e registre resultado esperado versus observado:
 **Objetivo:** aprender os cinco assuntos em um laboratório único, sem dados do trabalho.
 
 | Etapa | Entrega | Condição para avançar |
-|---|---|---|
+| --- | --- | --- |
 | 1. API ASP.NET Core | API de tarefas e contrato OpenAPI | Chamadas de sucesso e erro têm comportamento documentado |
 | 2. Bruno | Coleção com ambientes e testes | Coleção reproduzível sem segredos versionados |
 | 3. MCP em C# | Ferramentas somente de leitura para listar/consultar tarefas | Inspector confirma entradas, resultados e falhas |
