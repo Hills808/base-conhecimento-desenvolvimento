@@ -7,6 +7,12 @@ Curadoria gratuita de trilhas, documentação, cursos e projetos para aprender d
 
 Este repositório foi criado para transformar links dispersos em caminhos de estudo. Escolha uma área, siga **fundamentos → prática → projeto** e registre o que você conseguiu construir. Não tente consumir tudo de uma vez.
 
+## Caminho direto: C# → API → MCP
+
+Para quem desenvolve integrações para agentes conversacionais com C# e precisa começar um projeto MCP, há uma [trilha prática com entregas por etapa](guias/09-trilha-pratica-mcp-csharp-agentes.md). O primeiro resultado é uma tool local testada no Inspector; em seguida ela consulta uma API testada no Bruno. RAG e skills entram quando a integração básica estiver funcionando.
+
+**Comece aqui:** [primeiro encontro de 60 a 90 minutos](guias/09-trilha-pratica-mcp-csharp-agentes.md#primeiro-encontro-60-a-90-minutos).
+
 ## Comece em cinco passos
 
 1. Aprenda lógica, terminal e Git.
@@ -30,8 +36,11 @@ Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequ�
 | [06 — Cloud, DevOps, qualidade e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
 | [07 — GitHub, ferramentas e certificados](guias/07-github-ferramentas-e-certificados.md) | Open source, prática, ferramentas, benefícios e credenciais |
 | [08 — Idiomas para tecnologia](guias/08-idiomas-para-tecnologia.md) | Inglês técnico, leitura, escrita, conversação, certificações e outros idiomas |
+| [09 — Trilha prática: MCP com C#, APIs, agentes e RAG](guias/09-trilha-pratica-mcp-csharp-agentes.md) | Caminho prioritário, primeiro servidor MCP, integração com API e critérios de conclusão |
 
 ## Trilhas práticas em destaque
+
+- [Caminho prioritário: servidor MCP em C# até integração com API, RAG e skill](guias/09-trilha-pratica-mcp-csharp-agentes.md)
 
 - [APIs para o trabalho: HTTP → Swagger/OpenAPI → Bruno → .NET](guias/02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho)
 - [MCP: aprender e implementar com C#](guias/05-ia-generativa-agentes-e-mlops.md#mcp-aprender-e-implementar)
