@@ -4,6 +4,8 @@
 
 Este guia apresenta IA como engenharia de produto, não como uma coleção de prompts. O objetivo é entender o suficiente para escolher a solução mais simples, medir qualidade e usar automação com segurança.
 
+**Para começar um projeto MCP em C#:** siga a [trilha prática com primeiro servidor, API, Inspector, RAG e skill](09-trilha-pratica-mcp-csharp-agentes.md). Ela indica o que estudar agora, o que construir e quando avançar. O restante deste guia aprofunda os conceitos e recursos.
+
 ## O mapa da área
 
 - **Inteligência artificial (IA):** campo amplo de sistemas que executam tarefas associadas à inteligência humana.
