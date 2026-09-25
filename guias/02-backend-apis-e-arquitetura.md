@@ -2,6 +2,8 @@
 
 [← Voltar ao início](../README.md)
 
+Se o objetivo é construir um servidor MCP em C# ligado a uma API, siga a [trilha prática MCP](09-trilha-pratica-mcp-csharp-agentes.md). Este guia dá a base de HTTP, Swagger/OpenAPI, Bruno e ASP.NET Core necessária para a etapa de integração.
+
 ## Trilha de API para o trabalho
 
 **Atualização: 24/09/2026.** Prioridade: conseguir entender, consumir, testar e diagnosticar APIs existentes; depois construir e automatizar. As etapas e os laboratórios abaixo são sugestões de estudo, não implementações já executadas.
