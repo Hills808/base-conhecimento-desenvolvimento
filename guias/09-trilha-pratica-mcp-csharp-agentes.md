@@ -32,19 +32,33 @@ Siga a sequência abaixo. **Comece pela Etapa 1** e avance apenas após cumprir 
 | 6. RAG | Recupere trecho de três documentos fictícios com fonte | Responde com fonte ou declara ausência |
 | 7. Skill | Escreva e avalie um procedimento de triagem | Casos adequados, inadequados e de erro passam |
 
-A próxima etapa usa a entrega anterior. Se a sua experiência já cobrir o critério de uma etapa, reproduza a evidência em poucos minutos e siga adiante. Leia a documentação indicada somente quando precisar executar aquele passo.
+A próxima etapa usa a entrega anterior. Se já dominar uma etapa, reproduza a evidência e siga adiante. Em cada etapa, **assista → leia o mínimo → pratique → confira a entrega**. Uma página traduzida da Microsoft pode conter vídeo com áudio em inglês; confira o idioma indicado. Os materiais listados são acessíveis sem pagamento; cadastro, versões e certificados podem variar.
 
 ### Etapa 1: hoje, uma chamada HTTP no Bruno
 
-**Tempo sugerido: 20–30 minutos.** Abra o [Bruno](https://docs.usebruno.com/), crie uma coleção de estudo e uma requisição `GET https://jsonplaceholder.typicode.com/todos/1`. Essa [API fictícia](https://jsonplaceholder.typicode.com/) é pública para testes. Envie a chamada e anote método, URL, status, corpo JSON e o valor do campo `id`. Troque o `1` por `2` e observe qual campo muda. Não é preciso autenticação para este exercício.
+**Antes de clicar:** API é uma forma de um programa pedir dados a outro. Uma *requisição* é o pedido; a *resposta* traz um código de status e, neste caso, um corpo JSON (texto com campos como `id`). `GET` significa pedir a leitura de um recurso.
+
+**Assista:** [O que é API? Vídeo para iniciantes na carreira de backend](https://www.youtube.com/watch?v=mR-Dlkmeg8o) (PT). **Leia e siga as telas:** [tutorial oficial de Bruno, do download à primeira requisição](https://blog.usebruno.com/bruno-tutorial) (EN, passo a passo visual). A [documentação oficial do Bruno](https://docs.usebruno.com/) explica os botões e a coleção. Há também [vídeos publicados pelo Bruno](https://www.youtube.com/@brunoapi) (EN, escolha a introdução disponível).
+
+**Prática guiada (20–30 minutos após a introdução):** use a [API fictícia JSONPlaceholder](https://jsonplaceholder.typicode.com/). Não é preciso conta nem autenticação nela.
+
+1. Instale e abra o Bruno seguindo o tutorial oficial acima. Crie uma coleção chamada `Aprendizado-API` em uma pasta sua.
+2. Adicione uma requisição à coleção. Selecione o método `GET` e cole `https://jsonplaceholder.typicode.com/todos/1` no campo de URL.
+3. Clique em **Send/Enviar**. Encontre o status da resposta e, no corpo, o campo `id`. Anote o que recebeu. Se não funcionar, confira a URL antes de procurar erro no código.
+4. Salve a requisição. Crie ou duplique outra com `/todos/2`, envie e compare os dois valores de `id`.
+5. Escreva em suas palavras: “o Bruno enviou uma requisição GET; o servidor respondeu com status e dados em JSON”.
 
 **Entrega:** duas chamadas salvas no Bruno e uma frase sua explicando “enviei um GET para uma rota; recebi status e JSON com campos”. Se a API pública estiver indisponível, use qualquer GET público autorizado que devolva JSON; o objetivo é entender a chamada, não depender desse serviço específico.
 
-**Depois de concluir, vá direto para a Etapa 2.** Para dúvidas pontuais sobre método e status, consulte [MDN HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP) ou o [guia de API](02-backend-apis-e-arquitetura.md). Não comece um curso longo antes do primeiro teste.
+**Confira:** `GET` é o método; o endereço tem `/todos/1`; o campo `id` indica o registro pedido. Se aparecer erro de conexão, confirme que a URL abre no navegador antes de mudar código. Se tiver dúvida sobre status, consulte [MDN HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP). **Depois, vá direto à Etapa 2.**
 
 ### Etapa 2: primeiro servidor MCP em C\#
 
-**Tempo sugerido: 60–90 minutos.** Confira o SDK instalado com `dotnet --info`; em um projeto existente, veja também `TargetFramework` e `global.json`. Siga o [Getting Started oficial do SDK C#](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html): crie um console `dotnet new console -n ServidorMcpLab`, adicione os pacotes `ModelContextProtocol` e `Microsoft.Extensions.Hosting` e use o exemplo mínimo de servidor stdio.
+**Começando C# do zero:** siga [as primeiras aulas de Programação em C# do Prof. Ermogenes Palacio](https://github.com/ermogenes/aulas-programacao-csharp) (PT; cada tópico aponta para vídeo e material escrito). Faça **Hello World**, variáveis, métodos e classes conforme a necessidade do exemplo MCP; a [playlist completa](https://www.youtube.com/playlist?list=PLk6PnAig6xXKg988f8Ewq1iFm4_ZH9nA5) fica como apoio, sem obrigação de assistir tudo. Alternativa em PT: [catálogo de cursos gratuitos do Balta](https://balta.io/comece-de-graca), procure “Fundamentos do C#”; confirme acesso e condições antes de começar. Se preferir aulas curtas oficiais, [C# para iniciantes da Microsoft](https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/) tem vídeos (áudio original EN, interface PT).
+
+**MCP explicado em vídeo:** comece com [por que MCP é importante — Código Fonte TV](https://www.youtube.com/watch?v=deprLB_y6Ho) (PT, visão geral); depois assista à [Introdução ao SDK C# para MCP — Microsoft](https://learn.microsoft.com/en-us/shows/on-dotnet/introduction-to-the-csharp-sdk-for-model-context-protocol-mcp) (EN, com demonstração). Para o conceito em texto PT, leia só [conceitos principais do MCP for Beginners](https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/01-CoreConcepts/README.md), da Microsoft.
+
+**Prática guiada (60–90 minutos depois do básico necessário):** confira o SDK instalado com `dotnet --info`; em um projeto existente, veja também `TargetFramework` e `global.json`. Siga o [Getting Started oficial do SDK C#](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html): crie um console `dotnet new console -n ServidorMcpLab`, adicione os pacotes `ModelContextProtocol` e `Microsoft.Extensions.Hosting` e use o exemplo mínimo de servidor stdio.
 
 Mantenha uma tool como `saudar(nome)`. No [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector), conecte-se ao servidor, liste as tools e execute uma chamada válida e outra sem argumento. Anote no README o comando, a entrada, a saída, o SDK usado e a falha observada. Se faltar conhecimento de C#, aprenda apenas o conceito que apareceu nesse exemplo: classe, método, atributo, `async` ou DI.
 
@@ -52,7 +66,11 @@ Mantenha uma tool como `saudar(nome)`. No [MCP Inspector](https://modelcontextpr
 
 ### Etapas 3 e 4: API local e tool que a consulta
 
+**Para aprender enquanto faz:** veja [Implementando uma API Web no .NET — vídeo 3/8](https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/implementing-a-web-api-in-dotnet-backend-web-development-with-dotnet-for-beginners) (áudio EN, página PT); acompanhe com [a série completa para iniciantes](https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/) se precisar de contexto. Na aula de teste, refaça no Bruno o que o vídeo faz com arquivos `.http`. Para entender a documentação da API, consulte [OpenAPI no ASP.NET Core](https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0): OpenAPI é o contrato, Swagger UI é uma forma de visualizá-lo.
+
 **Etapa 3:** siga [a primeira Web API da Microsoft](https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0) apenas até conseguir iniciar e chamar um GET local. Adapte o exemplo para dados fictícios. Salve no Bruno uma chamada com registro existente e outra com ID inexistente; documente o JSON e os status no OpenAPI. Escolha a versão da documentação correspondente ao `TargetFramework` do projeto.
+
+**Para a ponte HTTP:** leia [IHttpClientFactory na Microsoft](https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory) apenas até compreender `HttpClient`, URL base e DI; volte ao [exemplo oficial do SDK MCP](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html) para registrar a tool. Se o código parecer grande, identifique primeiro “onde está a entrada `id`”, “onde ocorre o GET” e “onde o resultado é devolvido”.
 
 **Etapa 4:** faça uma tool `consultar_solicitacao(id)` chamar esse GET com `HttpClient` configurado por DI; use [IHttpClientFactory](https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory) como referência. Teste no Inspector ID válido, ID ausente e API fora do ar. Compare o resultado com o Bruno.
 
@@ -60,7 +78,11 @@ Mantenha uma tool como `saudar(nome)`. No [MCP Inspector](https://modelcontextpr
 
 ### Etapas 5 a 7: agente, RAG e skill
 
-**Etapa 5:** conecte o servidor a um host compatível, pergunte pelo status do registro e verifique se a tool foi de fato chamada. **Etapa 6:** adicione três documentos fictícios e uma busca que informe o trecho e a fonte; confira também o caso sem resposta confiável. **Etapa 7:** escreva um `SKILL.md` de triagem e teste quando deve ser selecionado, quando não deve e o que fazer sem dados. Veja as seções de [RAG e skill](#depois-da-primeira-tool-resources-rag-e-skill) abaixo somente ao chegar a essas etapas.
+**Etapa 5 — conversa:** uma *tool* é uma função com nome e parâmetros claros; o agente pode solicitá-la, e a aplicação executa a chamada. Assista à [lição sobre agentes com tools — Microsoft, .NET](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/04-AgentsWithMAF/02-agents-with-tools.md) (EN, inclui vídeo e texto). Conecte o servidor a um host compatível, pergunte pelo status do registro e verifique no histórico se a tool foi chamada. Usar a própria tool no Inspector já prova a integração MCP antes de ter um modelo.
+
+**Etapa 6 — RAG:** RAG significa buscar trechos relevantes *antes* de montar a resposta. Assista/acompanhe a [lição de RAG em .NET — Microsoft](https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/03-AIPatternsAndApplications/02-retrieval-augmented-generation.md) (EN, vídeo e texto) e consulte a [explicação de RAG em .NET](https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/rag) (PT). Adicione três documentos fictícios e uma busca que informe trecho e fonte; confira também o caso sem resposta confiável. Comece com busca simples, sem banco vetorial.
+
+**Etapa 7 — skill:** leia a [especificação Agent Skills](https://agentskills.io/specification) (EN) e siga a [oficina em português deste repositório](05-ia-generativa-agentes-e-mlops.md#criação-de-agent-skills). Skill é um procedimento reutilizável guardado em `SKILL.md`; não é uma função que chama API. Escreva a skill de triagem e teste quando deve ser selecionada, quando não deve e o que fazer sem dados. A [documentação da Microsoft sobre skills em agentes](https://learn.microsoft.com/pt-br/agent-framework/agents/skills) é material adicional para quem usa esse framework; confira compatibilidade com o host escolhido. Vídeos específicos de produto podem usar outro formato de skill, por isso o padrão e o exercício escrito são a referência desta etapa.
 
 **Entrega final:** uma demonstração reproduzível em que a resposta tem origem verificável e o procedimento não inventa dados.
 
@@ -110,6 +132,21 @@ A ordem acima é obrigatória para este laboratório; a duração é flexível. 
 **RAG:** comece com busca simples nos três documentos; pergunte por um procedimento e mostre o trecho e o arquivo de origem. Quando houver volume e necessidade comprovada, estude chunking, embeddings, índice e avaliação da recuperação. RAG entrega contexto; não é sinônimo de MCP. Um servidor MCP pode expor `buscar_procedimento(pergunta)` que usa uma busca, mas a qualidade depende dos documentos, das permissões e dos resultados retornados. Veja [conceitos de RAG em .NET](https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/rag).
 
 **Agent Skill:** crie, em um exercício separado, uma pasta `triagem-solicitacoes/` com `SKILL.md`. Na descrição, diga quando a skill deve ser usada; nas instruções, defina passos para conferir status via tool, consultar o procedimento com fonte e declarar incerteza quando não houver evidência. Teste casos em que a skill deve e não deve ser ativada. O padrão de pastas e metadados vem da [especificação Agent Skills](https://agentskills.io/specification); a instalação depende do produto que executará o agente. Consulte também a [oficina de skills do guia 05](05-ia-generativa-agentes-e-mlops.md#criação-de-agent-skills).
+
+## Glossário de bolso e ajuda quando travar
+
+| Termo ou dúvida | Tradução prática | O que conferir primeiro |
+| --- | --- | --- |
+| SDK .NET | Ferramentas para criar e executar projetos C# | `dotnet --info`; [primeiro programa C# com vídeo](https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/hello-world-csharp-for-beginners) (EN) |
+| Projeto de console | Programa que roda no terminal | Estar dentro da pasta do `.csproj` antes de `dotnet run` |
+| Classe / método | Agrupamento de código / operação que recebe dados | Identificar entrada e valor devolvido no exemplo |
+| `async` / `await` | Esperar uma operação de rede sem bloquear a execução | Localizar a chamada HTTP e onde o resultado é lido |
+| DI | Receber dependências configuradas pelo aplicativo | Encontrar quem cria o cliente HTTP da tool |
+| `200` / `404` / `500` | Sucesso / não encontrado / falha no servidor | Ler status e corpo separadamente no Bruno |
+| Inspector não lista tool | O servidor pode não iniciar ou não registrar a tool | Comando, caminho, versão do SDK e logs no `stderr` |
+| `CS8802` | Duas declarações de instruções de nível superior no mesmo projeto | Deixar apenas um arquivo com esse ponto de entrada; [referência Microsoft](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/program-structure/top-level-statements) |
+
+**Método de estudo quando algo falhar:** registre o comando ou URL, o resultado esperado, a mensagem completa do erro e o que já tentou. Resolva a menor parte reproduzível e retome da entrega pendente. Se a aula usar uma versão diferente do SDK, siga a documentação correspondente ao seu `.csproj`, sem copiar mudanças de versão automaticamente.
 
 ## Testes que dão confiança
 
