@@ -16,7 +16,7 @@ Siga **esta ordem**, uma entrega de cada vez. Os guias 00–08 são referências
 3. **Em seguida — API local e integração:** crie um GET fictício em ASP.NET Core, teste no Bruno e faça uma tool MCP consultá-lo. [Etapas 3 e 4](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-3-e-4-api-local-e-tool-que-a-consulta).
 4. **Por último — conversa, RAG e skill:** conecte um host, acrescente busca de fontes e um procedimento reutilizável. [Etapas seguintes](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-5-a-7-agente-rag-e-skill).
 
-**Abra agora:** [Etapa 1 da trilha prática](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno).
+**Abra agora:** [Etapa 1 da trilha prática](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno). A trilha agora inclui vídeos onde há aulas adequadas, textos de apoio em todas as etapas, exercícios guiados e um glossário para dúvidas básicas. O idioma de cada vídeo está identificado.
 
 ## Roteiro geral para outras áreas
 
