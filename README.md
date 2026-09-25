@@ -7,13 +7,20 @@ Curadoria gratuita de trilhas, documentação, cursos e projetos para aprender d
 
 Este repositório foi criado para transformar links dispersos em caminhos de estudo. Escolha uma área, siga **fundamentos → prática → projeto** e registre o que você conseguiu construir. Não tente consumir tudo de uma vez.
 
-## Caminho direto: C# → API → MCP
+## Comece por aqui: caminho para MCP em C#
 
-Para quem desenvolve integrações para agentes conversacionais com C# e precisa começar um projeto MCP, há uma [trilha prática com entregas por etapa](guias/09-trilha-pratica-mcp-csharp-agentes.md). O primeiro resultado é uma tool local testada no Inspector; em seguida ela consulta uma API testada no Bruno. RAG e skills entram quando a integração básica estiver funcionando.
+Siga **esta ordem**, uma entrega de cada vez. Os guias 00–08 são referências para consultar quando uma etapa exigir, não pré-requisitos para ler por inteiro.
 
-**Comece aqui:** [primeiro encontro de 60 a 90 minutos](guias/09-trilha-pratica-mcp-csharp-agentes.md#primeiro-encontro-60-a-90-minutos).
+1. **Hoje — primeira requisição no Bruno (20–30 min):** faça `GET https://jsonplaceholder.typicode.com/todos/1` e identifique método, URL, status HTTP e campos do JSON. [Instruções exatas](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno).
+2. **Depois — MCP local em C#:** faça uma tool simples aparecer e responder no Inspector. [Etapa 2](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-2-primeiro-servidor-mcp-em-c).
+3. **Em seguida — API local e integração:** crie um GET fictício em ASP.NET Core, teste no Bruno e faça uma tool MCP consultá-lo. [Etapas 3 e 4](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-3-e-4-api-local-e-tool-que-a-consulta).
+4. **Por último — conversa, RAG e skill:** conecte um host, acrescente busca de fontes e um procedimento reutilizável. [Etapas seguintes](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-5-a-7-agente-rag-e-skill).
 
-## Comece em cinco passos
+**Abra agora:** [Etapa 1 da trilha prática](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno).
+
+## Roteiro geral para outras áreas
+
+Para estudar desenvolvimento de forma ampla, use esta sequência. O caminho de MCP começa na Etapa 1 acima.
 
 1. Aprenda lógica, terminal e Git.
 2. Escolha uma linguagem principal e pratique com exercícios curtos.
