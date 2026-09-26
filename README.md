@@ -1,86 +1,72 @@
-# Base de Conhecimento — Desenvolvimento de Software
+# Base de conhecimento
 
-[![Licença: CC BY 4.0](https://img.shields.io/badge/licen%C3%A7a-CC%20BY%204.0-blue.svg)](LICENSE)
+Cursos, vídeos e exercícios para aprender desenvolvimento de software.
+
+## O que você quer aprender?
+
+### Começar em programação
+
+Aprenda lógica, escolha uma linguagem e monte uma rotina de estudos.
+
+[Começar pelos fundamentos →](guias/00-comecando.md)
+
+### Entender e usar APIs
+
+Aprenda HTTP, Swagger/OpenAPI e Bruno; depois avance para APIs em .NET.
+
+[Seguir a trilha de APIs →](guias/02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho)
+
+### Construir um servidor MCP
+
+Crie um servidor em C#, conecte uma API e avance para agentes, RAG e Skills. Inclui apoio de C# e uma primeira prática no Bruno.
+
+[Seguir o laboratório de MCP →](guias/09-trilha-pratica-mcp-csharp-agentes.md)
+
+Escolha **um caminho por vez**. Dentro dele, siga as etapas e avance quando conseguir realizar o exercício. Use o catálogo abaixo para consultar dúvidas.
+
+## Consultar por assunto
+
+Abra o grupo que corresponde ao que você precisa. Os guias são uma biblioteca de apoio; seus números identificam arquivos, não uma ordem obrigatória de estudo.
+
+<details>
+<summary>Programação, aplicações e dados</summary>
+
+- [Lógica e linguagens](guias/01-fundamentos-e-linguagens.md) — C#, Python, JavaScript e outras linguagens.
+- [Backend e APIs](guias/02-backend-apis-e-arquitetura.md) — HTTP, Bruno, .NET e arquitetura.
+- [Frontend e mobile](guias/03-frontend-mobile-e-acessibilidade.md) — interfaces web, aplicativos e acessibilidade.
+- [Bancos de dados e análise](guias/04-bancos-dados-e-ia.md) — SQL, ciência de dados e machine learning.
+
+</details>
+
+<details>
+<summary>Inteligência artificial, infraestrutura e qualidade</summary>
+
+- [IA, agentes e RAG](guias/05-ia-generativa-agentes-e-mlops.md) — prompts, tools, MCP, Skills e avaliações.
+- [Cloud, DevOps e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) — testes, containers, pipelines e operação.
+
+</details>
+
+<details>
+<summary>Ferramentas, certificados e idiomas</summary>
+
+- [GitHub e ferramentas](guias/07-github-ferramentas-e-certificados.md) — repositórios, prática e certificados.
+- [Idiomas para tecnologia](guias/08-idiomas-para-tecnologia.md) — inglês técnico, conversação e outros idiomas.
+
+</details>
+
+<details>
+<summary>Como interpretar os materiais e certificados</summary>
+
+Nos guias, 📚 indica material de estudo; 🧩 indica projeto ou repositório; 🌐 indica conteúdo principalmente em inglês.
+
+🎓 indica certificado gratuito conforme os requisitos da plataforma. 🏅 indica badge ou comprovante. Confira as condições na página do curso antes de começar.
+
+Para cada etapa, escolha uma aula principal, pratique e consulte a documentação para resolver dúvidas. Recursos adicionais são alternativas de apoio.
+
+</details>
+
+---
+
+[Contribuir](CONTRIBUTING.md) · [Licença CC BY 4.0](LICENSE) · Curadoria de [Henrique Alexandre](https://github.com/Hills808)
+
 [![Validar conteúdo](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/workflows/quality.yml/badge.svg)](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/workflows/quality.yml)
-
-Curadoria gratuita de trilhas, documentação, cursos e projetos para aprender desenvolvimento de software.
-
-Este repositório foi criado para transformar links dispersos em caminhos de estudo. Escolha uma área, siga **fundamentos → prática → projeto** e registre o que você conseguiu construir. Não tente consumir tudo de uma vez.
-
-## Comece por aqui: caminho para MCP em C\#
-
-Siga **esta ordem**, uma entrega de cada vez. Os guias 00–08 são referências para consultar quando uma etapa exigir, não pré-requisitos para ler por inteiro.
-
-1. **Hoje — primeira requisição no Bruno (20–30 min):** faça `GET https://jsonplaceholder.typicode.com/todos/1` e identifique método, URL, status HTTP e campos do JSON. [Instruções exatas](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno).
-2. **Depois — MCP local em C#:** faça uma tool simples aparecer e responder no Inspector. [Etapa 2](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-2-primeiro-servidor-mcp-em-c).
-3. **Em seguida — API local e integração:** crie um GET fictício em ASP.NET Core, teste no Bruno e faça uma tool MCP consultá-lo. [Etapas 3 e 4](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-3-e-4-api-local-e-tool-que-a-consulta).
-4. **Por último — conversa, RAG e skill:** conecte um host, acrescente busca de fontes e um procedimento reutilizável. [Etapas seguintes](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapas-5-a-7-agente-rag-e-skill).
-
-**Abra agora:** [Etapa 1 da trilha prática](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1-hoje-uma-chamada-http-no-bruno). A trilha agora inclui vídeos onde há aulas adequadas, textos de apoio em todas as etapas, exercícios guiados e um glossário para dúvidas básicas. O idioma de cada vídeo está identificado.
-
-## Roteiro geral para outras áreas
-
-Para estudar desenvolvimento de forma ampla, use esta sequência. O caminho de MCP começa na Etapa 1 acima.
-
-1. Aprenda lógica, terminal e Git.
-2. Escolha uma linguagem principal e pratique com exercícios curtos.
-3. Estude banco de dados, HTTP e APIs.
-4. Construa um projeto completo e publique o código.
-5. Adicione testes, Docker, CI/CD, observabilidade e segurança.
-
-Veja o guia [Comece por aqui](guias/00-comecando.md) para transformar essa sequência em uma rotina prática.
-
-## Guias
-
-| Guia | Conteúdo |
-| --- | --- |
-| [00 — Começando](guias/00-comecando.md) | Ordem de estudo, mapas e modelo de acompanhamento |
-| [01 — Fundamentos e linguagens](guias/01-fundamentos-e-linguagens.md) | Lógica, computação, C#, Java, Python, JavaScript, C/C++ e outras linguagens |
-| [02 — Backend, APIs e arquitetura](guias/02-backend-apis-e-arquitetura.md) | HTTP, Swagger/OpenAPI, Bruno, ASP.NET Core, testes, GraphQL, gRPC e arquitetura |
-| [03 — Frontend, mobile e acessibilidade](guias/03-frontend-mobile-e-acessibilidade.md) | Web, frameworks, mobile, performance, PWA e acessibilidade |
-| [04 — Bancos de dados, dados e machine learning](guias/04-bancos-dados-e-ia.md) | SQL, modelagem, ciência de dados, ML, deep learning e MLOps |
-| [05 — IA generativa, RAG, tools e agentes](guias/05-ia-generativa-agentes-e-mlops.md) | Fundamentos, RAG, agentes, MCP em C#, criação de skills, segurança e avaliações |
-| [06 — Cloud, DevOps, qualidade e segurança](guias/06-cloud-devops-qualidade-e-seguranca.md) | Git, containers, infraestrutura, testes, observabilidade e segurança aplicada |
-| [07 — GitHub, ferramentas e certificados](guias/07-github-ferramentas-e-certificados.md) | Open source, prática, ferramentas, benefícios e credenciais |
-| [08 — Idiomas para tecnologia](guias/08-idiomas-para-tecnologia.md) | Inglês técnico, leitura, escrita, conversação, certificações e outros idiomas |
-| [09 — Trilha prática: MCP com C#, APIs, agentes e RAG](guias/09-trilha-pratica-mcp-csharp-agentes.md) | Caminho prioritário, primeiro servidor MCP, integração com API e critérios de conclusão |
-
-## Trilhas práticas em destaque
-
-- [Caminho prioritário: servidor MCP em C# até integração com API, RAG e skill](guias/09-trilha-pratica-mcp-csharp-agentes.md)
-
-- [APIs para o trabalho: HTTP → Swagger/OpenAPI → Bruno → .NET](guias/02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho)
-- [MCP: aprender e implementar com C#](guias/05-ia-generativa-agentes-e-mlops.md#mcp-aprender-e-implementar)
-- [Criação e avaliação de Agent Skills](guias/05-ia-generativa-agentes-e-mlops.md#criação-de-agent-skills)
-- [Projeto integrado: API .NET + Bruno + MCP + skill](guias/05-ia-generativa-agentes-e-mlops.md#projeto-integrado-de-ia-e-apis)
-
-## Legenda
-
-- 🎓 certificado gratuito ou disponível sem custo conforme os requisitos informados pela plataforma
-- 🏅 badge ou comprovante de conclusão, que pode depender da trilha
-- 📚 conteúdo gratuito para estudo
-- 🧩 repositório, projeto ou laboratório prático
-- 🌐 conteúdo predominantemente em inglês
-
-> Planos, certificados e condições podem mudar. Confira a página oficial antes de iniciar uma trilha.
-
-## Como escolher um recurso
-
-Prefira, nesta ordem:
-
-1. documentação oficial e material mantido;
-2. prática guiada com exercícios verificáveis;
-3. projeto que gere um resultado publicável;
-4. conteúdo complementar para preencher uma dúvida específica.
-
-Uma boa trilha usa poucos recursos de cada vez: um curso principal, uma documentação de referência, exercícios e um projeto.
-
-## Contribua
-
-Encontrou um link quebrado, uma descrição desatualizada ou um recurso gratuito que realmente agrega? Leia o [guia de contribuição](CONTRIBUTING.md) e abra uma issue ou pull request.
-
-As sugestões são avaliadas por qualidade, manutenção, utilidade prática, transparência de acesso e ausência de links afiliados.
-
-## Autoria e licença
-
-Curadoria iniciada por [Henrique Alexandre](https://github.com/Hills808). O conteúdo deste repositório está disponível sob a licença [Creative Commons Atribuição 4.0 Internacional](LICENSE). Você pode compartilhar e adaptar o material, inclusive para uso comercial, desde que forneça o crédito apropriado.
