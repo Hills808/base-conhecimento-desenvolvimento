@@ -1,8 +1,6 @@
 # Curva Aberta — base de conhecimento
 
-[Explorar o site](https://hills808.github.io/base-conhecimento-desenvolvimento/) · [Ver os guias no GitHub](#base-e-desenvolvimento)
-
-> O site é publicado pelo fluxo em [`.github/workflows/pages.yml`](.github/workflows/pages.yml). Se o link ainda não abrir, ative **Settings → Pages → Build and deployment → Source: GitHub Actions**; então execute novamente o fluxo **Deploy Curva Aberta to GitHub Pages** em Actions. O código da interface está em [`site/`](site/).
+**[Acessar a plataforma de estudos →](https://rascunauta.hills808.chatgpt.site/)** · [Explorar os guias no GitHub](#base-e-desenvolvimento)
 
 Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organizada em **10 módulos**. Explore uma área, veja o que ela ensina e escolha uma prática para consolidar o aprendizado.
 
