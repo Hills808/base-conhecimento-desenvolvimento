@@ -2,6 +2,24 @@
 
 [← Início](../README.md) · [Ajuda com termos e erros](#glossário-de-bolso-e-ajuda-quando-travar)
 
+**O que você vai estudar:** Primeira chamada no Bruno, servidor MCP, integração com API .NET, agente, RAG e Skill.
+
+**Objetivo de prática:** Construir e demonstrar um servidor MCP de consulta com testes e respostas fundamentadas.
+
+<details>
+<summary>Índice do módulo 09 — ir direto ao assunto</summary>
+
+- [A ordem única desta trilha](#a-ordem-única-desta-trilha)
+- [Projeto de estudo: catálogo de procedimentos fictícios](#projeto-de-estudo-catálogo-de-procedimentos-fictícios)
+- [Tempo e ritmo](#tempo-e-ritmo)
+- [Depois da primeira tool: resources, RAG e skill](#depois-da-primeira-tool-resources-rag-e-skill)
+- [Glossário de bolso e ajuda quando travar](#glossário-de-bolso-e-ajuda-quando-travar)
+- [Testes que dão confiança](#testes-que-dão-confiança)
+- [Antes de levar a um sistema real](#antes-de-levar-a-um-sistema-real)
+- [Próxima ação concreta](#próxima-ação-concreta)
+
+</details>
+
 Construa um servidor MCP pequeno, conecte uma API e avance para conversa, RAG e Skills. Há vídeos, leitura e exercícios ao longo das etapas.
 
 **Primeiro acesso:** [comece pela Etapa 1, no Bruno](#etapa-1-hoje-uma-chamada-http-no-bruno). Se já começou, retome pela tabela abaixo.
