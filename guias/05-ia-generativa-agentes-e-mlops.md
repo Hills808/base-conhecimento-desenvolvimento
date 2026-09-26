@@ -2,6 +2,36 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Prompts, recuperação de documentos, tools, MCP, Skills, handoffs, avaliações e segurança.
+
+**Objetivo de prática:** Projetar um assistente com fontes e ferramentas, testar respostas e definir limites de atuação.
+
+<details>
+<summary>Índice do módulo 05 — ir direto ao assunto</summary>
+
+- [O mapa da área](#o-mapa-da-área)
+- [Como uma aplicação de IA funciona](#como-uma-aplicação-de-ia-funciona)
+- [Maneiras úteis de usar IA](#maneiras-úteis-de-usar-ia)
+- [Escada de complexidade](#escada-de-complexidade)
+- [Prompts que ajudam de verdade](#prompts-que-ajudam-de-verdade)
+- [RAG e busca semântica](#rag-e-busca-semântica)
+- [Tools: conectando o modelo ao mundo](#tools-conectando-o-modelo-ao-mundo)
+- [MCP: aprender e implementar](#mcp-aprender-e-implementar)
+- [Criação de Agent Skills](#criação-de-agent-skills)
+- [Projeto integrado de IA e APIs](#projeto-integrado-de-ia-e-apis)
+- [Criando um agente](#criando-um-agente)
+- [Avaliações, observabilidade e produção](#avaliações-observabilidade-e-produção)
+- [Segurança e uso responsável](#segurança-e-uso-responsável)
+- [Cursos e trilhas recomendadas](#cursos-e-trilhas-recomendadas)
+- [Agentes, tools e frameworks](#agentes-tools-e-frameworks)
+- [Vídeos e aulas abertas](#vídeos-e-aulas-abertas)
+- [Certificados, badges e certificações](#certificados-badges-e-certificações)
+- [Benefícios e ambientes para praticar](#benefícios-e-ambientes-para-praticar)
+- [Projetos para portfólio](#projetos-para-portfólio)
+- [Ordem recomendada](#ordem-recomendada)
+
+</details>
+
 Este guia apresenta IA como engenharia de produto, não como uma coleção de prompts. O objetivo é entender o suficiente para escolher a solução mais simples, medir qualidade e usar automação com segurança.
 
 **Para começar um projeto MCP em C#:** siga a [trilha prática com primeiro servidor, API, Inspector, RAG e skill](09-trilha-pratica-mcp-csharp-agentes.md). Ela indica o que estudar agora, o que construir e quando avançar. O restante deste guia aprofunda os conceitos e recursos.
