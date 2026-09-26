@@ -2,6 +2,21 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Pesquisa de repositórios, contribuição open source, prática de programação e escolha de ferramentas e credenciais.
+
+**Objetivo de prática:** Encontrar materiais úteis, preparar contribuições e identificar oportunidades de formação.
+
+<details>
+<summary>Índice do módulo 07 — ir direto ao assunto</summary>
+
+- [GitHub: repositórios e prática](#github-repositórios-e-prática)
+- [Ferramentas úteis](#ferramentas-úteis)
+- [Documentação técnica](#documentação-técnica)
+- [Certificados e benefícios gratuitos](#certificados-e-benefícios-gratuitos)
+- [Próximo guia](#próximo-guia)
+
+</details>
+
 ## GitHub: repositórios e prática
 
 ### Onde encontrar bons repositórios
