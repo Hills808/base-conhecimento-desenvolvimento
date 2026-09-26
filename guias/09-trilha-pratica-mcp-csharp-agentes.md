@@ -1,36 +1,26 @@
-# 09 — Trilha prática: MCP com C#, APIs, agentes e RAG
+# 09 — Laboratório de MCP com C#, APIs e agentes
 
-[← Voltar ao início](../README.md) · [APIs e Bruno](02-backend-apis-e-arquitetura.md) · [IA e agentes](05-ia-generativa-agentes-e-mlops.md)
+[← Início](../README.md) · [Ajuda com termos e erros](#glossário-de-bolso-e-ajuda-quando-travar)
 
-**Atualizado em 25/09/2026.** Esta trilha é para quem desenvolve software em C# e precisa participar da criação de um servidor MCP que se conecta a APIs e, depois, a um assistente conversacional. Use dados fictícios em todos os exercícios. A versão do SDK e as regras do projeto real devem ser conferidas com o time.
+Construa um servidor MCP pequeno, conecte uma API e avance para conversa, RAG e Skills. Há vídeos, leitura e exercícios ao longo das etapas.
 
-## O resultado buscado
+**Primeiro acesso:** [comece pela Etapa 1, no Bruno](#etapa-1-hoje-uma-chamada-http-no-bruno). Se já começou, retome pela tabela abaixo.
 
-Construir e explicar um servidor MCP pequeno que expõe uma ferramenta de consulta, chama uma API ASP.NET Core, retorna um resultado compreensível e lida corretamente com erros. Testá-lo sem modelo de linguagem. Só depois conectar um cliente/host, acrescentar recuperação de documentos e escrever uma skill para orientar um fluxo de trabalho.
-
-```text
-Usuário → aplicação conversacional/host → cliente MCP → servidor MCP em C#
-                                                     ↓
-                                        serviço de negócio / API HTTP
-                                                     ↓
-                                         resposta tipada e limitada
-```
-
-O host gerencia a experiência e a conexão; o servidor MCP disponibiliza capacidades. Uma **tool** executa uma operação definida. Um **resource** disponibiliza conteúdo endereçável; um **prompt MCP** fornece um modelo de interação; uma **Agent Skill** guarda instruções reutilizáveis para a tarefa. **RAG** recupera trechos de documentos para fundamentar respostas. Esses conceitos se relacionam, mas cada um resolve uma necessidade diferente.
+**Como estudar:** faça uma etapa por vez e confira a entrega antes de avançar. Use dados fictícios. As estimativas de tempo são flexíveis; os materiais de C# ajudam quando surgir uma dificuldade.
 
 ## A ordem única desta trilha
 
-Siga a sequência abaixo. **Comece pela Etapa 1** e avance apenas após cumprir a entrega. Não é necessário concluir os outros oito guias nem estudar todo C# antes de iniciar MCP.
+Clique na etapa que deseja abrir. Os demais guias do repositório servem como consulta durante o exercício.
 
 | Etapa | Faça isto | Entrega para avançar |
 | --- | --- | --- |
-| 1. Hoje: HTTP no Bruno | Execute um GET em uma API fictícia pública | Consegue explicar método, URL, status e JSON |
-| 2. Primeiro MCP | Crie servidor C# com tool simples e teste no Inspector | Inspector lista e executa a tool |
-| 3. API local | Crie GET fictício em ASP.NET Core e teste no Bruno | API devolve sucesso e ausência de registro |
-| 4. Integração | Faça a tool MCP consultar a API com `HttpClient` | Resultado e falhas batem com a API |
-| 5. Conversa | Conecte um host compatível e observe a chamada da tool | Sabe demonstrar a origem da resposta |
-| 6. RAG | Recupere trecho de três documentos fictícios com fonte | Responde com fonte ou declara ausência |
-| 7. Skill | Escreva e avalie um procedimento de triagem | Casos adequados, inadequados e de erro passam |
+| [1. HTTP no Bruno](#etapa-1-hoje-uma-chamada-http-no-bruno) | Execute um GET em uma API fictícia pública | Consegue explicar método, URL, status e JSON |
+| [2. Primeiro MCP](#etapa-2-primeiro-servidor-mcp-em-c) | Crie servidor C# com tool simples e teste no Inspector | Inspector lista e executa a tool |
+| [3. API local](#etapas-3-e-4-api-local-e-tool-que-a-consulta) | Crie GET fictício em ASP.NET Core e teste no Bruno | API devolve sucesso e ausência de registro |
+| [4. Integração](#etapas-3-e-4-api-local-e-tool-que-a-consulta) | Faça a tool MCP consultar a API com `HttpClient` | Resultado e falhas batem com a API |
+| [5. Conversa](#etapas-5-a-7-agente-rag-e-skill) | Conecte um host compatível e observe a chamada da tool | Sabe demonstrar a origem da resposta |
+| [6. RAG](#etapas-5-a-7-agente-rag-e-skill) | Recupere trecho de três documentos fictícios com fonte | Responde com fonte ou declara ausência |
+| [7. Skill](#etapas-5-a-7-agente-rag-e-skill) | Escreva e avalie um procedimento de triagem | Casos adequados, inadequados e de erro passam |
 
 A próxima etapa usa a entrega anterior. Se já dominar uma etapa, reproduza a evidência e siga adiante. Em cada etapa, **assista → leia o mínimo → pratique → confira a entrega**. Uma página traduzida da Microsoft pode conter vídeo com áudio em inglês; confira o idioma indicado. Os materiais listados são acessíveis sem pagamento; cadastro, versões e certificados podem variar.
 
@@ -134,6 +124,8 @@ A ordem acima é obrigatória para este laboratório; a duração é flexível. 
 **Agent Skill:** crie, em um exercício separado, uma pasta `triagem-solicitacoes/` com `SKILL.md`. Na descrição, diga quando a skill deve ser usada; nas instruções, defina passos para conferir status via tool, consultar o procedimento com fonte e declarar incerteza quando não houver evidência. Teste casos em que a skill deve e não deve ser ativada. O padrão de pastas e metadados vem da [especificação Agent Skills](https://agentskills.io/specification); a instalação depende do produto que executará o agente. Consulte também a [oficina de skills do guia 05](05-ia-generativa-agentes-e-mlops.md#criação-de-agent-skills).
 
 ## Glossário de bolso e ajuda quando travar
+
+O host gerencia a experiência e a conexão; o servidor MCP disponibiliza capacidades. Uma **tool** executa uma operação definida. Um **resource** disponibiliza conteúdo endereçável; um **prompt MCP** fornece um modelo de interação; uma **Agent Skill** guarda instruções reutilizáveis para a tarefa. **RAG** recupera trechos de documentos para fundamentar respostas. Esses conceitos se relacionam, mas cada um resolve uma necessidade diferente.
 
 | Termo ou dúvida | Tradução prática | O que conferir primeiro |
 | --- | --- | --- |
