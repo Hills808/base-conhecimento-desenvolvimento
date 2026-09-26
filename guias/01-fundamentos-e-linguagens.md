@@ -2,6 +2,19 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Lógica, estruturas de dados, terminal e caminhos para C#, Java, Python, JavaScript e outras linguagens.
+
+**Objetivo de prática:** Escolher uma linguagem e praticar a construção de pequenos programas.
+
+<details>
+<summary>Índice do módulo 01 — ir direto ao assunto</summary>
+
+- [Fundamentos que valem para toda área](#fundamentos-que-valem-para-toda-área)
+- [Linguagens](#linguagens)
+- [Como escolher a primeira linguagem](#como-escolher-a-primeira-linguagem)
+
+</details>
+
 ## Fundamentos que valem para toda área
 
 | Tema | Melhor ponto de entrada | Prática |
