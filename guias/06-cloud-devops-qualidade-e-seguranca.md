@@ -2,6 +2,22 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Git, colaboração, containers, CI/CD, cloud, testes, observabilidade e segurança de aplicações.
+
+**Objetivo de prática:** Evoluir um serviço com pipeline, testes, logs e um processo de implantação verificável.
+
+<details>
+<summary>Índice do módulo 06 — ir direto ao assunto</summary>
+
+- [Git e colaboração](#git-e-colaboração)
+- [Containers, CI/CD e cloud](#containers-cicd-e-cloud)
+- [Testes e qualidade](#testes-e-qualidade)
+- [Observabilidade](#observabilidade)
+- [Segurança de aplicações](#segurança-de-aplicações)
+- [Projeto sugerido](#projeto-sugerido)
+
+</details>
+
 ## Git e colaboração
 
 - [Learn Git Branching](https://learngitbranching.js.org/?locale=pt_BR) — Git interativo. 📚
