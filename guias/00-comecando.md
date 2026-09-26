@@ -2,6 +2,22 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Objetivos, escolha de recursos, rotina e acompanhamento do progresso.
+
+**Objetivo de prática:** Montar um plano de estudo e acompanhar um projeto progressivo.
+
+<details>
+<summary>Índice do módulo 00 — ir direto ao assunto</summary>
+
+- [Seu primeiro passo](#seu-primeiro-passo)
+- [Sequência sugerida para formação geral](#sequência-sugerida-para-formação-geral)
+- [Mapas para não se perder](#mapas-para-não-se-perder)
+- [Um ciclo de estudo que funciona](#um-ciclo-de-estudo-que-funciona)
+- [Modelo de acompanhamento](#modelo-de-acompanhamento)
+- [Projeto progressivo sugerido](#projeto-progressivo-sugerido)
+
+</details>
+
 Este guia ajuda quem quer começar em programação e escolher uma rotina. Se sua necessidade já é específica, abra a [trilha de APIs e Bruno](02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho) ou o [laboratório de MCP em C#](09-trilha-pratica-mcp-csharp-agentes.md).
 
 ## Seu primeiro passo
