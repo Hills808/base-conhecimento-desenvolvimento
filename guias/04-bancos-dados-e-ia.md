@@ -2,6 +2,21 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** SQL, modelagem, manipulação de dados, avaliação de modelos, deep learning e MLOps.
+
+**Objetivo de prática:** Consultar e organizar dados; avançar para um projeto de análise ou modelo com métricas.
+
+<details>
+<summary>Índice do módulo 04 — ir direto ao assunto</summary>
+
+- [Bancos de dados](#bancos-de-dados)
+- [Dados e machine learning](#dados-e-machine-learning)
+- [Aprendizado profundo e MLOps](#aprendizado-profundo-e-mlops)
+- [Uma ordem segura para estudar IA](#uma-ordem-segura-para-estudar-ia)
+- [Projeto sugerido](#projeto-sugerido)
+
+</details>
+
 ## Bancos de dados
 
 ### SQL e modelagem
