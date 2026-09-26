@@ -1,0 +1,2553 @@
+[
+  {
+    "module": 0,
+    "title": "roadmap.sh",
+    "url": "https://roadmap.sh/",
+    "section": "Mapas para não se perder",
+    "type": "Leitura",
+    "host": "roadmap.sh"
+  },
+  {
+    "module": 0,
+    "title": "Developer Roadmaps",
+    "url": "https://github.com/nilbuild/developer-roadmap",
+    "section": "Mapas para não se perder",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 0,
+    "title": "OSSU Computer Science",
+    "url": "https://github.com/ossu/computer-science",
+    "section": "Mapas para não se perder",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 0,
+    "title": "Teach Yourself CS",
+    "url": "https://teachyourselfcs.com/",
+    "section": "Mapas para não se perder",
+    "type": "Leitura",
+    "host": "teachyourselfcs.com"
+  },
+  {
+    "module": 1,
+    "title": "Curso de Algoritmos — Curso em Vídeo",
+    "url": "https://www.cursoemvideo.com/curso/curso-de-algoritmo/",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Vídeo",
+    "host": "cursoemvideo.com"
+  },
+  {
+    "module": 1,
+    "title": "beecrowd",
+    "url": "https://judge.beecrowd.com/pt/login",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Prática",
+    "host": "judge.beecrowd.com"
+  },
+  {
+    "module": 1,
+    "title": "VisuAlgo",
+    "url": "https://visualgo.net/en",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Ferramenta",
+    "host": "visualgo.net"
+  },
+  {
+    "module": 1,
+    "title": "LeetCode",
+    "url": "https://leetcode.com/",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Prática",
+    "host": "leetcode.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 1,
+    "title": "CS50x — Harvard",
+    "url": "https://cs50.harvard.edu/x/",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Curso",
+    "host": "cs50.harvard.edu"
+  },
+  {
+    "module": 1,
+    "title": "Nand2Tetris",
+    "url": "https://www.nand2tetris.org/",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Curso",
+    "host": "nand2tetris.org"
+  },
+  {
+    "module": 1,
+    "title": "The Missing Semester",
+    "url": "https://missing.csail.mit.edu/",
+    "section": "Fundamentos que valem para toda área",
+    "type": "Curso",
+    "host": "missing.csail.mit.edu"
+  },
+  {
+    "module": 1,
+    "title": "Build Your Own X",
+    "url": "https://github.com/codecrafters-io/build-your-own-x",
+    "section": "Repositórios de prática",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "Project Based Learning",
+    "url": "https://github.com/practical-tutorials/project-based-learning",
+    "section": "Repositórios de prática",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "Awesome Roadmaps",
+    "url": "https://github.com/liuchong/awesome-roadmaps",
+    "section": "Repositórios de prática",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "IFRS — Cursos Online Abertos",
+    "url": "https://moodle.ifrs.edu.br/course/index.php?categoryid=38",
+    "section": "Portais brasileiros",
+    "type": "Curso",
+    "host": "moodle.ifrs.edu.br"
+  },
+  {
+    "module": 1,
+    "title": "Fundação Bradesco — Escola Virtual",
+    "url": "https://www.ev.org.br/cursos",
+    "section": "Portais brasileiros",
+    "type": "Curso",
+    "host": "ev.org.br"
+  },
+  {
+    "module": 1,
+    "title": "Khan Academy",
+    "url": "https://pt.khanacademy.org/",
+    "section": "Portais brasileiros",
+    "type": "Curso",
+    "host": "pt.khanacademy.org"
+  },
+  {
+    "module": 1,
+    "title": "Data Science Academy",
+    "url": "https://www.datascienceacademy.com.br/cursosgratuitos",
+    "section": "Portais brasileiros",
+    "type": "Curso",
+    "host": "datascienceacademy.com.br"
+  },
+  {
+    "module": 1,
+    "title": "Microsoft Learn — C#",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/",
+    "section": "C# e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 1,
+    "title": "Tour of C#",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/",
+    "section": "C# e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 1,
+    "title": "Exercism C#",
+    "url": "https://exercism.org/tracks/csharp",
+    "section": "C# e .NET",
+    "type": "Prática",
+    "host": "exercism.org"
+  },
+  {
+    "module": 1,
+    "title": "Awesome .NET",
+    "url": "https://github.com/quozd/awesome-dotnet",
+    "section": "C# e .NET",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "C# Player's Guide",
+    "url": "https://csharpplayersguide.com/",
+    "section": "C# e .NET",
+    "type": "Leitura",
+    "host": "csharpplayersguide.com",
+    "access": "Pago / opcional",
+    "note": "Livro pago; a página oferece uma amostra gratuita."
+  },
+  {
+    "module": 1,
+    "title": "Java Programming — University of Helsinki",
+    "url": "https://java-programming.mooc.fi/",
+    "section": "Java",
+    "type": "Curso",
+    "host": "java-programming.mooc.fi"
+  },
+  {
+    "module": 1,
+    "title": "dev.java Learn",
+    "url": "https://dev.java/learn/",
+    "section": "Java",
+    "type": "Leitura",
+    "host": "dev.java"
+  },
+  {
+    "module": 1,
+    "title": "Exercism Java",
+    "url": "https://exercism.org/tracks/java",
+    "section": "Java",
+    "type": "Prática",
+    "host": "exercism.org"
+  },
+  {
+    "module": 1,
+    "title": "Awesome Java",
+    "url": "https://github.com/akullpp/awesome-java",
+    "section": "Java",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "CS50P — Python",
+    "url": "https://cs50.harvard.edu/python/",
+    "section": "Python",
+    "type": "Curso",
+    "host": "cs50.harvard.edu"
+  },
+  {
+    "module": 1,
+    "title": "Automate the Boring Stuff",
+    "url": "https://automatetheboringstuff.com/",
+    "section": "Python",
+    "type": "Leitura",
+    "host": "automatetheboringstuff.com"
+  },
+  {
+    "module": 1,
+    "title": "Python Tutor",
+    "url": "https://pythontutor.com/",
+    "section": "Python",
+    "type": "Ferramenta",
+    "host": "pythontutor.com"
+  },
+  {
+    "module": 1,
+    "title": "Awesome Python",
+    "url": "https://github.com/vinta/awesome-python",
+    "section": "Python",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "JavaScript.info",
+    "url": "https://javascript.info/",
+    "section": "JavaScript e TypeScript",
+    "type": "Leitura",
+    "host": "javascript.info"
+  },
+  {
+    "module": 1,
+    "title": "MDN JavaScript",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
+    "section": "JavaScript e TypeScript",
+    "type": "Leitura",
+    "host": "developer.mozilla.org"
+  },
+  {
+    "module": 1,
+    "title": "TypeScript Handbook",
+    "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+    "section": "JavaScript e TypeScript",
+    "type": "Leitura",
+    "host": "typescriptlang.org"
+  },
+  {
+    "module": 1,
+    "title": "30 Days of JavaScript",
+    "url": "https://github.com/Asabeneh/30-Days-Of-JavaScript",
+    "section": "JavaScript e TypeScript",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 1,
+    "title": "Learn C",
+    "url": "https://www.learn-c.org/",
+    "section": "C, C++ e outras linguagens",
+    "type": "Curso",
+    "host": "learn-c.org"
+  },
+  {
+    "module": 1,
+    "title": "Learn C++",
+    "url": "https://www.learncpp.com/",
+    "section": "C, C++ e outras linguagens",
+    "type": "Curso",
+    "host": "learncpp.com"
+  },
+  {
+    "module": 1,
+    "title": "The Rust Programming Language",
+    "url": "https://doc.rust-lang.org/book/",
+    "section": "C, C++ e outras linguagens",
+    "type": "Leitura",
+    "host": "doc.rust-lang.org"
+  },
+  {
+    "module": 1,
+    "title": "A Tour of Go",
+    "url": "https://go.dev/tour/",
+    "section": "C, C++ e outras linguagens",
+    "type": "Curso",
+    "host": "go.dev"
+  },
+  {
+    "module": 1,
+    "title": "Elixir School",
+    "url": "https://elixirschool.com/en",
+    "section": "C, C++ e outras linguagens",
+    "type": "Curso",
+    "host": "elixirschool.com"
+  },
+  {
+    "module": 1,
+    "title": "Exercism",
+    "url": "https://exercism.org/tracks",
+    "section": "C, C++ e outras linguagens",
+    "type": "Prática",
+    "host": "exercism.org"
+  },
+  {
+    "module": 2,
+    "title": "MDN — HTTP",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "developer.mozilla.org",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "Swagger — estrutura OpenAPI",
+    "url": "https://swagger.io/docs/specification/v3_0/basic-structure/",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "swagger.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "ASP.NET Core — visão geral de OpenAPI",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "ASP.NET Core — interfaces para documentos OpenAPI",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/using-openapi-documents?view=aspnetcore-10.0",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 2,
+    "title": "Bruno — documentação",
+    "url": "https://docs.usebruno.com/",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "docs.usebruno.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "Bruno — variáveis",
+    "url": "https://docs.usebruno.com/variables/overview",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "docs.usebruno.com"
+  },
+  {
+    "module": 2,
+    "title": "Bruno — testes",
+    "url": "https://docs.usebruno.com/testing/tests/introduction",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "docs.usebruno.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "Bruno — automação",
+    "url": "https://docs.usebruno.com/testing/automate-test/automate-test",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "docs.usebruno.com"
+  },
+  {
+    "module": 2,
+    "title": "Microsoft — primeira Web API",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "Microsoft — testes de integração",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/test/integration-tests?view=aspnetcore-10.0",
+    "section": "Fontes oficiais para APIs, Swagger, Bruno e .NET",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 2,
+    "title": "HTTP Cats",
+    "url": "https://http.cat/",
+    "section": "Conceitos essenciais",
+    "type": "Leitura",
+    "host": "http.cat"
+  },
+  {
+    "module": 2,
+    "title": "REST API Tutorial",
+    "url": "https://restfulapi.net/",
+    "section": "Conceitos essenciais",
+    "type": "Leitura",
+    "host": "restfulapi.net"
+  },
+  {
+    "module": 2,
+    "title": "Microsoft Learn — ASP.NET Core",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/",
+    "section": "Conceitos essenciais",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 2,
+    "title": "Full Stack Open",
+    "url": "https://fullstackopen.com/en/",
+    "section": "Conceitos essenciais",
+    "type": "Curso",
+    "host": "fullstackopen.com"
+  },
+  {
+    "module": 2,
+    "title": "Learn GraphQL",
+    "url": "https://graphql.org/learn/",
+    "section": "APIs modernas",
+    "type": "Leitura",
+    "host": "graphql.org"
+  },
+  {
+    "module": 2,
+    "title": "gRPC Documentation",
+    "url": "https://grpc.io/docs/",
+    "section": "APIs modernas",
+    "type": "Leitura",
+    "host": "grpc.io"
+  },
+  {
+    "module": 2,
+    "title": "AsyncAPI Docs",
+    "url": "https://www.asyncapi.com/docs",
+    "section": "APIs modernas",
+    "type": "Leitura",
+    "host": "asyncapi.com"
+  },
+  {
+    "module": 2,
+    "title": "JSON Schema Learn",
+    "url": "https://json-schema.org/learn",
+    "section": "APIs modernas",
+    "type": "Leitura",
+    "host": "json-schema.org"
+  },
+  {
+    "module": 2,
+    "title": "OpenAPI Specification",
+    "url": "https://spec.openapis.org/oas/latest.html",
+    "section": "APIs modernas",
+    "type": "Leitura",
+    "host": "spec.openapis.org"
+  },
+  {
+    "module": 2,
+    "title": "Bruno",
+    "url": "https://www.usebruno.com/",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "usebruno.com"
+  },
+  {
+    "module": 2,
+    "title": "Postman Academy",
+    "url": "https://academy.postman.com/",
+    "section": "Ferramentas para APIs",
+    "type": "Curso",
+    "host": "academy.postman.com"
+  },
+  {
+    "module": 2,
+    "title": "Hoppscotch",
+    "url": "https://hoppscotch.io/",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "hoppscotch.io"
+  },
+  {
+    "module": 2,
+    "title": "Hurl",
+    "url": "https://github.com/Orange-OpenSource/hurl",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "httpYac",
+    "url": "https://httpyac.github.io/",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "httpyac.github.io"
+  },
+  {
+    "module": 2,
+    "title": "OpenAPI Generator",
+    "url": "https://github.com/OpenAPITools/openapi-generator",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "Scalar",
+    "url": "https://github.com/scalar/scalar",
+    "section": "Ferramentas para APIs",
+    "type": "Ferramenta",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "Architect Modern Web Applications with ASP.NET Core and Azure",
+    "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/",
+    "section": "Arquitetura de software",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 2,
+    "title": "System Design Primer",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "section": "Arquitetura de software",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "Azure Architecture Center",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/",
+    "section": "Arquitetura de software",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 2,
+    "title": "Microsoft eShop",
+    "url": "https://github.com/dotnet/eShop",
+    "section": "Arquitetura de software",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "Ardalis Clean Architecture",
+    "url": "https://github.com/ardalis/CleanArchitecture",
+    "section": "Arquitetura de software",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 2,
+    "title": "RealWorld",
+    "url": "https://github.com/realworld-apps/realworld",
+    "section": "Arquitetura de software",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 3,
+    "title": "The Odin Project",
+    "url": "https://www.theodinproject.com/",
+    "section": "Fundamentos da web",
+    "type": "Curso",
+    "host": "theodinproject.com"
+  },
+  {
+    "module": 3,
+    "title": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn",
+    "section": "Fundamentos da web",
+    "type": "Curso",
+    "host": "freecodecamp.org"
+  },
+  {
+    "module": 3,
+    "title": "MDN Learn Web Development",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+    "section": "Fundamentos da web",
+    "type": "Leitura",
+    "host": "developer.mozilla.org"
+  },
+  {
+    "module": 3,
+    "title": "Frontend Mentor",
+    "url": "https://www.frontendmentor.io/",
+    "section": "Fundamentos da web",
+    "type": "Prática",
+    "host": "frontendmentor.io",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 3,
+    "title": "Frontend Practice",
+    "url": "https://www.frontendpractice.com/",
+    "section": "Fundamentos da web",
+    "type": "Prática",
+    "host": "frontendpractice.com"
+  },
+  {
+    "module": 3,
+    "title": "Awesome CSS",
+    "url": "https://github.com/awesome-css-group/awesome-css",
+    "section": "Fundamentos da web",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 3,
+    "title": "React Learn",
+    "url": "https://react.dev/learn",
+    "section": "Frameworks",
+    "type": "Leitura",
+    "host": "react.dev"
+  },
+  {
+    "module": 3,
+    "title": "Vue Tutorial",
+    "url": "https://vuejs.org/tutorial/",
+    "section": "Frameworks",
+    "type": "Leitura",
+    "host": "vuejs.org"
+  },
+  {
+    "module": 3,
+    "title": "Angular Tutorials",
+    "url": "https://angular.dev/tutorials",
+    "section": "Frameworks",
+    "type": "Leitura",
+    "host": "angular.dev"
+  },
+  {
+    "module": 3,
+    "title": "Svelte Tutorial",
+    "url": "https://svelte.dev/tutorial/svelte/welcome-to-svelte",
+    "section": "Frameworks",
+    "type": "Leitura",
+    "host": "svelte.dev"
+  },
+  {
+    "module": 3,
+    "title": "Learn Accessibility",
+    "url": "https://web.dev/learn/accessibility",
+    "section": "Acessibilidade, performance e PWA",
+    "type": "Curso",
+    "host": "web.dev"
+  },
+  {
+    "module": 3,
+    "title": "Learn Performance",
+    "url": "https://web.dev/learn/performance",
+    "section": "Acessibilidade, performance e PWA",
+    "type": "Curso",
+    "host": "web.dev"
+  },
+  {
+    "module": 3,
+    "title": "Learn PWA",
+    "url": "https://web.dev/learn/pwa",
+    "section": "Acessibilidade, performance e PWA",
+    "type": "Curso",
+    "host": "web.dev"
+  },
+  {
+    "module": 3,
+    "title": "web.dev — Responsive Web Design",
+    "url": "https://web.dev/learn/design/",
+    "section": "Acessibilidade, performance e PWA",
+    "type": "Curso",
+    "host": "web.dev"
+  },
+  {
+    "module": 3,
+    "title": "Flutter Learning Resources",
+    "url": "https://docs.flutter.dev/reference/learning-resources",
+    "section": "Mobile",
+    "type": "Leitura",
+    "host": "docs.flutter.dev"
+  },
+  {
+    "module": 3,
+    "title": "React Native Docs",
+    "url": "https://reactnative.dev/docs/getting-started",
+    "section": "Mobile",
+    "type": "Leitura",
+    "host": "reactnative.dev"
+  },
+  {
+    "module": 3,
+    "title": "Android Basics with Compose",
+    "url": "https://developer.android.com/courses/android-basics-compose/course",
+    "section": "Mobile",
+    "type": "Curso",
+    "host": "developer.android.com"
+  },
+  {
+    "module": 3,
+    "title": "SwiftUI Tutorials",
+    "url": "https://developer.apple.com/tutorials/swiftui",
+    "section": "Mobile",
+    "type": "Curso",
+    "host": "developer.apple.com"
+  },
+  {
+    "module": 4,
+    "title": "SQLBolt",
+    "url": "https://sqlbolt.com/",
+    "section": "SQL e modelagem",
+    "type": "Prática",
+    "host": "sqlbolt.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 4,
+    "title": "SQLZoo",
+    "url": "https://sqlzoo.net/wiki/SQL_Tutorial",
+    "section": "SQL e modelagem",
+    "type": "Prática",
+    "host": "sqlzoo.net"
+  },
+  {
+    "module": 4,
+    "title": "PGExercises",
+    "url": "https://pgexercises.com/",
+    "section": "SQL e modelagem",
+    "type": "Prática",
+    "host": "pgexercises.com"
+  },
+  {
+    "module": 4,
+    "title": "ThoughtSpot SQL Tutorial",
+    "url": "https://www.thoughtspot.com/sql-tutorial",
+    "section": "SQL e modelagem",
+    "type": "Leitura",
+    "host": "thoughtspot.com"
+  },
+  {
+    "module": 4,
+    "title": "PostgreSQL Tutorial",
+    "url": "https://www.postgresql.org/docs/current/tutorial.html",
+    "section": "SQL e modelagem",
+    "type": "Leitura",
+    "host": "postgresql.org",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 4,
+    "title": "Use The Index, Luke",
+    "url": "https://use-the-index-luke.com/",
+    "section": "SQL e modelagem",
+    "type": "Leitura",
+    "host": "use-the-index-luke.com"
+  },
+  {
+    "module": 4,
+    "title": "Database Design Course",
+    "url": "https://www.youtube.com/watch?v=ztHopE5Wnpc",
+    "section": "SQL e modelagem",
+    "type": "Vídeo",
+    "host": "youtube.com"
+  },
+  {
+    "module": 4,
+    "title": "Awesome Databases",
+    "url": "https://github.com/numetriclabz/awesome-db",
+    "section": "SQL e modelagem",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 4,
+    "title": "DBeaver Community",
+    "url": "https://dbeaver.io/",
+    "section": "Ferramentas",
+    "type": "Ferramenta",
+    "host": "dbeaver.io"
+  },
+  {
+    "module": 4,
+    "title": "DB Fiddle",
+    "url": "https://dbfiddle.uk/",
+    "section": "Ferramentas",
+    "type": "Ferramenta",
+    "host": "dbfiddle.uk"
+  },
+  {
+    "module": 4,
+    "title": "SQLite Online",
+    "url": "https://sqliteonline.com/",
+    "section": "Ferramentas",
+    "type": "Ferramenta",
+    "host": "sqliteonline.com"
+  },
+  {
+    "module": 4,
+    "title": "Kaggle Learn",
+    "url": "https://www.kaggle.com/learn",
+    "section": "Dados e machine learning",
+    "type": "Curso",
+    "host": "kaggle.com"
+  },
+  {
+    "module": 4,
+    "title": "Google Machine Learning Crash Course",
+    "url": "https://developers.google.com/machine-learning/crash-course",
+    "section": "Dados e machine learning",
+    "type": "Curso",
+    "host": "developers.google.com"
+  },
+  {
+    "module": 4,
+    "title": "Hugging Face Learn",
+    "url": "https://huggingface.co/learn",
+    "section": "Dados e machine learning",
+    "type": "Curso",
+    "host": "huggingface.co"
+  },
+  {
+    "module": 4,
+    "title": "Microsoft AI for Beginners",
+    "url": "https://github.com/microsoft/AI-For-Beginners",
+    "section": "Dados e machine learning",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 4,
+    "title": "Data Engineering Zoomcamp",
+    "url": "https://github.com/DataTalksClub/data-engineering-zoomcamp",
+    "section": "Dados e machine learning",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 4,
+    "title": "Practical Deep Learning for Coders",
+    "url": "https://course.fast.ai/",
+    "section": "Aprendizado profundo e MLOps",
+    "type": "Curso",
+    "host": "course.fast.ai"
+  },
+  {
+    "module": 4,
+    "title": "MLOps Zoomcamp",
+    "url": "https://github.com/DataTalksClub/mlops-zoomcamp",
+    "section": "Aprendizado profundo e MLOps",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 4,
+    "title": "Made With ML",
+    "url": "https://madewithml.com/",
+    "section": "Aprendizado profundo e MLOps",
+    "type": "Curso",
+    "host": "madewithml.com"
+  },
+  {
+    "module": 4,
+    "title": "MLflow — Getting Started",
+    "url": "https://mlflow.org/docs/latest/ml/getting-started/",
+    "section": "Aprendizado profundo e MLOps",
+    "type": "Leitura",
+    "host": "mlflow.org"
+  },
+  {
+    "module": 5,
+    "title": "MCP — construir um servidor",
+    "url": "https://modelcontextprotocol.io/docs/develop/build-server",
+    "section": "Fontes para sair da teoria",
+    "type": "Leitura",
+    "host": "modelcontextprotocol.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 5,
+    "title": "Microsoft — MCP for Beginners",
+    "url": "https://github.com/microsoft/mcp-for-beginners",
+    "section": "Fontes para sair da teoria",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 5,
+    "title": "SDK oficial MCP para C#",
+    "url": "https://github.com/modelcontextprotocol/csharp-sdk",
+    "section": "Fontes para sair da teoria",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 5,
+    "title": "Documentação do SDK C#",
+    "url": "https://csharp.sdk.modelcontextprotocol.io/",
+    "section": "Fontes para sair da teoria",
+    "type": "Leitura",
+    "host": "csharp.sdk.modelcontextprotocol.io"
+  },
+  {
+    "module": 5,
+    "title": "MCP Inspector",
+    "url": "https://modelcontextprotocol.io/docs/tools/inspector",
+    "section": "Fontes para sair da teoria",
+    "type": "Ferramenta",
+    "host": "modelcontextprotocol.io"
+  },
+  {
+    "module": 5,
+    "title": "MCP — boas práticas de segurança",
+    "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+    "section": "Fontes para sair da teoria",
+    "type": "Leitura",
+    "host": "modelcontextprotocol.io"
+  },
+  {
+    "module": 5,
+    "title": "especificação Agent Skills",
+    "url": "https://agentskills.io/specification",
+    "section": "Criação de Agent Skills",
+    "type": "Leitura",
+    "host": "agentskills.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 5,
+    "title": "Agent Skills — boas práticas de criação",
+    "url": "https://agentskills.io/skill-creation/best-practices",
+    "section": "Criação de Agent Skills",
+    "type": "Leitura",
+    "host": "agentskills.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 5,
+    "title": "Elements of AI",
+    "url": "https://course.elementsofai.com/pt/",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "course.elementsofai.com"
+  },
+  {
+    "module": 5,
+    "title": "Google Machine Learning Crash Course",
+    "url": "https://developers.google.com/machine-learning/crash-course",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "developers.google.com"
+  },
+  {
+    "module": 5,
+    "title": "CS50's Introduction to AI with Python",
+    "url": "https://cs50.harvard.edu/ai/",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "cs50.harvard.edu"
+  },
+  {
+    "module": 5,
+    "title": "Practical Deep Learning for Coders",
+    "url": "https://course.fast.ai/",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "course.fast.ai"
+  },
+  {
+    "module": 5,
+    "title": "Hugging Face LLM Course",
+    "url": "https://huggingface.co/learn/llm-course/chapter1/1",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "huggingface.co"
+  },
+  {
+    "module": 5,
+    "title": "Generative AI for Beginners",
+    "url": "https://github.com/microsoft/generative-ai-for-beginners",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 5,
+    "title": "OpenAI Developer Quickstart",
+    "url": "https://developers.openai.com/api/docs/quickstart",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Leitura",
+    "host": "developers.openai.com"
+  },
+  {
+    "module": 5,
+    "title": "DeepLearning.AI — Agentic AI",
+    "url": "https://www.deeplearning.ai/courses/agentic-ai",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "deeplearning.ai"
+  },
+  {
+    "module": 5,
+    "title": "Hugging Face Agents Course",
+    "url": "https://huggingface.co/learn/agents-course/unit0/introduction",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "huggingface.co"
+  },
+  {
+    "module": 5,
+    "title": "Microsoft Learn — AI Engineer",
+    "url": "https://learn.microsoft.com/en-us/training/career-paths/ai-engineer",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 5,
+    "title": "Google Cloud — Introduction to Generative AI",
+    "url": "https://www.skills.google/paths/118",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "skills.google"
+  },
+  {
+    "module": 5,
+    "title": "IBM SkillsBuild",
+    "url": "https://skillsbuild.org/adult-learners/try-it-before-you-register",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "skillsbuild.org"
+  },
+  {
+    "module": 5,
+    "title": "AWS Educate",
+    "url": "https://aws.amazon.com/education/awseducate/",
+    "section": "Cursos e trilhas recomendadas",
+    "type": "Curso",
+    "host": "aws.amazon.com"
+  },
+  {
+    "module": 5,
+    "title": "OpenAI — Agents",
+    "url": "https://developers.openai.com/api/docs/guides/agents",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "developers.openai.com"
+  },
+  {
+    "module": 5,
+    "title": "OpenAI — Tools",
+    "url": "https://developers.openai.com/api/docs/guides/tools",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "developers.openai.com"
+  },
+  {
+    "module": 5,
+    "title": "OpenAI Cookbook",
+    "url": "https://developers.openai.com/cookbook",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "developers.openai.com"
+  },
+  {
+    "module": 5,
+    "title": "Building Effective AI Agents",
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "anthropic.com"
+  },
+  {
+    "module": 5,
+    "title": "Model Context Protocol",
+    "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "modelcontextprotocol.io"
+  },
+  {
+    "module": 5,
+    "title": "LangGraph Academy",
+    "url": "https://academy.langchain.com/",
+    "section": "Agentes, tools e frameworks",
+    "type": "Curso",
+    "host": "academy.langchain.com"
+  },
+  {
+    "module": 5,
+    "title": "LlamaIndex Agents",
+    "url": "https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "developers.llamaindex.ai"
+  },
+  {
+    "module": 5,
+    "title": "Microsoft AutoGen",
+    "url": "https://microsoft.github.io/autogen/stable/",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "microsoft.github.io"
+  },
+  {
+    "module": 5,
+    "title": "Google Agent Development Kit",
+    "url": "https://adk.dev/",
+    "section": "Agentes, tools e frameworks",
+    "type": "Leitura",
+    "host": "adk.dev"
+  },
+  {
+    "module": 5,
+    "title": "MIT 6.S191 — Introduction to Deep Learning",
+    "url": "https://ocw.mit.edu/courses/6-s191-introduction-to-deep-learning-january-iap-2020/",
+    "section": "Vídeos e aulas abertas",
+    "type": "Vídeo",
+    "host": "ocw.mit.edu"
+  },
+  {
+    "module": 5,
+    "title": "Neural Networks — 3Blue1Brown",
+    "url": "https://www.3blue1brown.com/?topic=neural-networks",
+    "section": "Vídeos e aulas abertas",
+    "type": "Vídeo",
+    "host": "3blue1brown.com"
+  },
+  {
+    "module": 5,
+    "title": "Neural Networks: Zero to Hero",
+    "url": "https://karpathy.ai/zero-to-hero.html",
+    "section": "Vídeos e aulas abertas",
+    "type": "Vídeo",
+    "host": "karpathy.ai"
+  },
+  {
+    "module": 5,
+    "title": "Full Stack LLM Bootcamp",
+    "url": "https://fullstackdeeplearning.com/llm-bootcamp/",
+    "section": "Vídeos e aulas abertas",
+    "type": "Vídeo",
+    "host": "fullstackdeeplearning.com"
+  },
+  {
+    "module": 5,
+    "title": "OpenAI Academy",
+    "url": "https://academy.openai.com/",
+    "section": "Vídeos e aulas abertas",
+    "type": "Vídeo",
+    "host": "academy.openai.com"
+  },
+  {
+    "module": 5,
+    "title": "Hugging Face — condições do certificado de agentes",
+    "url": "https://huggingface.co/learn/agents-course/unit1/get-your-certificate",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "huggingface.co"
+  },
+  {
+    "module": 5,
+    "title": "CS50 AI — condições do certificado",
+    "url": "https://cs50.harvard.edu/ai/certificate/",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "cs50.harvard.edu"
+  },
+  {
+    "module": 5,
+    "title": "IBM SkillsBuild",
+    "url": "https://www.ibm.com/academic/",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "ibm.com"
+  },
+  {
+    "module": 5,
+    "title": "Google Skills",
+    "url": "https://www.skills.google/paths",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "skills.google"
+  },
+  {
+    "module": 5,
+    "title": "Microsoft Credentials — IA",
+    "url": "https://learn.microsoft.com/en-us/credentials/browse/?credential_types=certification&subjects=artificial-intelligence",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 5,
+    "title": "AWS AI Practitioner — exame de certificação",
+    "url": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+    "section": "Certificados, badges e certificações",
+    "type": "Leitura",
+    "host": "aws.amazon.com",
+    "access": "Pago / opcional",
+    "note": "Exame de certificação; não confundir com um curso gratuito."
+  },
+  {
+    "module": 5,
+    "title": "GitHub Student Developer Pack",
+    "url": "https://education.github.com/pack",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Prática",
+    "host": "education.github.com"
+  },
+  {
+    "module": 5,
+    "title": "Microsoft Learn Student Hub",
+    "url": "https://learn.microsoft.com/en-us/training/student-hub/credentials",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 5,
+    "title": "Azure for Students",
+    "url": "https://azure.microsoft.com/en-us/free/students/",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Curso",
+    "host": "azure.microsoft.com"
+  },
+  {
+    "module": 5,
+    "title": "Google Colab",
+    "url": "https://colab.research.google.com/",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Ferramenta",
+    "host": "colab.research.google.com"
+  },
+  {
+    "module": 5,
+    "title": "Kaggle Notebooks",
+    "url": "https://www.kaggle.com/code",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Ferramenta",
+    "host": "kaggle.com"
+  },
+  {
+    "module": 5,
+    "title": "Hugging Face Spaces",
+    "url": "https://huggingface.co/docs/hub/spaces-overview",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Ferramenta",
+    "host": "huggingface.co"
+  },
+  {
+    "module": 5,
+    "title": "Ollama",
+    "url": "https://docs.ollama.com/",
+    "section": "Benefícios e ambientes para praticar",
+    "type": "Ferramenta",
+    "host": "docs.ollama.com"
+  },
+  {
+    "module": 6,
+    "title": "Learn Git Branching",
+    "url": "https://learngitbranching.js.org/?locale=pt_BR",
+    "section": "Git e colaboração",
+    "type": "Prática",
+    "host": "learngitbranching.js.org"
+  },
+  {
+    "module": 6,
+    "title": "GitHub Skills",
+    "url": "https://github.com/skills",
+    "section": "Git e colaboração",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 6,
+    "title": "Oh My Git!",
+    "url": "https://ohmygit.org/",
+    "section": "Git e colaboração",
+    "type": "Prática",
+    "host": "ohmygit.org"
+  },
+  {
+    "module": 6,
+    "title": "Pro Git",
+    "url": "https://git-scm.com/book/pt-br/v2",
+    "section": "Git e colaboração",
+    "type": "Leitura",
+    "host": "git-scm.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 6,
+    "title": "Conventional Commits",
+    "url": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
+    "section": "Git e colaboração",
+    "type": "Leitura",
+    "host": "conventionalcommits.org"
+  },
+  {
+    "module": 6,
+    "title": "Docker — Get Started",
+    "url": "https://docs.docker.com/get-started/",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Leitura",
+    "host": "docs.docker.com"
+  },
+  {
+    "module": 6,
+    "title": "Play with Docker",
+    "url": "https://labs.play-with-docker.com/",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Prática",
+    "host": "labs.play-with-docker.com"
+  },
+  {
+    "module": 6,
+    "title": "GitHub Actions Skills",
+    "url": "https://github.com/skills/hello-github-actions",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Curso",
+    "host": "github.com"
+  },
+  {
+    "module": 6,
+    "title": "GitHub Actions Quickstart",
+    "url": "https://docs.github.com/en/actions/get-started/quickstart",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Leitura",
+    "host": "docs.github.com"
+  },
+  {
+    "module": 6,
+    "title": "Microsoft Learn Azure",
+    "url": "https://learn.microsoft.com/pt-br/training/azure/",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Curso",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 6,
+    "title": "Free for Dev",
+    "url": "https://github.com/ripienaar/free-for-dev",
+    "section": "Containers, CI/CD e cloud",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 6,
+    "title": "Kubernetes Basics",
+    "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+    "section": "Infraestrutura e orquestração",
+    "type": "Leitura",
+    "host": "kubernetes.io"
+  },
+  {
+    "module": 6,
+    "title": "Terraform Tutorials",
+    "url": "https://developer.hashicorp.com/terraform/tutorials",
+    "section": "Infraestrutura e orquestração",
+    "type": "Leitura",
+    "host": "developer.hashicorp.com"
+  },
+  {
+    "module": 6,
+    "title": "CNCF Landscape",
+    "url": "https://landscape.cncf.io/",
+    "section": "Infraestrutura e orquestração",
+    "type": "Ferramenta",
+    "host": "landscape.cncf.io"
+  },
+  {
+    "module": 6,
+    "title": "Testing in .NET",
+    "url": "https://learn.microsoft.com/en-us/dotnet/core/testing/",
+    "section": "Testes e qualidade",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 6,
+    "title": "Testcontainers for .NET",
+    "url": "https://github.com/testcontainers/testcontainers-dotnet",
+    "section": "Testes e qualidade",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 6,
+    "title": "Testing JavaScript",
+    "url": "https://www.testingjavascript.com/",
+    "section": "Testes e qualidade",
+    "type": "Curso",
+    "host": "testingjavascript.com",
+    "access": "Pago / opcional",
+    "note": "Curso comercial; não é necessário para seguir este percurso."
+  },
+  {
+    "module": 6,
+    "title": "Grafana k6",
+    "url": "https://grafana.com/docs/k6/latest/",
+    "section": "Testes e qualidade",
+    "type": "Leitura",
+    "host": "grafana.com"
+  },
+  {
+    "module": 6,
+    "title": "OpenTelemetry — Getting Started",
+    "url": "https://opentelemetry.io/docs/getting-started/",
+    "section": "Observabilidade",
+    "type": "Leitura",
+    "host": "opentelemetry.io"
+  },
+  {
+    "module": 6,
+    "title": "Prometheus — Getting Started",
+    "url": "https://prometheus.io/docs/tutorials/getting_started/",
+    "section": "Observabilidade",
+    "type": "Leitura",
+    "host": "prometheus.io"
+  },
+  {
+    "module": 6,
+    "title": "Grafana Tutorials",
+    "url": "https://grafana.com/tutorials/",
+    "section": "Observabilidade",
+    "type": "Leitura",
+    "host": "grafana.com"
+  },
+  {
+    "module": 6,
+    "title": "Sentry",
+    "url": "https://sentry.io/welcome/",
+    "section": "Observabilidade",
+    "type": "Ferramenta",
+    "host": "sentry.io"
+  },
+  {
+    "module": 6,
+    "title": "OWASP Top 10",
+    "url": "https://owasp.org/projects/top-ten",
+    "section": "Segurança de aplicações",
+    "type": "Leitura",
+    "host": "owasp.org",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 6,
+    "title": "OWASP Cheat Sheet Series",
+    "url": "https://cheatsheetseries.owasp.org/",
+    "section": "Segurança de aplicações",
+    "type": "Leitura",
+    "host": "cheatsheetseries.owasp.org",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 6,
+    "title": "OWASP ASVS",
+    "url": "https://owasp.org/projects/asvs",
+    "section": "Segurança de aplicações",
+    "type": "Leitura",
+    "host": "owasp.org"
+  },
+  {
+    "module": 6,
+    "title": "OWASP Juice Shop",
+    "url": "https://owasp.org/projects/juice-shop",
+    "section": "Segurança de aplicações",
+    "type": "Prática",
+    "host": "owasp.org"
+  },
+  {
+    "module": 6,
+    "title": "PortSwigger Web Security Academy",
+    "url": "https://portswigger.net/web-security",
+    "section": "Segurança de aplicações",
+    "type": "Curso",
+    "host": "portswigger.net"
+  },
+  {
+    "module": 6,
+    "title": "OverTheWire",
+    "url": "https://overthewire.org/wargames/",
+    "section": "Segurança de aplicações",
+    "type": "Prática",
+    "host": "overthewire.org"
+  },
+  {
+    "module": 6,
+    "title": "TryHackMe",
+    "url": "https://tryhackme.com/",
+    "section": "Segurança de aplicações",
+    "type": "Curso",
+    "host": "tryhackme.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 6,
+    "title": "Cisco Networking Academy",
+    "url": "https://www.netacad.com/",
+    "section": "Segurança de aplicações",
+    "type": "Curso",
+    "host": "netacad.com"
+  },
+  {
+    "module": 6,
+    "title": "Awesome Hacking",
+    "url": "https://github.com/Hack-with-Github/Awesome-Hacking",
+    "section": "Segurança de aplicações",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "GitHub Topics",
+    "url": "https://github.com/topics",
+    "section": "Onde encontrar bons repositórios",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "Awesome Lists",
+    "url": "https://github.com/sindresorhus/awesome",
+    "section": "Onde encontrar bons repositórios",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "Project Based Learning",
+    "url": "https://github.com/practical-tutorials/project-based-learning",
+    "section": "Onde encontrar bons repositórios",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "Public APIs",
+    "url": "https://github.com/public-apis/public-apis",
+    "section": "Onde encontrar bons repositórios",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "API List",
+    "url": "https://apilist.fun/",
+    "section": "Onde encontrar bons repositórios",
+    "type": "Ferramenta",
+    "host": "apilist.fun"
+  },
+  {
+    "module": 7,
+    "title": "First Contributions",
+    "url": "https://github.com/firstcontributions/first-contributions",
+    "section": "Contribuição open source",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "Good First Issue",
+    "url": "https://goodfirstissue.dev/",
+    "section": "Contribuição open source",
+    "type": "Ferramenta",
+    "host": "goodfirstissue.dev"
+  },
+  {
+    "module": 7,
+    "title": "Up For Grabs",
+    "url": "https://up-for-grabs.net/",
+    "section": "Contribuição open source",
+    "type": "Ferramenta",
+    "host": "up-for-grabs.net"
+  },
+  {
+    "module": 7,
+    "title": "CodeTriage",
+    "url": "https://www.codetriage.com/",
+    "section": "Contribuição open source",
+    "type": "Ferramenta",
+    "host": "codetriage.com"
+  },
+  {
+    "module": 7,
+    "title": "Exercism",
+    "url": "https://exercism.org/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "exercism.org"
+  },
+  {
+    "module": 7,
+    "title": "Codewars",
+    "url": "https://www.codewars.com/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "codewars.com"
+  },
+  {
+    "module": 7,
+    "title": "LeetCode",
+    "url": "https://leetcode.com/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "leetcode.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "HackerRank",
+    "url": "https://www.hackerrank.com/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "hackerrank.com"
+  },
+  {
+    "module": 7,
+    "title": "Advent of Code",
+    "url": "https://adventofcode.com/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "adventofcode.com"
+  },
+  {
+    "module": 7,
+    "title": "Edabit",
+    "url": "https://edabit.com/",
+    "section": "Prática de programação",
+    "type": "Prática",
+    "host": "edabit.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "VS Code",
+    "url": "https://code.visualstudio.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "code.visualstudio.com"
+  },
+  {
+    "module": 7,
+    "title": "Visual Studio Community",
+    "url": "https://visualstudio.microsoft.com/vs/community/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "visualstudio.microsoft.com"
+  },
+  {
+    "module": 7,
+    "title": "IntelliJ IDEA Community",
+    "url": "https://www.jetbrains.com/idea/download/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "jetbrains.com"
+  },
+  {
+    "module": 7,
+    "title": "Notion",
+    "url": "https://www.notion.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "notion.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Obsidian",
+    "url": "https://obsidian.md/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "obsidian.md"
+  },
+  {
+    "module": 7,
+    "title": "Trello",
+    "url": "https://trello.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "trello.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Bruno",
+    "url": "https://www.usebruno.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "usebruno.com"
+  },
+  {
+    "module": 7,
+    "title": "Postman",
+    "url": "https://www.postman.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "postman.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Hoppscotch",
+    "url": "https://hoppscotch.io/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "hoppscotch.io"
+  },
+  {
+    "module": 7,
+    "title": "Hurl",
+    "url": "https://hurl.dev/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "hurl.dev"
+  },
+  {
+    "module": 7,
+    "title": "httpYac",
+    "url": "https://httpyac.github.io/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "httpyac.github.io"
+  },
+  {
+    "module": 7,
+    "title": "DevToys",
+    "url": "https://github.com/DevToys-app/DevToys",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "github.com"
+  },
+  {
+    "module": 7,
+    "title": "DBeaver",
+    "url": "https://dbeaver.io/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "dbeaver.io"
+  },
+  {
+    "module": 7,
+    "title": "DB Fiddle",
+    "url": "https://dbfiddle.uk/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "dbfiddle.uk"
+  },
+  {
+    "module": 7,
+    "title": "SQLite Online",
+    "url": "https://sqliteonline.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "sqliteonline.com"
+  },
+  {
+    "module": 7,
+    "title": "Excalidraw",
+    "url": "https://excalidraw.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "excalidraw.com"
+  },
+  {
+    "module": 7,
+    "title": "Mermaid Live",
+    "url": "https://mermaid.live/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "mermaid.live"
+  },
+  {
+    "module": 7,
+    "title": "draw.io",
+    "url": "https://app.diagrams.net/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "app.diagrams.net"
+  },
+  {
+    "module": 7,
+    "title": "Figma",
+    "url": "https://www.figma.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "figma.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Coolors",
+    "url": "https://coolors.co/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "coolors.co"
+  },
+  {
+    "module": 7,
+    "title": "unDraw",
+    "url": "https://undraw.co/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "undraw.co"
+  },
+  {
+    "module": 7,
+    "title": "GitHub Pages",
+    "url": "https://pages.github.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "pages.github.com"
+  },
+  {
+    "module": 7,
+    "title": "Vercel",
+    "url": "https://vercel.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "vercel.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Netlify",
+    "url": "https://www.netlify.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "netlify.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Render",
+    "url": "https://render.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "render.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Ollama",
+    "url": "https://ollama.com/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "ollama.com"
+  },
+  {
+    "module": 7,
+    "title": "LM Studio",
+    "url": "https://lmstudio.ai/",
+    "section": "Ferramentas úteis",
+    "type": "Ferramenta",
+    "host": "lmstudio.ai"
+  },
+  {
+    "module": 7,
+    "title": "Diátaxis",
+    "url": "https://diataxis.fr/",
+    "section": "Documentação técnica",
+    "type": "Leitura",
+    "host": "diataxis.fr"
+  },
+  {
+    "module": 7,
+    "title": "Write the Docs — Documentation Guide",
+    "url": "https://www.writethedocs.org/guide/",
+    "section": "Documentação técnica",
+    "type": "Leitura",
+    "host": "writethedocs.org"
+  },
+  {
+    "module": 7,
+    "title": "Google Developer Documentation Style Guide",
+    "url": "https://developers.google.com/style",
+    "section": "Documentação técnica",
+    "type": "Leitura",
+    "host": "developers.google.com"
+  },
+  {
+    "module": 7,
+    "title": "IFRS — Cursos Online Abertos",
+    "url": "https://moodle.ifrs.edu.br/course/index.php?categoryid=38",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "moodle.ifrs.edu.br"
+  },
+  {
+    "module": 7,
+    "title": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "freecodecamp.org"
+  },
+  {
+    "module": 7,
+    "title": "Kaggle Learn",
+    "url": "https://www.kaggle.com/learn",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "kaggle.com"
+  },
+  {
+    "module": 7,
+    "title": "DIO",
+    "url": "https://www.dio.me/",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "dio.me",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 7,
+    "title": "Santander Open Academy",
+    "url": "https://www.santanderopenacademy.com/",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "santanderopenacademy.com"
+  },
+  {
+    "module": 7,
+    "title": "IBM SkillsBuild",
+    "url": "https://skillsbuild.org/",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "skillsbuild.org"
+  },
+  {
+    "module": 7,
+    "title": "Cisco Networking Academy",
+    "url": "https://www.netacad.com/",
+    "section": "Certificados e credenciais",
+    "type": "Curso",
+    "host": "netacad.com"
+  },
+  {
+    "module": 7,
+    "title": "GitHub Student Developer Pack",
+    "url": "https://education.github.com/pack",
+    "section": "Benefícios para estudantes",
+    "type": "Leitura",
+    "host": "education.github.com"
+  },
+  {
+    "module": 7,
+    "title": "Azure for Students",
+    "url": "https://azure.microsoft.com/en-us/free/students/",
+    "section": "Benefícios para estudantes",
+    "type": "Leitura",
+    "host": "azure.microsoft.com"
+  },
+  {
+    "module": 7,
+    "title": "JetBrains Student License",
+    "url": "https://www.jetbrains.com/community/education/#students",
+    "section": "Benefícios para estudantes",
+    "type": "Leitura",
+    "host": "jetbrains.com"
+  },
+  {
+    "module": 7,
+    "title": "Free for Dev",
+    "url": "https://github.com/ripienaar/free-for-dev",
+    "section": "Benefícios para estudantes",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 8,
+    "title": "EF SET",
+    "url": "https://www.efset.org/",
+    "section": "Diagnóstico e plano inicial",
+    "type": "Prática",
+    "host": "efset.org"
+  },
+  {
+    "module": 8,
+    "title": "British Council — teste de nível",
+    "url": "https://learnenglish.britishcouncil.org/english-levels/online-english-level-test",
+    "section": "Diagnóstico e plano inicial",
+    "type": "Prática",
+    "host": "learnenglish.britishcouncil.org"
+  },
+  {
+    "module": 8,
+    "title": "Entenda os níveis CEFR",
+    "url": "https://learnenglish.britishcouncil.org/english-levels/understand-your-english-level",
+    "section": "Diagnóstico e plano inicial",
+    "type": "Leitura",
+    "host": "learnenglish.britishcouncil.org"
+  },
+  {
+    "module": 8,
+    "title": "Kultivi — Inglês",
+    "url": "https://kultivi.com/curso/ingles?lang=pt",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "kultivi.com"
+  },
+  {
+    "module": 8,
+    "title": "freeCodeCamp — A2 English for Developers",
+    "url": "https://www.freecodecamp.org/learn/a2-english-for-developers",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "freecodecamp.org"
+  },
+  {
+    "module": 8,
+    "title": "freeCodeCamp — B1 English for Developers",
+    "url": "https://www.freecodecamp.org/learn/b1-english-for-developers",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "freecodecamp.org"
+  },
+  {
+    "module": 8,
+    "title": "Cisco English for IT 1",
+    "url": "https://www.netacad.com/courses/english-for-it-1",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "netacad.com"
+  },
+  {
+    "module": 8,
+    "title": "Cisco English for IT 2",
+    "url": "https://www.netacad.com/courses/english-for-it-2",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "netacad.com"
+  },
+  {
+    "module": 8,
+    "title": "British Council LearnEnglish",
+    "url": "https://learnenglish.britishcouncil.org/",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "learnenglish.britishcouncil.org"
+  },
+  {
+    "module": 8,
+    "title": "OpenLearn — Languages",
+    "url": "https://www.open.edu/openlearn/languages/free-courses",
+    "section": "Cursos estruturados de inglês",
+    "type": "Curso",
+    "host": "open.edu"
+  },
+  {
+    "module": 8,
+    "title": "engVid",
+    "url": "https://www.engvid.com/english-lessons/",
+    "section": "Cursos estruturados de inglês",
+    "type": "Vídeo",
+    "host": "engvid.com"
+  },
+  {
+    "module": 8,
+    "title": "MDN Glossary",
+    "url": "https://developer.mozilla.org/en-US/docs/Glossary",
+    "section": "Leitura de documentação",
+    "type": "Leitura",
+    "host": "developer.mozilla.org"
+  },
+  {
+    "module": 8,
+    "title": "GitHub Docs",
+    "url": "https://docs.github.com/en",
+    "section": "Leitura de documentação",
+    "type": "Leitura",
+    "host": "docs.github.com"
+  },
+  {
+    "module": 8,
+    "title": "Microsoft Writing Style Guide",
+    "url": "https://learn.microsoft.com/en-us/style-guide/welcome/",
+    "section": "Leitura de documentação",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 8,
+    "title": "Google Developer Documentation Style Guide",
+    "url": "https://developers.google.com/style",
+    "section": "Leitura de documentação",
+    "type": "Leitura",
+    "host": "developers.google.com"
+  },
+  {
+    "module": 8,
+    "title": "BBC Learning English",
+    "url": "https://www.bbc.co.uk/learningenglish/",
+    "section": "Escuta e compreensão",
+    "type": "Curso",
+    "host": "bbc.co.uk"
+  },
+  {
+    "module": 8,
+    "title": "VOA Learning English",
+    "url": "https://learningenglish.voanews.com/",
+    "section": "Escuta e compreensão",
+    "type": "Curso",
+    "host": "learningenglish.voanews.com"
+  },
+  {
+    "module": 8,
+    "title": "Breaking News English",
+    "url": "https://breakingnewsenglish.com/",
+    "section": "Escuta e compreensão",
+    "type": "Curso",
+    "host": "breakingnewsenglish.com"
+  },
+  {
+    "module": 8,
+    "title": "ELLLO",
+    "url": "https://elllo.org/",
+    "section": "Escuta e compreensão",
+    "type": "Curso",
+    "host": "elllo.org"
+  },
+  {
+    "module": 8,
+    "title": "TED",
+    "url": "https://www.ted.com/talks",
+    "section": "Escuta e compreensão",
+    "type": "Vídeo",
+    "host": "ted.com"
+  },
+  {
+    "module": 8,
+    "title": "YouGlish",
+    "url": "https://youglish.com/",
+    "section": "Pronúncia e fala",
+    "type": "Ferramenta",
+    "host": "youglish.com"
+  },
+  {
+    "module": 8,
+    "title": "Cambridge Dictionary",
+    "url": "https://dictionary.cambridge.org/",
+    "section": "Pronúncia e fala",
+    "type": "Ferramenta",
+    "host": "dictionary.cambridge.org"
+  },
+  {
+    "module": 8,
+    "title": "Forvo",
+    "url": "https://forvo.com/",
+    "section": "Pronúncia e fala",
+    "type": "Ferramenta",
+    "host": "forvo.com"
+  },
+  {
+    "module": 8,
+    "title": "Tandem",
+    "url": "https://tandem.net/en",
+    "section": "Pronúncia e fala",
+    "type": "Ferramenta",
+    "host": "tandem.net",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 8,
+    "title": "HelloTalk",
+    "url": "https://www.hellotalk.com/",
+    "section": "Pronúncia e fala",
+    "type": "Ferramenta",
+    "host": "hellotalk.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 8,
+    "title": "Write & Improve",
+    "url": "https://writeandimprove.com/",
+    "section": "Escrita profissional",
+    "type": "Prática",
+    "host": "writeandimprove.com"
+  },
+  {
+    "module": 8,
+    "title": "LanguageTool",
+    "url": "https://languagetool.org/",
+    "section": "Escrita profissional",
+    "type": "Ferramenta",
+    "host": "languagetool.org",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 8,
+    "title": "Hemingway Editor",
+    "url": "https://hemingwayapp.com/",
+    "section": "Escrita profissional",
+    "type": "Ferramenta",
+    "host": "hemingwayapp.com",
+    "access": "Gratuito + opções pagas"
+  },
+  {
+    "module": 8,
+    "title": "EF SET",
+    "url": "https://www.efset.org/4-skill/?lang=en",
+    "section": "Certificados e exames",
+    "type": "Prática",
+    "host": "efset.org"
+  },
+  {
+    "module": 8,
+    "title": "freeCodeCamp English for Developers",
+    "url": "https://www.freecodecamp.org/learn",
+    "section": "Certificados e exames",
+    "type": "Curso",
+    "host": "freecodecamp.org"
+  },
+  {
+    "module": 8,
+    "title": "Cambridge English — exames e qualificações",
+    "url": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/",
+    "section": "Certificados e exames",
+    "type": "Leitura",
+    "host": "cambridgeenglish.org",
+    "access": "Pago / opcional"
+  },
+  {
+    "module": 8,
+    "title": "IELTS — exame de proficiência",
+    "url": "https://ielts.org/",
+    "section": "Certificados e exames",
+    "type": "Leitura",
+    "host": "ielts.org",
+    "access": "Pago / opcional"
+  },
+  {
+    "module": 8,
+    "title": "TOEFL iBT — exame de proficiência",
+    "url": "https://www.ets.org/toefl/test-takers/ibt/about.html",
+    "section": "Certificados e exames",
+    "type": "Leitura",
+    "host": "ets.org",
+    "access": "Pago / opcional"
+  },
+  {
+    "module": 8,
+    "title": "DW Learn German",
+    "url": "https://learngerman.dw.com/en/learn-german/s-9528",
+    "section": "Outros idiomas",
+    "type": "Curso",
+    "host": "learngerman.dw.com"
+  },
+  {
+    "module": 8,
+    "title": "TV5MONDE — Apprendre le français",
+    "url": "https://apprendre.tv5monde.com/",
+    "section": "Outros idiomas",
+    "type": "Curso",
+    "host": "apprendre.tv5monde.com"
+  },
+  {
+    "module": 8,
+    "title": "NHK World — Learn Japanese",
+    "url": "https://www3.nhk.or.jp/nhkworld/en/learnjapanese/",
+    "section": "Outros idiomas",
+    "type": "Curso",
+    "host": "www3.nhk.or.jp"
+  },
+  {
+    "module": 8,
+    "title": "Centro Virtual Cervantes — AVE",
+    "url": "https://cvc.cervantes.es/ensenanza/actividades_ave/",
+    "section": "Outros idiomas",
+    "type": "Curso",
+    "host": "cvc.cervantes.es"
+  },
+  {
+    "module": 8,
+    "title": "Online King Sejong Institute",
+    "url": "https://www.iksi.or.kr/lms/main/main.do",
+    "section": "Outros idiomas",
+    "type": "Curso",
+    "host": "iksi.or.kr"
+  },
+  {
+    "module": 8,
+    "title": "Links Úteis — curadoria da comunidade",
+    "url": "https://github.com/eu-audrey/Links-Uteis",
+    "section": "Como escolher recursos",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 9,
+    "title": "O que é API? Vídeo para iniciantes na carreira de backend",
+    "url": "https://www.youtube.com/watch?v=mR-Dlkmeg8o",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Vídeo",
+    "host": "youtube.com"
+  },
+  {
+    "module": 9,
+    "title": "tutorial oficial de Bruno, do download à primeira requisição",
+    "url": "https://blog.usebruno.com/bruno-tutorial",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Leitura",
+    "host": "blog.usebruno.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "documentação oficial do Bruno",
+    "url": "https://docs.usebruno.com/",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Leitura",
+    "host": "docs.usebruno.com"
+  },
+  {
+    "module": 9,
+    "title": "vídeos publicados pelo Bruno",
+    "url": "https://www.youtube.com/@brunoapi",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Vídeo",
+    "host": "youtube.com"
+  },
+  {
+    "module": 9,
+    "title": "API fictícia JSONPlaceholder",
+    "url": "https://jsonplaceholder.typicode.com/",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Ferramenta",
+    "host": "jsonplaceholder.typicode.com"
+  },
+  {
+    "module": 9,
+    "title": "MDN HTTP",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+    "section": "Etapa 1: hoje, uma chamada HTTP no Bruno",
+    "type": "Leitura",
+    "host": "developer.mozilla.org",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "Programação em C# — aulas e exercícios",
+    "url": "https://github.com/ermogenes/aulas-programacao-csharp",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 9,
+    "title": "Programação em C# — playlist do Prof. Ermogenes",
+    "url": "https://www.youtube.com/playlist?list=PLk6PnAig6xXKg988f8Ewq1iFm4_ZH9nA5",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Vídeo",
+    "host": "youtube.com"
+  },
+  {
+    "module": 9,
+    "title": "C# para iniciantes da Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "por que MCP é importante — Código Fonte TV",
+    "url": "https://www.youtube.com/watch?v=deprLB_y6Ho",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Vídeo",
+    "host": "youtube.com"
+  },
+  {
+    "module": 9,
+    "title": "Introdução ao SDK C# para MCP — Microsoft",
+    "url": "https://learn.microsoft.com/en-us/shows/on-dotnet/introduction-to-the-csharp-sdk-for-model-context-protocol-mcp",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "conceitos principais do MCP for Beginners",
+    "url": "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/01-CoreConcepts/README.md",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 9,
+    "title": "Getting Started oficial do SDK C#",
+    "url": "https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Leitura",
+    "host": "csharp.sdk.modelcontextprotocol.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "MCP Inspector",
+    "url": "https://modelcontextprotocol.io/docs/tools/inspector",
+    "section": "Etapa 2: primeiro servidor MCP em C#",
+    "type": "Ferramenta",
+    "host": "modelcontextprotocol.io"
+  },
+  {
+    "module": 9,
+    "title": "Implementando uma API Web no .NET — vídeo 3/8",
+    "url": "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/implementing-a-web-api-in-dotnet-backend-web-development-with-dotnet-for-beginners",
+    "section": "Etapas 3 e 4: API local e tool que a consulta",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "Backend .NET para iniciantes — série Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/",
+    "section": "Etapas 3 e 4: API local e tool que a consulta",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "OpenAPI no ASP.NET Core",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0",
+    "section": "Etapas 3 e 4: API local e tool que a consulta",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "ASP.NET Core — primeira Web API",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",
+    "section": "Etapas 3 e 4: API local e tool que a consulta",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "IHttpClientFactory na Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory",
+    "section": "Etapas 3 e 4: API local e tool que a consulta",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "lição sobre agentes com tools — Microsoft, .NET",
+    "url": "https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/04-AgentsWithMAF/02-agents-with-tools.md",
+    "section": "Etapas 5 a 7: agente, RAG e skill",
+    "type": "Leitura",
+    "host": "github.com"
+  },
+  {
+    "module": 9,
+    "title": "lição de RAG em .NET — Microsoft",
+    "url": "https://github.com/microsoft/Generative-AI-for-beginners-dotnet/blob/main/03-AIPatternsAndApplications/02-retrieval-augmented-generation.md",
+    "section": "Etapas 5 a 7: agente, RAG e skill",
+    "type": "Prática",
+    "host": "github.com"
+  },
+  {
+    "module": 9,
+    "title": "explicação de RAG em .NET",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/rag",
+    "section": "Etapas 5 a 7: agente, RAG e skill",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "especificação Agent Skills",
+    "url": "https://agentskills.io/specification",
+    "section": "Etapas 5 a 7: agente, RAG e skill",
+    "type": "Leitura",
+    "host": "agentskills.io",
+    "access": "Leitura ou aula aberta"
+  },
+  {
+    "module": 9,
+    "title": "documentação da Microsoft sobre skills em agentes",
+    "url": "https://learn.microsoft.com/pt-br/agent-framework/agents/skills",
+    "section": "Etapas 5 a 7: agente, RAG e skill",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "C# — seu primeiro programa",
+    "url": "https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/hello-world-csharp-for-beginners",
+    "section": "Glossário de bolso e ajuda quando travar",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "C# — instruções de nível superior",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/program-structure/top-level-statements",
+    "section": "Glossário de bolso e ajuda quando travar",
+    "type": "Leitura",
+    "host": "learn.microsoft.com"
+  },
+  {
+    "module": 9,
+    "title": "práticas de segurança do MCP",
+    "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+    "section": "Antes de levar a um sistema real",
+    "type": "Leitura",
+    "host": "modelcontextprotocol.io"
+  },
+  {
+    "module": 9,
+    "title": "documentação do SDK C#",
+    "url": "https://github.com/modelcontextprotocol/csharp-sdk",
+    "section": "Antes de levar a um sistema real",
+    "type": "Leitura",
+    "host": "github.com"
+  }
+]
