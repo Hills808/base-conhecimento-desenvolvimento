@@ -2,6 +2,31 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** Inglês técnico, leitura, escuta, pronúncia, escrita profissional, reuniões e opções de outros idiomas.
+
+**Objetivo de prática:** Ler documentação, explicar um projeto e praticar comunicação profissional no seu nível.
+
+<details>
+<summary>Índice do módulo 08 — ir direto ao assunto</summary>
+
+- [Defina um objetivo mensurável](#defina-um-objetivo-mensurável)
+- [Níveis CEFR aplicados a desenvolvimento](#níveis-cefr-aplicados-a-desenvolvimento)
+- [Diagnóstico e plano inicial](#diagnóstico-e-plano-inicial)
+- [Cursos estruturados de inglês](#cursos-estruturados-de-inglês)
+- [Inglês técnico para desenvolvedores](#inglês-técnico-para-desenvolvedores)
+- [Escuta e compreensão](#escuta-e-compreensão)
+- [Pronúncia e fala](#pronúncia-e-fala)
+- [Escrita profissional](#escrita-profissional)
+- [Entrevistas, reuniões e trabalho remoto](#entrevistas-reuniões-e-trabalho-remoto)
+- [IA como parceira de idiomas](#ia-como-parceira-de-idiomas)
+- [Certificados e exames](#certificados-e-exames)
+- [Outros idiomas](#outros-idiomas)
+- [Plano de doze semanas para inglês técnico](#plano-de-doze-semanas-para-inglês-técnico)
+- [Rotinas prontas](#rotinas-prontas)
+- [Como escolher recursos](#como-escolher-recursos)
+
+</details>
+
 Em desenvolvimento de software, idioma é uma ferramenta de trabalho. O objetivo inicial não é falar como nativo: é compreender documentação, erros, vídeos, issues e reuniões, além de escrever mensagens claras e explicar decisões técnicas.
 
 Inglês oferece o maior retorno para quem trabalha com tecnologia. Estude outro idioma quando houver interesse pessoal, oportunidade acadêmica ou mercado-alvo específico, sem interromper a base de inglês técnico.
