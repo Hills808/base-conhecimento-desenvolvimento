@@ -2,6 +2,25 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** HTTP, contratos OpenAPI, Swagger, Bruno, ASP.NET Core, testes e arquitetura.
+
+**Objetivo de prática:** Consumir e investigar uma API, depois construir e testar um serviço próprio.
+
+<details>
+<summary>Índice do módulo 02 — ir direto ao assunto</summary>
+
+- [Trilha de API para o trabalho](#trilha-de-api-para-o-trabalho)
+- [Fontes oficiais para APIs, Swagger, Bruno e .NET](#fontes-oficiais-para-apis-swagger-bruno-e-net)
+- [Laboratório .NET + Swagger + Bruno](#laboratório-net--swagger--bruno)
+- [Checklist para investigar problemas no trabalho](#checklist-para-investigar-problemas-no-trabalho)
+- [Conceitos essenciais](#conceitos-essenciais)
+- [APIs modernas](#apis-modernas)
+- [Ferramentas para APIs](#ferramentas-para-apis)
+- [Arquitetura de software](#arquitetura-de-software)
+- [Projeto sugerido](#projeto-sugerido)
+
+</details>
+
 Se o objetivo é construir um servidor MCP em C# ligado a uma API, siga a [trilha prática MCP](09-trilha-pratica-mcp-csharp-agentes.md). Este guia dá a base de HTTP, Swagger/OpenAPI, Bruno e ASP.NET Core necessária para a etapa de integração.
 
 ## Trilha de API para o trabalho
