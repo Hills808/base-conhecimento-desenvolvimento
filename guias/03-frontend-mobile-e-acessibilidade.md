@@ -2,6 +2,21 @@
 
 [← Voltar ao início](../README.md)
 
+**O que você vai estudar:** HTML/CSS/JavaScript, frameworks, interfaces responsivas, acessibilidade, performance e desenvolvimento mobile.
+
+**Objetivo de prática:** Criar uma interface conectada a uma API, com formulários e estados de erro, vazio e carregamento.
+
+<details>
+<summary>Índice do módulo 03 — ir direto ao assunto</summary>
+
+- [Fundamentos da web](#fundamentos-da-web)
+- [Frameworks](#frameworks)
+- [Acessibilidade, performance e PWA](#acessibilidade-performance-e-pwa)
+- [Mobile](#mobile)
+- [Projeto sugerido](#projeto-sugerido)
+
+</details>
+
 ## Fundamentos da web
 
 - [The Odin Project](https://www.theodinproject.com/) — currículo completo e baseado em projetos. 📚 🌐
