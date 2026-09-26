@@ -2,9 +2,15 @@
 
 [← Voltar ao início](../README.md)
 
-## A ordem universal
+Este guia ajuda quem quer começar em programação e escolher uma rotina. Se sua necessidade já é específica, abra a [trilha de APIs e Bruno](02-backend-apis-e-arquitetura.md#trilha-de-api-para-o-trabalho) ou o [laboratório de MCP em C#](09-trilha-pratica-mcp-csharp-agentes.md).
 
-1. **Lógica + Git** — antes de qualquer framework.
+## Seu primeiro passo
+
+Escolha uma linguagem e um exercício pequeno, como ler dois números e mostrar o resultado de uma operação. Use [Fundamentos e linguagens](01-fundamentos-e-linguagens.md) para encontrar a aula correspondente. Termine esse exercício antes de abrir outro curso.
+
+## Sequência sugerida para formação geral
+
+1. **Lógica + Git** — pratique instruções simples e aprenda a salvar suas mudanças.
 2. **Uma linguagem principal** — faça exercícios e pequenos programas.
 3. **Banco + HTTP/API** — a base de sistemas reais.
 4. **Projeto com GitHub** — transforme conteúdo em experiência.
