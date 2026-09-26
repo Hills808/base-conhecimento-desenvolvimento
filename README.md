@@ -1,6 +1,6 @@
 # Curva Aberta — base de conhecimento
 
-**[Acessar a plataforma de estudos →](https://rascunauta.hills808.chatgpt.site/)** · [Explorar os guias no GitHub](#base-e-desenvolvimento)
+**[Acessar a plataforma de estudos →](https://hills808.github.io/base-conhecimento-desenvolvimento/)** · [Explorar os guias no GitHub](#base-e-desenvolvimento)
 
 Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organizada em **10 módulos**. Explore uma área, veja o que ela ensina e escolha uma prática para consolidar o aprendizado.
 
