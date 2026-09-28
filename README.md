@@ -229,25 +229,29 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 ## Laboratório integrado
 
-### 09 · MCP com C# — laboratório integrado
+### 09 · APIs, agentes e MCP com C# — percurso guiado
 
-**Conhecimentos:** Primeira chamada no Bruno, servidor MCP, integração com API .NET, agente, RAG e Skill.
+**14 etapas em quatro níveis**, com materiais em português, exercícios, ajuda para destravar e critérios de conclusão.
 
-**Na prática:** Construir e demonstrar um servidor MCP de consulta com testes e respostas fundamentadas.
+1. **APIs:** HTTP/JSON → Bruno → contratos e estados.
+2. **Agentes:** prompts/configuração → roteamento e regressão.
+3. **Implementação:** C# essencial → API/DTO → MCP → integração com agente.
+4. **Entrega avançada:** segurança → RAG → Skills → qualidade → projeto final.
 
-[Abrir módulo 09 →](guias/09-trilha-pratica-mcp-csharp-agentes.md)
+**Na prática:** construir um assistente fictício de preparação de atendimento com dados autorizados, tools de leitura e follow-up não enviado.
+
+[Começar pela etapa 1 no site →](https://hills808.github.io/base-conhecimento-desenvolvimento/?modulo=9&etapa=1) · [Ler o guia completo](guias/09-trilha-pratica-mcp-csharp-agentes.md)
 
 <details>
-<summary>Percurso e materiais — módulo 09</summary>
+<summary>Entregas e materiais do laboratório</summary>
 
-**Antes de começar:** A primeira etapa apresenta HTTP; o guia oferece apoio de C# antes do servidor.
+Cada etapa contém objetivo, pré-requisito, explicação em português, material principal, apoios, exercício e verificação. As estimativas são editoriais e o ritmo depende da prática.
 
-**Você encontra:** Vídeos, textos de apoio, etapas guiadas, glossário e critérios de conclusão.
-
-- [A ordem única desta trilha](guias/09-trilha-pratica-mcp-csharp-agentes.md#a-ordem-única-desta-trilha)
-- [Projeto de estudo: catálogo de procedimentos fictícios](guias/09-trilha-pratica-mcp-csharp-agentes.md#projeto-de-estudo-catálogo-de-procedimentos-fictícios)
-- [Glossário de bolso e ajuda quando travar](guias/09-trilha-pratica-mcp-csharp-agentes.md#glossário-de-bolso-e-ajuda-quando-travar)
-- [Testes que dão confiança](guias/09-trilha-pratica-mcp-csharp-agentes.md#testes-que-dão-confiança)
+- [Etapas 1–3: APIs e contratos](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1)
+- [Etapas 4–5: arquitetura e roteamento](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-4)
+- [Etapas 6–9: C#, API e MCP](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-6)
+- [Etapas 10–14: segurança e projeto final](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-10)
+- [Kit de prática: JSON, schema e matriz de regressão](site/public/lab)
 
 </details>
 

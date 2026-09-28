@@ -87,8 +87,8 @@ export const modules: Module[] = [
     ]
   },
   {
-    id: 9, title: "Laboratório MCP com C#", short: "Um projeto guiado que une API, agente e Skill.", area: "Laboratório", symbol: "✺", color: "#f8c98c",
-    prerequisite: "A primeira etapa ensina HTTP; apoio de C# antes do servidor.", outcome: "Um servidor MCP de consulta testado com dados fictícios.", guide: "09-trilha-pratica-mcp-csharp-agentes",
+    id: 9, title: "Laboratório MCP com C#", short: "14 etapas para trabalhar com APIs, agentes, MCP e Skills.", area: "Laboratório", symbol: "✺", color: "#f8c98c",
+    prerequisite: "Comece por HTTP e JSON; C# entra antes da implementação. Avance pelas entregas.", outcome: "Uma integração testada: API .NET, agente, MCP, RAG e Skill de leitura, com dados fictícios.", guide: "09-trilha-pratica-mcp-csharp-agentes",
     stages: [
       { name: "Primeiro contato", learn: ["HTTP e JSON no Bruno", "Conceitos de C#", "O que muda com MCP"], practice: "Faça uma requisição à JSONPlaceholder e documente seu resultado.", proof: "Você aponta onde estão status, campos e erros." },
       { name: "Construa a ponte", learn: ["API local em .NET", "Servidor MCP e tool", "Inspector e contrato de saída"], practice: "Exponha uma tool read-only para consultar catálogo fictício.", proof: "A tool retorna dados explícitos e trata ausência sem inventar." },

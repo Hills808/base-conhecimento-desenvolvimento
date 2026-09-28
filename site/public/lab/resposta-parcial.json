@@ -1,0 +1,16 @@
+{
+  "status": "partial",
+  "data": {
+    "clienteId": "demo-001",
+    "nome": "Pessoa Fictícia A",
+    "classeAtivo": "RENDA_FIXA",
+    "moeda": "BRL",
+    "dataReferencia": "2026-09-01",
+    "percentualPorFator": 35,
+    "valorPorFator": null
+  },
+  "missingFields": [
+    "valorPorFator"
+  ],
+  "source": "fixture-local-v1"
+}
