@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resultado didático de consulta autorizada",
+  "description": "Convenção do laboratório. Acesso negado e falhas técnicas usam um erro separado sem data; este schema não define autorização.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "data",
+    "missingFields",
+    "source"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "resolved",
+        "partial",
+        "ambiguous",
+        "out_of_scope"
+      ]
+    },
+    "data": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "clienteId": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "classeAtivo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "moeda": {
+          "type": "string"
+        },
+        "dataReferencia": {
+          "type": "string",
+          "format": "date"
+        },
+        "percentualPorFator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "valorPorFator": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "missingFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "partial"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "missingFields": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "resolved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "missingFields": {
+            "maxItems": 0
+          },
+          "data": {
+            "type": "object",
+            "required": [
+              "clienteId",
+              "nome",
+              "classeAtivo",
+              "moeda",
+              "dataReferencia",
+              "percentualPorFator",
+              "valorPorFator"
+            ],
+            "properties": {
+              "classeAtivo": {
+                "type": "string"
+              },
+              "percentualPorFator": {
+                "type": "number"
+              },
+              "valorPorFator": {
+                "type": "number"
+              }
+            }
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "ambiguous",
+              "out_of_scope"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}
