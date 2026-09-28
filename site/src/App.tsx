@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 import { modules, guideUrl } from "./data/modules";
+import Laboratory from "./Laboratory";
 import rawResources from "./data/resources.json";
 import startingPoints from "./data/starting-points.json";
 
@@ -119,7 +120,7 @@ export default function Home() {
           <div className="detail-stamp"><span>{active.symbol}</span><small>SEU PRÓXIMO<br/>CAPÍTULO</small></div>
         </div>
 
-        <div className="detail-layout">
+        {active.id === 9 ? <Laboratory /> : <div className="detail-layout">
           <div className="detail-primary">
             <div className="section-intro">
               <div><span className="eyebrow ink">01 / SEU PERCURSO</span><h2>Um passo de cada vez.</h2><p>Escolha um nível, entenda o que vem nele e coloque a mão na massa.</p></div>
@@ -170,7 +171,7 @@ export default function Home() {
             <div className="aside-note"><span className="note-symbol">✳</span><span className="eyebrow">DICA DE ESTUDO</span><h3>Menos abas.<br/>Mais entregas.</h3><p>Escolha um recurso principal por etapa. Use os outros quando uma dúvida aparecer. Termine com algo que você consiga mostrar ou explicar.</p><div className="aside-rule"/><strong>Um bom ciclo</strong><span className="method-flow">Estude <ArrowRight size={14}/> pratique <ArrowRight size={14}/> explique</span></div>
             <div className="source-note"><CircleHelp size={19}/><p>O progresso fica apenas neste navegador. Acesso e certificados podem mudar; confira sempre a página de cada fonte.</p></div>
           </aside>
-        </div>
+        </div>}
       </div> : <div className="home-wrap">
         <section className="study-intro">
           <div><span className="eyebrow ink">BIBLIOTECA INDEPENDENTE DE APRENDIZADO</span><h1>Seu próximo passo,<br/><em>bem aqui.</em></h1><p>Escolha um módulo, siga uma seleção de materiais e transforme o estudo em uma entrega.</p></div>
@@ -178,11 +179,11 @@ export default function Home() {
         </section>
 
         <section id="modulos" className="explore-section">
-          <div className="explore-heading"><div><span className="eyebrow ink">NA PRÁTICA / 10 MÓDULOS</span><h2>Encontre seu módulo.</h2></div><p>Não existe uma fila obrigatória. Escolha uma área, veja o que vai aprender e avance em três níveis.</p></div>
+          <div className="explore-heading"><div><span className="eyebrow ink">NA PRÁTICA / 10 MÓDULOS</span><h2>Encontre seu módulo.</h2></div><p>Não existe uma fila obrigatória. Escolha uma área, veja o que vai aprender e avance pelo percurso de cada módulo.</p></div>
           <div className="searchbar"><Search size={21}/><input type="search" value={query} onChange={e=>{setQuery(e.target.value);setExpanded(false)}} placeholder="Busque um tema, curso ou ferramenta..." aria-label="Buscar materiais"/>{query && <button onClick={()=>setQuery("")} aria-label="Limpar busca"><X size={17}/></button>}<span>{resources.length} referências</span></div>
           {query.trim().length >= 2 ? <div className="search-results"><div className="results-heading"><strong>{searchResults.length ? `Resultados para “${query}”` : "Nenhum resultado"}</strong><span>{searchResults.length} materiais encontrados</span></div>{searchResults.length ? <><div className="resources-grid">{searchResults.slice(0,expanded?undefined:24).map(r=><div key={`${r.module}-${r.url}`} className="result-item"><span className="result-module">M{String(r.module).padStart(2,"0")} · {modules[r.module].title}</span><ResourceCard item={r} compact/></div>)}</div>{searchResults.length>24 && <button className="show-more" onClick={()=>setExpanded(v=>!v)}>{expanded?"Mostrar menos":`Ver mais ${searchResults.length-24} materiais`} <ChevronDown className={expanded?"up":""} size={17}/></button>}</> : <p>Tente outro termo, como “MCP”, “SQL” ou “inglês”.</p>}</div> : <>
             <div className="area-filters" aria-label="Filtrar áreas">{areas.map(a=><button key={a} onClick={()=>setArea(a)} className={area===a?"active":""} aria-pressed={area===a}>{a}</button>)}</div>
-            <div className="explore-layout"><div className="module-grid">{filteredModules.map(m=><button className="module-card" key={m.id} onClick={()=>openModule(m.id)} style={{"--module-accent":m.color} as React.CSSProperties}><span className="card-top"><span className="module-id">MÓDULO {String(m.id).padStart(2,"0")}</span><span className="module-symbol">{m.symbol}</span></span><span className="card-body"><span className="module-area">{m.area}</span><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{resources.filter(r=>r.module===m.id).length} materiais <span className="small-dot">·</span> 3 níveis</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></button>)}</div>
+            <div className="explore-layout"><div className="module-grid">{filteredModules.map(m=><button className="module-card" key={m.id} onClick={()=>openModule(m.id)} style={{"--module-accent":m.color} as React.CSSProperties}><span className="card-top"><span className="module-id">MÓDULO {String(m.id).padStart(2,"0")}</span><span className="module-symbol">{m.symbol}</span></span><span className="card-body"><span className="module-area">{m.area}</span><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "Percurso guiado" : `${resources.filter(r=>r.module===m.id).length} materiais`} <span className="small-dot">·</span> {m.id === 9 ? "14 etapas · 4 níveis" : "3 níveis"}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></button>)}</div>
               <aside className="overview-aside"><div className="aside-head"><span>✳</span><small>GUIA RÁPIDO<br/>PARA COMEÇAR</small></div><h3>Seu ritmo,<br/>seu caminho.</h3><ol><li><span>01</span> Escolha um assunto que resolva uma curiosidade ou necessidade sua.</li><li><span>02</span> Comece no nível que faz sentido. Cada um mostra o que estudar e uma prática.</li><li><span>03</span> Use um material principal e produza algo pequeno para testar o aprendizado.</li></ol><button onClick={()=>openModule(0)}>Ver o módulo de orientação <ArrowRight size={16}/></button></aside>
             </div>
           </>}
