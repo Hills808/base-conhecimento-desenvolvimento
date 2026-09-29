@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, Circ
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 import { modules, guideUrl } from "./data/modules";
 import Laboratory from "./Laboratory";
+import ModuleJourney from "./ModuleJourney";
 import rawResources from "./data/resources.json";
 import startingPoints from "./data/starting-points.json";
 import curriculum from "./data/laboratory.json";
@@ -149,11 +150,12 @@ export default function Home() {
 
         {active.id === 9 ? <Laboratory /> : <div className="detail-layout">
           <div className="detail-primary">
+            <ModuleJourney module={active} done={done} onToggle={toggleDone}/>
             <div className="section-intro">
               <div><span className="eyebrow ink">01 / SEU PERCURSO</span><h2>Um passo de cada vez.</h2><p>Escolha um nível, entenda o que vem nele e coloque a mão na massa.</p></div>
               <div className="progress-mini"><span>{complete}/3 etapas registradas</span><div><i style={{width:`${complete/3*100}%`}}/></div></div>
             </div>
-            <Tabs value={stage} onValueChange={v => { setStage(v); setType("Todos"); setExpanded(false); }} className="learning-tabs">
+            <Tabs value={stage} onValueChange={v => { setStage(v); setType("Todos"); setExpanded(false); }} className="learning-tabs legacy-stages">
               <TabsList className="stage-tabs" aria-label="Níveis de estudo">
                 {levels.map((label,i)=><TabsTrigger className="stage-tab" value={String(i)} key={i}><span className="stage-number">0{i+1}</span><span>{label}</span>{done.includes(`${active.id}-${i}`) && <Check size={16}/>}</TabsTrigger>)}
               </TabsList>
