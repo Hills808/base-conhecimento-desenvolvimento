@@ -10,9 +10,50 @@ type ModuleContext = { moduleId: number; stage: number };
 type Saved = { dock: "left" | "right"; x: number; offsetY: number; hidden: boolean };
 const storageKey = "curva-aberta-furina-v2";
 const edge = 8;
+const danceDuration = 2800;
 const mascotWidth = (viewportWidth: number) => viewportWidth <= 720 ? 112 : 148;
 const mascotHeight = (viewportWidth: number) => viewportWidth <= 720 ? 149 : 197;
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+type DancePose = [x: number, y: number, stretch: number, turn: number, head: number, torso: number, leftArm: number, rightArm: number, legs: number];
+const danceKeys: { at: number; pose: DancePose }[] = [
+  { at: 0, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
+  { at: 180, pose: [0, 2, .96, -2, 2, -2, -8, 6, 4] },
+  { at: 360, pose: [-4, -7, 1.03, -3, -2, 2, 22, -22, 5] },
+  { at: 580, pose: [-8, -16, 1.01, -5, -5, 3, 38, -35, -5] },
+  { at: 780, pose: [-7, -9, 1, -3, 1, 0, 28, -28, 3] },
+  { at: 970, pose: [-4, 2, .94, 2, 5, -2, 10, -9, -5] },
+  { at: 1130, pose: [-2, 0, 1, 1, 2, 0, 8, -8, 0] },
+  { at: 1280, pose: [-1, 2, .96, 3, -2, 1, -5, 7, 4] },
+  { at: 1490, pose: [4, -7, 1.03, 4, 2, -2, 23, -23, -5] },
+  { at: 1700, pose: [8, -15, 1.01, 5, 5, -3, 37, -38, 5] },
+  { at: 1900, pose: [7, -8, 1, -1, 0, 1, 27, -28, -3] },
+  { at: 2090, pose: [4, 2, .94, -3, -4, 2, 10, -12, 4] },
+  { at: 2300, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
+  { at: 2470, pose: [0, 0, 1, 0, -3, 0, 0, -14, 0] },
+  { at: 2640, pose: [0, 0, 1, 0, 1, 0, 0, -24, 0] },
+  { at: danceDuration, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] }
+];
+
+// Cubic interpolation keeps the velocity continuous through each dance pose.
+function dancePose(time: number): DancePose {
+  const index = danceKeys.findIndex(key => key.at >= time);
+  if (index <= 0) return danceKeys[0].pose;
+  const next = danceKeys[index];
+  const current = danceKeys[index - 1];
+  const before = danceKeys[Math.max(0, index - 2)];
+  const after = danceKeys[Math.min(danceKeys.length - 1, index + 1)];
+  const span = next.at - current.at;
+  const u = (time - current.at) / span;
+  const h00 = 2 * u ** 3 - 3 * u ** 2 + 1;
+  const h10 = u ** 3 - 2 * u ** 2 + u;
+  const h01 = -2 * u ** 3 + 3 * u ** 2;
+  const h11 = u ** 3 - u ** 2;
+  return current.pose.map((value, channel) => {
+    const velocityIn = index === 1 ? 0 : (next.pose[channel] - before.pose[channel]) / (next.at - before.at);
+    const velocityOut = index === danceKeys.length - 1 ? 0 : (after.pose[channel] - current.pose[channel]) / (after.at - current.at);
+    return h00 * value + h10 * span * velocityIn + h01 * next.pose[channel] + h11 * span * velocityOut;
+  }) as DancePose;
+}
 const curiosities: Record<number, string> = {
   0: "Explicar com suas palavras revela dúvidas que passaram despercebidas durante a leitura.",
   1: "Depurar um programa pequeno ensina mais do que copiar um projeto longo sem conseguir explicá-lo.",
@@ -84,7 +125,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const legs = puppet.current?.querySelector<HTMLElement>(".furina-rig-legs");
     const parts = [stage, head, leftArm, rightArm, torso, legs];
     if (!stage || !head || !leftArm || !rightArm || !torso || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
-    const duration = celebrating ? 2400 : 1900;
+    const duration = celebrating ? danceDuration : 1900;
     let start = 0;
     let frame = 0;
     const tick = (now: number) => {
@@ -92,16 +133,13 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       const t = Math.min(duration, now - start);
       const fraction = t / duration;
       if (celebrating) {
-        const phase = 4 * Math.PI * fraction;
-        const smooth = (value: number) => { const x = clamp(value, 0, 1); return x * x * (3 - 2 * x); };
-        const ease = smooth(t / 260) * smooth((duration - t) / 280);
-        const lift = (1 - Math.cos(phase)) / 2;
-        stage.style.transform = `translate3d(${(2 * Math.sin(phase) * ease).toFixed(2)}px,${(-9 * lift * ease).toFixed(2)}px,0) rotate(${(3 * Math.sin(phase) * ease).toFixed(2)}deg)`;
-        head.style.transform = `rotate(${(-5 * Math.sin(phase - .35) * ease).toFixed(2)}deg)`;
-        torso.style.transform = `rotate(${(2 * Math.sin(phase - .5) * ease).toFixed(2)}deg)`;
-        leftArm.style.transform = `rotate(${((32 * lift + 4 * Math.sin(phase)) * ease).toFixed(2)}deg)`;
-        rightArm.style.transform = `rotate(${((-32 * lift + 4 * Math.sin(phase + .7)) * ease).toFixed(2)}deg)`;
-        legs.style.transform = `rotate(${(5 * Math.sin(phase + .7) * ease).toFixed(2)}deg)`;
+        const [x, y, stretch, turn, face, chest, left, right, feet] = dancePose(t);
+        stage.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) rotate(${turn.toFixed(2)}deg) scaleY(${stretch.toFixed(3)})`;
+        head.style.transform = `rotate(${face.toFixed(2)}deg)`;
+        torso.style.transform = `rotate(${chest.toFixed(2)}deg)`;
+        leftArm.style.transform = `rotate(${left.toFixed(2)}deg)`;
+        rightArm.style.transform = `rotate(${right.toFixed(2)}deg)`;
+        legs.style.transform = `rotate(${feet.toFixed(2)}deg)`;
       } else {
         const ease = Math.sin(Math.PI * fraction);
         stage.style.transform = `translate3d(0,${(-2 * ease).toFixed(2)}px,0) rotate(${(-2 * ease).toFixed(2)}deg)`;
@@ -146,7 +184,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       setSaved(value => ({ ...value, hidden: false }));
       setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1);
       setAnnouncement("Etapa concluída! Furina está comemorando com você.");
-      danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
+      danceTimer.current = window.setTimeout(() => setCelebrating(false), danceDuration);
       autoCloseTimer.current = window.setTimeout(() => setOpen(false), 7000);
     };
     window.addEventListener("curva-aberta-study-complete", celebrate);
@@ -202,7 +240,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     cancelAutoClose(); setMode(next); setExpanded(false);
     if (next === "success") {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
-      setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1); danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
+      setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1); danceTimer.current = window.setTimeout(() => setCelebrating(false), danceDuration);
     }
     setAnnouncement(next === "success" ? "Furina está comemorando com você." : `${next === "tip" ? "Dica" : next === "attention" ? "Ponto de atenção" : next === "review" ? "Pergunta" : "Curiosidade"} atualizada.`);
   }
