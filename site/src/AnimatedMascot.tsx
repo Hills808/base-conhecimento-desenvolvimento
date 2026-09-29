@@ -18,15 +18,15 @@ type DancePose = [x: number, y: number, stretch: number, turn: number, head: num
 const danceKeys: { at: number; pose: DancePose }[] = [
   { at: 0, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
   { at: 180, pose: [0, 2, .96, -2, 2, -2, -8, 6, 4] },
-  { at: 360, pose: [-4, -7, 1.03, -3, -2, 2, 22, -22, 5] },
-  { at: 580, pose: [-8, -16, 1.01, -5, -5, 3, 38, -35, -5] },
-  { at: 780, pose: [-7, -9, 1, -3, 1, 0, 28, -28, 3] },
+  { at: 360, pose: [-4, -7, 1.03, -3, -2, 2, 14, -12, 2] },
+  { at: 580, pose: [-8, -16, 1.01, -5, -4, 3, 21, -19, -2] },
+  { at: 780, pose: [-7, -9, 1, -3, 1, 0, 16, -14, 2] },
   { at: 970, pose: [-4, 2, .94, 2, 5, -2, 10, -9, -5] },
   { at: 1130, pose: [-2, 0, 1, 1, 2, 0, 8, -8, 0] },
   { at: 1280, pose: [-1, 2, .96, 3, -2, 1, -5, 7, 4] },
-  { at: 1490, pose: [4, -7, 1.03, 4, 2, -2, 23, -23, -5] },
-  { at: 1700, pose: [8, -15, 1.01, 5, 5, -3, 37, -38, 5] },
-  { at: 1900, pose: [7, -8, 1, -1, 0, 1, 27, -28, -3] },
+  { at: 1490, pose: [4, -7, 1.03, 4, 2, -2, 14, -13, -2] },
+  { at: 1700, pose: [8, -15, 1.01, 5, 4, -3, 20, -21, 2] },
+  { at: 1900, pose: [7, -8, 1, -1, 0, 1, 15, -16, -2] },
   { at: 2090, pose: [4, 2, .94, -3, -4, 2, 10, -12, 4] },
   { at: 2300, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
   { at: 2470, pose: [0, 0, 1, 0, -3, 0, 0, -14, 0] },
@@ -125,10 +125,10 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
     const leftArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-left-arm");
     const rightArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-right-arm");
-    const torso = puppet.current?.querySelector<HTMLElement>(".furina-rig-torso");
+    const upper = puppet.current?.querySelector<HTMLElement>(".furina-rig-upper");
     const legs = puppet.current?.querySelector<HTMLElement>(".furina-rig-legs");
-    const parts = [stage, head, leftArm, rightArm, torso, legs];
-    if (!stage || !head || !leftArm || !rightArm || !torso || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
+    const parts = [stage, upper, head, leftArm, rightArm, legs];
+    if (!stage || !upper || !head || !leftArm || !rightArm || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
     const duration = celebrating ? danceDuration : 1900;
     let start = 0;
     let frame = 0;
@@ -140,7 +140,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         const [x, y, stretch, turn, face, chest, left, right, feet] = dancePose(t);
         stage.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) rotate(${turn.toFixed(2)}deg) scaleY(${stretch.toFixed(3)})`;
         head.style.transform = `rotate(${face.toFixed(2)}deg)`;
-        torso.style.transform = `rotate(${chest.toFixed(2)}deg)`;
+        upper.style.transform = `rotate(${chest.toFixed(2)}deg)`;
         leftArm.style.transform = `rotate(${left.toFixed(2)}deg)`;
         rightArm.style.transform = `rotate(${right.toFixed(2)}deg)`;
         legs.style.transform = `rotate(${feet.toFixed(2)}deg)`;
@@ -148,7 +148,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         const ease = Math.sin(Math.PI * fraction);
         stage.style.transform = `translate3d(0,${(-2 * ease).toFixed(2)}px,0) rotate(${(-2 * ease).toFixed(2)}deg)`;
         head.style.transform = `rotate(${(5 * ease).toFixed(2)}deg)`;
-        rightArm.style.transform = `rotate(${(-18 * Math.sin(2 * Math.PI * fraction) ** 2).toFixed(2)}deg)`;
+        rightArm.style.transform = `rotate(${(-12 * Math.sin(2 * Math.PI * fraction) ** 2).toFixed(2)}deg)`;
       }
       if (t < duration) frame = window.requestAnimationFrame(tick);
       else parts.forEach(part => { if (part) part.style.transform = ""; });
@@ -353,10 +353,12 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       <span className="furina-puppet" ref={puppet} aria-hidden="true">
         <span className="furina-puppet-stage">
           <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} alt="" draggable={false}/>
-          <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} alt="" draggable={false}/>
-          <img className="furina-rig-right-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} alt="" draggable={false}/>
-          <img className="furina-rig-torso" src={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} alt="" draggable={false}/>
-          <img className="furina-rig-head" src={`${import.meta.env.BASE_URL}furina-rig/head.webp`} alt="" draggable={false}/>
+          <span className="furina-rig-upper">
+            <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} alt="" draggable={false}/>
+            <img className="furina-rig-right-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} alt="" draggable={false}/>
+            <img className="furina-rig-torso" src={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} alt="" draggable={false}/>
+            <img className="furina-rig-head" src={`${import.meta.env.BASE_URL}furina-rig/head.webp`} alt="" draggable={false}/>
+          </span>
         </span>
       </span>
       {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}

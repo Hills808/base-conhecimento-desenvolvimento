@@ -29,11 +29,12 @@
 }
 .furina-puppet, .furina-puppet-stage { display: block; position: absolute; inset: 0; pointer-events: none; }
 .furina-puppet-stage { transform-origin: 50% 88.75%; }
+.furina-rig-upper { display: block; position: absolute; inset: 0; transform-origin: 50% 48%; }
 .furina-puppet img { display: block; position: absolute; max-width: none; height: auto; user-select: none; pointer-events: none; }
-.furina-rig-head { left: 33.333%; top: 9.25%; width: 33.333%; transform-origin: 50% 96%; }
-.furina-rig-torso { left: 25%; top: 26.25%; width: 50%; transform-origin: 50% 64%; }
-.furina-rig-left-arm { left: 12.5%; top: 28.125%; width: 28.333%; transform-origin: 75% 12%; }
-.furina-rig-right-arm { left: 59.167%; top: 28.125%; width: 28.333%; transform-origin: 25% 12%; }
+.furina-rig-head { left: 33.333%; top: 8.5%; width: 33.333%; transform-origin: 50% 91%; }
+.furina-rig-torso { left: 25%; top: 24.5%; width: 50%; }
+.furina-rig-left-arm { left: 12.5%; top: 26.5%; width: 28.333%; transform-origin: 88% 10%; }
+.furina-rig-right-arm { left: 59.167%; top: 26.5%; width: 28.333%; transform-origin: 12% 10%; }
 .furina-rig-legs { left: 38.333%; top: 65%; width: 22.5%; transform-origin: 52% 9%; }
 .furina-guide:not(.is-greeting):not(.is-celebrating) .furina-rig-head { transition: transform .22s ease-out; }
 .furina-guide:is(.is-greeting, .is-celebrating) .furina-puppet-stage,
