@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, CircleHelp, Grip, Lightbulb, Minimize2, MoveHorizontal, ShieldAlert, Sparkles, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronDown, CircleHelp, Grip, Lightbulb, Minimize2, MoveHorizontal, ShieldAlert, Sparkles, X } from "lucide-react";
 import type { Module } from "./data/modules";
 import { moduleGuidance } from "./data/module-guidance";
 import "./study-buddy.css";
@@ -29,8 +29,8 @@ function readSaved(): Saved {
   } catch { return { dock: "right", offsetY: 0, hidden: false }; }
 }
 
-function BuddyArt({ pose, small = false }: { pose: string; small?: boolean }) {
-  return <span className={`buddy-art ${small ? "small" : ""} pose-${pose}`} aria-hidden="true"><img src={`${import.meta.env.BASE_URL}furina-buddy.png`} alt="" draggable={false}/></span>;
+function BuddyArt({ pose, small = false, celebrating = false }: { pose: string; small?: boolean; celebrating?: boolean }) {
+  return <span className={`buddy-art ${small ? "small" : ""} pose-${pose} ${celebrating ? "is-celebrating" : ""}`} aria-hidden="true"><img src={`${import.meta.env.BASE_URL}furina-buddy.png`} alt="" draggable={false}/>{celebrating && <span className="buddy-confetti"><i/><i/><i/><i/><i/><i/></span>}</span>;
 }
 
 export default function StudyBuddy({ module, stage }: { module: Module | null; stage: string }) {
@@ -41,6 +41,7 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
   const [lab, setLab] = useState<LabContext | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const [dragging, setDragging] = useState(false);
+  const [celebrating, setCelebrating] = useState(false);
   const panel = useRef<HTMLElement>(null);
   const dragStart = useRef<{ y: number; moved: boolean } | null>(null);
   const suppressClick = useRef(false);
@@ -54,6 +55,19 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
     const receive = (event: Event) => setLab((event as CustomEvent<LabContext>).detail);
     window.addEventListener("curva-aberta-study-context", receive);
     return () => window.removeEventListener("curva-aberta-study-context", receive);
+  }, []);
+
+  useEffect(() => {
+    const celebrate = () => {
+      setMode("success");
+      setExpanded(false);
+      setOpen(true);
+      setCelebrating(true);
+      setAnnouncement("Etapa concluída! Furina está comemorando com você.");
+      window.setTimeout(() => setCelebrating(false), 2800);
+    };
+    window.addEventListener("curva-aberta-study-complete", celebrate);
+    return () => window.removeEventListener("curva-aberta-study-complete", celebrate);
   }, []);
 
   useEffect(() => {
@@ -137,7 +151,14 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
     if (dragStart.current?.moved) { suppressClick.current = true; window.setTimeout(() => { suppressClick.current = false; }, 0); }
     dragStart.current = null; setDragging(false);
   }
-  function toggleMode(next: Mode) { setMode(next); setExpanded(false); announce(next === "tip" ? "Dica atualizada." : next === "attention" ? "Ponto de atenção atualizado." : next === "review" ? "Pergunta de revisão atualizada." : next === "curiosity" ? "Curiosidade atualizada." : "Furina está comemorando com você."); }
+  function toggleMode(next: Mode) {
+    setMode(next); setExpanded(false);
+    if (next === "success") {
+      setCelebrating(true);
+      window.setTimeout(() => setCelebrating(false), 2800);
+    }
+    announce(next === "tip" ? "Dica atualizada." : next === "attention" ? "Ponto de atenção atualizado." : next === "review" ? "Pergunta de revisão atualizada." : next === "curiosity" ? "Curiosidade atualizada." : "Furina está comemorando com você.");
+  }
 
   const pose = card.pose;
   const dockStyle = { "--buddy-offset": `${saved.offsetY}px` } as React.CSSProperties;
@@ -153,7 +174,7 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
           <button className="buddy-icon-button" onClick={() => setSaved(value => ({ ...value, hidden: true }))} aria-label="Ocultar Furina"><X size={17}/></button>
         </div>
         <div className="buddy-dialogue">
-          <button className="buddy-figure-button" onClick={() => { const order: Mode[] = ["tip", "attention", "review", "curiosity", "success"]; toggleMode(order[(order.indexOf(mode) + 1) % order.length]); }} aria-label="Clique na Furina para ver outra dica"><BuddyArt pose={pose}/><span className="buddy-tap-hint">toque para trocar</span></button>
+          <button className="buddy-figure-button" onClick={() => { const order: Mode[] = ["tip", "attention", "review", "curiosity", "success"]; toggleMode(order[(order.indexOf(mode) + 1) % order.length]); }} aria-label="Clique na Furina para ver outra dica"><BuddyArt pose={pose} celebrating={celebrating}/><span className="buddy-tap-hint">toque para trocar</span></button>
           <div className={`buddy-copy tone-${mode}`}>
             <span className="buddy-caption">{module ? `MÓDULO ${String(module.id).padStart(2,"0")}${module.id === 9 ? lab ? ` · ETAPA ${lab.step + 1}` : " · MCP" : ` · ETAPA ${stageIndex + 1}`}` : "DICA DE ESTUDO"}</span>
             <h3>{card.title}</h3><p>{card.text}</p>

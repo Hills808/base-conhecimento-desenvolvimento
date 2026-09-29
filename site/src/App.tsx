@@ -84,7 +84,12 @@ export default function Home() {
   function toggleDone(key: string) {
     const next = done.includes(key) ? done.filter(v => v !== key) : [...done, key];
     setDone(next);
-    try { localStorage.setItem("curva-aberta-progress", JSON.stringify(next)); setNotice(next.includes(key) ? "Etapa registrada neste navegador." : "Etapa reaberta para revisão."); }
+    try {
+      localStorage.setItem("curva-aberta-progress", JSON.stringify(next));
+      const completed = next.includes(key);
+      setNotice(completed ? "Etapa registrada neste navegador." : "Etapa reaberta para revisão.");
+      if (completed) window.dispatchEvent(new CustomEvent("curva-aberta-study-complete", { detail: { source: "module", key } }));
+    }
     catch { setNotice("Progresso atualizado nesta sessão. O navegador não permitiu salvá-lo para depois."); }
   }
   function openLabStep(index: number) {

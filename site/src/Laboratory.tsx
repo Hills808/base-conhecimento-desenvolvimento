@@ -85,6 +85,7 @@ export default function Laboratory() {
     if (finished) { delete completedAt[step.id]; delete reviews[step.id]; }
     else completedAt[step.id] = new Date().toISOString();
     save({ ...progress, done: finished ? progress.done.filter(id => id !== step.id) : [...progress.done, step.id], completedAt, reviews });
+    if (!finished) window.dispatchEvent(new CustomEvent("curva-aberta-study-complete", { detail: { source: "laboratory", step: current } }));
     setNotice(finished ? "Etapa reaberta para revisão." : "Etapa registrada. Guarde também a entrega do exercício.");
   }
   function markReviewed() {
