@@ -7,6 +7,7 @@ import { modules, guideUrl } from "./data/modules";
 import Laboratory from "./Laboratory";
 import ModuleJourney from "./ModuleJourney";
 import StudyResume from "./StudyResume";
+import StudyBuddy from "./StudyBuddy";
 import rawResources from "./data/resources.json";
 import startingPoints from "./data/starting-points.json";
 import curriculum from "./data/laboratory.json";
@@ -222,6 +223,7 @@ export default function Home() {
         <section className="closing-banner"><span>UM PROJETO, VÁRIAS HABILIDADES</span><h2>Quer juntar as peças?</h2><p>O laboratório MCP com C# combina HTTP, Bruno, API .NET, agentes, RAG e Skills em uma sequência guiada.</p><button onClick={()=>openModule(9)}>Abrir laboratório <ArrowRight size={18}/></button></section>
       </div>}
     </main>
+    <StudyBuddy module={active} stage={stage}/>
     <div className="status-message" role="status" aria-live="polite">{notice}</div>
     {commandOpen && <div className="command-overlay" role="presentation" onMouseDown={() => setCommandOpen(false)}>
       <section className="command-palette" role="dialog" aria-modal="true" aria-label="Ir para uma parte do site" onMouseDown={event => event.stopPropagation()}>

@@ -49,6 +49,13 @@ export default function Laboratory() {
   const kit = `${import.meta.env.BASE_URL}lab/`;
 
   useEffect(() => {
+    const publish = () => window.dispatchEvent(new CustomEvent("curva-aberta-study-context", { detail: { step: current, title: step.title, tip: guide.tip, attention: guide.attention, curiosity: guide.curiosity, question: guide.question, answer: guide.answer } }));
+    publish();
+    const deferred = window.setTimeout(publish, 0);
+    return () => window.clearTimeout(deferred);
+  }, [current, step.title, guide]);
+
+  useEffect(() => {
     const sync = () => setCurrent(fromUrl() ?? 0);
     window.addEventListener("popstate", sync);
     return () => window.removeEventListener("popstate", sync);
