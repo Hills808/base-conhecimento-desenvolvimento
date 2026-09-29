@@ -408,7 +408,7 @@
         },
         {
           "title": "MCP Inspector — documentação oficial",
-          "url": "https://modelcontextprotocol.io/docs/tools/inspector",
+          "url": "https://github.com/modelcontextprotocol/inspector",
           "language": "Inglês",
           "format": "Ferramenta",
           "focus": "Liste tools, inspecione o schema e execute chamadas manualmente. O exercício não exige contratar um modelo."

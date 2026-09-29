@@ -178,7 +178,7 @@ O suporte a cada capacidade depende do cliente. MCP não concede permissões aut
 | [Microsoft — MCP for Beginners](https://github.com/microsoft/mcp-for-beginners) | Currículo aberto com exemplos em várias linguagens, incluindo .NET | Repositório gratuito |
 | [SDK oficial MCP para C#](https://github.com/modelcontextprotocol/csharp-sdk) | Implementar clientes/servidores na stack do trabalho; explorar `samples` | Código aberto, EN |
 | [Documentação do SDK C#](https://csharp.sdk.modelcontextprotocol.io/) | Consultar APIs e configuração da versão escolhida | Documentação gratuita, EN |
-| [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) | Inspecionar e testar o servidor antes de integrar a um assistente | Ferramenta/documentação aberta |
+| [MCP Inspector](https://github.com/modelcontextprotocol/inspector) | Inspecionar e testar o servidor antes de integrar a um assistente | Ferramenta/documentação aberta |
 | [MCP — boas práticas de segurança](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) | Revisar autorização e riscos antes de conectar sistemas reais | Documentação gratuita, EN |
 
 **Não é necessário contratar um modelo para começar:** construa e teste o servidor no Inspector. O uso posterior de um host, modelo ou serviço em nuvem pode envolver custos e restrições; estes recursos não prometem certificado.

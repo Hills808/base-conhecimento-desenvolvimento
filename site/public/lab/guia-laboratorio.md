@@ -401,7 +401,7 @@ Comece localmente via stdio e catálogo fictício. Registre versões do SDK e do
 
 - **Apoio:** [Primeiro servidor C# — SDK oficial MCP](https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html) — Tutorial, Inglês. Siga a documentação v1 junto de um pacote compatível. Não misture exemplos v1/v2 nem troque versões durante o exercício.
 
-- **Apoio:** [MCP Inspector — documentação oficial](https://modelcontextprotocol.io/docs/tools/inspector) — Ferramenta, Inglês. Liste tools, inspecione o schema e execute chamadas manualmente. O exercício não exige contratar um modelo.
+- **Apoio:** [MCP Inspector — projeto oficial](https://github.com/modelcontextprotocol/inspector) — Ferramenta, Inglês. Liste tools, inspecione o schema e execute chamadas manualmente. O exercício não exige contratar um modelo.
 
 - **Apoio:** [Por que MCP importa — Código Fonte TV](https://www.youtube.com/watch?v=deprLB_y6Ho) — Vídeo, Português. Use como visão conceitual antes do código. Para comandos e versões, siga o SDK oficial indicado acima.
 

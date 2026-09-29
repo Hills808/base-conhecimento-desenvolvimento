@@ -936,7 +936,7 @@
   {
     "module": 5,
     "title": "MCP Inspector",
-    "url": "https://modelcontextprotocol.io/docs/tools/inspector",
+    "url": "https://github.com/modelcontextprotocol/inspector",
     "section": "Fontes para sair da teoria",
     "type": "Ferramenta",
     "host": "modelcontextprotocol.io"
@@ -2431,7 +2431,7 @@
   {
     "module": 9,
     "title": "MCP Inspector",
-    "url": "https://modelcontextprotocol.io/docs/tools/inspector",
+    "url": "https://github.com/modelcontextprotocol/inspector",
     "section": "Etapa 2: primeiro servidor MCP em C#",
     "type": "Ferramenta",
     "host": "modelcontextprotocol.io"
