@@ -55,7 +55,7 @@ export default function Laboratory() {
   }, []);
   function save(next: Progress) {
     setProgress(next);
-    try { localStorage.setItem(storageKey, JSON.stringify(next)); }
+    try { localStorage.setItem(storageKey, JSON.stringify(next)); window.dispatchEvent(new Event("curva-aberta-progress-change")); }
     catch { setNotice("Seu navegador não permitiu salvar. O progresso vale somente nesta sessão."); }
   }
   function go(index: number) {
