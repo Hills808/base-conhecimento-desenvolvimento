@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, CircleAlert, Compass, Download, ExternalLink, Lightbulb, Target } from "lucide-react";
 import type { Module } from "./data/modules";
 import { moduleGuidance } from "./data/module-guidance";
@@ -26,6 +26,10 @@ export default function ModuleJourney({ module }: { module: Module }) {
   const completedDate = progress.completedAt[key];
   const reviewDate = completedDate ? new Date(new Date(completedDate).getTime() + 7 * 86400000) : null;
   const kitBase = `${import.meta.env.BASE_URL}kits/`;
+  useEffect(() => {
+    const timer = window.setTimeout(() => window.dispatchEvent(new CustomEvent("curva-aberta-study-context", { detail: { moduleId: module.id, stage: activeStage } })), 0);
+    return () => window.clearTimeout(timer);
+  }, [module.id, activeStage]);
   function save(next: ModuleProgress) { setProgress(next); saveModuleProgress(next); }
   function selectStage(index: number) { setActiveStage(index); save({ ...progress, lastByModule: { ...progress.lastByModule, [module.id]: index } }); }
   function toggleCheck(index: number) {
@@ -45,6 +49,7 @@ export default function ModuleJourney({ module }: { module: Module }) {
       delete next.completedAt[key]; delete next.reviews[key]; save(next); return;
     }
     save({ ...progress, done: [...progress.done, key], completedAt: { ...progress.completedAt, [key]: new Date().toISOString() } });
+    window.dispatchEvent(new CustomEvent("curva-aberta-study-complete", { detail: { source: "module", key } }));
   }
   function toggleReview() { save({ ...progress, reviews: { ...progress.reviews, [key]: !progress.reviews[key] } }); }
 
