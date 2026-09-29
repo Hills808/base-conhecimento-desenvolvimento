@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "reviewed": "2026-09-28",
+  "reviewed": "2026-09-29",
   "phases": [
     {
-      "title": "Fundamentos para usar APIs",
-      "subtitle": "Leia, execute e valide contratos."
+      "title": "Primeiro contato com APIs",
+      "subtitle": "Sem programação prévia: pedidos, respostas, JSON e Bruno."
     },
     {
-      "title": "Arquitetura e comportamento",
-      "subtitle": "Prompts, roteamento e handoffs."
+      "title": "Contratos e arquitetura",
+      "subtitle": "OpenAPI, estados, prompts, roteamento e handoffs."
     },
     {
       "title": "Implementação em C# e MCP",
@@ -23,26 +23,34 @@
     {
       "id": "http",
       "phase": 0,
-      "title": "Leia HTTP e JSON sem adivinhar",
+      "title": "Comece do zero: API, HTTP e JSON",
       "hours": "3–5 h",
       "prerequisite": "Nenhum. Comece aqui se método, status ou JSON ainda confundem.",
-      "goal": "Entender exatamente o que uma API recebeu e devolveu.",
+      "goal": "Entender quem faz um pedido, o que é devolvido e como ler os dados sem programar.",
       "concepts": [
         "URL, endpoint e método",
         "Headers, status e corpo",
         "Objeto, array, null e campo ausente"
       ],
       "lesson": [
+        "Uma API é uma porta de comunicação: um programa faz um pedido e outro devolve uma resposta. Você já usa isso ao abrir um endereço no navegador; aqui vamos observar o pedido e os dados de volta, sem escrever código.",
         "Uma API é um ponto de comunicação entre sistemas. HTTP organiza a chamada; JSON é um dos formatos usados no corpo. Um status 200 não garante que todos os dados necessários estejam presentes.",
         "No laboratório, null significa valor explicitamente ausente. Um campo que não veio pode ter outra causa. Zero é um valor: nunca substitua ausência por 0 para fazer uma resposta parecer completa."
       ],
       "resources": [
         {
-          "title": "HTTP: visão geral — MDN",
-          "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+          "title": "O que é uma API REST? API, HTTP e REST para iniciantes",
+          "url": "https://www.youtube.com/watch?v=9SbUPqKEWcY",
+          "language": "Português",
+          "format": "Vídeo",
+          "focus": "Assista para reconhecer pedido, resposta e método. Ignore a parte de implementação na primeira vez."
+        },
+        {
+          "title": "Visão geral do cliente-servidor — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview",
           "language": "Português",
           "format": "Leitura",
-          "focus": "Leia cliente, servidor, requisição e resposta. Ignore detalhes de cache nesta primeira passagem."
+          "focus": "Leia o início e o exemplo de requisição/resposta. Não precisa estudar cookies e headers avançados agora."
         },
         {
           "title": "O que é uma API — AWS",
@@ -84,11 +92,11 @@
       ],
       "resources": [
         {
-          "title": "Primeira coleção — Bruno",
-          "url": "https://blog.usebruno.com/bruno-tutorial",
+          "title": "Primeiros passos, coleção e Assert — Bruno oficial",
+          "url": "https://docs.usebruno.com/introduction/quick-start",
           "language": "Inglês",
           "format": "Tutorial",
-          "focus": "Siga instalação, coleção e primeira requisição. Use o roteiro em português desta etapa como apoio."
+          "focus": "Siga somente seções 1, 2, 4 e 5 com o passo a passo em português abaixo. Ignore POST, scripts e autenticação por enquanto."
         },
         {
           "title": "Testes de resposta — Bruno",
@@ -111,11 +119,11 @@
         "A coleção pode ser compartilhada sem segredos."
       ],
       "help": "Erro de conexão não é status HTTP. Verifique rede e URL; em API local, confirme primeiro se o processo está executando.",
-      "example": "test(\"retorna post 1\", function () {\n  expect(res.getStatus()).to.equal(200);\n  expect(res.getBody().id).to.equal(1);\n});"
+      "example": "GET {{baseUrl}}/posts/1\nAssert: res.status equals 200\nAssert: res.body.id equals 1"
     },
     {
       "id": "contratos",
-      "phase": 0,
+      "phase": 1,
       "title": "Defina contratos e estados de resposta",
       "hours": "5–8 h",
       "prerequisite": "Etapas 1–2. Não precisa programar o backend ainda.",
@@ -131,11 +139,11 @@
       ],
       "resources": [
         {
-          "title": "OpenAPI em ASP.NET Core — Microsoft Learn",
-          "url": "https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0",
+          "title": "O que é uma especificação OpenAPI? — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/microsoft-cloud/dev/dev-proxy/concepts/what-is-openapi-spec",
           "language": "Português",
           "format": "Leitura",
-          "focus": "Entenda documento, geração e interface de exploração. Nesta etapa não é necessário criar um servidor."
+          "focus": "Entenda documento, operações e schemas. Swagger UI é uma ferramenta que exibe/testa esse contrato; não implemente nada ainda."
         },
         {
           "title": "JSON Schema: fundamentos",
@@ -270,18 +278,18 @@
       ],
       "resources": [
         {
+          "title": "Seu primeiro código C# — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/training/paths/get-started-c-sharp-part-1/",
+          "language": "Português",
+          "format": "Curso interativo",
+          "focus": "Faça o primeiro módulo antes de abrir DTOs: saída no console, variáveis e operações. Não exige conhecimento prévio."
+        },
+        {
           "title": "C# do zero — Prof. Ermogenes e Prof. Diego",
           "url": "https://www.youtube.com/playlist?list=PLk6PnAig6xXKg988f8Ewq1iFm4_ZH9nA5",
           "language": "Português",
           "format": "Vídeo",
           "focus": "Selecione ambiente, variáveis, decisões, métodos, classes e listas; pratique entre as aulas. Interfaces e templates antigos podem diferir."
-        },
-        {
-          "title": "Seu primeiro código C# — Microsoft Learn",
-          "url": "https://learn.microsoft.com/pt-br/training/paths/get-started-c-sharp-part-1/",
-          "language": "Português",
-          "format": "Curso",
-          "focus": "Faça os exercícios de tipos, variáveis e operações. Este curso é apoio para a etapa de C#, não pré-requisito para usar APIs."
         },
         {
           "title": "Depuração com exemplos — Prof. Ermogenes",
@@ -330,6 +338,13 @@
         "Use decimal para valores monetários no backend e transporte moeda e data de referência. Nesta trilha o agente apenas apresenta valores retornados, sem inferir os que faltam."
       ],
       "resources": [
+        {
+          "title": "Criar uma API Web — módulo iniciante Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/training/modules/build-web-api-aspnet-core/",
+          "language": "Português",
+          "format": "Curso interativo",
+          "focus": "Faça o módulo guiado para observar projeto, endpoint e execução. Se faltar C#, retorne à etapa anterior."
+        },
         {
           "title": "Sua primeira API — Microsoft Learn",
           "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",

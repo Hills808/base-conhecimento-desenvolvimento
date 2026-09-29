@@ -155,7 +155,7 @@
   .furina-character { height: 149px; }
   .furina-invite { top: 7px; right: -2px; font-size: 10px; }
   .furina-hide { opacity: 1; right: 0; bottom: 0; }
-  .furina-guide.dock-left .furina-hide { left: 0; }
+.furina-guide.dock-left .furina-hide { left: 0; }
   .furina-speech, .dock-left .furina-speech {
     position: fixed;
     left: 10px;
@@ -171,3 +171,9 @@
   .furina-confetti i, .furina-invite, .furina-speech { animation: none !important; }
   .furina-confetti { display: none; }
 }
+
+.furina-speech { width: min(312px, calc(100vw - 170px)); }
+.furina-speech-name small,.furina-more,.furina-speech-foot { font-size: 12px; }
+.furina-speech p { font-size: 14px; }
+.furina-options button { font-size: 12px; }
+@media (max-width: 720px) { .furina-speech { width: auto; } }

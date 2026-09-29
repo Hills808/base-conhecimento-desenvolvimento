@@ -2,7 +2,7 @@
 
 [Abrir percurso interativo](https://hills808.github.io/base-conhecimento-desenvolvimento/?modulo=9&etapa=1)
 
-14 etapas, quatro níveis. Comece pela etapa 1; avance quando conseguir demonstrar a entrega. Materiais em português têm prioridade. C# entra antes da implementação. Este guia acompanha a mesma sequência do site.
+14 etapas, quatro níveis (0–3). Se nunca usou API, JSON ou Bruno, abra a **aula 0** no percurso interativo e comece pela etapa 1. Avance quando conseguir demonstrar a entrega. Este arquivo mantém a sequência e as atividades para consulta offline; os exemplos resolvidos passo a passo estão no site.
 
 Estimativa editorial: 100–159 horas, conforme base anterior e prática. Não é garantia de domínio. Use sessões de 45 minutos e registre as dúvidas.
 
@@ -12,7 +12,7 @@ Todos os exemplos são fictícios. APP → ROUTER → AGENT → TOOL e os quatro
 
 ## Sequência
 
-1. **Leia HTTP e JSON sem adivinhar** — 3–5 h
+1. **Comece do zero: API, HTTP e JSON** — 3–5 h
 
 2. **Faça chamadas e testes no Bruno** — 4–6 h
 
@@ -42,19 +42,21 @@ Todos os exemplos são fictícios. APP → ROUTER → AGENT → TOOL e os quatro
 
 <a id="etapa-1"></a>
 
-## 01. Leia HTTP e JSON sem adivinhar
+## 01. Comece do zero: API, HTTP e JSON
 
-**Nível:** Fundamentos para usar APIs · **Estimativa:** 3–5 h
+**Nível 0:** Primeiro contato com APIs · **Estimativa:** 3–5 h
 
 **Pré-requisito:** Nenhum. Comece aqui se método, status ou JSON ainda confundem.
 
-**Objetivo:** Entender exatamente o que uma API recebeu e devolveu.
+**Objetivo:** Entender quem faz um pedido, o que é devolvido e como ler os dados sem programar.
 
 ### Entenda o essencial
 
 URL, endpoint e método · Headers, status e corpo · Objeto, array, null e campo ausente
 
-Uma API é um ponto de comunicação entre sistemas. HTTP organiza a chamada; JSON é um dos formatos usados no corpo. Um status 200 não garante que todos os dados necessários estejam presentes.
+Uma API é uma porta de comunicação: um programa faz um pedido e outro devolve uma resposta. Você já usa isso ao abrir um endereço no navegador; aqui vamos observar o pedido e os dados de volta, sem escrever código.
+
+HTTP organiza a chamada; JSON é um dos formatos usados no corpo. Um status 200 não garante que todos os dados necessários estejam presentes.
 
 No laboratório, null significa valor explicitamente ausente. Um campo que não veio pode ter outra causa. Zero é um valor: nunca substitua ausência por 0 para fazer uma resposta parecer completa.
 
@@ -64,7 +66,9 @@ No laboratório, null significa valor explicitamente ausente. Um campo que não 
 
 ### Materiais em ordem
 
-- **Principal:** [HTTP: visão geral — MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview) — Leitura, Português. Leia cliente, servidor, requisição e resposta. Ignore detalhes de cache nesta primeira passagem.
+- **Principal:** [O que é uma API REST? API, HTTP e REST para iniciantes](https://www.youtube.com/watch?v=9SbUPqKEWcY) — Vídeo, Português. Entenda pedido, resposta e método; ignore implementação na primeira vez.
+
+- **Apoio:** [Visão geral do cliente-servidor — MDN](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview) — Leitura, Português. Leia o início e o exemplo de requisição/resposta.
 
 - **Apoio:** [O que é uma API — AWS](https://aws.amazon.com/pt/what-is/api/) — Leitura, Português. Leia a explicação inicial e API REST. Volte ao seu próprio exemplo de requisição.
 
@@ -94,7 +98,7 @@ No laboratório, null significa valor explicitamente ausente. Um campo que não 
 
 ## 02. Faça chamadas e testes no Bruno
 
-**Nível:** Fundamentos para usar APIs · **Estimativa:** 4–6 h
+**Nível 0:** Primeiro contato com APIs · **Estimativa:** 4–6 h
 
 **Pré-requisito:** Etapa 1: leitura de HTTP e JSON.
 
@@ -109,15 +113,14 @@ A coleção guarda requisições reproduzíveis. Um ambiente separa valores como
 Use apenas a API pública fictícia ou uma API local neste percurso. Tokens reais, cookies e dados de clientes não entram em exemplos nem em commits.
 
 ```
-test("retorna post 1", function () {
-  expect(res.getStatus()).to.equal(200);
-  expect(res.getBody().id).to.equal(1);
-});
+GET {{baseUrl}}/posts/1
+Assert: res.status equals 200
+Assert: res.body.id equals 1
 ```
 
 ### Materiais em ordem
 
-- **Principal:** [Primeira coleção — Bruno](https://blog.usebruno.com/bruno-tutorial) — Tutorial, Inglês. Siga instalação, coleção e primeira requisição. Use o roteiro em português desta etapa como apoio.
+- **Principal:** [Primeiros passos, coleção e Assert — Bruno oficial](https://docs.usebruno.com/introduction/quick-start) — Tutorial, Inglês. Siga seções 1, 2, 4 e 5 com o exemplo resolvido em português no site.
 
 - **Apoio:** [Testes de resposta — Bruno](https://docs.usebruno.com/testing/tests/introduction) — Documentação, Inglês. Use somente a estrutura test/expect e verificações de status e corpo; não é preciso aprender toda a API de scripts.
 
@@ -147,7 +150,7 @@ test("retorna post 1", function () {
 
 ## 03. Defina contratos e estados de resposta
 
-**Nível:** Fundamentos para usar APIs · **Estimativa:** 5–8 h
+**Nível 1:** Contratos e arquitetura · **Estimativa:** 5–8 h
 
 **Pré-requisito:** Etapas 1–2. Não precisa programar o backend ainda.
 
@@ -163,7 +166,7 @@ Os quatro estados usados aqui são convenções deste projeto fictício, não es
 
 ### Materiais em ordem
 
-- **Principal:** [OpenAPI em ASP.NET Core — Microsoft Learn](https://learn.microsoft.com/pt-br/aspnet/core/fundamentals/openapi/overview?view=aspnetcore-10.0) — Leitura, Português. Entenda documento, geração e interface de exploração. Nesta etapa não é necessário criar um servidor.
+- **Principal:** [O que é uma especificação OpenAPI? — Microsoft Learn](https://learn.microsoft.com/pt-br/microsoft-cloud/dev/dev-proxy/concepts/what-is-openapi-spec) — Leitura, Português. Entenda documento, operações e schemas antes de implementar.
 
 - **Apoio:** [JSON Schema: fundamentos](https://json-schema.org/learn) — Referência, Inglês. Consulte object, properties e required. Use o exemplo fornecido como ponto de partida.
 
@@ -193,7 +196,7 @@ Os quatro estados usados aqui são convenções deste projeto fictício, não es
 
 ## 04. Desenhe o agente e seu contrato de atuação
 
-**Nível:** Arquitetura e comportamento · **Estimativa:** 5–8 h
+**Nível 1:** Contratos e arquitetura · **Estimativa:** 5–8 h
 
 **Pré-requisito:** Etapa 3: entradas, saídas e limites definidos.
 
@@ -237,7 +240,7 @@ Escreva no prompt como usar resultados e explicar ausência. No runtime, configu
 
 ## 05. Teste roteamento e colisões de intenção
 
-**Nível:** Arquitetura e comportamento · **Estimativa:** 5–8 h
+**Nível 1:** Contratos e arquitetura · **Estimativa:** 5–8 h
 
 **Pré-requisito:** Etapa 4: fluxo desenhado.
 

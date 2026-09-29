@@ -2,11 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, ExternalLink, Download, Lightbulb, ShieldAlert, Sparkles, CircleHelp } from "lucide-react";
 import curriculum from "./data/laboratory.json";
 import resources from "./data/resources.json";
+import { labScaffolds } from "./data/lab-scaffolds";
 import StudyFocus from "./StudyFocus";
 import { guidance } from "./studyGuidance";
 import "./laboratory.css";
 
 const { steps, phases } = curriculum;
+const levelEntry = [
+  { name: "Primeiros passos", test: "Nunca usei API, JSON ou Bruno." },
+  { name: "Contratos e agentes", test: "Já leio JSON e faço GET no Bruno." },
+  { name: "C# e MCP", test: "Já desenho contratos e testo rotas." },
+  { name: "Segurança e qualidade", test: "Já integro API, tool e agente localmente." }
+];
 const storageKey = "curva-aberta-laboratorio-v2";
 type Progress = { done: string[]; checks: Record<string, boolean>; last: number; completedAt: Record<string, string>; reviews: Record<string, boolean> };
 const empty: Progress = { done: [], checks: {}, last: 0, completedAt: {}, reviews: {} };
@@ -36,12 +43,18 @@ export default function Laboratory() {
   const [current, setCurrent] = useState(() => fromUrl() ?? readProgress().last);
   const [notice, setNotice] = useState("");
   const [hours, setHours] = useState("4");
+  const [levelFilter, setLevelFilter] = useState<number | "all">("all");
+  const [languageFilter, setLanguageFilter] = useState<"all" | "pt">("all");
   const [mapOpen, setMapOpen] = useState(() => !matchMedia("(max-width: 700px)").matches);
   const heading = useRef<HTMLHeadingElement>(null);
   const step = steps[current];
   const finished = progress.done.includes(step.id);
   const ready = step.checks.every((_, i) => progress.checks[`${step.id}-${i}`]);
   const guide = guidance[step.id];
+  const scaffold = labScaffolds[step.id];
+  const portugueseCount = step.resources.filter(r => r.language.startsWith("Português")).length;
+  const effectiveLanguage = portugueseCount ? languageFilter : "all";
+  const visibleResources = effectiveLanguage === "pt" ? step.resources.filter(r => r.language.startsWith("Português")) : step.resources;
   const completedDate = progress.completedAt[step.id];
   const reviewDate = completedDate ? new Date(new Date(completedDate).getTime() + 7 * 86400000) : null;
   const totalMin = steps.reduce((sum, s) => sum + Number(s.hours.split("–")[0]), 0);
@@ -67,11 +80,16 @@ export default function Laboratory() {
   }
   function go(index: number) {
     if (!validStep(index)) return;
+    if (levelFilter !== "all" && steps[index].phase !== levelFilter) setLevelFilter(steps[index].phase);
     setCurrent(index); save({ ...progress, last: index });
     if (matchMedia("(max-width: 700px)").matches) setMapOpen(false);
     const url = new URL(location.href); url.searchParams.set("etapa", String(index + 1));
     history.pushState({}, "", url.pathname + url.search);
     requestAnimationFrame(() => { heading.current?.focus(); heading.current?.scrollIntoView({block:"start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); });
+  }
+  function chooseLevel(level: number | "all") {
+    setLevelFilter(level);
+    if (level !== "all" && step.phase !== level) go(steps.findIndex(s => s.phase === level));
   }
   function toggleCheck(index: number) {
     const key = `${step.id}-${index}`;
@@ -94,11 +112,13 @@ export default function Laboratory() {
   }
   return <section className="lab" aria-label="Percurso guiado de APIs, agentes e MCP">
     <div className="lab-welcome">
-      <div><span className="eyebrow">SEU PERCURSO DE TRABALHO</span><h2>Da primeira API à integração confiável.</h2><p>14 etapas em uma sequência única. Leia o essencial, siga o material principal, pratique e comprove a entrega. Você pode revisar ou explorar qualquer etapa.</p></div>
+      <div><span className="eyebrow">LABORATÓRIO GUIADO · DO ZERO AO AVANÇADO</span><h2>Da primeira API à integração confiável.</h2><p>{steps.length} etapas em quatro níveis. Você pode começar sem saber programar: veja um exemplo resolvido, faça com apoio e só depois tente a entrega independente.</p></div>
       <div className="lab-progress"><strong>{progress.done.length}<span> / {steps.length}</span></strong><span>etapas com entrega registrada</span><progress value={progress.done.length} max={steps.length} aria-label="Progresso no laboratório"/><small>Salvo somente neste navegador. O progresso antigo de três níveis não equivale às novas entregas.</small></div>
     </div>
+    <section className="lab-level-picker" aria-label="Escolher nível do laboratório"><div><span className="eyebrow">ESCOLHA PELO QUE JÁ CONSEGUE FAZER</span><h3>Qual parte do caminho faz sentido agora?</h3><p>O filtro organiza o mapa, não apaga seu progresso. Se estiver começando, escolha nível 0; os outros níveis continuam disponíveis. Para pular, tente primeiro a entrega e os critérios da etapa anterior.</p></div><div className="lab-level-options" role="group" aria-label="Filtrar etapas por nível"><button className={levelFilter === "all" ? "active" : ""} aria-pressed={levelFilter === "all"} onClick={()=>chooseLevel("all")}><strong>Todos</strong><small>Ver as {steps.length} etapas</small></button>{phases.map((phase, index)=><button key={phase.title} className={levelFilter === index ? "active" : ""} aria-pressed={levelFilter === index} onClick={()=>chooseLevel(index)}><strong>Nível {index} · {levelEntry[index].name}</strong><small>{levelEntry[index].test}</small></button>)}</div></section>
     <details className="lab-onboarding" open={progress.done.length === 0 ? true : undefined}>
-      <summary>Primeiro acesso? Veja como começar e organizar seu ritmo</summary>
+      <summary>Começando do zero? Abra a aula 0 e organize seu ritmo</summary>
+      <div className="lab-zero"><span className="eyebrow">AULA 0 · SEM INSTALAÇÃO</span><h3>O que você vai ver antes de escrever código</h3><p>Imagine que um aplicativo pede um dado a outro. Ele envia uma <strong>requisição</strong> para uma <strong>URL</strong> e recebe uma <strong>resposta</strong>. O método <code>GET</code> pede leitura. O <strong>status</strong> informa como a chamada terminou; o <strong>corpo</strong> pode trazer dados em <code>JSON</code>.</p><div className="lab-zero-example"><code>GET /posts/1</code><span>pedido → resposta</span><code>{'{"id":1,"title":"Exemplo"}'}</code></div><p>Neste exemplo, <code>id</code> é uma chave, <code>1</code> é seu valor e <code>title</code> é texto. Não é preciso decorar a sintaxe agora. Na etapa 1 você vai abrir uma resposta real de demonstração e apontar essas partes.</p><strong>Pronto para começar quando conseguir dizer:</strong><ul><li>Quem fez o pedido e quem respondeu?</li><li>Onde vejo o identificador no JSON?</li><li>O que ainda não sei só olhando esse corpo?</li></ul></div>
       <div className="lab-onboarding-grid"><div><h3>Hoje: uma tarefa pequena</h3><p>Comece pela etapa 1. Faça uma sessão de 45 minutos: 10 para entender, 15 para o material e 20 para praticar. Se faltar tempo, retome a mesma entrega.</p><p>Já domina um assunto? Faça o exercício e os três critérios de verificação; só então pule o estudo principal.</p><button className="lab-action" onClick={()=>go(0)}>Começar pela etapa 1 <ArrowRight size={16}/></button></div><div><h3>Um planejamento realista</h3><label htmlFor="study-hours">Disponibilidade semanal</label><select id="study-hours" value={hours} onChange={e=>setHours(e.target.value)}><option value="3">3 horas por semana</option><option value="4">4 horas por semana</option><option value="6">6 horas por semana</option><option value="8">8 horas por semana</option></select><p>Estimativa: {Math.ceil(totalMin/Number(hours))}–{Math.ceil(totalMax/Number(hours))} semanas ({totalMin}–{totalMax} h de estudo e prática). É uma referência editorial, não prazo obrigatório. A experiência anterior muda esse tempo.</p></div></div>
       <p className="lab-small">Materiais de leitura gratuitos; certificação não é requisito. O início usa dados públicos fictícios e ferramentas locais. Nas integrações com modelos, contas e APIs podem ter custos: use respostas simuladas para testar contratos antes de escolher um serviço.</p>
     </details>
@@ -107,17 +127,17 @@ export default function Laboratory() {
       <ol>{phases.map((phase, index) => { const phaseSteps = steps.filter(s => s.phase === index); const completed = phaseSteps.filter(s => progress.done.includes(s.id)).length; return <li key={phase.title} className={completed === phaseSteps.length ? "earned" : ""}><span>{completed === phaseSteps.length ? <Check size={15} aria-label="Marco conquistado"/> : `${String(index + 1).padStart(2, "0")}`}</span><div><strong>{phase.title}</strong><small>{completed}/{phaseSteps.length} entregas · {completed === phaseSteps.length ? "Marco conquistado" : "em construção"}</small></div></li>; })}</ol>
     </section>
     <div className="lab-layout">
-      <details className="lab-map-shell" open={mapOpen} onToggle={e=>setMapOpen(e.currentTarget.open)}><summary>Ver caminho completo · {current+1}/14</summary><nav className="lab-map" aria-label="Etapas do laboratório">
+      <details className="lab-map-shell" open={mapOpen} onToggle={e=>setMapOpen(e.currentTarget.open)}><summary>Ver etapas {levelFilter === "all" ? "de todos os níveis" : `do nível ${levelFilter}`} · {current+1}/{steps.length}</summary><nav className="lab-map" aria-label="Etapas do laboratório">
         <h3>Seu caminho</h3>
-        {phases.map((phase, phaseIndex)=><div className="lab-phase" key={phase.title}><h4><span>NÍVEL {phaseIndex+1}</span>{phase.title}</h4>{steps.map((s,index)=>s.phase===phaseIndex && <button key={s.id} onClick={()=>go(index)} aria-current={current===index?"step":undefined} className={current===index?"selected":""}><span className="lab-step-number">{progress.done.includes(s.id)?<Check size={16} aria-label="Concluída"/>:String(index+1).padStart(2,"0")}</span><span>{s.title}<small>{s.hours}</small></span></button>)}</div>)}
+        {phases.map((phase, phaseIndex)=>levelFilter !== "all" && phaseIndex !== levelFilter ? null : <div className="lab-phase" key={phase.title}><h4><span>NÍVEL {phaseIndex}</span>{phase.title}</h4><p>{phase.subtitle}</p>{steps.map((s,index)=>s.phase===phaseIndex && <button key={s.id} onClick={()=>go(index)} aria-current={current===index?"step":undefined} className={current===index?"selected":""}><span className="lab-step-number">{progress.done.includes(s.id)?<Check size={16} aria-label="Concluída"/>:String(index+1).padStart(2,"0")}</span><span>{s.title}<small>{s.hours}</small></span></button>)}</div>)}
       </nav></details>
       <article className="lab-lesson">
-        <header><span className="eyebrow">NÍVEL {step.phase+1} · ETAPA {String(current+1).padStart(2,"0")} DE 14 · {step.hours}</span><h2 ref={heading} tabIndex={-1}>{step.title}</h2><p className="lab-goal">{step.goal}</p><p className="lab-prerequisite"><strong>Antes desta etapa:</strong> {step.prerequisite}</p></header>
+        <header><span className="eyebrow">NÍVEL {step.phase} · ETAPA {String(current+1).padStart(2,"0")} DE {steps.length} · {step.hours}</span><h2 ref={heading} tabIndex={-1}>{step.title}</h2><p className="lab-goal">{step.goal}</p><p className="lab-prerequisite"><strong>Antes desta etapa:</strong> {step.prerequisite}</p></header>
         <StudyFocus stepId={step.id} stepTitle={step.title} suggestedGoal={guide.focusGoal} />
         <section><h3>01. Entenda o essencial</h3><div className="lab-concepts">{step.concepts.map(c=><span key={c}>{c}</span>)}</div>{step.lesson.map(p=><p key={p}>{p}</p>)}{step.example && <pre tabIndex={0} aria-label="Exemplo didático"><code>{step.example}</code></pre>}</section>
         <section className="learning-cues" aria-label="Dicas desta etapa"><h3>Entre no ponto certo</h3><div className="learning-cues-grid"><article className="cue tip"><Lightbulb size={19}/><div><strong>Dica prática</strong><p>{guide.tip}</p></div></article><article className="cue attention"><ShieldAlert size={19}/><div><strong>Ponto de atenção</strong><p>{guide.attention}</p></div></article><article className="cue curiosity"><Sparkles size={19}/><div><strong>Curiosidade técnica</strong><p>{guide.curiosity}</p></div></article></div></section>
-        <section><h3>02. Estude com apoio</h3><p className="lab-small">Comece pelo primeiro material. Os demais servem para dúvidas e aprofundamento. Veja exatamente o trecho a estudar em cada cartão.</p><div className="lab-materials">{step.resources.map((r,index)=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer"><span className="lab-resource-label">{index===0?"PRINCIPAL":"APOIO"} · {r.format} · {r.language}</span><strong>{r.title} <ExternalLink size={15}/></strong><span>{r.focus}</span><small>Abre em outra aba</small></a>)}</div></section>
-        <section><h3>03. Faça a entrega</h3><ol className="lab-tasks">{step.tasks.map(t=><li key={t}>{t}</li>)}</ol><div className="lab-deliverable"><strong>O que guardar</strong><p>{step.deliverable}</p></div><details className="lab-help"><summary>Travou? Confira este ponto</summary><p>{step.help}</p></details></section>
+        <section><h3>02. Estude com apoio</h3><p className="lab-small">O cartão principal indica o primeiro material; leia o trecho indicado, não o curso inteiro. Depois volte para o exemplo guiado. Conteúdos em inglês têm instruções em português nesta página.</p><div className="lab-material-filter" role="group" aria-label="Idioma dos materiais"><button className={effectiveLanguage === "all" ? "active" : ""} aria-pressed={effectiveLanguage === "all"} onClick={()=>setLanguageFilter("all")}>Todos os materiais ({step.resources.length})</button><button className={effectiveLanguage === "pt" ? "active" : ""} aria-pressed={effectiveLanguage === "pt"} disabled={!portugueseCount} onClick={()=>setLanguageFilter("pt")}>Só em português ({portugueseCount})</button></div>{!portugueseCount && <p className="lab-small">Ainda não há tutorial oficial desta ferramenta em português nesta etapa. O exemplo resolvido abaixo explica a operação em português.</p>}<div className="lab-materials">{visibleResources.map((r,index)=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer"><span className="lab-resource-label">{index===0?"COMECE POR AQUI":"APOIO"} · {r.format} · {r.language}</span><strong>{r.title} <ExternalLink size={15}/></strong><span>{r.focus}</span><small>Abre em outra aba</small></a>)}</div></section>
+        <section><h3>03. Faça com apoio, depois sozinho</h3><div className="lab-guided"><span className="eyebrow">EXEMPLO RESOLVIDO · PRIMEIRO PASSO</span><h4>Faça comigo</h4><p>{scaffold.first}</p><ol>{scaffold.walkthrough.map(item=><li key={item}>{item}</li>)}</ol><div className="lab-guided-example"><strong>Exemplo didático</strong><pre tabIndex={0}><code>{scaffold.example}</code></pre></div><p><strong>Como conferir:</strong> {scaffold.expected}</p><details><summary>Se não funcionar, tente isto</summary><p>{scaffold.unblock}</p></details></div><h4 className="lab-your-turn">Agora é sua vez · entrega independente</h4><ol className="lab-tasks">{step.tasks.map(t=><li key={t}>{t}</li>)}</ol><div className="lab-deliverable"><strong>O que guardar</strong><p>{step.deliverable}</p></div><details className="lab-help"><summary>Travou na entrega? Confira este ponto</summary><p>{step.help}</p></details></section>
         <section className="lab-checks"><h3>04. Confira antes de avançar</h3><p className="lab-small">Marque o que você demonstrou com a entrega. Assistir ou ler, por si só, não conclui a etapa.</p>{step.checks.map((check,index)=><label key={check}><input type="checkbox" checked={!!progress.checks[`${step.id}-${index}`]} onChange={()=>toggleCheck(index)}/><span>{check}</span></label>)}<button className="lab-action" disabled={!ready} onClick={complete}><Check size={17}/>{finished?"Reabrir etapa":"Registrar entrega concluída"}</button>{!ready && <small>Os três critérios precisam estar marcados para registrar a conclusão.</small>}</section>
         <section className="lab-recall"><div><span className="eyebrow">CHECK DE 30 SEGUNDOS</span><h3><CircleHelp size={20}/>Você consegue explicar?</h3><p>{guide.question}</p><details><summary>Ver uma resposta possível</summary><p>{guide.answer}</p></details></div>{finished && <aside><strong>Revisão futura</strong><p>{progress.reviews[step.id] ? "Revisão curta registrada." : `Volte em ${reviewDate?.toLocaleDateString("pt-BR")} e responda à pergunta sem consultar o material.`}</p><button className="focus-quiet" onClick={markReviewed}>{progress.reviews[step.id] ? "Reabrir revisão" : "Registrar revisão de 2 min"}</button></aside>}</section>
         <div className="lab-pagination"><button onClick={()=>go(current-1)} disabled={current===0}><ArrowLeft size={17}/> Etapa anterior</button><button onClick={()=>go(current+1)} disabled={current===steps.length-1}>Próxima etapa <ArrowRight size={17}/></button></div>
@@ -128,7 +148,7 @@ export default function Laboratory() {
       <details><summary>Glossário e diferenças que evitam confusão</summary><dl><dt>API / tool / MCP</dt><dd>API é uma interface entre sistemas; tool é uma capacidade invocável pelo agente; MCP é um protocolo para expor e acessar capacidades.</dd><dt>Prompt / Skill / runtime</dt><dd>Prompt orienta comportamento; Skill organiza um procedimento e seus recursos; runtime executa e aplica os controles disponíveis no ambiente.</dd><dt>Contrato / DTO / schema</dt><dd>Contrato define o acordo; DTO transporta dados no código; schema descreve sua estrutura e permite validação.</dd><dt>RAG / fonte</dt><dd>RAG recupera material para apoiar a resposta. Uma citação precisa apontar a evidência que de fato sustenta o conteúdo.</dd><dt>Avançado neste percurso</dt><dd>Diagnosticar falhas entre camadas, testar segurança e comportamento, justificar decisões e entregar uma integração revisável. Isso exige prática, revisão e continuidade.</dd></dl></details>
       <details><summary>Biblioteca extra: vídeos, cursos e referências</summary><p>Consulta opcional. A ordem de estudo está nas etapas acima. Vídeos podem usar versões anteriores; uma página Microsoft em português não garante áudio em português.</p><ul>{resources.filter(r=>r.module===9).map(r=><li key={r.url}><a href={r.url} target="_blank" rel="noopener noreferrer">{r.title} <ExternalLink size={13}/></a></li>)}</ul></details>
     </div>
-    <p className="lab-small">Curadoria revisada em 28/09/2026. Arquitetura, comandos, estados e casos são exemplos de um assistente fictício; não descrevem sistemas de nenhuma empresa. Use apenas dados de demonstração.</p>
+    <p className="lab-small">Curadoria revisada em 29/09/2026. Arquitetura, comandos, estados e casos são exemplos de um assistente fictício; não descrevem sistemas de nenhuma empresa. Use apenas dados de demonstração.</p>
     <p role="status" aria-live="polite" className="lab-notice">{notice}</p>
   </section>;
 }
