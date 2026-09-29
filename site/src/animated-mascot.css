@@ -6,6 +6,7 @@
   color: var(--furina-ink);
   pointer-events: none;
 }
+.furina-guide:not(.is-dragging) { transition: left .38s cubic-bezier(.2,.75,.2,1), bottom .3s ease-out; }
 .furina-guide button { font: inherit; }
 .furina-character {
   display: block;
@@ -34,6 +35,7 @@
 .furina-rig-left-arm { left: 12.5%; top: 28.125%; width: 28.333%; transform-origin: 75% 12%; }
 .furina-rig-right-arm { left: 59.167%; top: 28.125%; width: 28.333%; transform-origin: 25% 12%; }
 .furina-rig-legs { left: 38.333%; top: 65%; width: 22.5%; transform-origin: 52% 9%; }
+.furina-guide:not(.is-greeting):not(.is-celebrating) .furina-rig-head { transition: transform .22s ease-out; }
 .furina-guide:is(.is-greeting, .is-celebrating) .furina-puppet-stage,
 .furina-guide:is(.is-greeting, .is-celebrating) .furina-puppet img { will-change: transform; }
 .furina-invite {
@@ -179,6 +181,7 @@
   .furina-speech-name small { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .furina-guide, .furina-rig-head { transition: none !important; }
   .furina-confetti i, .furina-invite, .furina-speech { animation: none !important; }
   .furina-confetti { display: none; }
 }

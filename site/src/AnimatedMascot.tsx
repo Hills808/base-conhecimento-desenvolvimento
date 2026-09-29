@@ -80,9 +80,10 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
     const leftArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-left-arm");
     const rightArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-right-arm");
+    const torso = puppet.current?.querySelector<HTMLElement>(".furina-rig-torso");
     const legs = puppet.current?.querySelector<HTMLElement>(".furina-rig-legs");
-    const parts = [stage, head, leftArm, rightArm, legs];
-    if (!stage || !head || !leftArm || !rightArm || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
+    const parts = [stage, head, leftArm, rightArm, torso, legs];
+    if (!stage || !head || !leftArm || !rightArm || !torso || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
     const duration = celebrating ? 2400 : 1900;
     let start = 0;
     let frame = 0;
@@ -92,13 +93,15 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       const fraction = t / duration;
       if (celebrating) {
         const phase = 4 * Math.PI * fraction;
-        const ease = Math.min(1, t / 240, (duration - t) / 240);
-        const hop = (1 - Math.cos(phase)) * 4.5 * ease;
-        stage.style.transform = `translate3d(${(Math.sin(phase) * 2 * ease).toFixed(2)}px,${(-hop).toFixed(2)}px,0) rotate(${(3.5 * Math.sin(phase) * ease).toFixed(2)}deg)`;
-        head.style.transform = `rotate(${(6 * Math.sin(phase + .6) * ease).toFixed(2)}deg)`;
-        leftArm.style.transform = `rotate(${(-23 * Math.sin(phase - .2) * ease).toFixed(2)}deg)`;
-        rightArm.style.transform = `rotate(${(23 * Math.sin(phase + .7) * ease).toFixed(2)}deg)`;
-        legs.style.transform = `rotate(${(6 * Math.sin(phase + 1.5) * ease).toFixed(2)}deg)`;
+        const smooth = (value: number) => { const x = clamp(value, 0, 1); return x * x * (3 - 2 * x); };
+        const ease = smooth(t / 260) * smooth((duration - t) / 280);
+        const lift = (1 - Math.cos(phase)) / 2;
+        stage.style.transform = `translate3d(${(2 * Math.sin(phase) * ease).toFixed(2)}px,${(-9 * lift * ease).toFixed(2)}px,0) rotate(${(3 * Math.sin(phase) * ease).toFixed(2)}deg)`;
+        head.style.transform = `rotate(${(-5 * Math.sin(phase - .35) * ease).toFixed(2)}deg)`;
+        torso.style.transform = `rotate(${(2 * Math.sin(phase - .5) * ease).toFixed(2)}deg)`;
+        leftArm.style.transform = `rotate(${((32 * lift + 4 * Math.sin(phase)) * ease).toFixed(2)}deg)`;
+        rightArm.style.transform = `rotate(${((-32 * lift + 4 * Math.sin(phase + .7)) * ease).toFixed(2)}deg)`;
+        legs.style.transform = `rotate(${(5 * Math.sin(phase + .7) * ease).toFixed(2)}deg)`;
       } else {
         const ease = Math.sin(Math.PI * fraction);
         stage.style.transform = `translate3d(0,${(-2 * ease).toFixed(2)}px,0) rotate(${(-2 * ease).toFixed(2)}deg)`;
@@ -212,7 +215,15 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }
   function moveDrag(event: React.PointerEvent<HTMLButtonElement>) {
     const current = drag.current;
-    if (!current || current.pointerId !== event.pointerId || !root.current) return;
+    if (!current) {
+      if (celebrating || greeting || !puppet.current) return;
+      const head = puppet.current.querySelector<HTMLElement>(".furina-rig-head");
+      const box = event.currentTarget.getBoundingClientRect();
+      const angle = clamp((event.clientX - box.left) / box.width * 8 - 4, -4, 4);
+      if (head) head.style.transform = `rotate(${angle.toFixed(1)}deg)`;
+      return;
+    }
+    if (current.pointerId !== event.pointerId || !root.current) return;
     if (!current.moved && Math.hypot(event.clientX - current.x, event.clientY - current.y) > 5) {
       current.moved = true;
       setDragging(true); setOpen(false); setGreeting(false);
@@ -236,6 +247,23 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       setSaved(value => ({ ...value, x, dock: x < .5 ? "left" : "right", offsetY }));
     }
     drag.current = null; setDragging(false);
+  }
+  function leaveCharacter() {
+    if (!drag.current && !celebrating && !greeting) {
+      const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
+      if (head) head.style.transform = "";
+    }
+  }
+  function moveByKeyboard(event: React.KeyboardEvent<HTMLButtonElement>) {
+    const horizontal = event.key === "ArrowLeft" ? -.15 : event.key === "ArrowRight" ? .15 : 0;
+    const vertical = event.key === "ArrowUp" ? 24 : event.key === "ArrowDown" ? -24 : 0;
+    if (!horizontal && !vertical) return;
+    event.preventDefault();
+    setSaved(value => {
+      const x = clamp(value.x + horizontal, 0, 1);
+      const maxOffset = Math.max(0, viewport.height - mascotHeight(viewport.width) - 2 * edge);
+      return { ...value, x, dock: x < .5 ? "left" : "right", offsetY: clamp(value.offsetY + vertical, 0, maxOffset) };
+    });
   }
   function clickCharacter() {
     if (suppressClick.current) return;
@@ -267,7 +295,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => setSaved(value => ({ ...value, dock: "left", x: 0 }))} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => setSaved(value => ({ ...value, dock: "right", x: 1 }))} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
-    <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste para mudar de lado" : "Abrir dica da Furina; arraste para mudar de lado"} aria-expanded={open}>
+    <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onPointerLeave={leaveCharacter} onKeyDown={moveByKeyboard} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste ou use as setas para mover" : "Abrir dica da Furina; arraste ou use as setas para mover"} aria-expanded={open}>
       <span className="furina-puppet" ref={puppet} aria-hidden="true">
         <span className="furina-puppet-stage">
           <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} alt="" draggable={false}/>
