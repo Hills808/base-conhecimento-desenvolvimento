@@ -7,8 +7,12 @@ import "./animated-mascot.css";
 type Mode = "tip" | "attention" | "review" | "curiosity" | "success";
 type LabContext = { step: number; title: string; tip: string; attention: string; curiosity: string; question: string; answer: string };
 type ModuleContext = { moduleId: number; stage: number };
-type Saved = { dock: "left" | "right"; offsetY: number; hidden: boolean };
+type Saved = { dock: "left" | "right"; x: number; offsetY: number; hidden: boolean };
 const storageKey = "curva-aberta-furina-v2";
+const edge = 8;
+const mascotWidth = (viewportWidth: number) => viewportWidth <= 720 ? 112 : 148;
+const mascotHeight = (viewportWidth: number) => viewportWidth <= 720 ? 149 : 197;
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 const curiosities: Record<number, string> = {
   0: "Explicar com suas palavras revela dúvidas que passaram despercebidas durante a leitura.",
   1: "Depurar um programa pequeno ensina mais do que copiar um projeto longo sem conseguir explicá-lo.",
@@ -25,8 +29,9 @@ const curiosities: Record<number, string> = {
 function readSaved(): Saved {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
-    return { dock: saved?.dock === "left" ? "left" : "right", offsetY: Number.isFinite(saved?.offsetY) ? Math.max(0, saved.offsetY) : 0, hidden: saved?.hidden === true };
-  } catch { return { dock: "right", offsetY: 0, hidden: false }; }
+    const dock = saved?.dock === "left" ? "left" : "right";
+    return { dock, x: Number.isFinite(saved?.x) ? clamp(saved.x, 0, 1) : dock === "left" ? 0 : 1, offsetY: Number.isFinite(saved?.offsetY) ? Math.max(0, saved.offsetY) : 0, hidden: saved?.hidden === true };
+  } catch { return { dock: "right", x: 1, offsetY: 0, hidden: false }; }
 }
 
 export default function AnimatedMascot({ module }: { module: Module | null }) {
@@ -37,11 +42,14 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const [lab, setLab] = useState<LabContext | null>(null);
   const [moduleContext, setModuleContext] = useState<ModuleContext | null>(null);
   const [celebrating, setCelebrating] = useState(false);
+  const [greeting, setGreeting] = useState(true);
+  const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }));
   const [announcement, setAnnouncement] = useState("");
   const [dragging, setDragging] = useState(false);
   const root = useRef<HTMLElement>(null);
-  const drag = useRef<{ x: number; y: number; moved: boolean } | null>(null);
+  const drag = useRef<{ pointerId: number; x: number; y: number; grabX: number; grabY: number; moved: boolean; left: number; bottom: number } | null>(null);
   const suppressClick = useRef(false);
+  const greetTimer = useRef<number | null>(null);
   const danceTimer = useRef<number | null>(null);
   const autoCloseTimer = useRef<number | null>(null);
   const stageIndex = module && moduleContext?.moduleId === module.id ? moduleContext.stage : 0;
@@ -49,6 +57,21 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const guide = module ? moduleGuidance[module.id]?.stages[stageIndex] : null;
   const labActive = module?.id === 9;
   const contextKey = labActive ? `lab-${lab?.step ?? 0}` : module ? `module-${module.id}-${stageIndex}` : "home";
+
+  function greet() {
+    if (celebrating || drag.current?.moved) return;
+    if (greetTimer.current) window.clearTimeout(greetTimer.current);
+    setGreeting(false);
+    window.requestAnimationFrame(() => {
+      setGreeting(true);
+      greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
+    });
+  }
+
+  useEffect(() => {
+    greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
+    return () => { if (greetTimer.current) window.clearTimeout(greetTimer.current); };
+  }, []);
 
   useEffect(() => {
     const onContext = (event: Event) => {
@@ -76,10 +99,10 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const celebrate = () => {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
       if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current);
-      setSaved(value => ({ ...value, hidden: false, offsetY: 0 }));
-      setMode("success"); setExpanded(false); setOpen(true); setCelebrating(true);
+      setSaved(value => ({ ...value, hidden: false }));
+      setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(true);
       setAnnouncement("Etapa concluída! Furina está comemorando com você.");
-      danceTimer.current = window.setTimeout(() => setCelebrating(false), 3000);
+      danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
       autoCloseTimer.current = window.setTimeout(() => setOpen(false), 7000);
     };
     window.addEventListener("curva-aberta-study-complete", celebrate);
@@ -98,14 +121,13 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }, [open]);
 
   useEffect(() => {
-    const keepVisible = () => {
-      const extra = open && window.innerWidth <= 620 ? 245 : 0;
-      const max = Math.max(0, window.innerHeight - (root.current?.offsetHeight || 270) - extra - 24);
-      setSaved(value => value.offsetY > max ? { ...value, offsetY: max } : value);
+    const resize = () => {
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+      setSaved(value => ({ ...value, offsetY: Math.min(value.offsetY, Math.max(0, window.innerHeight - mascotHeight(window.innerWidth) - edge)) }));
     };
-    keepVisible(); window.addEventListener("resize", keepVisible);
-    return () => window.removeEventListener("resize", keepVisible);
-  }, [open]);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
 
   const card = useMemo(() => {
     if (labActive && lab) return {
@@ -136,37 +158,57 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     cancelAutoClose(); setMode(next); setExpanded(false);
     if (next === "success") {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
-      setCelebrating(true); danceTimer.current = window.setTimeout(() => setCelebrating(false), 3000);
+      setGreeting(false); setCelebrating(true); danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
     }
     setAnnouncement(next === "success" ? "Furina está comemorando com você." : `${next === "tip" ? "Dica" : next === "attention" ? "Ponto de atenção" : next === "review" ? "Pergunta" : "Curiosidade"} atualizada.`);
   }
   function startDrag(event: React.PointerEvent<HTMLButtonElement>) {
     if (event.button !== 0) return;
     event.currentTarget.setPointerCapture(event.pointerId);
-    drag.current = { x: event.clientX, y: event.clientY, moved: false };
-    setDragging(true);
+    const box = root.current?.getBoundingClientRect();
+    if (!box) return;
+    drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, grabX: event.clientX - box.left, grabY: event.clientY - box.top, moved: false, left: box.left, bottom: window.innerHeight - box.bottom };
   }
   function moveDrag(event: React.PointerEvent<HTMLButtonElement>) {
-    if (!drag.current) return;
-    if (Math.hypot(event.clientX - drag.current.x, event.clientY - drag.current.y) > 7) drag.current.moved = true;
-    if (!drag.current.moved) return;
-    const extra = open && window.innerWidth <= 620 ? 245 : 0;
-    const max = Math.max(0, window.innerHeight - (root.current?.offsetHeight || 270) - extra - 24);
-    setSaved(value => ({ ...value, dock: event.clientX < window.innerWidth / 2 ? "left" : "right", offsetY: Math.min(max, Math.max(0, window.innerHeight - event.clientY - 135)) }));
+    const current = drag.current;
+    if (!current || current.pointerId !== event.pointerId || !root.current) return;
+    if (!current.moved && Math.hypot(event.clientX - current.x, event.clientY - current.y) > 5) {
+      current.moved = true;
+      setDragging(true); setOpen(false); setGreeting(false);
+    }
+    if (!current.moved) return;
+    const box = root.current.getBoundingClientRect();
+    current.left = clamp(event.clientX - current.grabX, edge, window.innerWidth - box.width - edge);
+    const top = clamp(event.clientY - current.grabY, edge, window.innerHeight - box.height - edge);
+    current.bottom = window.innerHeight - top - box.height;
+    root.current.style.left = `${current.left}px`;
+    root.current.style.bottom = `${current.bottom}px`;
   }
-  function endDrag() {
-    if (drag.current?.moved) { suppressClick.current = true; window.setTimeout(() => { suppressClick.current = false; }, 0); }
+  function endDrag(event: React.PointerEvent<HTMLButtonElement>) {
+    if (drag.current?.pointerId !== event.pointerId) return;
+    if (drag.current.moved) {
+      suppressClick.current = true;
+      window.setTimeout(() => { suppressClick.current = false; }, 0);
+      const available = Math.max(1, window.innerWidth - mascotWidth(window.innerWidth) - 2 * edge);
+      const x = clamp((drag.current.left - edge) / available, 0, 1);
+      const offsetY = Math.max(0, drag.current.bottom - edge);
+      setSaved(value => ({ ...value, x, dock: x < .5 ? "left" : "right", offsetY }));
+    }
     drag.current = null; setDragging(false);
   }
   function clickCharacter() {
     if (suppressClick.current) return;
     cancelAutoClose();
+    greet();
     setOpen(value => !value);
     setAnnouncement(open ? "Dica recolhida." : "Furina abriu uma dica para esta etapa.");
   }
 
-  const style = { "--furina-offset": `${saved.offsetY}px` } as React.CSSProperties;
-  if (saved.hidden) return <button className={`furina-return dock-${saved.dock}`} style={style} onClick={() => setSaved(value => ({ ...value, hidden: false, offsetY: 0 }))} aria-label="Mostrar Furina"><Lightbulb size={16}/>Furina</button>;
+  const width = mascotWidth(viewport.width);
+  const left = edge + saved.x * Math.max(0, viewport.width - width - 2 * edge);
+  const bottom = edge + Math.min(saved.offsetY, Math.max(0, viewport.height - mascotHeight(viewport.width) - 2 * edge));
+  const style = { left: `${left}px`, bottom: `${bottom}px`, "--furina-bottom": `${bottom}px` } as React.CSSProperties;
+  if (saved.hidden) return <button className={`furina-return dock-${saved.dock}`} onClick={() => setSaved(value => ({ ...value, hidden: false }))} aria-label="Mostrar Furina"><Lightbulb size={16}/>Furina</button>;
 
   return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""}`} style={style} aria-label="Furina, guia de estudos">
     {open && <section className="furina-speech" aria-label="Dica da Furina">
@@ -181,11 +223,11 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         <button className={mode === "curiosity" ? "active" : ""} onClick={() => changeMode("curiosity")}><Sparkles size={15}/>Curiosidade</button>
         <button className={mode === "success" ? "active" : ""} onClick={() => changeMode("success")}><Check size={15}/>Consegui!</button>
       </div>
-      <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => setSaved(value => ({ ...value, dock: "left", offsetY: 0 }))} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => setSaved(value => ({ ...value, dock: "right", offsetY: 0 }))} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
+      <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => setSaved(value => ({ ...value, dock: "left", x: 0 }))} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => setSaved(value => ({ ...value, dock: "right", x: 1 }))} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste para mudar de lado" : "Abrir dica da Furina; arraste para mudar de lado"} aria-expanded={open}>
-      <span className={`furina-sprite ${celebrating ? "dance" : "idle"}`} style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${celebrating ? "furina-dance.webp" : "furina-idle.webp"})` }} aria-hidden="true"/>
+      <span className={`furina-sprite ${celebrating ? "dance" : greeting ? "greet" : "still"}`} style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${celebrating ? "furina-dance.webp" : "furina-idle.webp"})` }} aria-hidden="true"/>
       {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
