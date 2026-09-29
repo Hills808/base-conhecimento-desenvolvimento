@@ -229,15 +229,15 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste para mudar de lado" : "Abrir dica da Furina; arraste para mudar de lado"} aria-expanded={open}>
-      <svg className="furina-puppet" viewBox="0 0 600 800" aria-hidden="true" focusable="false">
-        <g className="furina-puppet-stage">
-          <g className="furina-rig-legs"><image href={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} x="230" y="520" width="135" height="265"/></g>
-          <g className="furina-rig-left-arm"><image href={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} x="75" y="225" width="170" height="170"/></g>
-          <g className="furina-rig-right-arm"><image href={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} x="355" y="225" width="170" height="170"/></g>
-          <g className="furina-rig-torso"><image href={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} x="150" y="210" width="300" height="421"/></g>
-          <g className="furina-rig-head"><image href={`${import.meta.env.BASE_URL}furina-rig/head.webp`} x="200" y="74" width="200" height="136"/></g>
-        </g>
-      </svg>
+      <span className="furina-puppet" aria-hidden="true">
+        <span className="furina-puppet-stage">
+          <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} alt="" draggable={false}/>
+          <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} alt="" draggable={false}/>
+          <img className="furina-rig-right-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} alt="" draggable={false}/>
+          <img className="furina-rig-torso" src={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} alt="" draggable={false}/>
+          <img className="furina-rig-head" src={`${import.meta.env.BASE_URL}furina-rig/head.webp`} alt="" draggable={false}/>
+        </span>
+      </span>
       {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
