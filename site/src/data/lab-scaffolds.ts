@@ -1,4 +1,5 @@
 export type LabScaffold = {
+  plain: string;
   first: string;
   walkthrough: string[];
   example: string;
@@ -9,6 +10,7 @@ export type LabScaffold = {
 // These are tiny worked examples, not substitutes for the independent delivery in each stage.
 export const labScaffolds: Record<string, LabScaffold> = {
   http: {
+    plain: "API é um jeito de um programa pedir informações a outro. Nesta etapa você só vai observar esse pedido e ler a resposta; não precisa escrever código.",
     first: "Sem instalar nada: abra a URL de demonstração em outra aba. O navegador vai mostrar o corpo da resposta; o método usado foi GET.",
     walkthrough: [
       "Abra https://jsonplaceholder.typicode.com/posts/1. A parte /posts/1 pede o post de identificador 1.",
@@ -20,6 +22,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se aparecer uma página sem formatação, tudo bem: JSON é texto. Copie o conteúdo para um editor, identifique { } como objeto e procure os pares \"nome\": valor."
   },
   bruno: {
+    plain: "Bruno é um aplicativo para enviar pedidos a uma API e ver a resposta. Uma coleção guarda esses pedidos; um teste confere se a resposta veio como você esperava.",
     first: "Primeiro envie uma requisição simples; só depois crie ambiente e testes. Assim você sabe qual parte falhou.",
     walkthrough: [
       "No Bruno, clique em + → Create collection, dê o nome Laboratorio e escolha uma pasta local.",
@@ -32,6 +35,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se {{baseUrl}} não for resolvido, confirme que selecionou o ambiente no canto superior direito. Se nem a URL completa funcionar, verifique rede e proxy antes dos testes."
   },
   contratos: {
+    plain: "Um contrato descreve quais dados uma ferramenta aceita e devolve. Ele ajuda a perceber quando um campo realmente não veio, em vez de tentar adivinhar a resposta.",
     first: "Comece com uma pergunta só: 'qual é o valor por fator de risco?'. Procure o campo no JSON de demonstração antes de escrever regras para o agente.",
     walkthrough: [
       "Abra resposta-parcial.json no kit e sublinhe os nomes dos campos que realmente aparecem.",
@@ -43,6 +47,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se contrato e resposta divergirem, anote exatamente onde: API → DTO → tool. Não altere o prompt para compensar um campo que não existe."
   },
   prompts: {
+    plain: "O agente não faz tudo sozinho: o roteador escolhe um caminho e a tool busca dados. O prompt explica como agir; a configuração determina o que está disponível de verdade.",
     first: "Desenhe quatro caixas no papel antes de abrir um framework. Cada caixa tem uma responsabilidade e uma entrada/saída.",
     walkthrough: [
       "APP recebe 'mostre o perfil fictício'; ROUTER escolhe perfil; AGENT decide como responder; TOOL consulta dados de demonstração.",
@@ -54,6 +59,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se não souber escrever o handoff, comece com: destino, intenção, dados mínimos autorizados e motivo do roteamento."
   },
   rotas: {
+    plain: "Roteamento é decidir para onde uma pergunta vai. Vamos testar essa escolha com entradas claras e ambíguas antes de depender da resposta de um modelo.",
     first: "Faça uma matriz de entrada → destino esperado antes de testar um modelo. Assim a mudança de comportamento fica observável.",
     walkthrough: [
       "Escreva '/perfil' como comando exato e 'perfil em uma frase' como intenção semântica.",
@@ -65,6 +71,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se o teste falhar, registre entrada original, regra aplicada e versão do prompt/modelo. Não ajuste só a resposta final."
   },
   csharp: {
+    plain: "C# é a linguagem usada aqui para montar a integração. Você só precisa do suficiente para ler dados, representar uma resposta e executar um programa pequeno.",
     first: "Antes de DTO e async, confirme que consegue criar e executar um programa mínimo. Guarde cada exercício em um projeto separado.",
     walkthrough: [
       "Instale um SDK .NET suportado; no terminal rode dotnet --info. Se o comando não existir, resolva instalação/PATH antes de prosseguir.",
@@ -76,6 +83,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se aparecer CS8802, procure mais de um arquivo com instruções soltas no mesmo projeto. Se dotnet não for reconhecido, não mexa no código: confira o SDK."
   },
   dotnet: {
+    plain: ".NET é a plataforma em que vamos criar uma API. Primeiro faremos uma rota de leitura funcionar; depois veremos como um nome de campo pode se perder entre JSON, DTO e serviço.",
     first: "Siga o tutorial de API da Microsoft até uma rota GET funcionar; teste a rota no Bruno antes de introduzir serviços e DTOs.",
     walkthrough: [
       "Crie ou rode a API de exemplo e copie a URL local exibida no terminal. A raiz / pode não ter rota e retornar 404 normalmente.",
@@ -87,6 +95,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se o endpoint não responde, confira processo, porta, rota e método nessa ordem. Se responde mas campo não chega, compare JSON bruto e DTO no debugger."
   },
   mcp: {
+    plain: "MCP é uma forma de apresentar ferramentas a um cliente. Antes de ligar um agente, vamos criar uma tool local que devolve um dado fictício e inspecionar sua entrada e saída.",
     first: "Comece com uma tool local que devolve dados fixos e fictícios. Não conecte LLM nem uma API real ainda.",
     walkthrough: [
       "Leia host, cliente, servidor e tool no curso introdutório em português; desenhe quem chama quem.",
@@ -98,6 +107,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se Inspector não listar tools, confirme comando do servidor, pacote/versão e transporte stdio. Logs de diagnóstico não devem ir para stdout em stdio."
   },
   integracao: {
+    plain: "Aqui juntamos duas peças que já funcionam separadas: a API devolve dados e o servidor MCP os expõe como tool. Cada falha precisa manter sua origem reconhecível.",
     first: "Trate API e MCP como duas peças separadas. Prove cada uma funcionando antes de unir as duas.",
     walkthrough: [
       "No Bruno, salve as respostas de sucesso e de ausência da API local.",
@@ -109,6 +119,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se a resposta final divergir, refaça a sequência Bruno → Inspector → agente. Pare na primeira camada em que os dados mudaram."
   },
   seguranca: {
+    plain: "Um nome ou ID escrito na conversa não prova identidade. A permissão deve ser conferida pelo servidor com o contexto autenticado antes de qualquer dado sair.",
     first: "Separe identidade autenticada de identificador pedido. Um ID escrito no chat não concede permissão.",
     walkthrough: [
       "Crie usuário A autorizado ao registro fictício A e usuário B ao registro B.",
@@ -120,6 +131,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se só o prompt negar mas a API entregar dados, o teste de segurança falhou. Mova o controle para o servidor."
   },
   rag: {
+    plain: "RAG significa buscar uma fonte antes de responder. Se a fonte falta ou se contradiz, a resposta precisa mostrar esse limite, não preencher a lacuna com imaginação.",
     first: "Use três arquivos de texto fictícios e uma busca manual primeiro. Não instale banco vetorial para aprender o conceito.",
     walkthrough: [
       "Escreva um procedimento antigo e um novo com datas diferentes, mais um arquivo sem relação com a pergunta.",
@@ -131,6 +143,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se a resposta estiver errada, primeiro veja o trecho recuperado. Só ajuste o prompt depois de validar a recuperação."
   },
   skills: {
+    plain: "Uma Skill é um procedimento reutilizável para o agente. Ela pode orientar um rascunho, mas a lista de tools e suas permissões continuam sendo controladas pelo ambiente.",
     first: "A Skill é um procedimento escrito; o servidor MCP continua responsável por validar chamadas e permissões.",
     walkthrough: [
       "Crie SKILL.md com nome, descrição, gatilho de uso, fontes permitidas e formato de saída.",
@@ -142,6 +155,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se a Skill disser que é read-only mas houver tool de escrita disponível, a política não está aplicada. Revise o host e o servidor."
   },
   qualidade: {
+    plain: "Um teste de regressão compara o comportamento novo com regras esperadas. O objetivo não é exigir frases idênticas, mas detectar troca de rota, tool ou dado.",
     first: "Comece com cinco casos críticos e uma tabela. Amplie para 25 depois que as primeiras verificações realmente falharem quando quebradas.",
     walkthrough: [
       "Para cada caso, escreva entrada, rota esperada, tool permitida e campo que não pode ser inventado.",
@@ -153,6 +167,7 @@ export const labScaffolds: Record<string, LabScaffold> = {
     unblock: "Se tudo continuar verde, suas assertivas podem estar olhando só status 200 ou fluência da resposta. Verifique rota, tool e campos."
   },
   projeto: {
+    plain: "Agora você conecta as peças em um exemplo fictício pequeno. Uma pessoa deve conseguir entender o requisito, rodar os testes e revisar o resultado sem acesso a dados reais.",
     first: "Reduza o escopo para um fluxo fictício de leitura e um rascunho. Segurança e testes não são opcionais.",
     walkthrough: [
       "Escreva três perguntas atendidas, duas fora de escopo e critérios de aceite verificáveis.",

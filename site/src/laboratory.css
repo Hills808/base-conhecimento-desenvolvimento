@@ -68,3 +68,25 @@
 .focus-presets>button,.focus-presets label{font-size:14px}
 .focus-presets small{font-size:12px}
 @media(max-width:700px){.lab-lesson section.focus-card{padding:20px}.focus-body{gap:15px}}
+.lab-level-options button:first-child{grid-column:auto;min-height:80px;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.lab-level-options button:last-child{grid-column:1/-1;min-height:54px;flex-direction:row;align-items:center;justify-content:space-between;background:#f1f4ee}
+.lab-level-options button:last-child.active{background:#173e50}
+.lab-zero-try{margin:20px 0;padding:18px 20px;background:#edf3ee;border-left:4px solid #3b7769}
+.lab-zero-try>strong{font:700 18px/1.35 "Space Grotesk",sans-serif}
+.lab-zero-try ol{margin:10px 0 16px;padding-left:24px}
+.lab-zero-try li{margin:8px 0}
+.lab-zero-try a{color:#174d69;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.lab-zero-try a svg{vertical-align:middle}
+.lab-answer-toggle{min-height:44px;padding:9px 16px;border:1px solid #173e50;background:#173e50;color:#fff;font:700 15px/1.4 inherit;cursor:pointer}
+.lab-zero-try .lab-zero-answer{margin:15px 0 0;padding:14px 16px;background:#fffefa;border:1px solid #b9c8c0}
+.lab-zero-reassure{padding:13px 16px;background:#fff5e5;border-left:3px solid #b87e3d}
+.lab-plain{margin:18px 0;padding:17px 20px;background:#e9f1ef;border-left:4px solid #3b7769}
+.lab-plain>strong{font:700 16px/1.4 "Space Grotesk",sans-serif}
+.lab-plain p{margin:5px 0 0}
+.lab-focus-shell{margin:16px 0 6px;border:1px solid #9eb4b4;background:#f2f5f0}
+.lab-focus-shell>summary{padding:12px 17px;color:#173e50;font-size:15px;font-weight:700}
+.lab-focus-shell .focus-card{margin:0}
+@media(max-width:430px){.lab-level-options button:last-child{flex-direction:column;align-items:flex-start;justify-content:center}}
+.lab-kit-shortcut{padding:14px 17px;background:#edf3ee;border-left:3px solid #3b7769}
+.lab-kit-shortcut a{font-weight:700;color:#174d69;text-decoration:underline;text-underline-offset:3px}
+.lab-kit-shortcut svg{vertical-align:middle}
