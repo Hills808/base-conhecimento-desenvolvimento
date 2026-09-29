@@ -55,7 +55,7 @@ export default function StudyFocus({ stepId, stepTitle, suggestedGoal }: { stepI
   const remaining = endsAt ? Math.max(0, Math.ceil((endsAt - now) / 1000)) : duration * 60;
   const ended = Boolean(endsAt && remaining === 0);
   const running = Boolean(endsAt && !ended);
-  function start() { setEndsAt(Date.now() + remaining * 1000); }
+  function start() { const startedAt = Date.now(); setNow(startedAt); setEndsAt(startedAt + remaining * 1000); }
   function pause() { setDuration(Math.max(1, Math.ceil(remaining / 60))); setEndsAt(null); }
   function reset() { setEndsAt(null); }
   function startBreak() { setMode("break"); setDuration(duration >= 40 ? 10 : duration <= 15 ? 3 : 5); setEndsAt(null); }
