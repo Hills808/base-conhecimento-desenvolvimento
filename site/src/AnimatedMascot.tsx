@@ -95,6 +95,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const greetTimer = useRef<number | null>(null);
   const danceTimer = useRef<number | null>(null);
   const autoCloseTimer = useRef<number | null>(null);
+  const sideTimer = useRef<number | null>(null);
   const stageIndex = module && moduleContext?.moduleId === module.id ? moduleContext.stage : 0;
   const stage = module?.stages[stageIndex];
   const guide = module ? moduleGuidance[module.id]?.stages[stageIndex] : null;
@@ -113,7 +114,10 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
 
   useEffect(() => {
     greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
-    return () => { if (greetTimer.current) window.clearTimeout(greetTimer.current); };
+    return () => {
+      if (greetTimer.current) window.clearTimeout(greetTimer.current);
+      if (sideTimer.current) window.clearTimeout(sideTimer.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -236,6 +240,14 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }, [labActive, lab, mode, module, stage, guide]);
 
   function cancelAutoClose() { if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current); autoCloseTimer.current = null; }
+  function cancelSideMove() { if (sideTimer.current) window.clearTimeout(sideTimer.current); sideTimer.current = null; }
+  function moveTo(nextX: number, nextDock: Saved["dock"]) {
+    cancelSideMove();
+    const reopen = open && (nextDock !== saved.dock || Math.abs(nextX - saved.x) > .3);
+    if (reopen) setOpen(false);
+    setSaved(value => ({ ...value, x: nextX, dock: nextDock }));
+    if (reopen) sideTimer.current = window.setTimeout(() => { setOpen(true); sideTimer.current = null; }, 420);
+  }
   function changeMode(next: Mode) {
     cancelAutoClose(); setMode(next); setExpanded(false);
     if (next === "success") {
@@ -246,6 +258,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }
   function startDrag(event: React.PointerEvent<HTMLButtonElement>) {
     if (event.button !== 0) return;
+    cancelSideMove();
     event.currentTarget.setPointerCapture(event.pointerId);
     const box = root.current?.getBoundingClientRect();
     if (!box) return;
@@ -297,14 +310,17 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const vertical = event.key === "ArrowUp" ? 24 : event.key === "ArrowDown" ? -24 : 0;
     if (!horizontal && !vertical) return;
     event.preventDefault();
-    setSaved(value => {
-      const x = clamp(value.x + horizontal, 0, 1);
+    const x = clamp(saved.x + horizontal, 0, 1);
+    const dock = x < .5 ? "left" : "right";
+    if (horizontal && dock !== saved.dock) moveTo(x, dock);
+    else setSaved(value => {
       const maxOffset = Math.max(0, viewport.height - mascotHeight(viewport.width) - 2 * edge);
-      return { ...value, x, dock: x < .5 ? "left" : "right", offsetY: clamp(value.offsetY + vertical, 0, maxOffset) };
+      return { ...value, x, dock, offsetY: clamp(value.offsetY + vertical, 0, maxOffset) };
     });
   }
   function clickCharacter() {
     if (suppressClick.current) return;
+    cancelSideMove();
     cancelAutoClose();
     greet();
     setOpen(value => !value);
@@ -330,7 +346,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         <button className={mode === "curiosity" ? "active" : ""} onClick={() => changeMode("curiosity")}><Sparkles size={15}/>Curiosidade</button>
         <button className={mode === "success" ? "active" : ""} onClick={() => changeMode("success")}><Check size={15}/>Consegui!</button>
       </div>
-      <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => setSaved(value => ({ ...value, dock: "left", x: 0 }))} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => setSaved(value => ({ ...value, dock: "right", x: 1 }))} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
+      <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => moveTo(0, "left")} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => moveTo(1, "right")} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onPointerLeave={leaveCharacter} onKeyDown={moveByKeyboard} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste ou use as setas para mover" : "Abrir dica da Furina; arraste ou use as setas para mover"} aria-expanded={open}>
@@ -346,7 +362,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
-    <button className="furina-hide" onClick={() => { cancelAutoClose(); setOpen(false); setSaved(value => ({ ...value, hidden: true })); }} aria-label="Ocultar Furina" title="Ocultar Furina"><X size={16}/></button>
+    <button className="furina-hide" onClick={() => { cancelAutoClose(); cancelSideMove(); setOpen(false); setSaved(value => ({ ...value, hidden: true })); }} aria-label="Ocultar Furina" title="Ocultar Furina"><X size={16}/></button>
     <p className="furina-live" role="status" aria-live="polite">{announcement}</p>
   </aside>;
 }

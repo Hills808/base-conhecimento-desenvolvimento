@@ -103,20 +103,7 @@
   pointer-events: auto;
   animation: furina-speech-in .22s cubic-bezier(.2,.75,.28,1);
 }
-.furina-speech:after {
-  content: "";
-  position: absolute;
-  right: -7px;
-  bottom: 48px;
-  width: 13px;
-  height: 13px;
-  border-top: 1px solid #e5dfef;
-  border-right: 1px solid #e5dfef;
-  background: #fffdf9;
-  transform: rotate(45deg);
-}
 .dock-left .furina-speech { right: auto; left: calc(100% - 5px); }
-.dock-left .furina-speech:after { right: auto; left: -7px; transform: rotate(225deg); }
 .furina-speech-head, .furina-speech-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .furina-speech-name { font-weight: 850; font-size: 14px; }
 .furina-speech-name small { font-weight: 500; color: #777184; font-size: 11px; }
@@ -177,7 +164,6 @@
     width: auto;
     max-height: min(44vh, 370px);
   }
-  .furina-speech:after, .dock-left .furina-speech:after { display: none; }
   .furina-speech-name small { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
