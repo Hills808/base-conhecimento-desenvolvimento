@@ -43,10 +43,12 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const [moduleContext, setModuleContext] = useState<ModuleContext | null>(null);
   const [celebrating, setCelebrating] = useState(false);
   const [greeting, setGreeting] = useState(true);
+  const [motionToken, setMotionToken] = useState(0);
   const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }));
   const [announcement, setAnnouncement] = useState("");
   const [dragging, setDragging] = useState(false);
   const root = useRef<HTMLElement>(null);
+  const puppet = useRef<HTMLSpanElement>(null);
   const drag = useRef<{ pointerId: number; x: number; y: number; grabX: number; grabY: number; moved: boolean; left: number; bottom: number } | null>(null);
   const suppressClick = useRef(false);
   const greetTimer = useRef<number | null>(null);
@@ -72,6 +74,43 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
     return () => { if (greetTimer.current) window.clearTimeout(greetTimer.current); };
   }, []);
+
+  useEffect(() => {
+    const stage = puppet.current?.querySelector<HTMLElement>(".furina-puppet-stage");
+    const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
+    const leftArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-left-arm");
+    const rightArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-right-arm");
+    const legs = puppet.current?.querySelector<HTMLElement>(".furina-rig-legs");
+    const parts = [stage, head, leftArm, rightArm, legs];
+    if (!stage || !head || !leftArm || !rightArm || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
+    const duration = celebrating ? 2400 : 1900;
+    let start = 0;
+    let frame = 0;
+    const tick = (now: number) => {
+      if (!start) start = now;
+      const t = Math.min(duration, now - start);
+      const fraction = t / duration;
+      if (celebrating) {
+        const phase = 4 * Math.PI * fraction;
+        const ease = Math.min(1, t / 240, (duration - t) / 240);
+        const hop = (1 - Math.cos(phase)) * 4.5 * ease;
+        stage.style.transform = `translate3d(${(Math.sin(phase) * 2 * ease).toFixed(2)}px,${(-hop).toFixed(2)}px,0) rotate(${(3.5 * Math.sin(phase) * ease).toFixed(2)}deg)`;
+        head.style.transform = `rotate(${(6 * Math.sin(phase + .6) * ease).toFixed(2)}deg)`;
+        leftArm.style.transform = `rotate(${(-23 * Math.sin(phase - .2) * ease).toFixed(2)}deg)`;
+        rightArm.style.transform = `rotate(${(23 * Math.sin(phase + .7) * ease).toFixed(2)}deg)`;
+        legs.style.transform = `rotate(${(6 * Math.sin(phase + 1.5) * ease).toFixed(2)}deg)`;
+      } else {
+        const ease = Math.sin(Math.PI * fraction);
+        stage.style.transform = `translate3d(0,${(-2 * ease).toFixed(2)}px,0) rotate(${(-2 * ease).toFixed(2)}deg)`;
+        head.style.transform = `rotate(${(5 * ease).toFixed(2)}deg)`;
+        rightArm.style.transform = `rotate(${(-18 * Math.sin(2 * Math.PI * fraction) ** 2).toFixed(2)}deg)`;
+      }
+      if (t < duration) frame = window.requestAnimationFrame(tick);
+      else parts.forEach(part => { if (part) part.style.transform = ""; });
+    };
+    frame = window.requestAnimationFrame(tick);
+    return () => { window.cancelAnimationFrame(frame); parts.forEach(part => { if (part) part.style.transform = ""; }); };
+  }, [greeting, celebrating, motionToken]);
 
   useEffect(() => {
     const onContext = (event: Event) => {
@@ -102,7 +141,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
       if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current);
       setSaved(value => ({ ...value, hidden: false }));
-      setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(true);
+      setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1);
       setAnnouncement("Etapa concluída! Furina está comemorando com você.");
       danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
       autoCloseTimer.current = window.setTimeout(() => setOpen(false), 7000);
@@ -160,7 +199,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     cancelAutoClose(); setMode(next); setExpanded(false);
     if (next === "success") {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
-      setGreeting(false); setCelebrating(true); danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
+      setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1); danceTimer.current = window.setTimeout(() => setCelebrating(false), 2400);
     }
     setAnnouncement(next === "success" ? "Furina está comemorando com você." : `${next === "tip" ? "Dica" : next === "attention" ? "Ponto de atenção" : next === "review" ? "Pergunta" : "Curiosidade"} atualizada.`);
   }
@@ -229,7 +268,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste para mudar de lado" : "Abrir dica da Furina; arraste para mudar de lado"} aria-expanded={open}>
-      <span className="furina-puppet" aria-hidden="true">
+      <span className="furina-puppet" ref={puppet} aria-hidden="true">
         <span className="furina-puppet-stage">
           <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} alt="" draggable={false}/>
           <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} alt="" draggable={false}/>

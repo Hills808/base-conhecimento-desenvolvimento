@@ -34,14 +34,8 @@
 .furina-rig-left-arm { left: 12.5%; top: 28.125%; width: 28.333%; transform-origin: 75% 12%; }
 .furina-rig-right-arm { left: 59.167%; top: 28.125%; width: 28.333%; transform-origin: 25% 12%; }
 .furina-rig-legs { left: 38.333%; top: 65%; width: 22.5%; transform-origin: 52% 9%; }
-.furina-guide.is-greeting:not(.is-celebrating):not(.is-dragging) .furina-puppet-stage { animation: furina-greet-body 1.9s ease-in-out both; }
-.furina-guide.is-greeting:not(.is-celebrating):not(.is-dragging) .furina-rig-head { animation: furina-greet-head 1.9s ease-in-out both; }
-.furina-guide.is-greeting:not(.is-celebrating):not(.is-dragging) .furina-rig-right-arm { animation: furina-greet-arm 1.9s ease-in-out both; }
-.furina-guide.is-celebrating:not(.is-dragging) .furina-puppet-stage { animation: furina-dance-body 1.2s cubic-bezier(.38, .02, .23, 1) 2; }
-.furina-guide.is-celebrating:not(.is-dragging) .furina-rig-head { animation: furina-dance-head 1.2s ease-in-out 2; }
-.furina-guide.is-celebrating:not(.is-dragging) .furina-rig-left-arm { animation: furina-dance-left 1.2s ease-in-out 2; }
-.furina-guide.is-celebrating:not(.is-dragging) .furina-rig-right-arm { animation: furina-dance-right 1.2s ease-in-out 2; }
-.furina-guide.is-celebrating:not(.is-dragging) .furina-rig-legs { animation: furina-dance-legs 1.2s ease-in-out 2; }
+.furina-guide:is(.is-greeting, .is-celebrating) .furina-puppet-stage,
+.furina-guide:is(.is-greeting, .is-celebrating) .furina-puppet img { will-change: transform; }
 .furina-invite {
   position: absolute;
   right: -3px;
@@ -163,14 +157,6 @@
 .furina-return { position: fixed; right: 12px; bottom: 12px; z-index: 45; display: flex; align-items: center; gap: 6px; padding: 9px 12px; border: 1px solid #dcd5f0; border-radius: 30px; background: #fffdf9; color: #514098; box-shadow: 0 5px 18px #302d4923; font-size: 12px; font-weight: 700; cursor: pointer; }
 .furina-return.dock-left { right: auto; left: 12px; }
 
-@keyframes furina-greet-body { 0%, 100% { transform: translateY(0) rotate(0); } 35% { transform: translateY(-5px) rotate(-2deg); } 65% { transform: translateY(0) rotate(2deg); } }
-@keyframes furina-greet-head { 0%, 100% { transform: rotate(0); } 38% { transform: rotate(6deg); } 68% { transform: rotate(-3deg); } }
-@keyframes furina-greet-arm { 0%, 100% { transform: rotate(0); } 26% { transform: rotate(-22deg); } 49% { transform: rotate(10deg); } 70% { transform: rotate(-18deg); } }
-@keyframes furina-dance-body { 0%, 100% { transform: translateY(0) rotate(0) scale(1); } 15% { transform: translateY(6px) rotate(-2deg) scale(.98, 1.02); } 32% { transform: translateY(-26px) rotate(-5deg) scale(1.02, .98); } 49% { transform: translateY(0) rotate(2deg) scale(1, .98); } 66% { transform: translateY(-17px) rotate(5deg) scale(1.01, .99); } 84% { transform: translateY(0) rotate(-2deg) scale(1); } }
-@keyframes furina-dance-head { 0%, 100% { transform: rotate(0); } 26% { transform: rotate(9deg); } 52% { transform: rotate(-6deg); } 73% { transform: rotate(7deg); } }
-@keyframes furina-dance-left { 0%, 100% { transform: rotate(0); } 28% { transform: rotate(-27deg); } 53% { transform: rotate(7deg); } 76% { transform: rotate(-20deg); } }
-@keyframes furina-dance-right { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(28deg); } 55% { transform: rotate(-9deg); } 75% { transform: rotate(23deg); } }
-@keyframes furina-dance-legs { 0%, 100% { transform: rotate(0); } 32% { transform: rotate(7deg); } 64% { transform: rotate(-8deg); } }
 @keyframes furina-confetti { 0% { opacity: 0; transform: translate(0,0) rotate(0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x),var(--y)) rotate(220deg); } }
 @keyframes furina-speech-in { from { opacity: 0; transform: translateY(8px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes furina-invite-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
@@ -193,6 +179,6 @@
   .furina-speech-name small { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .furina-puppet-stage, .furina-puppet img, .furina-confetti i, .furina-invite, .furina-speech { animation: none !important; }
+  .furina-confetti i, .furina-invite, .furina-speech { animation: none !important; }
   .furina-confetti { display: none; }
 }
