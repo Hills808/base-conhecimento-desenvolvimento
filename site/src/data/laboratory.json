@@ -28,14 +28,14 @@
       "prerequisite": "Nenhum. Comece aqui se método, status ou JSON ainda confundem.",
       "goal": "Entender quem faz um pedido, o que é devolvido e como ler os dados sem programar.",
       "concepts": [
-        "URL, endpoint e método",
-        "Headers, status e corpo",
-        "Objeto, array, null e campo ausente"
+        "Quem pede e quem responde",
+        "GET, URL e status",
+        "Campos e valores em JSON"
       ],
       "lesson": [
-        "Uma API é uma porta de comunicação: um programa faz um pedido e outro devolve uma resposta. Você já usa isso ao abrir um endereço no navegador; aqui vamos observar o pedido e os dados de volta, sem escrever código.",
-        "Uma API é um ponto de comunicação entre sistemas. HTTP organiza a chamada; JSON é um dos formatos usados no corpo. Um status 200 não garante que todos os dados necessários estejam presentes.",
-        "No laboratório, null significa valor explicitamente ausente. Um campo que não veio pode ter outra causa. Zero é um valor: nunca substitua ausência por 0 para fazer uma resposta parecer completa."
+        "Abra o exemplo da aula 0. Seu navegador faz o pedido; o serviço de demonstração devolve a resposta. GET pede leitura, a URL indica qual registro você quer e o corpo da resposta traz os dados.",
+        "No JSON, leia um campo de cada vez: id tem o número 1 e title contém um texto. O status HTTP indica como a chamada terminou; 200 significa que ela foi atendida, mas não prova que todo campo desejado existe.",
+        "Veja o arquivo simples abaixo: notes está presente com null (sem valor); views está presente com 0 (zero é um valor); author não aparece. Você não precisa memorizar esses nomes, só reconhecer a diferença."
       ],
       "resources": [
         {
@@ -61,9 +61,9 @@
         }
       ],
       "tasks": [
-        "Abra https://jsonplaceholder.typicode.com/posts/1 no navegador e identifique userId, id, title e body. São dados de demonstração.",
-        "Abra o arquivo resposta-parcial.json no kit desta página. Liste os campos presentes, os null e os que não existem.",
-        "Escreva uma frase que pode ser respondida com o JSON e outra que exige informação que ele não fornece."
+        "Abra a resposta de demonstração da aula 0. Ache id e title sem copiar a explicação.",
+        "Abra primeiro-json.json pelo atalho abaixo. Anote os valores de id, notes e views. A chave author aparece?",
+        "Escreva uma frase que o arquivo permite responder e outra que não permite. A resposta sem dado deve dizer que a informação não veio."
       ],
       "deliverable": "Uma tabela de campos e duas respostas com suas evidências.",
       "checks": [
@@ -72,7 +72,7 @@
         "Não completo dados ausentes com uma estimativa."
       ],
       "help": "Se o JSON parecer confuso, identifique primeiro chaves {}, listas [] e pares nome: valor. Não tente decorar todas as propriedades.",
-      "example": "{\"status\":\"partial\",\"data\":{\"valorPorFator\":null},\"missingFields\":[\"valorPorFator\"]}"
+      "example": "{\"id\":1,\"title\":\"Exemplo\",\"notes\":null,\"views\":0}"
     },
     {
       "id": "bruno",

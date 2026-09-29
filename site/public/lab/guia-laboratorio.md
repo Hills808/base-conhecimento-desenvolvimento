@@ -52,16 +52,16 @@ Todos os exemplos são fictícios. APP → ROUTER → AGENT → TOOL e os quatro
 
 ### Entenda o essencial
 
-URL, endpoint e método · Headers, status e corpo · Objeto, array, null e campo ausente
+Quem pede e quem responde · GET, URL e status · Campos e valores em JSON
 
-Uma API é uma porta de comunicação: um programa faz um pedido e outro devolve uma resposta. Você já usa isso ao abrir um endereço no navegador; aqui vamos observar o pedido e os dados de volta, sem escrever código.
+Abra o exemplo da aula 0 no site. Seu navegador faz o pedido; o serviço de demonstração devolve a resposta. GET pede leitura, a URL indica qual registro você quer e o corpo da resposta traz os dados.
 
-HTTP organiza a chamada; JSON é um dos formatos usados no corpo. Um status 200 não garante que todos os dados necessários estejam presentes.
+No JSON, leia um campo de cada vez: id tem o número 1 e title contém um texto. O status HTTP indica como a chamada terminou; 200 significa que ela foi atendida, mas não prova que todo campo desejado existe.
 
-No laboratório, null significa valor explicitamente ausente. Um campo que não veio pode ter outra causa. Zero é um valor: nunca substitua ausência por 0 para fazer uma resposta parecer completa.
+Veja o arquivo simples abaixo: notes está presente com null (sem valor); views está presente com 0 (zero é um valor); author não aparece. Você não precisa memorizar esses nomes, só reconhecer a diferença.
 
 ```
-{"status":"partial","data":{"valorPorFator":null},"missingFields":["valorPorFator"]}
+{"id":1,"title":"Exemplo","notes":null,"views":0}
 ```
 
 ### Materiais em ordem
@@ -74,11 +74,11 @@ No laboratório, null significa valor explicitamente ausente. Um campo que não 
 
 ### Exercício
 
-1. Abra https://jsonplaceholder.typicode.com/posts/1 no navegador e identifique userId, id, title e body. São dados de demonstração.
+1. Abra a [resposta de demonstração](https://jsonplaceholder.typicode.com/posts/1) da aula 0. Ache id e title sem copiar a explicação.
 
-2. Abra o arquivo resposta-parcial.json no kit desta página. Liste os campos presentes, os null e os que não existem.
+2. Abra [primeiro-json.json](primeiro-json.json) no kit. Anote os valores de id, notes e views. A chave author aparece?
 
-3. Escreva uma frase que pode ser respondida com o JSON e outra que exige informação que ele não fornece.
+3. Escreva uma frase que o arquivo permite responder e outra que não permite. A resposta sem dado deve dizer que a informação não veio.
 
 **Entrega:** Uma tabela de campos e duas respostas com suas evidências.
 

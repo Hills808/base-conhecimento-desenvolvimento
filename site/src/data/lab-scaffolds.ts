@@ -15,10 +15,10 @@ export const labScaffolds: Record<string, LabScaffold> = {
     walkthrough: [
       "Abra https://jsonplaceholder.typicode.com/posts/1. A parte /posts/1 pede o post de identificador 1.",
       "Procure a chave id e leia o número ao lado. Depois localize title e body: ambos são textos.",
-      "Compare com o JSON didático abaixo. Em uma resposta, valor null, zero e chave inexistente são situações diferentes."
+      "Compare com o arquivo simples abaixo. notes com null, views com 0 e author ausente são três situações diferentes."
     ],
-    example: '{"id":1,"valor":null,"quantidade":0}',
-    expected: "id está presente e vale 1; valor está presente, mas sem valor; quantidade está presente e vale 0; moeda não veio. Nenhuma dessas ausências autoriza inventar um número.",
+    example: '{"id":1,"title":"Exemplo","notes":null,"views":0}',
+    expected: "id vale 1; notes está presente, mas sem valor; views vale 0; author não aparece. Uma informação ausente não pode ser inventada.",
     unblock: "Se aparecer uma página sem formatação, tudo bem: JSON é texto. Copie o conteúdo para um editor, identifique { } como objeto e procure os pares \"nome\": valor."
   },
   bruno: {
