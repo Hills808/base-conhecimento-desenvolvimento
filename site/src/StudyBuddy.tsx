@@ -4,7 +4,7 @@ import type { Module } from "./data/modules";
 import { moduleGuidance } from "./data/module-guidance";
 import "./study-buddy.css";
 
-type Mode = "tip" | "attention" | "review" | "curiosity";
+type Mode = "tip" | "attention" | "review" | "curiosity" | "success";
 type Dock = "left" | "right";
 type LabContext = { step: number; title: string; tip: string; attention: string; curiosity: string; question: string; answer: string };
 type Saved = { dock: Dock; offsetY: number; hidden: boolean };
@@ -92,7 +92,8 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
         tip: { title: "Dica para esta etapa", text: lab.tip, extra: `Você está estudando: ${lab.title}`, pose: "point" },
         attention: { title: "Ponto de atenção", text: lab.attention, extra: `Nesta etapa: ${lab.title}`, pose: "question" },
         review: { title: "Teste o que aprendeu", text: lab.question, extra: lab.answer, pose: "question" },
-        curiosity: { title: "Curiosidade técnica", text: lab.curiosity, extra: "A curiosidade ajuda a ligar o conceito ao uso real.", pose: "celebrate" }
+        curiosity: { title: "Curiosidade técnica", text: lab.curiosity, extra: "A curiosidade ajuda a ligar o conceito ao uso real.", pose: "point" },
+        success: { title: "Mandou bem!", text: "Aprender também é conseguir avançar um passo de cada vez.", extra: "Guarde a entrega ou a ideia que você produziu. Ela é uma evidência concreta do seu progresso.", pose: "celebrate" }
       };
       return options[mode];
     }
@@ -101,7 +102,8 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
         tip: { title: "Um primeiro passo", text: "Escolha um módulo que responda a uma curiosidade sua. Comece pelo material principal e faça a prática curta.", extra: "Você pode trocar de assunto quando quiser; seu progresso continua salvo neste navegador.", pose: "point" },
         attention: { title: "Para não dispersar", text: "Não tente abrir todos os links de uma vez. Cada módulo mostra o que estudar primeiro e o que pode ficar como consulta.", extra: "Uma entrega pequena ajuda a transformar leitura em aprendizado que você consegue demonstrar.", pose: "question" },
         review: { title: "Uma pergunta para começar", text: "O que você gostaria de conseguir fazer depois de estudar?", extra: "Escolha um objetivo prático e procure o módulo mais próximo dele.", pose: "question" },
-        curiosity: { title: "Como usar esta base", text: "Cada módulo reúne uma trilha, materiais e uma atividade prática para você testar o que estudou.", extra: "A página salva seu avanço apenas neste navegador.", pose: "celebrate" }
+        curiosity: { title: "Como usar esta base", text: "Cada módulo reúne uma trilha, materiais e uma atividade prática para você testar o que estudou.", extra: "A página salva seu avanço apenas neste navegador.", pose: "point" },
+        success: { title: "Mandou bem!", text: "Você não precisa resolver tudo hoje. Um passo entendido já conta.", extra: "Anote o que conseguiu fazer e qual é o próximo passo pequeno.", pose: "celebrate" }
       };
       return options[mode];
     }
@@ -109,7 +111,8 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
       tip: { title: "Experimente nesta etapa", text: currentStage.practice, extra: `Uma forma de começar: ${moduleGuidance[module.id]?.firstMove || currentStage.learn[0]}`, pose: "point" },
       attention: { title: "Ponto de atenção", text: guide.attention, extra: `Nesta etapa: ${currentStage.name}`, pose: "question" },
       review: { title: "Confira se fixou", text: currentStage.proof, extra: `Você vai praticar: ${currentStage.learn.join(" · ")}`, pose: "question" },
-      curiosity: { title: "Curiosidade técnica", text: curiosity[module.id], extra: module.outcome, pose: "celebrate" }
+      curiosity: { title: "Curiosidade técnica", text: curiosity[module.id], extra: module.outcome, pose: "point" },
+      success: { title: "Mandou bem!", text: "Você está construindo algo que consegue explicar — esse é um ótimo sinal de aprendizado.", extra: `Nesta etapa, a evidência é: ${currentStage.proof}`, pose: "celebrate" }
     };
     return options[mode];
   }, [labActive, lab, mode, module, currentStage, guide]);
@@ -134,7 +137,7 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
     if (dragStart.current?.moved) { suppressClick.current = true; window.setTimeout(() => { suppressClick.current = false; }, 0); }
     dragStart.current = null; setDragging(false);
   }
-  function toggleMode(next: Mode) { setMode(next); setExpanded(false); announce(next === "tip" ? "Dica atualizada." : next === "attention" ? "Ponto de atenção atualizado." : next === "review" ? "Pergunta de revisão atualizada." : "Curiosidade atualizada."); }
+  function toggleMode(next: Mode) { setMode(next); setExpanded(false); announce(next === "tip" ? "Dica atualizada." : next === "attention" ? "Ponto de atenção atualizado." : next === "review" ? "Pergunta de revisão atualizada." : next === "curiosity" ? "Curiosidade atualizada." : "Furina está comemorando com você."); }
 
   const pose = card.pose;
   const dockStyle = { "--buddy-offset": `${saved.offsetY}px` } as React.CSSProperties;
@@ -150,7 +153,7 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
           <button className="buddy-icon-button" onClick={() => setSaved(value => ({ ...value, hidden: true }))} aria-label="Ocultar Furina"><X size={17}/></button>
         </div>
         <div className="buddy-dialogue">
-          <button className="buddy-figure-button" onClick={() => { const order: Mode[] = ["tip", "attention", "review", "curiosity"]; toggleMode(order[(order.indexOf(mode) + 1) % order.length]); }} aria-label="Clique na Furina para ver outra dica"><BuddyArt pose={pose}/><span className="buddy-tap-hint">toque para trocar</span></button>
+          <button className="buddy-figure-button" onClick={() => { const order: Mode[] = ["tip", "attention", "review", "curiosity", "success"]; toggleMode(order[(order.indexOf(mode) + 1) % order.length]); }} aria-label="Clique na Furina para ver outra dica"><BuddyArt pose={pose}/><span className="buddy-tap-hint">toque para trocar</span></button>
           <div className={`buddy-copy tone-${mode}`}>
             <span className="buddy-caption">{module ? `MÓDULO ${String(module.id).padStart(2,"0")}${module.id === 9 ? lab ? ` · ETAPA ${lab.step + 1}` : " · MCP" : ` · ETAPA ${stageIndex + 1}`}` : "DICA DE ESTUDO"}</span>
             <h3>{card.title}</h3><p>{card.text}</p>
@@ -163,6 +166,7 @@ export default function StudyBuddy({ module, stage }: { module: Module | null; s
           <button className={mode === "attention" ? "selected attention" : ""} onClick={() => toggleMode("attention")}><ShieldAlert size={15}/>Atenção</button>
           <button className={mode === "review" ? "selected" : ""} onClick={() => toggleMode("review")}><CircleHelp size={15}/>Me testa</button>
           <button className={mode === "curiosity" ? "selected" : ""} onClick={() => toggleMode("curiosity")}><Sparkles size={15}/>Curiosidade</button>
+          <button className={mode === "success" ? "selected" : ""} onClick={() => toggleMode("success")}><Check size={15}/>Consegui!</button>
         </div>
         <div className="buddy-footer"><span><MoveHorizontal size={14}/>Sem IA · dicas desta trilha</span><div><button onClick={() => { setSaved(value => ({ ...value, dock: "left", offsetY: 0 })); announce("Furina movida para o lado esquerdo."); }} aria-label="Mover Furina para a esquerda" title="Mover para esquerda"><ArrowLeft size={17}/></button><button onClick={() => { setSaved(value => ({ ...value, dock: "right", offsetY: 0 })); announce("Furina movida para o lado direito."); }} aria-label="Mover Furina para a direita" title="Mover para direita"><ArrowRight size={17}/></button></div></div>
         <p className="buddy-live" role="status" aria-live="polite">{announcement}</p>
