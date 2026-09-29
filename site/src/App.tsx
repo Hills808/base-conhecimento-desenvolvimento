@@ -224,7 +224,7 @@ export default function Home() {
         <div className="command-search"><Command size={19}/><input autoFocus value={commandQuery} onChange={event => setCommandQuery(event.target.value)} placeholder="Busque um módulo ou etapa..." aria-label="Buscar módulo ou etapa"/><button onClick={() => setCommandOpen(false)} aria-label="Fechar atalho"><X size={17}/><kbd>Esc</kbd></button></div>
         <p>{commandQuery.trim().length < 2 ? "ATALHOS PRINCIPAIS" : "RESULTADOS"}</p>
         <div className="command-results">{quickResults.length ? quickResults.map((item, index) => <button key={item.id} onClick={item.action}><span>{String(index + 1).padStart(2,"0")}</span><div><strong>{item.title}</strong><small>{item.detail}</small></div><ArrowUpRight size={16}/></button>) : <div className="command-empty">Nenhum atalho encontrado. Tente “API”, “MCP” ou “C#”.</div>}</div>
-        <footer><span><kbd>↑</kbd><kbd>↓</kbd> navegue</span><span><kbd>Esc</kbd> fechar</span></footer>
+        <footer><span>Digite para filtrar</span><span><kbd>Esc</kbd> fechar</span></footer>
       </section>
     </div>}
     <footer className="footer"><span className="footer-brand">Curva Aberta<span>.</span></span><p>Base de Henrique Alexandre, adaptada para este site · <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p><a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria original no GitHub <ExternalLink size={15}/></a></footer>
