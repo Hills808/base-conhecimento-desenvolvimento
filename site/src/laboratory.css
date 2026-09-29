@@ -90,3 +90,8 @@
 .lab-kit-shortcut{padding:14px 17px;background:#edf3ee;border-left:3px solid #3b7769}
 .lab-kit-shortcut a{font-weight:700;color:#174d69;text-decoration:underline;text-underline-offset:3px}
 .lab-kit-shortcut svg{vertical-align:middle}
+.lab-time-estimate{margin-top:10px;border-top:1px solid #bdc9c4;padding-top:7px}
+.lab-time-estimate summary{font-size:14px;color:#174d69;text-decoration:underline;text-underline-offset:3px}
+.lab-time-estimate p{margin:8px 0 0}
+.milestone-map>div>p{margin:8px 0 0;color:#52646c}
+.milestone-map ol:has(li:only-child){grid-template-columns:1fr}
