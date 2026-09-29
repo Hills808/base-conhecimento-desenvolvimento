@@ -95,7 +95,9 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }, [saved]);
 
   useEffect(() => {
-    const image = new Image(); image.src = `${import.meta.env.BASE_URL}furina-dance.webp`;
+    for (const part of ["head", "torso", "arm-left", "arm-right", "legs"]) {
+      const image = new Image(); image.src = `${import.meta.env.BASE_URL}furina-rig/${part}.webp`;
+    }
     const celebrate = () => {
       if (danceTimer.current) window.clearTimeout(danceTimer.current);
       if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current);
@@ -210,7 +212,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const style = { left: `${left}px`, bottom: `${bottom}px`, "--furina-bottom": `${bottom}px` } as React.CSSProperties;
   if (saved.hidden) return <button className={`furina-return dock-${saved.dock}`} onClick={() => setSaved(value => ({ ...value, hidden: false }))} aria-label="Mostrar Furina"><Lightbulb size={16}/>Furina</button>;
 
-  return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""}`} style={style} aria-label="Furina, guia de estudos">
+  return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""} ${greeting ? "is-greeting" : ""}`} style={style} aria-label="Furina, guia de estudos">
     {open && <section className="furina-speech" aria-label="Dica da Furina">
       <div className="furina-speech-head"><span className="furina-speech-name">Furina <small>· {labActive && lab ? `etapa ${lab.step + 1}` : module ? module.title : "guia de estudos"}</small></span><button onClick={() => setOpen(false)} aria-label="Fechar dica"><X size={17}/></button></div>
       <h3>{card.title}</h3><p>{card.text}</p>
@@ -227,7 +229,15 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste para mudar de lado" : "Abrir dica da Furina; arraste para mudar de lado"} aria-expanded={open}>
-      <span className={`furina-sprite ${celebrating ? "dance" : greeting ? "greet" : "still"}`} style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${celebrating ? "furina-dance.webp" : "furina-idle.webp"})` }} aria-hidden="true"/>
+      <svg className="furina-puppet" viewBox="0 0 600 800" aria-hidden="true" focusable="false">
+        <g className="furina-puppet-stage">
+          <g className="furina-rig-legs"><image href={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} x="230" y="520" width="135" height="265"/></g>
+          <g className="furina-rig-left-arm"><image href={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} x="75" y="225" width="170" height="170"/></g>
+          <g className="furina-rig-right-arm"><image href={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} x="355" y="225" width="170" height="170"/></g>
+          <g className="furina-rig-torso"><image href={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} x="150" y="210" width="300" height="421"/></g>
+          <g className="furina-rig-head"><image href={`${import.meta.env.BASE_URL}furina-rig/head.webp`} x="200" y="74" width="200" height="136"/></g>
+        </g>
+      </svg>
       {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
