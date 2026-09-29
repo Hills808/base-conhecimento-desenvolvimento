@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 import { modules, guideUrl } from "./data/modules";
 import Laboratory from "./Laboratory";
 import ModuleJourney from "./ModuleJourney";
+import StudyResume from "./StudyResume";
 import rawResources from "./data/resources.json";
 import startingPoints from "./data/starting-points.json";
 import curriculum from "./data/laboratory.json";
@@ -150,7 +151,7 @@ export default function Home() {
 
         {active.id === 9 ? <Laboratory /> : <div className="detail-layout">
           <div className="detail-primary">
-            <ModuleJourney module={active} done={done} onToggle={toggleDone}/>
+            <ModuleJourney module={active}/>
             <div className="section-intro">
               <div><span className="eyebrow ink">01 / SEU PERCURSO</span><h2>Um passo de cada vez.</h2><p>Escolha um nível, entenda o que vem nele e coloque a mão na massa.</p></div>
               <div className="progress-mini"><span>{complete}/3 etapas registradas</span><div><i style={{width:`${complete/3*100}%`}}/></div></div>
@@ -204,8 +205,9 @@ export default function Home() {
       </div> : <div className="home-wrap">
         <section className="study-intro">
           <div><span className="eyebrow ink">BIBLIOTECA INDEPENDENTE DE APRENDIZADO</span><h1>Seu próximo passo,<br/><em>bem aqui.</em></h1><p>Escolha um módulo, siga uma seleção de materiais e transforme o estudo em uma entrega.</p></div>
-          <div className="next-session"><span className="eyebrow">{resume ? "RETOME SEU PERCURSO" : "NÃO SABE POR ONDE COMEÇAR?"}</span><h2>{resume ? resume.title : "Escolha pelo que você quer fazer."}</h2><p>{resume ? `${done.length} etapa(s) registrada(s) neste navegador. Continue na primeira etapa que falta neste módulo.` : "Fundamentos para começar. APIs para integrar. Laboratório MCP para juntar as peças."}</p><button onClick={()=>openModule(resume?.id ?? 0)}>{resume ? "Continuar estudando" : "Organizar meu primeiro passo"}<ArrowRight size={18}/></button></div>
+          <div className="next-session"><span className="eyebrow">NÃO SABE POR ONDE COMEÇAR?</span><h2>Escolha pelo que você quer fazer.</h2><p>Fundamentos para começar. APIs para integrar. Laboratório MCP para juntar as peças.</p><button onClick={()=>openModule(0)}>Organizar meu primeiro passo<ArrowRight size={18}/></button></div>
         </section>
+        <StudyResume onOpenModule={openModule} onOpenLabStep={openLabStep}/>
 
         <section id="modulos" className="explore-section">
           <div className="explore-heading"><div><span className="eyebrow ink">NA PRÁTICA / 10 MÓDULOS</span><h2>Encontre seu módulo.</h2></div><p>Não existe uma fila obrigatória. Escolha uma área, veja o que vai aprender e avance pelo percurso de cada módulo.</p></div>
