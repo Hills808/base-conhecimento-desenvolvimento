@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { labCheckpoints } from "./data/lab-checkpoints";
 
-type Props = { stepId: string; passed: string[]; onPass: (index: number) => void };
+type Props = { stepId: string; passed: string[]; onPass: (index: number) => void; onReset: () => void };
 
-export default function LabCheckpoint({ stepId, passed, onPass }: Props) {
+export default function LabCheckpoint({ stepId, passed, onPass, onReset }: Props) {
   const [selected, setSelected] = useState<Record<number, number>>({});
   const questions = labCheckpoints[stepId];
   const score = questions.filter((_, index) => passed.includes(`${stepId}-${index}`)).length;
@@ -24,5 +24,6 @@ export default function LabCheckpoint({ stepId, passed, onPass }: Props) {
       </fieldset>;
     })}
     <p className="lab-quiz-note">Acertar aqui libera apenas a verificação de entendimento. Para registrar a etapa, confira também o exercício e os critérios abaixo.</p>
+    {score > 0 && <button className="lab-quiz-reset" type="button" onClick={() => { setSelected({}); onReset(); }}>Refazer estas situações</button>}
   </section>;
 }

@@ -121,6 +121,7 @@
 .lab-quiz-feedback details ul{margin:10px 0 0;padding-left:22px}
 .lab-quiz-feedback details li{margin:8px 0}
 .lab-quiz-note{margin:4px 0 0;color:#52646c}
+.lab-quiz-reset{margin-top:10px;min-height:44px;padding:8px 0;border:0;background:transparent;color:#174e55;font:700 14px/1.4 inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .lab-recall label{display:block;margin:15px 0 7px;font-weight:700;font-size:14px}
 .lab-recall textarea{width:100%;box-sizing:border-box;min-height:98px;padding:12px;border:1px solid #9fb4ad;background:#fffefa;color:#243c43;font:inherit;font-size:16px;line-height:1.5;resize:vertical}
 .lab-recall .lab-answer-toggle{margin-top:10px}
