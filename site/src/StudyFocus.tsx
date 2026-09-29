@@ -35,7 +35,7 @@ export default function StudyFocus({ stepId, stepTitle, suggestedGoal }: { stepI
   const [mode, setMode] = useState<Mode>(saved?.mode || "focus");
   const [duration, setDuration] = useState(saved?.duration || 25);
   const [endsAt, setEndsAt] = useState<number | null>(saved?.endsAt || null);
-  const [goal, setGoal] = useState(saved?.stepId === stepId ? saved.goal : suggestedGoal);
+  const [goal, setGoal] = useState(saved?.stepId === stepId && saved.goal.length <= 90 ? saved.goal : "");
   const [now, setNow] = useState(Date.now());
   const [showSettings, setShowSettings] = useState(false);
 
@@ -45,7 +45,7 @@ export default function StudyFocus({ stepId, stepTitle, suggestedGoal }: { stepI
   }, []);
   useEffect(() => {
     if (saved?.stepId !== stepId) {
-      setMode("focus"); setDuration(25); setEndsAt(null); setGoal(suggestedGoal);
+      setMode("focus"); setDuration(25); setEndsAt(null); setGoal("");
     }
   }, [stepId, suggestedGoal]);
   useEffect(() => {
@@ -62,14 +62,16 @@ export default function StudyFocus({ stepId, stepTitle, suggestedGoal }: { stepI
   function restartFocus() { setMode("focus"); setDuration(25); setEndsAt(null); }
 
   return <section className="focus-card" aria-label="Modo foco">
-    <div className="focus-heading"><div><span className="eyebrow">MODO FOCO</span><h3>{mode === "focus" ? "Uma etapa por vez." : "Pausa curta, sem perder o ritmo."}</h3></div><Timer size={23} aria-hidden="true"/></div>
+    <div className="focus-heading"><div><span className="eyebrow">MODO FOCO</span><h3>{mode === "focus" ? "Escolha um gesto pequeno e comece." : "Pausa curta, sem perder o ritmo."}</h3><p>{mode === "focus" ? "A meta não é concluir a etapa inteira; é deixar uma evidência concreta antes do tempo acabar." : "Descanse. Quando voltar, a meta e a etapa continuam aqui."}</p></div><Timer size={23} aria-hidden="true"/></div>
     <div className="focus-body">
       <div className="focus-clock" aria-label={running ? `Faltam ${format(remaining)} nesta sessão` : `Sessão de ${duration} minutos`}>
         <strong>{format(remaining)}</strong><span>{ended ? "tempo concluído" : mode === "focus" ? "foco" : "pausa"}</span>
       </div>
       <div className="focus-controls">
-        <label htmlFor="session-goal">Minha meta agora</label>
-        <input id="session-goal" value={goal} onChange={e => setGoal(e.target.value)} maxLength={140} disabled={running} />
+        <label htmlFor="session-goal">Meta desta sessão</label>
+        <span id="session-goal-help" className="focus-field-help">Uma ação curta e verificável — não precisa ser a etapa toda.</span>
+        <div className="focus-suggestion"><span>Sugestão: <strong>{suggestedGoal}</strong></span>{!running && <button onClick={() => setGoal(suggestedGoal)}>Usar sugestão</button>}</div>
+        <input id="session-goal" aria-describedby="session-goal-help" value={goal} onChange={e => setGoal(e.target.value)} placeholder="Ex.: identificar status e corpo da resposta" maxLength={140} disabled={running} />
         <div className="focus-actions">
           {!running && !ended && <button className="lab-action" onClick={start}><Play size={16}/>Iniciar sessão</button>}
           {running && <button className="lab-action" onClick={pause}><Pause size={16}/>Pausar</button>}
