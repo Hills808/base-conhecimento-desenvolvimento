@@ -58,3 +58,13 @@
 @media(max-width:960px){.lab-level-picker{grid-template-columns:1fr}}
 @media(max-width:700px){.lab-map{grid-template-columns:1fr}.lab-zero,.lab-guided{padding:18px}.lab-level-options{grid-template-columns:1fr 1fr}.lab-level-options button{min-height:92px}.lab-level-picker{padding-top:22px}}
 @media(max-width:430px){.lab-level-options{grid-template-columns:1fr}.lab-level-options button:first-child{flex-direction:column;align-items:flex-start;justify-content:center}}
+.lab-lesson section.focus-card{padding:24px 28px;border-bottom:0}
+.focus-heading p{font-size:15px!important;line-height:1.6!important}
+.focus-controls label,.focus-suggestion,.focus-suggestion button,.focus-settings,.focus-note{font-size:14px!important;line-height:1.5!important}
+.focus-field-help,.focus-clock span{font-size:13px}
+.focus-suggestion{padding:11px 13px}
+.focus-controls input{font-size:16px}
+.focus-quiet{font-size:14px}
+.focus-presets>button,.focus-presets label{font-size:14px}
+.focus-presets small{font-size:12px}
+@media(max-width:700px){.lab-lesson section.focus-card{padding:20px}.focus-body{gap:15px}}
