@@ -1,9 +1,6 @@
 config:
   default: false
-  MD009: true
-  MD040: true
   MD041: true
-  MD047: true
 globs:
   - "**/*.md"
   - "!LICENSE"
