@@ -44,7 +44,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   const suppressClick = useRef(false);
   const danceTimer = useRef<number | null>(null);
   const autoCloseTimer = useRef<number | null>(null);
-  const stageIndex = moduleContext?.moduleId === module?.id ? moduleContext.stage : 0;
+  const stageIndex = module && moduleContext?.moduleId === module.id ? moduleContext.stage : 0;
   const stage = module?.stages[stageIndex];
   const guide = module ? moduleGuidance[module.id]?.stages[stageIndex] : null;
   const labActive = module?.id === 9;
