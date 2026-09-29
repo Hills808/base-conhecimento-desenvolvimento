@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, Check, ExternalLink, Download, Lightbulb, Shield
 import curriculum from "./data/laboratory.json";
 import resources from "./data/resources.json";
 import { labScaffolds } from "./data/lab-scaffolds";
+import { labCheckpoints } from "./data/lab-checkpoints";
+import LabCheckpoint from "./LabCheckpoint";
 import StudyFocus from "./StudyFocus";
 import { guidance } from "./studyGuidance";
 import "./laboratory.css";
@@ -15,8 +17,8 @@ const levelEntry = [
   { name: "Confiabilidade", test: "Já consigo executar API e tool localmente." }
 ];
 const storageKey = "curva-aberta-laboratorio-v2";
-type Progress = { done: string[]; checks: Record<string, boolean>; last: number; completedAt: Record<string, string>; reviews: Record<string, boolean> };
-const empty: Progress = { done: [], checks: {}, last: 0, completedAt: {}, reviews: {} };
+type Progress = { done: string[]; checks: Record<string, boolean>; passed: string[]; drafts: Record<string, string>; last: number; completedAt: Record<string, string>; reviews: Record<string, boolean> };
+const empty: Progress = { done: [], checks: {}, passed: [], drafts: {}, last: 0, completedAt: {}, reviews: {} };
 const validStep = (n: number) => Number.isInteger(n) && n >= 0 && n < steps.length;
 function fromUrl() {
   const raw = new URLSearchParams(location.search).get("etapa");
@@ -31,10 +33,13 @@ function readProgress(): Progress {
     const done = Array.isArray(value.done) ? [...new Set<string>(value.done.filter((id: unknown) => typeof id === "string" && steps.some(s => s.id === id)))] : [];
     const checks: Record<string, boolean> = {};
     steps.forEach(s => s.checks.forEach((_, i) => { checks[`${s.id}-${i}`] = value.checks?.[`${s.id}-${i}`] === true; }));
+    const passed = Array.isArray(value.passed) ? [...new Set<string>(value.passed.filter((id: unknown) => typeof id === "string" && steps.some(s => labCheckpoints[s.id].some((_, i) => id === `${s.id}-${i}`))))] : [];
+    const drafts: Record<string, string> = {};
+    steps.forEach(s => { if (typeof value.drafts?.[s.id] === "string") drafts[s.id] = value.drafts[s.id].slice(0, 700); });
     const completedAt: Record<string, string> = {};
     const reviews: Record<string, boolean> = {};
     done.forEach(id => { if (typeof value.completedAt?.[id] === "string") completedAt[id] = value.completedAt[id]; if (value.reviews?.[id] === true) reviews[id] = true; });
-    return { done, checks, last: validStep(value.last) ? value.last : 0, completedAt, reviews };
+    return { done, checks, passed, drafts, last: validStep(value.last) ? value.last : 0, completedAt, reviews };
   } catch { return empty; }
 }
 
@@ -46,11 +51,14 @@ export default function Laboratory() {
   const [levelFilter, setLevelFilter] = useState<number | "all">(() => steps[fromUrl() ?? readProgress().last].phase);
   const [languageFilter, setLanguageFilter] = useState<"all" | "pt">("all");
   const [primerAnswer, setPrimerAnswer] = useState(false);
+  const [showRecall, setShowRecall] = useState<Record<string, boolean>>({});
   const [mapOpen, setMapOpen] = useState(() => !matchMedia("(max-width: 700px)").matches);
   const heading = useRef<HTMLHeadingElement>(null);
   const step = steps[current];
   const finished = progress.done.includes(step.id);
-  const ready = step.checks.every((_, i) => progress.checks[`${step.id}-${i}`]);
+  const checksReady = step.checks.every((_, i) => progress.checks[`${step.id}-${i}`]);
+  const quizReady = labCheckpoints[step.id].every((_, i) => progress.passed.includes(`${step.id}-${i}`));
+  const ready = checksReady && quizReady;
   const guide = guidance[step.id];
   const scaffold = labScaffolds[step.id];
   const portugueseCount = step.resources.filter(r => r.language.startsWith("Português")).length;
@@ -95,10 +103,17 @@ export default function Laboratory() {
   function toggleCheck(index: number) {
     const key = `${step.id}-${index}`;
     const checked = !progress.checks[key];
-    save({ ...progress, checks: { ...progress.checks, [key]: checked }, done: checked ? progress.done : progress.done.filter(id => id !== step.id) });
+    const completedAt = { ...progress.completedAt };
+    const reviews = { ...progress.reviews };
+    if (!checked) { delete completedAt[step.id]; delete reviews[step.id]; }
+    save({ ...progress, checks: { ...progress.checks, [key]: checked }, done: checked ? progress.done : progress.done.filter(id => id !== step.id), completedAt, reviews });
+  }
+  function passQuestion(index: number) {
+    const key = `${step.id}-${index}`;
+    if (!progress.passed.includes(key)) save({ ...progress, passed: [...progress.passed, key] });
   }
   function complete() {
-    if (!ready) return;
+    if (!finished && !ready) return;
     const completedAt = { ...progress.completedAt };
     const reviews = { ...progress.reviews };
     if (finished) { delete completedAt[step.id]; delete reviews[step.id]; }
@@ -139,8 +154,9 @@ export default function Laboratory() {
         <section className="learning-cues" aria-label="Dicas desta etapa"><h3>Entre no ponto certo</h3><div className="learning-cues-grid"><article className="cue tip"><Lightbulb size={19}/><div><strong>Dica prática</strong><p>{guide.tip}</p></div></article><article className="cue attention"><ShieldAlert size={19}/><div><strong>Ponto de atenção</strong><p>{guide.attention}</p></div></article><article className="cue curiosity"><Sparkles size={19}/><div><strong>Curiosidade técnica</strong><p>{guide.curiosity}</p></div></article></div></section>
         <section><h3>02. Estude com apoio</h3><p className="lab-small">O cartão principal indica o primeiro material; leia o trecho indicado, não o curso inteiro. Depois volte para o exemplo guiado. Conteúdos em inglês têm instruções em português nesta página.</p><div className="lab-material-filter" role="group" aria-label="Idioma dos materiais"><button className={effectiveLanguage === "all" ? "active" : ""} aria-pressed={effectiveLanguage === "all"} onClick={()=>setLanguageFilter("all")}>Todos os materiais ({step.resources.length})</button><button className={effectiveLanguage === "pt" ? "active" : ""} aria-pressed={effectiveLanguage === "pt"} disabled={!portugueseCount} onClick={()=>setLanguageFilter("pt")}>Só em português ({portugueseCount})</button></div>{!portugueseCount && <p className="lab-small">Ainda não há tutorial oficial desta ferramenta em português nesta etapa. O exemplo resolvido abaixo explica a operação em português.</p>}<div className="lab-materials">{visibleResources.map((r,index)=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer"><span className="lab-resource-label">{index===0?"COMECE POR AQUI":"APOIO"} · {r.format} · {r.language}</span><strong>{r.title} <ExternalLink size={15}/></strong><span>{r.focus}</span><small>Abre em outra aba</small></a>)}</div></section>
         <section><h3>03. Faça com apoio, depois sozinho</h3><div className="lab-guided"><span className="eyebrow">EXEMPLO RESOLVIDO · PRIMEIRO PASSO</span><h4>Faça comigo</h4><p>{scaffold.first}</p><ol>{scaffold.walkthrough.map(item=><li key={item}>{item}</li>)}</ol><div className="lab-guided-example"><strong>Exemplo didático</strong><pre tabIndex={0}><code>{scaffold.example}</code></pre></div><p><strong>Como conferir:</strong> {scaffold.expected}</p><details><summary>Se não funcionar, tente isto</summary><p>{scaffold.unblock}</p></details></div><h4 className="lab-your-turn">Agora é sua vez · tente sem olhar a resposta</h4><p className="lab-small">Pode consultar o exemplo acima se travar. O objetivo é entender o caminho, não acertar de primeira.</p><ol className="lab-tasks">{step.tasks.map(t=><li key={t}>{t}</li>)}</ol>{step.id === "http" && <p className="lab-kit-shortcut">O arquivo citado está aqui: <a href={kit+"primeiro-json.json"} target="_blank" rel="noopener noreferrer">abrir primeiro-json.json <ExternalLink size={15}/></a>. É um exemplo curto e fictício para praticar.</p>}<div className="lab-deliverable"><strong>O que guardar</strong><p>{step.deliverable}</p></div><details className="lab-help"><summary>Travou na entrega? Confira este ponto</summary><p>{step.help}</p></details></section>
-        <section className="lab-checks"><h3>04. Confira antes de avançar</h3><p className="lab-small">Marque o que você demonstrou com a entrega. Assistir ou ler, por si só, não conclui a etapa.</p>{step.checks.map((check,index)=><label key={check}><input type="checkbox" checked={!!progress.checks[`${step.id}-${index}`]} onChange={()=>toggleCheck(index)}/><span>{check}</span></label>)}<button className="lab-action" disabled={!ready} onClick={complete}><Check size={17}/>{finished?"Reabrir etapa":"Registrar entrega concluída"}</button>{!ready && <small>Os três critérios precisam estar marcados para registrar a conclusão.</small>}</section>
-        <section className="lab-recall"><div><span className="eyebrow">CHECK DE 30 SEGUNDOS</span><h3><CircleHelp size={20}/>Você consegue explicar?</h3><p>{guide.question}</p><details><summary>Ver uma resposta possível</summary><p>{guide.answer}</p></details></div>{finished && <aside><strong>Revisão futura</strong><p>{progress.reviews[step.id] ? "Revisão curta registrada." : `Volte em ${reviewDate?.toLocaleDateString("pt-BR")} e responda à pergunta sem consultar o material.`}</p><button className="focus-quiet" onClick={markReviewed}>{progress.reviews[step.id] ? "Reabrir revisão" : "Registrar revisão de 2 min"}</button></aside>}</section>
+        <LabCheckpoint key={step.id} stepId={step.id} passed={progress.passed} onPass={passQuestion}/>
+        <section className="lab-checks"><h3>05. Confira sua entrega</h3><p className="lab-small">O teste acima verifica uma decisão. Agora use o arquivo, coleção ou projeto que você produziu para marcar o que realmente demonstrou. A página não inspeciona seus arquivos.</p>{step.checks.map((check,index)=><label key={check}><input type="checkbox" checked={!!progress.checks[`${step.id}-${index}`]} onChange={()=>toggleCheck(index)}/><span>{check}</span></label>)}<button className="lab-action" disabled={!finished && !ready} onClick={complete}><Check size={17}/>{finished?"Reabrir etapa":"Registrar entrega concluída"}</button>{!finished && !ready && <small>{!quizReady ? "Conclua as situações de raciocínio acima. " : ""}{!checksReady ? "Marque os critérios comprovados pela sua entrega." : ""}</small>}</section>
+        <section className="lab-recall"><div><span className="eyebrow">EXPLIQUE COM SUAS PALAVRAS</span><h3><CircleHelp size={20}/>Você consegue explicar?</h3><p>{guide.question}</p><label htmlFor={`recall-${step.id}`}>Escreva uma resposta curta antes de comparar:</label><textarea id={`recall-${step.id}`} maxLength={700} value={progress.drafts[step.id] ?? ""} onChange={event=>save({ ...progress, drafts: { ...progress.drafts, [step.id]: event.target.value } })} placeholder="O que você diria a outra pessoa?"/><button className="lab-answer-toggle" type="button" aria-expanded={!!showRecall[step.id]} onClick={()=>setShowRecall(v=>({ ...v, [step.id]: !v[step.id] }))}>{showRecall[step.id] ? "Ocultar comparação" : "Comparar com uma resposta possível"}</button>{showRecall[step.id] && <div className="lab-recall-feedback" role="status"><strong>Resposta possível</strong><p>{guide.answer}</p><p>{progress.drafts[step.id]?.trim() ? "Compare as ideias, não as palavras exatas. Se faltar um ponto importante, ajuste sua resposta acima e tente explicar de novo." : "Se ainda não soube responder, releia o exemplo guiado e tente escrever uma frase com suas palavras. Este campo não é corrigido automaticamente."}</p></div>}</div>{finished && <aside><strong>Revisão futura</strong><p>{progress.reviews[step.id] ? "Revisão curta registrada." : `Volte em ${reviewDate?.toLocaleDateString("pt-BR")} e responda à pergunta sem consultar o material.`}</p><button className="focus-quiet" onClick={markReviewed}>{progress.reviews[step.id] ? "Reabrir revisão" : "Registrar revisão de 2 min"}</button></aside>}</section>
         <div className="lab-pagination"><button onClick={()=>go(current-1)} disabled={current===0}><ArrowLeft size={17}/> Etapa anterior</button><button onClick={()=>go(current+1)} disabled={current===steps.length-1}>Próxima etapa <ArrowRight size={17}/></button></div>
       </article>
     </div>
