@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: Catálogo fictício
+  version: 0.1.0
+paths:
+  /itens/{id}:
+    get:
+      summary: Consulta um item fictício
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Item encontrado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Item' }
+        '404': { description: Item não encontrado }
+        '403': { description: Acesso negado sem revelar outros dados }
+components:
+  schemas:
+    Item:
+      type: object
+      required: [id, nome, status]
+      properties:
+        id: { type: string }
+        nome: { type: string }
+        status: { type: string, enum: [resolved, partial] }
+        descricao: { type: string, nullable: true }
+
