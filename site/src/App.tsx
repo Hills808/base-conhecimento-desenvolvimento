@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 import { modules, guideUrl } from "./data/modules";
 import Laboratory from "./Laboratory";
 import rawResources from "./data/resources.json";
 import startingPoints from "./data/starting-points.json";
+import curriculum from "./data/laboratory.json";
 
 type Resource = { module: number; title: string; url: string; section: string; type: string; host: string; access?: string; note?: string };
 const resources = rawResources as Resource[];
@@ -36,6 +37,8 @@ export default function Home() {
   const [done, setDone] = useState<string[]>([]);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
+  const [commandOpen, setCommandOpen] = useState(false);
+  const [commandQuery, setCommandQuery] = useState("");
 
   useEffect(() => {
     const sync = () => {
@@ -59,6 +62,14 @@ export default function Home() {
 
   useEffect(() => { document.getElementById("conteudo")?.focus({ preventScroll: true }); }, [selected]);
   useEffect(() => { if (!notice) return; const timer = window.setTimeout(() => setNotice(""), 5000); return () => window.clearTimeout(timer); }, [notice]);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); setCommandOpen(v => !v); }
+      if (event.key === "Escape") setCommandOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   function openModule(id: number | null) {
     setSelected(id); setStage(String(id === null ? 0 : Math.max(0, [0,1,2].find(i => !done.includes(`${id}-${i}`)) ?? 0))); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false);
@@ -72,6 +83,11 @@ export default function Home() {
     setDone(next);
     try { localStorage.setItem("curva-aberta-progress", JSON.stringify(next)); setNotice(next.includes(key) ? "Etapa registrada neste navegador." : "Etapa reaberta para revisão."); }
     catch { setNotice("Progresso atualizado nesta sessão. O navegador não permitiu salvá-lo para depois."); }
+  }
+  function openLabStep(index: number) {
+    setSelected(9); setStage("0"); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    const url = `${import.meta.env.BASE_URL}?modulo=09&etapa=${index + 1}`;
+    window.history.pushState({}, "", url); window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   const active = selected === null ? null : modules[selected];
@@ -89,6 +105,16 @@ export default function Home() {
   const complete = active ? [0,1,2].filter(i => done.includes(`${active.id}-${i}`)).length : 0;
 
   const resume = done.length ? modules[Number(done[done.length-1].split("-")[0])] : null;
+  const quickItems = useMemo(() => [
+    { id:"home", title:"Explorar todos os módulos", detail:"Página inicial", action: () => openModule(null) },
+    { id:"lab", title:"Abrir Laboratório MCP com C#", detail:"14 etapas guiadas", action: () => openModule(9) },
+    ...modules.map(module => ({ id:`module-${module.id}`, title:`Módulo ${String(module.id).padStart(2,"0")} · ${module.title}`, detail:module.outcome, action: () => openModule(module.id) })),
+    ...curriculum.steps.map((step, index) => ({ id:`lab-${step.id}`, title:`Etapa ${String(index + 1).padStart(2,"0")} · ${step.title}`, detail:`Laboratório · ${step.hours}`, action: () => openLabStep(index) }))
+  ], [done]);
+  const quickResults = useMemo(() => {
+    const q = normalize(commandQuery.trim());
+    return (q.length < 2 ? quickItems.slice(0, 8) : quickItems.filter(item => normalize(`${item.title} ${item.detail}`).includes(q))).slice(0, 8);
+  }, [commandQuery, quickItems]);
 
   return <div className="site-shell">
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -101,6 +127,7 @@ export default function Home() {
         <nav id="main-nav" className={`topnav ${mobileMenu ? "open" : ""}`} aria-label="Navegação principal">
           <button onClick={() => openModule(null)}>Explorar módulos</button>
           <button onClick={() => openModule(9)}>Laboratório MCP <ArrowUpRight size={15} /></button>
+          <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
           <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Base no GitHub <ArrowUpRight size={15} /></a>
         </nav>
         <button className="menu-button" aria-expanded={mobileMenu} aria-controls="main-nav" onClick={() => setMobileMenu(v => !v)} aria-label={mobileMenu ? "Fechar menu" : "Abrir menu"}>{mobileMenu ? <X /> : <Menu />}</button>
@@ -192,6 +219,14 @@ export default function Home() {
       </div>}
     </main>
     <div className="status-message" role="status" aria-live="polite">{notice}</div>
+    {commandOpen && <div className="command-overlay" role="presentation" onMouseDown={() => setCommandOpen(false)}>
+      <section className="command-palette" role="dialog" aria-modal="true" aria-label="Ir para uma parte do site" onMouseDown={event => event.stopPropagation()}>
+        <div className="command-search"><Command size={19}/><input autoFocus value={commandQuery} onChange={event => setCommandQuery(event.target.value)} placeholder="Busque um módulo ou etapa..." aria-label="Buscar módulo ou etapa"/><button onClick={() => setCommandOpen(false)} aria-label="Fechar atalho"><X size={17}/><kbd>Esc</kbd></button></div>
+        <p>{commandQuery.trim().length < 2 ? "ATALHOS PRINCIPAIS" : "RESULTADOS"}</p>
+        <div className="command-results">{quickResults.length ? quickResults.map((item, index) => <button key={item.id} onClick={item.action}><span>{String(index + 1).padStart(2,"0")}</span><div><strong>{item.title}</strong><small>{item.detail}</small></div><ArrowUpRight size={16}/></button>) : <div className="command-empty">Nenhum atalho encontrado. Tente “API”, “MCP” ou “C#”.</div>}</div>
+        <footer><span><kbd>↑</kbd><kbd>↓</kbd> navegue</span><span><kbd>Esc</kbd> fechar</span></footer>
+      </section>
+    </div>}
     <footer className="footer"><span className="footer-brand">Curva Aberta<span>.</span></span><p>Base de Henrique Alexandre, adaptada para este site · <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p><a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria original no GitHub <ExternalLink size={15}/></a></footer>
   </div>;
 }
