@@ -6,6 +6,8 @@ timeout = 45
 accept = [200, 206, 429]
 exclude_loopback = true
 exclude = [
+  # Página conferida em 30/09/2026; runner recebe HTTP 403.
+  '^https://www[.]open[.]edu/openlearn/education-development/learning-how-learn/content-section-0$',
   '^https://leetcode[.]com/$',
   '^https://academy[.]postman[.]com/$',
   '^https://exercism[.]org/',
