@@ -130,3 +130,14 @@
 @media(max-width:700px){.lab-quiz-heading{display:block}.lab-quiz-heading>strong{display:block;text-align:left;margin-top:15px}.lab-quiz-question{padding:15px}.lab-quiz-options button{font-size:15px}}
 
 .lab-final-rubric{padding:25px;border:1px solid #b4c5bf;margin:26px 0;background:#f4f6ee}.lab-final-rubric h3{font-size:24px;margin:10px 0}.lab-final-rubric p{font-size:16px;line-height:1.65}.lab-final-rubric a{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.lab-rubric-table{overflow-x:auto;margin:18px 0}.lab-rubric-table table{border-collapse:collapse;width:100%;font-size:16px;line-height:1.6}.lab-rubric-table th,.lab-rubric-table td{border-bottom:1px solid #c2cec3;padding:13px;text-align:left;vertical-align:top}.lab-rubric-table th{font-weight:700}.lab-rubric-table thead{background:#e3eadc}@media(max-width:700px){.lab-final-rubric{padding:18px}.lab-rubric-table th,.lab-rubric-table td{padding:10px 7px;font-size:15px}}
+
+/* Editorial chapter palette shared with the module index. */
+.lab-welcome,.lab-level-options button.active,.lab-level-options button:last-child.active{background:#243c32;color:#fff9e9}
+.lab-welcome h2,.lab-lesson header>h2,.lab-lesson h3,.lab-final-rubric h3{font-family:"Fraunces",Georgia,serif;font-weight:400;letter-spacing:-.5px}
+.lab-onboarding,.lab-plain,.lab-zero-try,.lab-guided,.lab-final-rubric{background:#ece9dd;border-color:#bfc8b7}
+.lab-guided,.lab-zero-try,.lab-plain{border-left-color:#718b72}
+.lab-guided-example,.lab-lesson pre{background:#243c32;color:#faf6e9}
+.lab-level-options button,.lab-material-filter button,.lab-quiz-question{background:#fffcf6;color:#21332d;border-color:#bac5b6}
+.lab-material-filter button.active,.lab-answer-toggle{background:#243c32;color:#fff9e9;border-color:#243c32}
+.lab-material-filter button:hover:not(.active),.lab-level-options button:hover:not(.active){background:#e8e5d9;border-color:#718b72}
+.lab-recall{background:#e7ecdf}

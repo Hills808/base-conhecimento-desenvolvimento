@@ -80,6 +80,18 @@
 .curriculum-note { font-size:13px; line-height:1.6; color:#586b72; margin-top:20px; }
 .curriculum-notice { min-height:24px; font-size:15px; color:#325640; }
 .curriculum-journey .module-review { margin:0; border-radius:0; padding:20px 30px; }
+/* A lesson follows the same paper, ink and chapter system as the index. */
+.curriculum-journey .journey-intro h2,.curriculum-journey .journey-card-head h3,.curriculum-block h4,.curriculum-journey .module-stage-checks h4,.curriculum-journey .lab-quiz-heading h3 { font-family:"Fraunces",Georgia,serif; font-weight:400; letter-spacing:-.5px; }
+.curriculum-start { background:#e6eadd; border-color:#718b72; }
+.curriculum-block { border-color:#c8cebf; }
+.curriculum-block p { color:#405248; }
+.curriculum-steps li>span { background:#e7d0ad; color:#543d29; }
+.curriculum-example { background:#243c32; color:#faf6e9; }
+.curriculum-result { background:#e5ecdf; border-color:#69816c; }
+.curriculum-challenge { background:#efe5d2; }
+.curriculum-journey .lab-quiz { background:#e8eee4; }
+.curriculum-resources>a { background:#fffcf6; border-color:#b8c4b5; }
+.curriculum-resources>a:hover { background:#f1ecdf; border-color:var(--blue); }
 @media(max-width:1100px) {
   .curriculum-journey .journey-stages { display:flex; overflow-x:auto; overscroll-behavior-x:contain; }
   .curriculum-journey .journey-stage { flex:0 0 180px; min-height:145px; }
