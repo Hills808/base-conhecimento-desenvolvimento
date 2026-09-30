@@ -1,3 +1,4 @@
+import advancedModules from './advanced-modules.json';
 export type GuidanceStage = {
   situation: string;
   outcome: string;
@@ -9,11 +10,11 @@ export type ModuleGuidance = {
   orientation: string;
   firstMove: string;
   closing: string;
-  stages: [GuidanceStage, GuidanceStage, GuidanceStage];
+  stages: GuidanceStage[];
 };
 
 // These are learning prompts, not company procedures. Exercises use only public or fictitious data.
-export const moduleGuidance: Record<number, ModuleGuidance> = {
+const baseGuidance: Record<number, ModuleGuidance> = {
   0: {
     orientation: "Este módulo organiza o estudo antes de você acumular abas, cursos e culpa. Saia dele com uma rotina pequena que produz evidências.",
     firstMove: "Escolha uma habilidade observável para as próximas duas semanas — por exemplo, ‘ler uma resposta de API e explicar os campos’.",
@@ -105,3 +106,11 @@ export const moduleGuidance: Record<number, ModuleGuidance> = {
     ]
   }
 };
+
+export const moduleGuidance: Record<number, ModuleGuidance> = Object.fromEntries(
+  Object.entries(baseGuidance).map(([id, guidance]) => [id, {
+    ...guidance,
+    closing: advancedModules[id as keyof typeof advancedModules][1].proof,
+    stages: [...guidance.stages, ...advancedModules[id as keyof typeof advancedModules].map(({ situation, outcome, attention, checks }) => ({ situation, outcome, attention, checks }))]
+  }])
+);

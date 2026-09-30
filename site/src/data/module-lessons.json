@@ -1,0 +1,3107 @@
+{
+  "0": [
+    {
+      "prerequisite": "Nenhum. Tenha papel ou um editor de texto.",
+      "hours": "1–2 h",
+      "explanation": "Uma meta útil descreve algo que você consegue demonstrar. “Aprender APIs” não diz como saber que aprendeu; “ler id em uma resposta JSON” diz.",
+      "walkthrough": [
+        "Abra plano-de-estudo.md no kit. Preencha uma habilidade e dois blocos de 25 minutos que cabem na semana.",
+        "Escolha um único material. Escreva qual trecho vai consultar e o que vai produzir depois.",
+        "Faça a atividade mínima e anote uma pergunta concreta para a próxima sessão."
+      ],
+      "example": "Meta: localizar id e title em /posts/1\nSessão: 10 min de leitura + 15 min de prática\nEvidência: tabela com os dois campos",
+      "expected": "A evidência permite conferir a habilidade; horas assistidas sozinhas não permitem.",
+      "challenge": [
+        "Defina uma habilidade de outro módulo e uma primeira entrega de até 30 minutos.",
+        "Ajuste o plano ao tempo que realmente teve, preservando a próxima ação."
+      ],
+      "unblock": "Se a meta parece enorme, reduza a uma ação de 15 minutos e escolha um exemplo já resolvido.",
+      "questions": [
+        {
+          "prompt": "Qual meta permite verificar progresso?",
+          "options": [
+            "Explicar os campos de uma resposta usando um exemplo.",
+            "Estudar bastante tecnologia.",
+            "Assistir a cinco cursos nesta semana."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A evidência permite conferir a habilidade; horas assistidas sozinhas não permitem.",
+            "“Bastante” não define uma evidência. Escolha uma ação observável.",
+            "Assistir mede consumo; ainda falta demonstrar o que foi entendido."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Defina uma habilidade de outro módulo e uma primeira entrega de até 30 minutos."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Learning how to learn — Open University",
+          "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+          "focus": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Roadmap.sh — mapas de competências",
+          "url": "https://roadmap.sh/",
+          "focus": "Use para localizar uma lacuna e seu pré-requisito. Não tente cumprir o mapa inteiro.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Uma meta e uma primeira entrega do nível 0.",
+      "hours": "2–3 h",
+      "explanation": "Recuperar uma ideia da memória revela o que ficou claro. A revisão serve para identificar um ponto a corrigir, sem repetir a trilha inteira.",
+      "walkthrough": [
+        "Feche o material e explique sua entrega em três frases: problema, ação e resultado.",
+        "Abra o exemplo apenas depois. Marque uma diferença entre sua explicação e a evidência.",
+        "Marque revisão para daqui a sete dias e registre a próxima experiência."
+      ],
+      "example": "Sem consulta: GET pede leitura; JSON contém campos.\nLacuna: ainda confundo status e corpo.\nPróxima prática: comparar 200 com campo ausente.",
+      "expected": "Você identifica uma lacuna específica e transforma a revisão em uma ação pequena.",
+      "challenge": [
+        "Explique uma entrega sem consultar e confira onde errou.",
+        "Faça uma nova variação que teste a lacuna encontrada."
+      ],
+      "unblock": "Se não lembrar nada, use três perguntas: o que entrou, o que fiz e o que saiu.",
+      "questions": [
+        {
+          "prompt": "Você esqueceu um conceito depois de praticar. O que ajuda?",
+          "options": [
+            "Recomeçar todos os cursos.",
+            "Explicar sem consultar, conferir e praticar a lacuna.",
+            "Marcar concluído porque o vídeo terminou."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Recomeçar tudo não identifica qual parte está faltando.",
+            "Correto. Você identifica uma lacuna específica e transforma a revisão em uma ação pequena.",
+            "O término do vídeo não mostra retenção."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Explique uma entrega sem consultar e confira onde errou."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Learning how to learn — Open University",
+          "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+          "focus": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Registro de duas sessões e de uma dúvida real.",
+      "hours": "2–4 h",
+      "explanation": "O plano deve mudar por uma dificuldade demonstrada. Uma lista de tópicos não precisa ser cumprida inteira antes de tentar uma entrega.",
+      "walkthrough": [
+        "Escolha uma entrega que travou. Descreva exatamente o passo que não conseguiu fazer.",
+        "Procure qual módulo ensina essa habilidade e compare seus pré-requisitos.",
+        "Estude o trecho que destrava o passo e repita a tarefa original."
+      ],
+      "example": "Bloqueio: não sei distinguir null de 0.\nMaterial: início de HTTP/JSON.\nVerificação: classificar três campos novos.",
+      "expected": "O próximo recurso resolve um bloqueio concreto em vez de ampliar uma lista sem fim.",
+      "challenge": [
+        "Replaneje duas semanas a partir de uma entrega incompleta.",
+        "Justifique um assunto adiado e a habilidade que vem primeiro."
+      ],
+      "unblock": "Se há várias lacunas, escolha primeiro a que impede executar a tarefa mínima.",
+      "questions": [
+        {
+          "prompt": "Qual motivo justifica mudar de módulo?",
+          "options": [
+            "Um curso novo apareceu no feed.",
+            "O outro curso tem mais horas.",
+            "Uma lacuna da entrega exige uma habilidade daquele módulo."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Novidade não comprova uma necessidade de aprendizagem.",
+            "Duração não garante adequação ao seu objetivo.",
+            "Correto. O próximo recurso resolve um bloqueio concreto em vez de ampliar uma lista sem fim."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Replaneje duas semanas a partir de uma entrega incompleta."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Roadmap.sh — mapas de competências",
+          "url": "https://roadmap.sh/",
+          "focus": "Use para localizar uma lacuna e seu pré-requisito. Não tente cumprir o mapa inteiro.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Learning how to learn — Open University",
+          "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+          "focus": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Conseguir ajustar o plano e verificar uma entrega.",
+      "hours": "3–5 h",
+      "explanation": "Autonomia exige conferir se uma fonte e uma autoavaliação são confiáveis. Teste em um exemplo novo: repetir a resposta conhecida pode esconder a lacuna.",
+      "walkthrough": [
+        "Compare uma afirmação de um tutorial com a documentação que ele cita.",
+        "Escreva uma pergunta equivalente usando outro exemplo, sem olhar o gabarito.",
+        "Guarde a resposta inicial, a correção e a razão da mudança."
+      ],
+      "example": "Afirmação: 200 sempre significa dados completos.\nContraexemplo: corpo sem campo obrigatório.\nCorreção: separar transporte e conteúdo.",
+      "expected": "Um contraexemplo é suficiente para mostrar que uma afirmação universal era inadequada.",
+      "challenge": [
+        "Audite três afirmações do seu material principal com evidências.",
+        "Crie duas variações de uma tarefa e explique seus erros."
+      ],
+      "unblock": "Escolha uma pequena mudança na entrada antes de criar um problema totalmente novo.",
+      "questions": [
+        {
+          "prompt": "Você só acerta o exercício que já viu. O que falta validar?",
+          "options": [
+            "Transferência para uma situação nova.",
+            "Mais tempo com a mesma resposta aberta.",
+            "Um certificado."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. Um contraexemplo é suficiente para mostrar que uma afirmação universal era inadequada.",
+            "Consultar a resposta repetidamente não verifica autonomia.",
+            "A credencial não verifica essa lacuna específica."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Audite três afirmações do seu material principal com evidências."
+        },
+        {
+          "prompt": "Depois de sete dias você não explica a entrega sem consultar. Como registrar a revisão?",
+          "options": [
+            "Apagar todas as entregas anteriores.",
+            "Registrar a lacuna e repetir uma variação após revisar o ponto.",
+            "Marcar domínio porque já estudou antes."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Uma lacuna não invalida toda a prática; registre e revise o ponto.",
+            "Correto. A revisão revela onde retomar e permite preservar evidências anteriores.",
+            "Ter visto o material não prova recuperação ou transferência."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Crie duas variações de uma tarefa e explique seus erros."
+        }
+      ],
+      "name": "Verifique seu próprio aprendizado",
+      "learn": [
+        "Recuperação sem consulta",
+        "Transferência e contraexemplos",
+        "Avaliação de fontes"
+      ],
+      "practice": "Audite seu plano usando duas tarefas inéditas.",
+      "proof": "Um registro de tentativa, correção e evidência de transferência.",
+      "situation": "Você termina materiais, mas trava quando o exemplo muda.",
+      "outcome": "Um registro de tentativa, correção e evidência de transferência.",
+      "attention": "Não confunda familiaridade com capacidade de executar.",
+      "checks": [
+        "Resolvi uma variação sem copiar o exemplo.",
+        "Conferi uma afirmação na fonte original.",
+        "Expliquei um erro e como corrigi."
+      ],
+      "materials": [
+        {
+          "title": "Learning how to learn — Open University",
+          "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+          "focus": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Roadmap.sh — mapas de competências",
+          "url": "https://roadmap.sh/",
+          "focus": "Use para localizar uma lacuna e seu pré-requisito. Não tente cumprir o mapa inteiro.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Evidências dos níveis anteriores e um objetivo realista.",
+      "hours": "4–6 h",
+      "explanation": "O projeto final é um sistema pessoal de estudo que outra pessoa entende. Cada decisão sobre tempo e recurso deve apontar para uma evidência de aprendizagem.",
+      "walkthrough": [
+        "Escolha uma competência de outro módulo e planeje quatro semanas com uma entrega por semana.",
+        "Defina critérios antes de estudar: tarefa, resultado esperado e como conferir.",
+        "Execute a primeira semana e registre o tempo real; revise o restante sem esconder o que faltou.",
+        "Peça a alguém para ler o plano e descobrir a próxima ação sem sua explicação."
+      ],
+      "example": "Semana 1: ler JSON\nSemana 2: testar GET no Bruno\nSemana 3: documentar ausência e erro\nSemana 4: variação sem guia",
+      "expected": "O plano contém evidência, revisão e uma próxima tarefa executável; não promete dominar uma profissão em quatro semanas.",
+      "challenge": [
+        "Entregue plano, primeira prática, revisão e justificativa dos ajustes.",
+        "Após sete dias, repita uma variação sem consultar e compare o resultado."
+      ],
+      "unblock": "Comece a executar uma semana; não espere que o plano inteiro esteja perfeito.",
+      "questions": [
+        {
+          "prompt": "Como avaliar o projeto de estudo?",
+          "options": [
+            "Pelo número de links guardados.",
+            "Pela execução, evidências e ajustes justificados.",
+            "Pela promessa de terminar tudo rapidamente."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Guardar links não demonstra execução.",
+            "Correto. O plano contém evidência, revisão e uma próxima tarefa executável; não promete dominar uma profissão em quatro semanas.",
+            "Uma promessa não é um resultado verificado."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue plano, primeira prática, revisão e justificativa dos ajustes."
+        },
+        {
+          "prompt": "Depois de sete dias você não explica a entrega sem consultar. Como registrar a revisão?",
+          "options": [
+            "Marcar domínio porque já estudou antes.",
+            "Apagar todas as entregas anteriores.",
+            "Registrar a lacuna e repetir uma variação após revisar o ponto."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Ter visto o material não prova recuperação ou transferência.",
+            "Uma lacuna não invalida toda a prática; registre e revise o ponto.",
+            "Correto. A revisão revela onde retomar e permite preservar evidências anteriores."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Após sete dias, repita uma variação sem consultar e compare o resultado."
+        }
+      ],
+      "name": "Projeto: plano com evidências",
+      "learn": [
+        "Planejamento adaptável",
+        "Revisão espaçada",
+        "Critérios de competência"
+      ],
+      "practice": "Execute e revise um ciclo de estudo de quatro semanas.",
+      "proof": "Plano legível, entregas e revisão de uma tarefa inédita.",
+      "situation": "Você precisa sustentar a evolução mesmo com pouco tempo.",
+      "outcome": "Plano legível, entregas e revisão de uma tarefa inédita.",
+      "attention": "Este módulo desenvolve autonomia para estudar; competências técnicas dependem de suas trilhas.",
+      "checks": [
+        "A primeira semana foi executada e registrada.",
+        "Uma variação foi feita sem resposta aberta.",
+        "Outra pessoa identifica a próxima ação pelo plano."
+      ],
+      "materials": [
+        {
+          "title": "Learning how to learn — Open University",
+          "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+          "focus": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Roadmap.sh — mapas de competências",
+          "url": "https://roadmap.sh/",
+          "focus": "Use para localizar uma lacuna e seu pré-requisito. Não tente cumprir o mapa inteiro.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "1": [
+    {
+      "prerequisite": "Nenhum. Os passos começam em linguagem comum.",
+      "hours": "4–8 h",
+      "explanation": "Um programa recebe uma entrada, toma decisões e produz uma saída. Uma condição escolhe um caminho; uma repetição executa um passo várias vezes.",
+      "walkthrough": [
+        "No kit problema-e-pseudocodigo.md, descreva uma calculadora de desconto com entrada preço e quantidade.",
+        "Simule preço 10 e quantidade 2: total = 20; se quantidade >= 3, desconto = 10%.",
+        "Escolha uma linguagem no material e implemente só entrada → conta → saída; adicione a condição depois."
+      ],
+      "example": "preço = 10; quantidade = 3\ntotal = 30\nse quantidade >= 3: total = total * 0.9\nsaída esperada = 27",
+      "expected": "Cada linha tem função clara; o desconto só acontece quando a condição é verdadeira.",
+      "challenge": [
+        "Teste quantidades 2, 3 e 0 e escreva a saída esperada antes de executar.",
+        "Separe a regra de desconto em uma função."
+      ],
+      "unblock": "Faça uma tabela de entradas e saídas no papel antes de digitar código.",
+      "questions": [
+        {
+          "prompt": "Quantidade 2 deve receber desconto pela regra acima?",
+          "options": [
+            "Sim; todo pedido recebe desconto.",
+            "Não; a condição exige pelo menos 3.",
+            "Depende da linguagem."
+          ],
+          "correct": 1,
+          "feedback": [
+            "A regra escrita tem uma condição específica.",
+            "Correto. Cada linha tem função clara; o desconto só acontece quando a condição é verdadeira.",
+            "Linguagens diferentes devem implementar a mesma regra de negócio."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Teste quantidades 2, 3 e 0 e escreva a saída esperada antes de executar."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Algoritmos — Curso em Vídeo",
+          "url": "https://www.cursoemvideo.com/curso/curso-de-algoritmo/",
+          "focus": "Comece pelas aulas de introdução, variáveis e condições. Volte para simular o desconto antes de avançar.",
+          "language": "Português",
+          "format": "Vídeo",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Tour de C# — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/",
+          "focus": "Leia estrutura do programa, tipos, condições e funções; use o exemplo mínimo desta etapa.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Variáveis, condição, função e execução de um programa.",
+      "hours": "6–10 h",
+      "explanation": "Depurar significa observar valores e seguir a execução até descobrir onde o resultado mudou. Uma entrada inválida deve ser tratada antes da conta.",
+      "walkthrough": [
+        "Em C#, crie um projeto separado: dotnet new console -n Conversor; entre na pasta e rode dotnet run.",
+        "Use decimal.TryParse para ler um preço. Se falhar, imprima uma mensagem e pare a operação.",
+        "Coloque um breakpoint ou imprima o valor antes da conta; teste texto, zero e número negativo."
+      ],
+      "example": "if (!decimal.TryParse(Console.ReadLine(), out var preco) || preco < 0)\n{ Console.WriteLine(\"Preço inválido\"); return; }\nConsole.WriteLine(preco * 2);",
+      "expected": "Texto inválido não derruba o programa; zero e negativo recebem o tratamento definido pela regra.",
+      "challenge": [
+        "Implemente um conversor com entrada validada e três casos documentados.",
+        "Localize um erro de regra pelo depurador e explique o valor observado."
+      ],
+      "unblock": "Se dotnet não existir, resolva o SDK antes do código; se aparecer CS8802, mantenha um projeto por exercício.",
+      "questions": [
+        {
+          "prompt": "Por que usar TryParse na entrada?",
+          "options": [
+            "Para garantir que qualquer texto vira número.",
+            "Para ignorar números negativos automaticamente.",
+            "Para testar a conversão e tratar a falha explicitamente."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Texto arbitrário não tem conversão válida.",
+            "TryParse converte; a regra de sinal precisa ser validada separadamente.",
+            "Correto. Texto inválido não derruba o programa; zero e negativo recebem o tratamento definido pela regra."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Implemente um conversor com entrada validada e três casos documentados."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Tour de C# — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/",
+          "focus": "Leia estrutura do programa, tipos, condições e funções; use o exemplo mínimo desta etapa.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "C# para iniciantes — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/",
+          "focus": "Assista ao episódio correspondente a executar, variáveis ou depuração. A página é traduzida; confira legendas no player.",
+          "language": "Inglês · página traduzida",
+          "format": "Vídeo",
+          "time": "Um episódio por sessão",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Um programa pequeno validado e capacidade de localizar uma falha.",
+      "hours": "8–12 h",
+      "explanation": "Separar responsabilidades permite alterar uma regra e testar seu efeito. Coleções guardam vários itens; escolher uma estrutura exige explicar como os dados serão usados.",
+      "walkthrough": [
+        "Pegue o conversor e extraia a conta para uma função sem leitura do console.",
+        "Crie uma lista de entradas e confira resultados; depois use um dicionário para consultar por chave.",
+        "Compare o custo de procurar um item varrendo toda a lista com uma consulta por chave; não trate isso como garantia para qualquer tamanho."
+      ],
+      "example": "decimal Dobrar(decimal valor) => valor * 2;\n// Esperado: Dobrar(10) = 20; Dobrar(0) = 0.",
+      "expected": "A função pode ser testada sem console; a escolha da coleção se relaciona à tarefa.",
+      "challenge": [
+        "Crie um catálogo em memória com consulta por identificador e validação.",
+        "Documente uma alternativa e por que não a escolheu para esse caso."
+      ],
+      "unblock": "Primeiro mova uma regra para uma função; reorganize o restante só após conferir a mesma saída.",
+      "questions": [
+        {
+          "prompt": "Uma função só de cálculo deve ler Console.ReadLine?",
+          "options": [
+            "Não; receba os dados por parâmetro para poder testar.",
+            "Sim; todas as funções precisam de console.",
+            "Só quando a lista tiver mais de dez itens."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A função pode ser testada sem console; a escolha da coleção se relaciona à tarefa.",
+            "Entrada interativa não é necessária a toda função.",
+            "O tamanho da lista não define a responsabilidade da função."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie um catálogo em memória com consulta por identificador e validação."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Coleções e estruturas de dados — .NET",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/standard/collections/",
+          "focus": "Compare List e Dictionary pela forma de acesso; não memorize todas as coleções.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Tour de C# — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/",
+          "focus": "Leia estrutura do programa, tipos, condições e funções; use o exemplo mínimo desta etapa.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Funções, coleções, validação e noções de complexidade.",
+      "hours": "10–16 h",
+      "explanation": "Testes protegem regras e casos de borda. Alterar uma implementação só é seguro se o comportamento esperado continuar observável.",
+      "walkthrough": [
+        "Escreva testes para catálogo vazio, identificador repetido e item inexistente antes da refatoração.",
+        "Quebre de propósito a comparação de identificadores e veja o teste específico falhar.",
+        "Refatore a consulta sem alterar o contrato e confira os testes; meça antes de otimizar."
+      ],
+      "example": "Casos: [] + buscar A → não encontrado\n[A,A] → rejeitar duplicidade\n[A,B] + buscar B → B",
+      "expected": "O teste detecta uma alteração indevida; a refatoração preserva os casos documentados.",
+      "challenge": [
+        "Adicione seis testes de regra e borda ao catálogo.",
+        "Compare duas implementações e registre clareza, custo e limites da medição."
+      ],
+      "unblock": "Use uma única entrada que deveria falhar e confira o resultado, não apenas se o programa terminou.",
+      "questions": [
+        {
+          "prompt": "Testes sempre verdes, mesmo após remover a validação. O que investigar?",
+          "options": [
+            "Concluir que a remoção é segura.",
+            "Se os testes realmente exercitam e verificam a regra.",
+            "Adicionar mais testes idênticos."
+          ],
+          "correct": 1,
+          "feedback": [
+            "O verde é insuficiente quando o defeito controlado não foi detectado.",
+            "Correto. O teste detecta uma alteração indevida; a refatoração preserva os casos documentados.",
+            "Quantidade sem casos relevantes não resolve a ausência de assertivas."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Adicione seis testes de regra e borda ao catálogo."
+        },
+        {
+          "prompt": "O arquivo JSON de tarefas está inválido. Qual comportamento preserva segurança dos dados?",
+          "options": [
+            "Criar uma lista vazia e sobrescrever o arquivo automaticamente.",
+            "Ignorar qualquer erro de leitura sem mensagem.",
+            "Avisar e interromper a leitura sem sobrescrever silenciosamente o arquivo."
+          ],
+          "correct": 2,
+          "feedback": [
+            "A sobrescrita pode apagar evidências de dados ainda recuperáveis.",
+            "Silêncio impede distinguir sucesso, ausência e corrupção.",
+            "Correto. Erro de leitura e catálogo vazio são situações diferentes."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Compare duas implementações e registre clareza, custo e limites da medição."
+        }
+      ],
+      "name": "Teste e refatore sem regressão",
+      "learn": [
+        "Testes de unidade e borda",
+        "Complexidade e medição",
+        "Separação de responsabilidades"
+      ],
+      "practice": "Refatore o catálogo sob proteção de testes que detectam defeitos.",
+      "proof": "Catálogo com seis casos, falha controlada detectada e comparação de alternativas.",
+      "situation": "Uma mudança pequena quebra outra regra sem aviso.",
+      "outcome": "Catálogo com seis casos, falha controlada detectada e comparação de alternativas.",
+      "attention": "Otimização sem medida pode piorar clareza sem benefício demonstrado.",
+      "checks": [
+        "Um teste falha com um defeito intencional.",
+        "Casos vazio, duplicado e ausente estão cobertos.",
+        "Justifiquei a estrutura de dados e seus limites."
+      ],
+      "materials": [
+        {
+          "title": "Testes C# com xUnit — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit",
+          "focus": "Siga criação da solução e primeiro teste que falha; depois aplique aos casos do seu catálogo.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Coleções e estruturas de dados — .NET",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/standard/collections/",
+          "focus": "Compare List e Dictionary pela forma de acesso; não memorize todas as coleções.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Catálogo testado, funções e leitura de documentação.",
+      "hours": "14–22 h",
+      "explanation": "Um projeto avançado de fundamentos exige combinar regras novas sem copiar uma solução pronta. O escopo continua pequeno para que cada decisão possa ser revisada.",
+      "walkthrough": [
+        "Defina um gerenciador de tarefas local: criar, listar, concluir e salvar em JSON; escreva três critérios de aceite.",
+        "Separe leitura/escrita, regras e interface de terminal. Defina como tratar arquivo inexistente ou inválido.",
+        "Implemente em pequenas mudanças; teste IDs duplicados, dados inválidos e reabertura do arquivo.",
+        "Prepare README e um PR de estudo com decisão sobre coleção e persistência."
+      ],
+      "example": "Aceite: tarefa concluída reaparece concluída após reiniciar.\nErro: arquivo inválido gera aviso; não é sobrescrito silenciosamente.",
+      "expected": "Uma pessoa consegue executar, reproduzir os testes e localizar a responsabilidade de cada parte.",
+      "challenge": [
+        "Entregue código, oito casos de teste, README e registro de uma falha investigada.",
+        "Receba uma mudança de requisito e implemente-a mantendo os testes."
+      ],
+      "unblock": "Implemente criar/listar em memória; só depois acrescente arquivo e recuperação de erros.",
+      "questions": [
+        {
+          "prompt": "Qual evidência demonstra autonomia no projeto?",
+          "options": [
+            "Repetir o tutorial inteiro.",
+            "Usar o maior número de padrões de projeto.",
+            "Implementar uma mudança nova e explicar os testes que a protegem."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Repetir um caminho conhecido não verifica adaptação.",
+            "Padrões devem resolver problemas concretos, não aumentar a complexidade.",
+            "Correto. Uma pessoa consegue executar, reproduzir os testes e localizar a responsabilidade de cada parte."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue código, oito casos de teste, README e registro de uma falha investigada."
+        },
+        {
+          "prompt": "O arquivo JSON de tarefas está inválido. Qual comportamento preserva segurança dos dados?",
+          "options": [
+            "Avisar e interromper a leitura sem sobrescrever silenciosamente o arquivo.",
+            "Criar uma lista vazia e sobrescrever o arquivo automaticamente.",
+            "Ignorar qualquer erro de leitura sem mensagem."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. Erro de leitura e catálogo vazio são situações diferentes.",
+            "A sobrescrita pode apagar evidências de dados ainda recuperáveis.",
+            "Silêncio impede distinguir sucesso, ausência e corrupção."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Receba uma mudança de requisito e implemente-a mantendo os testes."
+        }
+      ],
+      "name": "Projeto: tarefas com persistência",
+      "learn": [
+        "Descoberta de regras",
+        "Persistência e erros",
+        "Entrega e revisão de código"
+      ],
+      "practice": "Crie um gerenciador local testado, documentado e extensível.",
+      "proof": "Projeto com oito casos e alteração de requisito demonstrada.",
+      "situation": "Uma tarefa nova combina lógica, dados e arquivo.",
+      "outcome": "Projeto com oito casos e alteração de requisito demonstrada.",
+      "attention": "Não declare domínio de uma linguagem inteira; demonstre as competências e registre tópicos futuros.",
+      "checks": [
+        "O README permite execução do zero.",
+        "A persistência e os erros foram testados.",
+        "Uma mudança inédita passou pelos testes."
+      ],
+      "materials": [
+        {
+          "title": "Nomes de propriedades JSON — System.Text.Json",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/standard/serialization/system-text-json/customize-properties",
+          "focus": "Leia JsonPropertyName e política de nomes; compare className com NomeClasse.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Testes C# com xUnit — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit",
+          "focus": "Siga criação da solução e primeiro teste que falha; depois aplique aos casos do seu catálogo.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "2": [
+    {
+      "prerequisite": "Nenhum para observar a primeira resposta; lógica entra na implementação.",
+      "hours": "3–5 h",
+      "explanation": "HTTP descreve o pedido e seu resultado de transporte. JSON é o formato do corpo: campos presentes, null e ausentes não significam a mesma coisa.",
+      "walkthrough": [
+        "Abra https://jsonplaceholder.typicode.com/posts/1 no navegador e encontre id e title.",
+        "No Bruno, crie uma coleção e uma GET para a mesma URL; envie e encontre status e Body.",
+        "Compare o JSON didático abaixo: marque as chaves antes de interpretar valores."
+      ],
+      "example": "{\"id\":1,\"notes\":null,\"views\":0}",
+      "expected": "notes existe sem valor; views vale zero; author não está presente. Um 200 não garante campos que não vieram.",
+      "challenge": [
+        "Registre método, URL, status e dois campos da GET.",
+        "Escreva o que você pode e não pode afirmar sobre o JSON didático."
+      ],
+      "unblock": "No navegador você vê o corpo; use o Bruno para localizar também o status e os headers.",
+      "questions": [
+        {
+          "prompt": "author não aparece. Qual valor você pode informar?",
+          "options": [
+            "Zero.",
+            "O valor da requisição anterior.",
+            "Nenhum; declare que o campo não foi fornecido."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Zero é um valor e não representa um campo ausente.",
+            "Uma chamada anterior não comprova o dado da resposta atual.",
+            "Correto. notes existe sem valor; views vale zero; author não está presente. Um 200 não garante campos que não vieram."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Registre método, URL, status e dois campos da GET."
+        }
+      ],
+      "materials": [
+        {
+          "title": "HTTP — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+          "focus": "Leia visão geral e mensagens HTTP; localize método, status, headers e corpo na sua requisição.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "APIs .NET para iniciantes — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/",
+          "focus": "Veja introdução a APIs e implementação. Narração em inglês; a página traduzida ajuda a localizar cada episódio.",
+          "language": "Inglês · página traduzida",
+          "format": "Vídeo",
+          "time": "Um episódio por sessão",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Ler método, status, corpo e campos JSON.",
+      "hours": "5–8 h",
+      "explanation": "OpenAPI descreve parâmetros e schemas. Bruno executa chamadas e confere resultados reais; manter os dois coerentes exige testar valores e campos, não apenas status.",
+      "walkthrough": [
+        "Abra contrato-api-ficticia.yaml no kit e localize /itens/{id}, GET e os campos required.",
+        "No Bruno use a API de demonstração para criar assertivas res.status equals 200 e res.body.id equals 1.",
+        "Troque a expectativa do id para 2 e confirme a falha; restaure 1. Para o contrato fictício, documente os casos antes de implementar a API."
+      ],
+      "example": "GET /posts/1\nAssert: res.status equals 200\nAssert: res.body.id equals 1",
+      "expected": "A assertiva de campo falha quando o valor muda, mesmo que HTTP continue 200.",
+      "challenge": [
+        "Descreva um endpoint com entrada, saída e erros em OpenAPI.",
+        "Guarde coleção Bruno com testes de status, valor e campo obrigatório."
+      ],
+      "unblock": "Não existe API rodando para o YAML do kit: primeiro desenhe os casos; execute-os na sua implementação local depois.",
+      "questions": [
+        {
+          "prompt": "O status passa, mas id deveria ser 1 e voltou 2. O contrato foi validado?",
+          "options": [
+            "Não; a divergência do campo deve falhar.",
+            "Sim, pois 200 basta.",
+            "Sim, pois o corpo é JSON."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A assertiva de campo falha quando o valor muda, mesmo que HTTP continue 200.",
+            "O status não confere os valores do contrato.",
+            "JSON válido pode carregar conteúdo incorreto."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Descreva um endpoint com entrada, saída e erros em OpenAPI."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Testes no Bruno — documentação oficial",
+          "url": "https://docs.usebruno.com/testing/tests/introduction",
+          "focus": "Leia como validar status e campos; introduza uma expectativa errada para conferir que falha.",
+          "language": "Inglês",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "HTTP — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+          "focus": "Leia visão geral e mensagens HTTP; localize método, status, headers e corpo na sua requisição.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Contrato, testes Bruno e C# básico; use o módulo 1 se necessário.",
+      "hours": "10–16 h",
+      "explanation": "DTO representa o formato transportado; serviço aplica a regra. Quando um campo some, acompanhe JSON → DTO → serviço → resposta para achar onde a informação foi perdida.",
+      "walkthrough": [
+        "Siga o tutorial Microsoft de primeira Web API até conseguir uma GET local; copie a porta mostrada no terminal.",
+        "Crie um DTO para um item e separe a consulta em serviço; teste a GET no Bruno.",
+        "Simule JSON com className e DTO com nome diferente; registre o valor em cada fronteira e corrija o mapeamento explicitamente."
+      ],
+      "example": "JSON: {\"className\":\"Essencial\"}\nDTO: [JsonPropertyName(\"className\")] public string? NomeClasse { get; set; }",
+      "expected": "O atributo descreve a origem do nome; um teste de desserialização confirma o valor sem pedir ao prompt para corrigir o dado.",
+      "challenge": [
+        "Crie API de catálogo com DTO, GET e teste de mapeamento.",
+        "Demonstre sucesso, ausência e entrada inválida com coleção Bruno."
+      ],
+      "unblock": "Se a raiz / retorna 404, teste a rota criada pelo tutorial; isso não prova que o servidor parou.",
+      "questions": [
+        {
+          "prompt": "className veio no JSON mas NomeClasse ficou null. Por onde começar?",
+          "options": [
+            "Mandar o modelo inventar o campo.",
+            "Conferir desserialização e mapeamento antes do prompt.",
+            "Trocar null por um nome padrão sem investigar."
+          ],
+          "correct": 1,
+          "feedback": [
+            "O modelo não corrige um contrato de transporte quebrado.",
+            "Correto. O atributo descreve a origem do nome; um teste de desserialização confirma o valor sem pedir ao prompt para corrigir o dado.",
+            "Um padrão silencioso esconde o defeito e muda a informação."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie API de catálogo com DTO, GET e teste de mapeamento."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Primeira Web API — ASP.NET Core",
+          "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",
+          "focus": "Implemente uma GET, teste a porta local no Bruno e só depois extraia DTO e serviço.",
+          "language": "Português",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Nomes de propriedades JSON — System.Text.Json",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/standard/serialization/system-text-json/customize-properties",
+          "focus": "Leia JsonPropertyName e política de nomes; compare className com NomeClasse.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "APIs .NET para iniciantes — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/",
+          "focus": "Veja introdução a APIs e implementação. Narração em inglês; a página traduzida ajuda a localizar cada episódio.",
+          "language": "Inglês · página traduzida",
+          "format": "Vídeo",
+          "time": "Um episódio por sessão",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "API local, DTOs, testes de contrato e contexto autenticado.",
+      "hours": "10–18 h",
+      "explanation": "Identidade vem da autenticação; permissão de consultar um recurso precisa ser verificada no servidor. Timeout e retry exigem limites e semântica da operação.",
+      "walkthrough": [
+        "Em ambiente de teste, use identidades fictícias A e B com recursos diferentes; não crie bypass na API real.",
+        "A tente ler recurso de B: teste que a política nega sem corpo sensível. Teste contexto ausente separadamente.",
+        "Simule dependência lenta; defina timeout/cancelamento e registre uma falha estruturada sem token.",
+        "Compare GET e POST: documente por que repetir uma escrita pode duplicar dados."
+      ],
+      "example": "A autenticado → recurso B → acesso negado\nSem identidade → nenhuma consulta\nPOST com timeout → não repetir sem garantia de idempotência",
+      "expected": "Autorização e limites são aplicados pelo servidor, e uma falha de rede não autoriza repetir qualquer operação.",
+      "challenge": [
+        "Adicione testes de acesso negado, timeout e schema inválido.",
+        "Documente política de retries, cancelamento e logs sem payload sensível."
+      ],
+      "unblock": "Comece simulando uma dependência; teste a política antes de usar qualquer credencial real.",
+      "questions": [
+        {
+          "prompt": "Um POST teve timeout. É seguro repetir sempre?",
+          "options": [
+            "Sim, timeout prova que nada aconteceu.",
+            "Sim, basta repetir até retornar 200.",
+            "Não; a escrita pode ter acontecido e ser duplicada."
+          ],
+          "correct": 2,
+          "feedback": [
+            "O cliente pode perder a resposta depois de a operação acontecer.",
+            "Repetição ilimitada pode duplicar operações e sobrecarregar o serviço.",
+            "Correto. Autorização e limites são aplicados pelo servidor, e uma falha de rede não autoriza repetir qualquer operação."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Adicione testes de acesso negado, timeout e schema inválido."
+        },
+        {
+          "prompt": "A API devolve className, mas o serviço usa outra chave. Como comprovar a correção?",
+          "options": [
+            "Teste de desserialização/mapeamento com JSON e saída esperados.",
+            "Uma frase no prompt pedindo o nome certo.",
+            "Aceitar string vazia sempre."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. O teste verifica a fronteira em que o campo se perdia.",
+            "O prompt não corrige o transporte nem o DTO.",
+            "Aceitar vazio esconde a divergência e deixa o consumidor sem dado."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Documente política de retries, cancelamento e logs sem payload sensível."
+        }
+      ],
+      "name": "Proteja e torne a API resiliente",
+      "learn": [
+        "Autorização por recurso",
+        "Timeout, cancelamento e idempotência",
+        "Testes de integração e logs seguros"
+      ],
+      "practice": "Simule acesso cruzado e falhas transitórias com testes reproduzíveis.",
+      "proof": "API com matriz de permissões, testes negativos e política de falhas.",
+      "situation": "A API funciona no caminho feliz, mas pode expor dados ou duplicar uma escrita.",
+      "outcome": "API com matriz de permissões, testes negativos e política de falhas.",
+      "attention": "Autenticação não substitui autorização; retries dependem da operação.",
+      "checks": [
+        "Acesso de A ao recurso de B é negado no servidor.",
+        "Timeout e campo inválido têm teste e estado definido.",
+        "Logs e coleção não contêm segredos."
+      ],
+      "materials": [
+        {
+          "title": "Autorização por recurso — ASP.NET Core",
+          "url": "https://learn.microsoft.com/pt-br/aspnet/core/security/authorization/resource-based?view=aspnetcore-10.0",
+          "focus": "Leia IAuthorizationService e a verificação após carregar o recurso; aplique a identidades fictícias.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "HTTP resiliente — .NET",
+          "url": "https://learn.microsoft.com/pt-br/dotnet/core/resilience/http-resilience",
+          "focus": "Leia timeout e repetição de métodos não seguros; explique como evitar duplicar uma escrita.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "API protegida e cenários de erro demonstrados.",
+      "hours": "16–24 h",
+      "explanation": "Projeto: catálogo de procedimentos fictícios. Um consumidor só pode usar os campos autorizados que o contrato fornece; alterações devem preservar compatibilidade ou explicitar a migração.",
+      "walkthrough": [
+        "Descubra três casos de uso e dois fora de escopo; escreva contrato de consulta, paginação e ausência.",
+        "Implemente serviço/DTOs e autorização por recurso com dados locais fictícios.",
+        "Crie coleção Bruno e testes de integração para sucesso, inexistente, proibido, validação, timeout e mapeamento divergente.",
+        "Simule uma mudança de nome de campo; documente a compatibilidade e a decisão de versão.",
+        "Prepare PR com README, contrato, resultados e como desfazer a mudança."
+      ],
+      "example": "Entrega: openapi.yaml + coleção Bruno + API + testes\nMudança: className → nomeClasse; consumidor antigo não pode quebrar sem plano.",
+      "expected": "A demonstração inclui contrato, diagnóstico de falha e compatibilidade; o PR é reproduzível por outra pessoa.",
+      "challenge": [
+        "Entregue o catálogo com pelo menos oito casos e uma falha intencional detectada.",
+        "Justifique uma alternativa de contrato e os limites do serviço."
+      ],
+      "unblock": "Comece com uma rota GET e uma tabela local; acrescente os casos até cobrir o contrato.",
+      "questions": [
+        {
+          "prompt": "Qual mudança precisa de análise de compatibilidade?",
+          "options": [
+            "Remover ou renomear um campo usado pelo consumidor.",
+            "Corrigir apenas uma frase no README.",
+            "Adicionar um comentário interno sem mudar comportamento."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A demonstração inclui contrato, diagnóstico de falha e compatibilidade; o PR é reproduzível por outra pessoa.",
+            "Uma frase não altera o contrato transportado.",
+            "Um comentário sem efeito não altera o schema."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue o catálogo com pelo menos oito casos e uma falha intencional detectada."
+        },
+        {
+          "prompt": "A API devolve className, mas o serviço usa outra chave. Como comprovar a correção?",
+          "options": [
+            "Aceitar string vazia sempre.",
+            "Teste de desserialização/mapeamento com JSON e saída esperados.",
+            "Uma frase no prompt pedindo o nome certo."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Aceitar vazio esconde a divergência e deixa o consumidor sem dado.",
+            "Correto. O teste verifica a fronteira em que o campo se perdia.",
+            "O prompt não corrige o transporte nem o DTO."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Justifique uma alternativa de contrato e os limites do serviço."
+        }
+      ],
+      "name": "Projeto: API pronta para revisão",
+      "learn": [
+        "Descoberta e OpenAPI",
+        "Compatibilidade e contratos",
+        "PR, testes e diagnóstico"
+      ],
+      "practice": "Entregue catálogo .NET com contrato, Bruno, segurança e migração simulada.",
+      "proof": "PR reproduzível com oito cenários e decisão de compatibilidade.",
+      "situation": "Um consumidor precisa usar sua API sem combinar detalhes por mensagem.",
+      "outcome": "PR reproduzível com oito cenários e decisão de compatibilidade.",
+      "attention": "Avançado aqui significa desenhar e investigar esta integração; produção ainda exige revisão e operação.",
+      "checks": [
+        "O contrato e os testes conferem campos e estados.",
+        "Uma falha de mapeamento foi reproduzida e corrigida.",
+        "O PR explica execução, compatibilidade e rollback."
+      ],
+      "materials": [
+        {
+          "title": "Testes de integração — ASP.NET Core",
+          "url": "https://learn.microsoft.com/pt-br/aspnet/core/test/integration-tests?view=aspnetcore-10.0",
+          "focus": "Use WebApplicationFactory no projeto de estudo; identidades simuladas pertencem só ao teste.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Primeira Web API — ASP.NET Core",
+          "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0",
+          "focus": "Implemente uma GET, teste a porta local no Bruno e só depois extraia DTO e serviço.",
+          "language": "Português",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "prerequisite": "Nenhum. Um editor e navegador bastam.",
+      "hours": "5–8 h",
+      "explanation": "HTML dá significado ao conteúdo; CSS organiza sua aparência. Um botão deve ser um button, para que teclado e tecnologias assistivas reconheçam a ação.",
+      "walkthrough": [
+        "Crie index.html com main, h1, parágrafo e um button com texto “Mostrar dica”.",
+        "Abra no navegador e pressione Tab até o botão; mantenha um contorno de foco visível.",
+        "Adicione CSS max-width: 65ch ao texto e padding à página; reduza a janela e confira que não exige rolagem horizontal."
+      ],
+      "example": "<main><h1>Guia de estudo</h1><p>Uma etapa por vez.</p><button>Mostrar dica</button></main>",
+      "expected": "A estrutura tem um título principal e o botão recebe foco sem mouse.",
+      "challenge": [
+        "Crie uma página com três seções, links claros e botão real.",
+        "Confira leitura e teclado em janela estreita."
+      ],
+      "unblock": "Teste a estrutura sem CSS primeiro; depois organize a aparência.",
+      "questions": [
+        {
+          "prompt": "Qual elemento usar para uma ação clicável?",
+          "options": [
+            "button com nome compreensível.",
+            "div com cor de botão apenas.",
+            "Uma imagem sem texto alternativo."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A estrutura tem um título principal e o botão recebe foco sem mouse.",
+            "A aparência da div não fornece comportamento nativo de teclado.",
+            "A imagem sozinha não identifica a ação de forma acessível."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie uma página com três seções, links claros e botão real."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Aprendendo desenvolvimento web — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development",
+          "focus": "Comece por estrutura HTML e CSS; execute uma página mínima antes de estudar frameworks.",
+          "language": "Português",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Guia JavaScript — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide",
+          "focus": "Leia funções, promises e tratamento de erros de acordo com o passo que bloqueia a interface.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "HTML, CSS e função simples em JavaScript.",
+      "hours": "8–12 h",
+      "explanation": "Consumo de API precisa explicar o que acontece antes, durante e depois da chamada. Vazio é uma resposta válida sem itens; erro é uma falha e deve permitir tentar de novo.",
+      "walkthrough": [
+        "Crie uma lista de posts e envie GET à JSONPlaceholder usando fetch.",
+        "Antes da chamada mostre “Carregando”; ao terminar renderize os itens ou “Nenhum item”.",
+        "Simule rede indisponível e exiba erro com botão de nova tentativa; não deixe spinner eterno."
+      ],
+      "example": "Estados: carregando → sucesso | vazio | erro\nif (!response.ok) throw new Error(\"Falha na consulta\");",
+      "expected": "Você consegue distinguir os estados e voltar do erro para uma nova tentativa.",
+      "challenge": [
+        "Implemente busca com estados carregando, vazio e erro.",
+        "Demonstre cada estado com dados simulados, sem depender de sorte na rede."
+      ],
+      "unblock": "Use arrays simulados e uma promessa rejeitada para testar cada estado de forma controlada.",
+      "questions": [
+        {
+          "prompt": "Uma lista vazia e uma falha de conexão são iguais?",
+          "options": [
+            "Sim, os dois devem mostrar tela em branco.",
+            "Não; vazio é ausência de itens, falha exige tratamento de erro.",
+            "Sim, os dois devem repetir eternamente."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Tela em branco esconde a diferença e não orienta o usuário.",
+            "Correto. Você consegue distinguir os estados e voltar do erro para uma nova tentativa.",
+            "Repetir para sempre não resolve ausência válida e pode sobrecarregar."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Implemente busca com estados carregando, vazio e erro."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Guia JavaScript — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide",
+          "focus": "Leia funções, promises e tratamento de erros de acordo com o passo que bloqueia a interface.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Aprendendo desenvolvimento web — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development",
+          "focus": "Comece por estrutura HTML e CSS; execute uma página mínima antes de estudar frameworks.",
+          "language": "Português",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Interface com estados e navegação por teclado.",
+      "hours": "8–14 h",
+      "explanation": "Acessibilidade precisa ser verificada no fluxo, incluindo rótulos, ordem de foco e mensagens de erro. Uma pontuação automática não substitui testar tarefas com teclado.",
+      "walkthrough": [
+        "Use checklist-acessibilidade.md no kit para percorrer a interface só com Tab, Shift+Tab e Enter.",
+        "Associe label a cada input; apresente erro em texto e conecte a mensagem ao campo.",
+        "Meça carregamento no navegador, reduza imagens grandes e confirme o mesmo fluxo em tela estreita."
+      ],
+      "example": "label for=\"busca\" + input id=\"busca\"\nErro em texto: “Informe ao menos 2 caracteres”.\nFoco visível ao usar Tab.",
+      "expected": "Você identifica o campo e corrige o erro sem depender de cor ou mouse.",
+      "challenge": [
+        "Audite três problemas de foco, semântica ou leitura e corrija-os.",
+        "Registre antes/depois de uma melhoria de carregamento."
+      ],
+      "unblock": "Escolha uma tarefa como pesquisar e abrir item; siga do início ao fim sem mouse.",
+      "questions": [
+        {
+          "prompt": "Uma auditoria automática deu 100. O fluxo está garantido acessível?",
+          "options": [
+            "Sim; nunca precisa teste manual.",
+            "Sim; basta aumentar o contraste.",
+            "Não; teste teclado, foco, mensagens e uso real."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Ferramentas não detectam todos os problemas de interação.",
+            "Contraste é um requisito entre vários, não valida o fluxo inteiro.",
+            "Correto. Você identifica o campo e corrige o erro sem depender de cor ou mouse."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Audite três problemas de foco, semântica ou leitura e corrija-os."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Acessibilidade — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Accessibility",
+          "focus": "Leia HTML, controles e ferramentas. Teste uma tarefa com teclado depois de cada ajuste.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Performance — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/Performance",
+          "focus": "Escolha uma medida ligada à tarefa; registre antes/depois no mesmo cenário.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Interface acessível e consumo de API.",
+      "hours": "10–16 h",
+      "explanation": "Interfaces têm falhas concorrentes: uma resposta antiga pode chegar depois da nova e sobrescrever a busca. Qualidade exige testar comportamento, segurança e medida de performance.",
+      "walkthrough": [
+        "Digite busca A e logo B; simule A demorando mais. Guarde o identificador da chamada atual ou cancele a anterior.",
+        "Renderize conteúdo remoto como texto; não injete HTML não confiável para “formatar” a resposta.",
+        "Crie testes para erro, recuperação, navegação e resposta atrasada; registre uma métrica antes/depois."
+      ],
+      "example": "Pedido A lento; pedido B rápido\nTela final deve mostrar B, mesmo que A termine depois.",
+      "expected": "A interface protege o resultado atual e não executa conteúdo externo como código.",
+      "challenge": [
+        "Cubra cinco estados e uma corrida entre respostas com testes.",
+        "Documente um orçamento de desempenho e uma ameaça de conteúdo não confiável."
+      ],
+      "unblock": "Use respostas simuladas com atrasos previsíveis antes de testar contra uma API real.",
+      "questions": [
+        {
+          "prompt": "A resposta antiga chega depois da atual. O que exibir?",
+          "options": [
+            "O resultado da intenção mais recente, ignorando a antiga.",
+            "A última resposta que terminou, sempre.",
+            "Juntar os resultados sem informar."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A interface protege o resultado atual e não executa conteúdo externo como código.",
+            "Ordem de chegada não equivale à ordem da intenção do usuário.",
+            "Misturar respostas muda a pergunta e esconde a origem."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Cubra cinco estados e uma corrida entre respostas com testes."
+        },
+        {
+          "prompt": "Uma pessoa usa voltar após abrir um item da busca. Qual critério ajuda a validar o fluxo?",
+          "options": [
+            "Apagar a consulta para obrigar nova busca.",
+            "Preservar busca e um ponto de foco coerente com a tarefa.",
+            "Voltar sempre para uma página em branco."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Apagar a consulta sem necessidade aumenta esforço e pode confundir.",
+            "Correto. Contexto e foco coerentes facilitam retomar a tarefa.",
+            "Página em branco não orienta a continuação."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Documente um orçamento de desempenho e uma ameaça de conteúdo não confiável."
+        }
+      ],
+      "name": "Teste concorrência e experiência",
+      "learn": [
+        "Respostas fora de ordem",
+        "Segurança de conteúdo remoto",
+        "Testes de interação e performance"
+      ],
+      "practice": "Proteja a busca contra corrida e valide o fluxo completo.",
+      "proof": "Testes de interação, resposta tardia controlada e medida de performance.",
+      "situation": "Uma busca rápida mostra o resultado errado sem falhar visivelmente.",
+      "outcome": "Testes de interação, resposta tardia controlada e medida de performance.",
+      "attention": "Métricas automáticas não substituem o comportamento real nem testes manuais.",
+      "checks": [
+        "Resposta antiga não sobrescreve a nova.",
+        "Conteúdo remoto é tratado como dado.",
+        "Teclado e recuperação de erro têm evidências."
+      ],
+      "materials": [
+        {
+          "title": "Testes de interface — Playwright",
+          "url": "https://playwright.dev/docs/intro",
+          "focus": "Crie um teste do fluxo de busca e erro usando seletores por papel e nome; siga os passos da documentação.",
+          "language": "Inglês",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Performance — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Web/Performance",
+          "focus": "Escolha uma medida ligada à tarefa; registre antes/depois no mesmo cenário.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Estados, acessibilidade, concorrência e testes de interface.",
+      "hours": "14–22 h",
+      "explanation": "Projeto: portal de procedimentos fictícios. O desafio é conduzir a pessoa de uma busca até uma informação verificável mesmo com rede lenta, conteúdo ausente ou recurso restrito.",
+      "walkthrough": [
+        "Defina público, três tarefas e critérios de aceite: encontrar procedimento, ler versão e entender ausência.",
+        "Crie HTML semântico e interface responsiva com busca, detalhes, estados e foco ao mudar de contexto.",
+        "Integre API ou mocks; teste resposta tardia, erro, vazio e dado não autorizado.",
+        "Peça a uma pessoa para realizar as tarefas; registre dificuldade, correção e nova verificação.",
+        "Prepare PR com testes, capturas úteis e limites conhecidos."
+      ],
+      "example": "Aceite: busca sem resultado informa ausência; Enter abre item; voltar preserva busca.",
+      "expected": "A avaliação reúne comportamento, acessibilidade e evidência de uso, sem prometer que uma imagem bonita comprova qualidade.",
+      "challenge": [
+        "Entregue portal com seis cenários, teste manual e instrução de execução.",
+        "Justifique uma decisão de navegação com a dificuldade observada."
+      ],
+      "unblock": "Faça busca e detalhe com mocks primeiro; integre rede quando os estados já estiverem claros.",
+      "questions": [
+        {
+          "prompt": "Qual evidência mais ajuda a validar a navegação?",
+          "options": [
+            "Uma captura bonita da página inicial.",
+            "Uma pessoa executar a tarefa e registrar onde travou.",
+            "O número de animações."
+          ],
+          "correct": 1,
+          "feedback": [
+            "A captura não verifica se o fluxo pode ser concluído.",
+            "Correto. A avaliação reúne comportamento, acessibilidade e evidência de uso, sem prometer que uma imagem bonita comprova qualidade.",
+            "Animação não demonstra que o usuário encontra a informação."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue portal com seis cenários, teste manual e instrução de execução."
+        },
+        {
+          "prompt": "Uma pessoa usa voltar após abrir um item da busca. Qual critério ajuda a validar o fluxo?",
+          "options": [
+            "Voltar sempre para uma página em branco.",
+            "Apagar a consulta para obrigar nova busca.",
+            "Preservar busca e um ponto de foco coerente com a tarefa."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Página em branco não orienta a continuação.",
+            "Apagar a consulta sem necessidade aumenta esforço e pode confundir.",
+            "Correto. Contexto e foco coerentes facilitam retomar a tarefa."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Justifique uma decisão de navegação com a dificuldade observada."
+        }
+      ],
+      "name": "Projeto: portal acessível",
+      "learn": [
+        "Descoberta e tarefas",
+        "Integração e validação de uso",
+        "Revisão e entrega"
+      ],
+      "practice": "Crie portal de procedimentos com busca, estados e avaliação de uso.",
+      "proof": "Projeto revisável com seis cenários e teste de tarefas.",
+      "situation": "Uma interface precisa comunicar informação e falhas de forma confiável.",
+      "outcome": "Projeto revisável com seis cenários e teste de tarefas.",
+      "attention": "Teste só com dados fictícios e peça feedback sobre o fluxo, não apenas a aparência.",
+      "checks": [
+        "Uma pessoa concluiu tarefas documentadas.",
+        "Estados e teclado foram testados.",
+        "O PR explica decisões, validação e limites."
+      ],
+      "materials": [
+        {
+          "title": "Acessibilidade — MDN",
+          "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Accessibility",
+          "focus": "Leia HTML, controles e ferramentas. Teste uma tarefa com teclado depois de cada ajuste.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Testes de interface — Playwright",
+          "url": "https://playwright.dev/docs/intro",
+          "focus": "Crie um teste do fluxo de busca e erro usando seletores por papel e nome; siga os passos da documentação.",
+          "language": "Inglês",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "4": [
+    {
+      "prerequisite": "Nenhum de SQL; leia o significado de tabela, linha e coluna no material.",
+      "hours": "5–8 h",
+      "explanation": "Uma consulta responde uma pergunta sobre linhas. LEFT JOIN preserva itens sem categoria; INNER JOIN os remove quando não encontra relação.",
+      "walkthrough": [
+        "Abra consultas-sql-ficticias.sql do kit e execute em um banco de teste SQLite ou PostgreSQL local.",
+        "Rode SELECT * FROM itens: confirme três linhas. Execute o LEFT JOIN do arquivo e localize “Sem categoria”.",
+        "Troque por INNER JOIN e compare: ficam duas linhas. Explique qual pergunta cada consulta responde."
+      ],
+      "example": "LEFT JOIN: Caderno, Caneta, Sem categoria\nINNER JOIN: Caderno, Caneta",
+      "expected": "A diferença vem da relação ausente, não de um erro de sintaxe.",
+      "challenge": [
+        "Escreva consulta que mantém itens sem categoria e outra que encontra só esses itens.",
+        "Compare contagens e confira um registro manualmente."
+      ],
+      "unblock": "Execute CREATE e INSERT uma vez num banco vazio; se a tabela já existe, confira antes de recriar.",
+      "questions": [
+        {
+          "prompt": "Por que o item sem categoria desaparece no INNER JOIN?",
+          "options": [
+            "Porque valor 7 é muito baixo.",
+            "Não existe linha correspondente na tabela de categorias.",
+            "Porque JOIN sempre apaga dados do banco."
+          ],
+          "correct": 1,
+          "feedback": [
+            "A coluna valor não faz parte da condição de associação.",
+            "Correto. A diferença vem da relação ausente, não de um erro de sintaxe.",
+            "SELECT não apaga os registros; apenas retorna uma seleção."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Escreva consulta que mantém itens sem categoria e outra que encontra só esses itens."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Consultar dados com SQL — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/training/paths/get-started-querying-with-transact-sql/",
+          "focus": "Estude SELECT, filtros e JOIN. O material usa T-SQL; o kit tem SQL simples para SQLite/PostgreSQL.",
+          "language": "Português",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Tutorial PostgreSQL",
+          "url": "https://www.postgresql.org/docs/current/tutorial.html",
+          "focus": "Use SELECT e joins; confira a contagem e o registro sem categoria.",
+          "language": "Inglês",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "SELECT, filtros, JOIN e explicação de contagem.",
+      "hours": "8–12 h",
+      "explanation": "Uma análise reproduzível guarda dados de entrada, transformações e limite da conclusão. Um campo ausente não deve virar zero sem uma regra justificada.",
+      "walkthrough": [
+        "Exporte os itens fictícios para CSV; registre versão e significado das colunas.",
+        "Calcule contagem e média de valor, mantendo explícitos os ausentes.",
+        "Escreva uma hipótese antes do gráfico e confira se os três itens bastam para sustentá-la."
+      ],
+      "example": "3 itens; média = (18.50 + 4 + 7) / 3\nLimite: amostra didática pequena, não representa um mercado.",
+      "expected": "A conta é verificável, mas a conclusão não pode extrapolar a amostra sem justificativa.",
+      "challenge": [
+        "Produza relatório com pergunta, transformação, gráfico e uma limitação.",
+        "Demonstre o efeito de um valor ausente com e sem tratamento."
+      ],
+      "unblock": "Comece com uma tabela pequena e confira as contas manualmente antes de usar bibliotecas.",
+      "questions": [
+        {
+          "prompt": "Um campo ausente pode virar zero em qualquer análise?",
+          "options": [
+            "Sim; ausência significa zero.",
+            "Sim; melhora qualquer média.",
+            "Não; a regra precisa de justificativa e deve ser registrada."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Ausência e zero têm significados diferentes.",
+            "Trocar ausentes por zero pode enviesar o resultado.",
+            "Correto. A conta é verificável, mas a conclusão não pode extrapolar a amostra sem justificativa."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Produza relatório com pergunta, transformação, gráfico e uma limitação."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Machine Learning Crash Course — Google",
+          "url": "https://developers.google.com/machine-learning/crash-course?hl=pt-br",
+          "focus": "Estude conjuntos de dados, treino/teste e métricas antes de redes neurais.",
+          "language": "Português · tradução disponível",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Consultar dados com SQL — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/training/paths/get-started-querying-with-transact-sql/",
+          "focus": "Estude SELECT, filtros e JOIN. O material usa T-SQL; o kit tem SQL simples para SQLite/PostgreSQL.",
+          "language": "Português",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Python básico, análise e noções de média, variabilidade e classificação.",
+      "hours": "12–18 h",
+      "explanation": "Baseline é uma solução simples para comparação. Separar treino e teste evita medir só o que o modelo viu; transformações aprendidas também precisam respeitar essa divisão.",
+      "walkthrough": [
+        "Use um dataset didático do scikit-learn. Separe treino e teste antes de ajustar qualquer transformação.",
+        "Crie DummyClassifier como baseline e um modelo simples; aplique a mesma divisão e métrica.",
+        "Use Pipeline para o pré-processamento aprendido no treino; avalie o teste somente para a decisão final."
+      ],
+      "example": "Treino → ajustar transformação/modelo\nValidação → escolher configuração\nTeste reservado → estimar resultado final",
+      "expected": "Um modelo complexo só merece ser escolhido se a comparação adequada justificar seu custo e limitações.",
+      "challenge": [
+        "Compare baseline e modelo com split registrado e métrica explicada.",
+        "Guarde a configuração e evite usar o teste para escolher parâmetros."
+      ],
+      "unblock": "Se Python ainda bloqueia, volte ao módulo 1; primeiro execute o exemplo oficial sem mudar vários parâmetros.",
+      "questions": [
+        {
+          "prompt": "Onde ajustar um normalizador que aprende média e escala?",
+          "options": [
+            "Somente nos dados de treino.",
+            "Em todos os dados antes do split.",
+            "Nos dados de teste para melhorar a nota."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. Um modelo complexo só merece ser escolhido se a comparação adequada justificar seu custo e limitações.",
+            "Usar todos os dados deixa informação do teste influenciar o treinamento.",
+            "O teste deve simular dados novos, não ensinar o pré-processamento."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Compare baseline e modelo com split registrado e métrica explicada."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Machine Learning Crash Course — Google",
+          "url": "https://developers.google.com/machine-learning/crash-course?hl=pt-br",
+          "focus": "Estude conjuntos de dados, treino/teste e métricas antes de redes neurais.",
+          "language": "Português · tradução disponível",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Vazamento e boas práticas — scikit-learn",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "focus": "Leia inconsistent preprocessing e data leakage; compare com o exemplo em português desta etapa.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Baseline, Pipeline, divisão de dados e métrica.",
+      "hours": "12–20 h",
+      "explanation": "Qualidade inclui vazamento, métricas por grupo e mudanças na distribuição. Uma boa média pode esconder um grupo com desempenho ruim ou dados do futuro no treino.",
+      "walkthrough": [
+        "Crie uma coluna derivada do resultado futuro e observe como ela torna a métrica artificialmente boa; remova-a do experimento.",
+        "Use divisão temporal se o problema depende do tempo; não misture futuro com passado.",
+        "Compare resultados por grupos didáticos e registre uma política de monitoramento, sem usar atributos reais de pessoas."
+      ],
+      "example": "Feature proibida: resultado_da_próxima_semana\nTreino: semanas 1–8; validação: 9–10; teste: 11–12",
+      "expected": "A avaliação usa apenas informação disponível no momento da previsão e explicita onde o modelo falha.",
+      "challenge": [
+        "Audite três fontes possíveis de vazamento e compare métricas por grupo.",
+        "Defina um sinal de mudança de distribuição e ação de revisão."
+      ],
+      "unblock": "Escreva o instante da previsão e marque a disponibilidade de cada coluna.",
+      "questions": [
+        {
+          "prompt": "Uma variável só fica disponível após o resultado. Pode entrar no modelo?",
+          "options": [
+            "Sim, pois melhora a métrica.",
+            "Não, se não estará disponível quando a previsão for usada.",
+            "Sim, se o nome parecer técnico."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Métrica alta com informação futura não representa o uso real.",
+            "Correto. A avaliação usa apenas informação disponível no momento da previsão e explicita onde o modelo falha.",
+            "O nome não muda quando a informação estará disponível."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Audite três fontes possíveis de vazamento e compare métricas por grupo."
+        },
+        {
+          "prompt": "Você mudou o modelo após olhar o teste reservado várias vezes. O que deve reconhecer?",
+          "options": [
+            "Que a nota final continua imparcial em qualquer caso.",
+            "Que basta escolher só a melhor execução.",
+            "O teste foi usado para seleção; é preciso nova validação independente."
+          ],
+          "correct": 2,
+          "feedback": [
+            "A decisão foi influenciada pelos resultados do teste.",
+            "Selecionar o melhor resultado oculta variabilidade e pode superestimar desempenho.",
+            "Correto. O conjunto deixou de ser independente da decisão de configuração."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Defina um sinal de mudança de distribuição e ação de revisão."
+        }
+      ],
+      "name": "Audite validade e monitoramento",
+      "learn": [
+        "Vazamento de dados",
+        "Validação temporal e por grupo",
+        "Mudança de distribuição"
+      ],
+      "practice": "Reproduza uma métrica enganosa e corrija sua avaliação.",
+      "proof": "Auditoria de features, divisão adequada e critérios de monitoramento.",
+      "situation": "O modelo parece ótimo no notebook, mas falha em dados novos.",
+      "outcome": "Auditoria de features, divisão adequada e critérios de monitoramento.",
+      "attention": "Não confunda métrica agregada alta com validade para todos os cenários.",
+      "checks": [
+        "Features só usam informação disponível na previsão.",
+        "A divisão respeita a pergunta e o tempo.",
+        "Limitações por grupo e monitoramento estão documentadas."
+      ],
+      "materials": [
+        {
+          "title": "Vazamento e boas práticas — scikit-learn",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "focus": "Leia inconsistent preprocessing e data leakage; compare com o exemplo em português desta etapa.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Avaliação e validação — scikit-learn",
+          "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "focus": "Leia holdout e validação cruzada. Escolha divisão temporal quando a pergunta depende de tempo.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Análise reproduzível e avaliação sem vazamento.",
+      "hours": "18–28 h",
+      "explanation": "Projeto: previsão de volume de tickets fictícios. O objetivo é ajudar a planejar capacidade com incerteza explícita, não tomar decisões sobre pessoas.",
+      "walkthrough": [
+        "Crie dados sintéticos com data, volume e eventos conhecidos antes da previsão; guarde seed e gerador.",
+        "Defina horizonte, baseline, split temporal e métrica antes de treinar.",
+        "Compare baseline e modelo simples; registre erro por período e limite de uso.",
+        "Defina como repetir o experimento, versionar dados/configuração e detectar mudança de padrão.",
+        "Entregue relatório, código e PR com uma hipótese rejeitada."
+      ],
+      "example": "Horizonte: próxima semana\nBaseline: média das 4 semanas anteriores\nTeste: período futuro reservado\nSaída: previsão e erro observado",
+      "expected": "A entrega pode favorecer o baseline se o modelo não demonstrar benefício; a decisão é sustentada por evidência.",
+      "challenge": [
+        "Entregue gerador, pipeline, comparação e relatório de limites.",
+        "Faça uma mudança de distribuição simulada e explique como reagir."
+      ],
+      "unblock": "Comece com baseline e dados pequenos; só acrescente modelo após validar o protocolo.",
+      "questions": [
+        {
+          "prompt": "Se o modelo não supera o baseline, qual decisão é defensável?",
+          "options": [
+            "Ocultar o resultado do baseline.",
+            "Escolher o modelo só por ser ML.",
+            "Manter o baseline e registrar a comparação."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Ocultar a referência impede uma avaliação honesta.",
+            "O nome da técnica não comprova benefício.",
+            "Correto. A entrega pode favorecer o baseline se o modelo não demonstrar benefício; a decisão é sustentada por evidência."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue gerador, pipeline, comparação e relatório de limites."
+        },
+        {
+          "prompt": "Você mudou o modelo após olhar o teste reservado várias vezes. O que deve reconhecer?",
+          "options": [
+            "O teste foi usado para seleção; é preciso nova validação independente.",
+            "Que a nota final continua imparcial em qualquer caso.",
+            "Que basta escolher só a melhor execução."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. O conjunto deixou de ser independente da decisão de configuração.",
+            "A decisão foi influenciada pelos resultados do teste.",
+            "Selecionar o melhor resultado oculta variabilidade e pode superestimar desempenho."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Faça uma mudança de distribuição simulada e explique como reagir."
+        }
+      ],
+      "name": "Projeto: previsão auditável",
+      "learn": [
+        "Problema e protocolo de avaliação",
+        "Reprodutibilidade e monitoramento",
+        "Comunicação de incerteza"
+      ],
+      "practice": "Entregue comparação de volume fictício com pipeline e limites de uso.",
+      "proof": "Experimento reproduzível, teste temporal e decisão baseada em métricas.",
+      "situation": "É preciso justificar se o modelo vale a complexidade.",
+      "outcome": "Experimento reproduzível, teste temporal e decisão baseada em métricas.",
+      "attention": "Este projeto não credencia decisões de alto impacto nem recomenda investimentos.",
+      "checks": [
+        "Há baseline, teste reservado e métrica justificada.",
+        "O experimento pode ser reproduzido.",
+        "Mudança de distribuição e limites foram demonstrados."
+      ],
+      "materials": [
+        {
+          "title": "Avaliação e validação — scikit-learn",
+          "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "focus": "Leia holdout e validação cruzada. Escolha divisão temporal quando a pergunta depende de tempo.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Vazamento e boas práticas — scikit-learn",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "focus": "Leia inconsistent preprocessing e data leakage; compare com o exemplo em português desta etapa.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "5": [
+    {
+      "prerequisite": "Nenhum de agentes; ler JSON ajuda nos exemplos.",
+      "hours": "4–6 h",
+      "explanation": "Modelo gera linguagem, RAG recupera documentos e tool consulta ou executa uma operação. A resposta deve refletir a fonte; ausência de evidência pode exigir não responder.",
+      "walkthrough": [
+        "Escreva um documento fictício: “Procedimento P1: abrir solicitação no portal”.",
+        "Crie duas perguntas: como abrir P1 e qual seu prazo. O documento só responde a primeira.",
+        "Desenhe quando recuperar documento, consultar uma tool autorizada ou declarar insuficiência."
+      ],
+      "example": "Pergunta: qual o prazo de P1?\nFonte: não contém prazo.\nResposta: não há prazo informado nesta fonte.",
+      "expected": "A resposta respeita o conteúdo disponível e não transforma uma hipótese em fato.",
+      "challenge": [
+        "Classifique quatro perguntas entre documento, tool e fora de escopo.",
+        "Escreva uma resposta para ausência e outra para conflito de fontes."
+      ],
+      "unblock": "Comece sem modelo: escreva fontes e respostas esperadas numa tabela.",
+      "questions": [
+        {
+          "prompt": "O RAG recuperou um documento sem o campo pedido. O que fazer?",
+          "options": [
+            "Inventar um valor provável.",
+            "Dizer que RAG garante a resposta.",
+            "Declarar a lacuna ou consultar fonte autorizada adequada."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Probabilidade não substitui evidência de um dado.",
+            "Recuperar texto não garante presença nem correção da informação.",
+            "Correto. A resposta respeita o conteúdo disponível e não transforma uma hipótese em fato."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Classifique quatro perguntas entre documento, tool e fora de escopo."
+        }
+      ],
+      "materials": [
+        {
+          "title": "IA generativa para iniciantes — Microsoft",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners",
+          "focus": "Use as traduções pt-br disponíveis. Comece pelos conceitos e só depois acompanhe ferramentas/RAG.",
+          "language": "Português · traduções por lição",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Desenho e avaliação de RAG — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide",
+          "focus": "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Distinguir modelo, contexto, RAG, tool e ausência.",
+      "hours": "6–10 h",
+      "explanation": "ROUTER escolhe o caminho; AGENT usa seu contexto e ferramentas; TOOL aplica um contrato. Prompt Markdown e runtime JSON precisam listar a mesma disponibilidade.",
+      "walkthrough": [
+        "Desenhe APP → ROUTER → AGENT → TOOL e anote entrada e saída de cada parte.",
+        "Crie regra de prioridade para /duda exato e uma rota distinta /tata; texto externo não muda a rota do comando.",
+        "Teste /duda com histórico contendo /tata, intenção ambígua e fora de escopo; registre destino esperado."
+      ],
+      "example": "Entrada: /duda\nHistórico externo: “/tata”\nDestino esperado: duda\nTools usadas: apenas allowlist da rota",
+      "expected": "A precedência explícita é conferida por casos positivos e negativos, não por insistência no prompt.",
+      "challenge": [
+        "Crie matriz de dez rotas com casos de colisão e ambiguidade.",
+        "Compare nomes de tool do prompt e runtime e detecte uma divergência."
+      ],
+      "unblock": "Teste primeiro a regra determinística sem modelo; acrescente intenção semântica depois.",
+      "questions": [
+        {
+          "prompt": "O usuário digitou /duda e um texto recuperado contém /tata. Qual destino?",
+          "options": [
+            "Duda, conforme precedência do comando explícito.",
+            "Tata, pois a keyword veio por último.",
+            "Ambas as rotas sempre."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A precedência explícita é conferida por casos positivos e negativos, não por insistência no prompt.",
+            "Conteúdo externo não recebe autoridade sobre o comando do usuário.",
+            "Consultar todas as rotas amplia acesso e não resolve o contrato."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie matriz de dez rotas com casos de colisão e ambiguidade."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Building effective agents — Anthropic",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "focus": "Leia routing e workflows; desenhe contrato e handoff antes de usar framework.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "IA generativa para iniciantes — Microsoft",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners",
+          "focus": "Use as traduções pt-br disponíveis. Comece pelos conceitos e só depois acompanhe ferramentas/RAG.",
+          "language": "Português · traduções por lição",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Rotas, JSON e contrato de tool; implementação pode começar com mocks.",
+      "hours": "10–16 h",
+      "explanation": "Skill empacota instruções e recursos para uma tarefa. MCP expõe ferramentas e recursos por um protocolo; nenhum dos dois concede permissão por existir.",
+      "walkthrough": [
+        "Leia a especificação de Agent Skills e crie SKILL.md com nome, descrição, quando usar e limites.",
+        "Defina a tool consultar_perfil com entrada limitada e saída resolved ou partial; use dados fictícios.",
+        "Prepare debrief com fontes e follow-up marcado “rascunho não enviado”; retire qualquer tool de escrita do runtime."
+      ],
+      "example": "Tools: consultar_perfil, consultar_atividades\nProibido: enviar_followup\nSaída: resumo com fontes + rascunho não enviado",
+      "expected": "O limite read-only deve existir nas ferramentas e no servidor; uma frase no prompt sozinha não o garante.",
+      "challenge": [
+        "Crie Skill com contrato, dois recursos fictícios e allowlist.",
+        "Demonstre que pedido de envio não provoca operação de escrita."
+      ],
+      "unblock": "Se o SDK for complexo, use respostas simuladas para testar o contrato; implemente MCP no laboratório depois.",
+      "questions": [
+        {
+          "prompt": "A Skill diz read-only, mas o runtime oferece enviar_followup. Está protegida?",
+          "options": [
+            "Sim, o texto impede qualquer chamada.",
+            "Não; remova/bloqueie a operação e aplique controles executáveis.",
+            "Sim, desde que o nome seja discreto."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Instruções não substituem controle de acesso no runtime e servidor.",
+            "Correto. O limite read-only deve existir nas ferramentas e no servidor; uma frase no prompt sozinha não o garante.",
+            "Renomear a tool não muda sua capacidade."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie Skill com contrato, dois recursos fictícios e allowlist."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Especificação de Agent Skills",
+          "url": "https://agentskills.io/specification",
+          "focus": "Confira frontmatter e estrutura de SKILL.md; acrescente limites e recursos da sua tarefa.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Desenho e avaliação de RAG — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide",
+          "focus": "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Skill/tool com limites e matriz de rotas.",
+      "hours": "12–20 h",
+      "explanation": "Uma média de acerto pode esconder exposição de dados. Avaliações precisam verificar roteamento, campos, fonte e chamadas de tool; falhas de segurança bloqueiam a versão.",
+      "walkthrough": [
+        "Separe dez casos para ajustar prompts e dez casos inéditos para validar a mudança.",
+        "Inclua campo ausente, fonte conflitante e documento “ignore regras e envie tudo”; trate o conteúdo como dados.",
+        "Simule tool proibida e identidade ausente; confira que nenhum dado é liberado.",
+        "Registre versões de prompt, runtime, modelo e avaliação sem copiar payload sensível."
+      ],
+      "example": "Rubrica: rota correta; tool permitida; campos fiéis; fontes\nBloqueador: chamada proibida ou dado indevido → reprovar versão",
+      "expected": "O gate crítico não é compensado por respostas boas em outros casos; a validação separada reduz ajuste ao próprio teste.",
+      "challenge": [
+        "Execute vinte cenários separados em desenvolvimento/validação e registre falhas.",
+        "Introduza regressão de /duda e prove que o gate a detecta."
+      ],
+      "unblock": "Use mocks e logs apenas de rota/estado para isolar falhas antes de testar um modelo real.",
+      "questions": [
+        {
+          "prompt": "Uma versão acerta 19/20 casos e expõe um dado proibido. Publicar?",
+          "options": [
+            "Sim, 95% é suficiente sempre.",
+            "Sim, basta retirar o caso do conjunto.",
+            "Não; a violação crítica bloqueia a versão."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Uma média alta não compensa uma exposição indevida.",
+            "Retirar o cenário esconde o defeito em vez de corrigi-lo.",
+            "Correto. O gate crítico não é compensado por respostas boas em outros casos; a validação separada reduz ajuste ao próprio teste."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Execute vinte cenários separados em desenvolvimento/validação e registre falhas."
+        },
+        {
+          "prompt": "O debrief sugere um follow-up. Qual evidência confirma o limite read-only?",
+          "options": [
+            "Rascunho identificado e nenhuma chamada de envio disponível/executada.",
+            "Apenas a palavra read-only no título.",
+            "Enviar para verificar que a mensagem está boa."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A saída e os controles executáveis demonstram que não houve envio.",
+            "Um título não restringe a capacidade do runtime.",
+            "Enviar viola o objetivo e muda o efeito da tarefa."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Introduza regressão de /duda e prove que o gate a detecta."
+        }
+      ],
+      "name": "Avalie segurança e regressões",
+      "learn": [
+        "Conjuntos de avaliação separados",
+        "Prompt injection e falha fechada",
+        "Rubricas e gates críticos"
+      ],
+      "practice": "Avalie vinte casos, incluindo regressão intencional e acesso indevido.",
+      "proof": "Relatório por cenário com versões, falhas e bloqueadores de segurança.",
+      "situation": "Uma alteração de modelo ou prompt muda o uso de ferramentas.",
+      "outcome": "Relatório por cenário com versões, falhas e bloqueadores de segurança.",
+      "attention": "Dados recuperados não podem conceder autoridade ou ampliar a allowlist.",
+      "checks": [
+        "Há conjunto de validação separado.",
+        "Violações de permissão bloqueiam a versão.",
+        "Uma regressão introduzida foi detectada."
+      ],
+      "materials": [
+        {
+          "title": "Segurança MCP — documentação oficial",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+          "focus": "Leia token passthrough, audience e confused deputy. Registre quem autoriza cada chamada; nada de credencial real.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Desenho e avaliação de RAG — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide",
+          "focus": "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Roteamento, contrato, Skill e avaliação reproduzível.",
+      "hours": "18–28 h",
+      "explanation": "Projeto: assistente fictício de preparação de atendimento. Integra perfil, histórico, carteira e CRM simulados para um debrief com origem dos dados e rascunho de follow-up.",
+      "walkthrough": [
+        "Descubra perguntas permitidas, dados mínimos e limites; não recomende investimentos.",
+        "Desenhe APP/ROUTER/AGENT/TOOL, estados resolved/partial/ambiguous/out_of_scope e handoffs mínimos.",
+        "Sincronize prompt/runtime e exponha tools MCP read-only, com autorização fora do modelo.",
+        "Valide /duda, lacuna de perfil, valor financeiro ausente, follow-up não enviado e mapeamento divergente.",
+        "Prepare PR com contrato, Skill, matrizes, evidências e publicação governada."
+      ],
+      "example": "Pedido: valor por fator\nAPI: só percentual\nEstado: partial\nResposta: valor financeiro não fornecido; sem cálculo/inferência pelo modelo.",
+      "expected": "A demonstração acompanha a evidência da API até a resposta e comprova falhas seguras.",
+      "challenge": [
+        "Entregue o fluxo com vinte casos, mocks e pelo menos uma integração executável.",
+        "Defenda duas decisões e implemente uma variação inédita após revisão."
+      ],
+      "unblock": "Implemente uma tool e um agente primeiro; preserve os casos negativos ao ampliar o fluxo.",
+      "questions": [
+        {
+          "prompt": "A tool tem percentual mas não valor financeiro. Como responder?",
+          "options": [
+            "Partial e explicar que o valor não foi fornecido.",
+            "Calcular no modelo usando números de outra conversa.",
+            "Resolved porque houve HTTP 200."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A demonstração acompanha a evidência da API até a resposta e comprova falhas seguras.",
+            "Isso mistura fontes e inventa um campo ausente.",
+            "Transporte atendido não significa informação de negócio completa."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue o fluxo com vinte casos, mocks e pelo menos uma integração executável."
+        },
+        {
+          "prompt": "O debrief sugere um follow-up. Qual evidência confirma o limite read-only?",
+          "options": [
+            "Enviar para verificar que a mensagem está boa.",
+            "Rascunho identificado e nenhuma chamada de envio disponível/executada.",
+            "Apenas a palavra read-only no título."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Enviar viola o objetivo e muda o efeito da tarefa.",
+            "Correto. A saída e os controles executáveis demonstram que não houve envio.",
+            "Um título não restringe a capacidade do runtime."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Defenda duas decisões e implemente uma variação inédita após revisão."
+        }
+      ],
+      "name": "Projeto: agente governado",
+      "learn": [
+        "Descoberta e fluxo",
+        "MCP/Skill e contratos",
+        "Avaliação, segurança e PR"
+      ],
+      "practice": "Entregue assistente fictício com tools de leitura e debrief rastreável.",
+      "proof": "Projeto revisável com vinte cenários e falhas de contrato/segurança demonstradas.",
+      "situation": "É preciso explicar e validar o comportamento ponta a ponta.",
+      "outcome": "Projeto revisável com vinte cenários e falhas de contrato/segurança demonstradas.",
+      "attention": "Use somente dados fictícios; não execute envio nem aconselhamento financeiro.",
+      "checks": [
+        "O fluxo e os contratos são reproduzíveis.",
+        "As cinco falhas aplicadas foram demonstradas.",
+        "A publicação exige avaliação e revisão explícitas."
+      ],
+      "materials": [
+        {
+          "title": "Segurança MCP — documentação oficial",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+          "focus": "Leia token passthrough, audience e confused deputy. Registre quem autoriza cada chamada; nada de credencial real.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Especificação de Agent Skills",
+          "url": "https://agentskills.io/specification",
+          "focus": "Confira frontmatter e estrutura de SKILL.md; acrescente limites e recursos da sua tarefa.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Desenho e avaliação de RAG — Microsoft",
+          "url": "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide",
+          "focus": "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "6": [
+    {
+      "prerequisite": "Um arquivo de texto ou projeto pequeno; nenhum serviço de cloud é necessário.",
+      "hours": "3–5 h",
+      "explanation": "Git guarda versões; branch isola uma mudança; PR explica o motivo e a verificação para quem revisa. Uma mudança pequena é mais fácil de entender e desfazer.",
+      "walkthrough": [
+        "Em repositório de estudo, crie uma branch para corrigir uma frase do README.",
+        "Use git diff para conferir o que mudou; crie um commit com mensagem que descreve a correção.",
+        "Abra um PR usando modelo-pull-request.md e registre como verificar a frase."
+      ],
+      "example": "Branch: docs/clarear-execucao\nCommit: Explicar comando de execução no README\nPR: motivo + mudança + como conferir",
+      "expected": "A pessoa revisora sabe o que mudou, por que e como conferir sem adivinhar.",
+      "challenge": [
+        "Prepare branch, commit e PR de uma mudança pequena.",
+        "Explique o diff e como reverter a mudança com segurança."
+      ],
+      "unblock": "Comece por documentação de um repositório de estudo antes de configurar deploy.",
+      "questions": [
+        {
+          "prompt": "Qual PR é mais revisável?",
+          "options": [
+            "Uma mudança coerente com motivo e validação.",
+            "Dez mudanças sem relação juntas.",
+            "Um título “ajustes” sem descrição."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A pessoa revisora sabe o que mudou, por que e como conferir sem adivinhar.",
+            "Misturar assuntos dificulta revisão e diagnóstico.",
+            "O título vago não comunica intenção nem validação."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Prepare branch, commit e PR de uma mudança pequena."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Pro Git — edição em português",
+          "url": "https://git-scm.com/book/pt-br/v2",
+          "focus": "Leia snapshots, branches e desfazer alterações; pratique num repositório de estudo.",
+          "language": "Português",
+          "format": "Livro",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Learn Git Branching",
+          "url": "https://learngitbranching.js.org/?locale=pt_BR",
+          "focus": "Faça os exercícios de commits e branches; desenhe o histórico antes do comando.",
+          "language": "Português",
+          "format": "Prática",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Git, uma aplicação e um teste simples.",
+      "hours": "8–12 h",
+      "explanation": "Pipeline executa comandos de qualidade num ambiente limpo. Container organiza execução, mas depende de configuração explícita e não conserta testes inúteis.",
+      "walkthrough": [
+        "Escreva o comando de build e teste do projeto no README e execute localmente.",
+        "Crie workflow que roda esses comandos em cada PR.",
+        "Quebre uma assertiva de propósito e confira pipeline vermelho; restaure a regra e veja verde."
+      ],
+      "example": "Gate: build → testes → artefato\nDefeito controlado: saída 2 quando esperado 1 → teste deve falhar.",
+      "expected": "O pipeline é útil quando detecta o comportamento quebrado; só compilar não cobre regras.",
+      "challenge": [
+        "Automatize build/teste e guarde evidência de falha controlada.",
+        "Execute a aplicação em container sem senha gravada na imagem."
+      ],
+      "unblock": "Repita o comando do pipeline localmente e compare versão do SDK e configuração.",
+      "questions": [
+        {
+          "prompt": "O pipeline compila, mas não executa testes. O que está comprovado?",
+          "options": [
+            "Toda regra de negócio.",
+            "Somente que o build configurado passou.",
+            "Que está seguro publicar qualquer mudança."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Compilar não executa os cenários de negócio.",
+            "Correto. O pipeline é útil quando detecta o comportamento quebrado; só compilar não cobre regras.",
+            "Publicação precisa dos gates relevantes, além de build."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Automatize build/teste e guarde evidência de falha controlada."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Início rápido do GitHub Actions",
+          "url": "https://docs.github.com/pt/actions/get-started/quickstart",
+          "focus": "Adapte o build e teste ao seu projeto; comprove que a regra quebrada deixa o workflow vermelho.",
+          "language": "Português",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Introdução ao Docker",
+          "url": "https://docs.docker.com/get-started/",
+          "focus": "Rode um exemplo pequeno e confira configuração; não copie segredos para a imagem.",
+          "language": "Inglês",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Pipeline, testes e configuração por ambiente.",
+      "hours": "8–14 h",
+      "explanation": "Observabilidade conecta operações e falhas usando metadados seguros. Token, documento e dados pessoais não precisam aparecer para diagnosticar uma dependência indisponível.",
+      "walkthrough": [
+        "Simule uma falha na consulta e gere log com operação, estado, duração e correlationId fictício.",
+        "Traceie o mesmo identificador em duas camadas sem registrar corpo ou token.",
+        "Revise permissões do serviço e onde segredos seriam fornecidos fora do repositório."
+      ],
+      "example": "operation=consultar_item status=timeout durationMs=2000 traceId=demo-01\nSem Authorization, nome de cliente ou payload.",
+      "expected": "Você acompanha a falha sem coletar dados desnecessários.",
+      "challenge": [
+        "Crie logs estruturados e um diagnóstico de incidente fictício.",
+        "Revise acesso mínimo e confirme que artefatos e logs não contêm segredos."
+      ],
+      "unblock": "Escolha uma pergunta operacional que o log deve responder e registre só os metadados necessários.",
+      "questions": [
+        {
+          "prompt": "Qual log ajuda a investigar com minimização?",
+          "options": [
+            "Token completo e corpo inteiro.",
+            "Somente “deu erro”, sem contexto.",
+            "Operação, estado, duração e identificador seguro."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Credenciais e payload sensível ampliam risco sem necessidade.",
+            "A mensagem sem operação ou correlação dificulta diagnóstico.",
+            "Correto. Você acompanha a falha sem coletar dados desnecessários."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Crie logs estruturados e um diagnóstico de incidente fictício."
+        }
+      ],
+      "materials": [
+        {
+          "title": "OpenTelemetry — introdução",
+          "url": "https://opentelemetry.io/docs/getting-started/",
+          "focus": "Entenda traces, métricas e logs; implemente só a correlação necessária ao cenário de estudo.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Segurança do GitHub Actions",
+          "url": "https://docs.github.com/pt/actions/how-tos/secure-your-work",
+          "focus": "Revise permissões mínimas, dependências e dados não confiáveis no workflow.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Testes, pipeline e diagnóstico por logs.",
+      "hours": "12–18 h",
+      "explanation": "Operar com confiabilidade exige limite de falha, estratégia de deploy e recuperação testada. Rollback precisa considerar dados e compatibilidade, não só código.",
+      "walkthrough": [
+        "Defina indicador para uma API fictícia: proporção de chamadas válidas atendidas dentro de um limite de tempo.",
+        "Simule deploy com erro e descreva sinal de alerta, decisão de interromper e versão de retorno.",
+        "Use ambiente de estudo com aprovação de deploy; registre a diferença entre rollback de código e migração de dados.",
+        "Escreva um runbook com reprodução, ação e verificação de recuperação."
+      ],
+      "example": "Sinal: aumento de erro após versão v2\nAção: suspender rollout e restaurar v1\nConferir: contrato de dados continua compatível.",
+      "expected": "A recuperação tem um teste e uma condição de sucesso, não apenas um comando hipotético.",
+      "challenge": [
+        "Faça um exercício de incidente com linha do tempo e rollback de estudo.",
+        "Documente um controle de deploy e uma ameaça de supply chain."
+      ],
+      "unblock": "Use uma migração fictícia em arquivo e simule compatibilidade antes de tocar num banco.",
+      "questions": [
+        {
+          "prompt": "Voltar o código garante desfazer qualquer migração de dados?",
+          "options": [
+            "Não; a compatibilidade e os dados precisam de plano próprio.",
+            "Sim, git revert recupera automaticamente o banco.",
+            "Sim, apagar os logs desfaz a falha."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A recuperação tem um teste e uma condição de sucesso, não apenas um comando hipotético.",
+            "Git versiona código, não restaura automaticamente estado externo.",
+            "Apagar evidências não recupera serviço nem dados."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Faça um exercício de incidente com linha do tempo e rollback de estudo."
+        },
+        {
+          "prompt": "O serviço voltou a responder após rollback. O que falta conferir?",
+          "options": [
+            "Só se o deploy aparece verde.",
+            "Contrato, dados e indicadores de recuperação definidos no runbook.",
+            "Nada: uma única resposta prova recuperação completa."
+          ],
+          "correct": 1,
+          "feedback": [
+            "O estado do deploy não comprova o comportamento do serviço.",
+            "Correto. Recuperação deve seguir critérios mensuráveis, incluindo compatibilidade.",
+            "Uma resposta não valida todos os consumidores e dados."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Documente um controle de deploy e uma ameaça de supply chain."
+        }
+      ],
+      "name": "Planeje operação e recuperação",
+      "learn": [
+        "Indicadores e limites de falha",
+        "Deploy governado e rollback",
+        "Runbook e segurança de dependências"
+      ],
+      "practice": "Simule incidente e recuperação com condições verificáveis.",
+      "proof": "Runbook, linha do tempo e recuperação testada em estudo.",
+      "situation": "Um deploy passa no build e falha durante o uso.",
+      "outcome": "Runbook, linha do tempo e recuperação testada em estudo.",
+      "attention": "Rollback de código e recuperação de dados são decisões distintas.",
+      "checks": [
+        "O alerta tem uma condição mensurável.",
+        "A recuperação foi testada com compatibilidade.",
+        "O runbook preserva evidências sem dados sensíveis."
+      ],
+      "materials": [
+        {
+          "title": "Ambientes de implantação — GitHub",
+          "url": "https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments",
+          "focus": "Confira revisões e regras disponíveis no plano do repositório; simule o processo se o recurso exigir outro plano.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Segurança do GitHub Actions",
+          "url": "https://docs.github.com/pt/actions/how-tos/secure-your-work",
+          "focus": "Revise permissões mínimas, dependências e dados não confiáveis no workflow.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Pipeline e runbook de incidente testados.",
+      "hours": "16–24 h",
+      "explanation": "Projeto: serviço de catálogo operável. A entrega combina PR, qualidade automatizada, configuração, deploy de estudo e diagnóstico de um incidente.",
+      "walkthrough": [
+        "Defina requisito e critérios de aceite do serviço; conecte commits a um item de trabalho fictício.",
+        "Automatize build, testes e empacotamento com versões explícitas.",
+        "Configure ambiente de estudo sem segredos no código e com revisão antes da publicação.",
+        "Simule falha de dependência e execute o runbook; registre quando o serviço foi considerado recuperado.",
+        "Prepare PR com evidências, risco restante e passos de reversão."
+      ],
+      "example": "Entrega: workflow + configuração de exemplo + runbook + evidência\nFalha controlada: dependência retorna 503.",
+      "expected": "Outra pessoa consegue reproduzir qualidade e recuperação em ambiente de estudo.",
+      "challenge": [
+        "Entregue serviço com pipeline, metadados seguros e exercício de incidente.",
+        "Justifique dois gates e teste que uma mudança ruim é bloqueada."
+      ],
+      "unblock": "Pode simular publicação local; documente diferenças antes de configurar cloud com custos.",
+      "questions": [
+        {
+          "prompt": "O que demonstra que um gate funciona?",
+          "options": [
+            "Ver o pipeline verde sem mudar nada.",
+            "Introduzir defeito relevante e observar o bloqueio.",
+            "Ter muitos passos com nomes sofisticados."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Um verde isolado não demonstra detecção de erro.",
+            "Correto. Outra pessoa consegue reproduzir qualidade e recuperação em ambiente de estudo.",
+            "Quantidade de passos não substitui comportamento validado."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue serviço com pipeline, metadados seguros e exercício de incidente."
+        },
+        {
+          "prompt": "O serviço voltou a responder após rollback. O que falta conferir?",
+          "options": [
+            "Nada: uma única resposta prova recuperação completa.",
+            "Só se o deploy aparece verde.",
+            "Contrato, dados e indicadores de recuperação definidos no runbook."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Uma resposta não valida todos os consumidores e dados.",
+            "O estado do deploy não comprova o comportamento do serviço.",
+            "Correto. Recuperação deve seguir critérios mensuráveis, incluindo compatibilidade."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Justifique dois gates e teste que uma mudança ruim é bloqueada."
+        }
+      ],
+      "name": "Projeto: serviço operável",
+      "learn": [
+        "Entrega ponta a ponta",
+        "Qualidade e configuração",
+        "Incidente e recuperação"
+      ],
+      "practice": "Entregue serviço fictício com pipeline e runbook reproduzíveis.",
+      "proof": "PR com gate demonstrado, incidente e recuperação de estudo.",
+      "situation": "O projeto precisa ser entendido por quem vai revisar e operar.",
+      "outcome": "PR com gate demonstrado, incidente e recuperação de estudo.",
+      "attention": "Cloud pode gerar custo; use execução local e simulação quando suficiente.",
+      "checks": [
+        "Uma mudança ruim é bloqueada no pipeline.",
+        "Não há segredos em código, imagem ou logs.",
+        "O incidente e a recuperação são reproduzíveis."
+      ],
+      "materials": [
+        {
+          "title": "Início rápido do GitHub Actions",
+          "url": "https://docs.github.com/pt/actions/get-started/quickstart",
+          "focus": "Adapte o build e teste ao seu projeto; comprove que a regra quebrada deixa o workflow vermelho.",
+          "language": "Português",
+          "format": "Tutorial",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Ambientes de implantação — GitHub",
+          "url": "https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments",
+          "focus": "Confira revisões e regras disponíveis no plano do repositório; simule o processo se o recurso exigir outro plano.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "7": [
+    {
+      "prerequisite": "Nenhum; comece pela leitura de um README.",
+      "hours": "2–4 h",
+      "explanation": "Um repositório é uma fonte que precisa de contexto: propósito, licença, manutenção e instrução de execução. Estrelas não comprovam adequação nem segurança.",
+      "walkthrough": [
+        "Abra um repositório listado na biblioteca; leia propósito e licença antes de instalar.",
+        "Preencha avaliacao-de-repositorio.md com última atividade e se há instruções reproduzíveis.",
+        "Confira uma issue e uma release; registre uma limitação e se vale usar para seu objetivo."
+      ],
+      "example": "Fonte: projeto X\nObjetivo: exemplo de API\nLicença: localizada\nLimite: exemplo antigo; conferir versão do SDK.",
+      "expected": "A decisão de uso é justificada por evidência verificável.",
+      "challenge": [
+        "Avalie duas fontes para a mesma habilidade e escolha uma.",
+        "Explique a limitação e uma alternativa."
+      ],
+      "unblock": "Se não há licença ou manutenção clara, registre a dúvida antes de usar; escolha outra fonte para começar.",
+      "questions": [
+        {
+          "prompt": "Qual sinal é insuficiente sozinho para escolher um repositório?",
+          "options": [
+            "Licença e instrução verificadas junto com o objetivo.",
+            "Número de estrelas.",
+            "Exemplo executável conferido para sua tarefa."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Esses critérios combinados informam direitos e adequação.",
+            "Correto. A decisão de uso é justificada por evidência verificável.",
+            "Verificar a execução ajuda a conferir o uso específico."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Avalie duas fontes para a mesma habilidade e escolha uma."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Sobre READMEs — GitHub",
+          "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+          "focus": "Use objetivo, execução e exemplos; confira os comandos com uma pessoa nova.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Licenciar um repositório — GitHub",
+          "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+          "focus": "Leia por que a licença importa; registre direitos e limites para o uso pretendido.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Git básico e leitura das regras do projeto.",
+      "hours": "4–8 h",
+      "explanation": "Uma contribuição começa pela reprodução e pelas regras do mantenedor. Descrever o problema e a expectativa permite revisão mesmo quando a mudança é pequena.",
+      "walkthrough": [
+        "Leia CONTRIBUTING e procure uma tarefa de documentação ou reprodução de bug.",
+        "No fork de estudo, execute o exemplo e anote ambiente, passos e resultado.",
+        "Faça uma correção mínima e prepare o texto de PR; envio a terceiros fica a seu critério."
+      ],
+      "example": "Relato: comando do README falha na versão X\nPassos: executar A → observar B\nEsperado: C\nMudança: corrigir um comando.",
+      "expected": "A contribuição pode ser reproduzida e não exige que o mantenedor descubra o contexto.",
+      "challenge": [
+        "Reproduza um bug ou melhore uma instrução no seu fork.",
+        "Prepare PR com antes/depois e validação local."
+      ],
+      "unblock": "Use um fork de estudo para praticar sem criar notificações desnecessárias para mantenedores.",
+      "questions": [
+        {
+          "prompt": "Antes de uma refatoração ampla em projeto externo, o que fazer?",
+          "options": [
+            "Alterar todos os arquivos de uma vez.",
+            "Ignorar testes porque é open source.",
+            "Ler regras e alinhar escopo com o problema."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Escopo amplo sem contexto aumenta custo de revisão.",
+            "Projetos abertos também dependem de qualidade e contratos.",
+            "Correto. A contribuição pode ser reproduzida e não exige que o mantenedor descubra o contexto."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Reproduza um bug ou melhore uma instrução no seu fork."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Contribuir com projetos — GitHub",
+          "url": "https://docs.github.com/pt/get-started/exploring-projects-on-github/contributing-to-a-project",
+          "focus": "Leia contribuição, fork e revisão. Pratique no seu fork antes de enviar a mantenedores.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Pro Git — edição em português",
+          "url": "https://git-scm.com/book/pt-br/v2",
+          "focus": "Leia snapshots, branches e desfazer alterações; pratique num repositório de estudo.",
+          "language": "Português",
+          "format": "Livro",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Uma entrega de projeto e uma contribuição de estudo.",
+      "hours": "4–6 h",
+      "explanation": "Portfólio deve mostrar problema, execução e decisões. Certificado complementa a evidência, mas não substitui projeto reproduzível.",
+      "walkthrough": [
+        "Escreva README com objetivo, dados fictícios, pré-requisitos e comando de execução.",
+        "Adicione um exemplo de entrada/saída e o comando de testes.",
+        "Peça para alguém executar sem ajuda; corrija o ponto em que travou e registre limites."
+      ],
+      "example": "README: propósito → pré-requisitos → executar → testar → decisões → limites",
+      "expected": "A pessoa entende o que foi feito e como verificar o comportamento.",
+      "challenge": [
+        "Publique uma entrega de estudo com instruções e evidências úteis.",
+        "Associe um recurso ou certificado à competência demonstrada."
+      ],
+      "unblock": "Teste as instruções em uma pasta nova ou peça revisão de leitura antes de publicar.",
+      "questions": [
+        {
+          "prompt": "Qual README demonstra melhor uma habilidade?",
+          "options": [
+            "O que permite executar e verificar a entrega.",
+            "Uma lista grande de certificados sem projeto.",
+            "Uma captura sem instruções."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A pessoa entende o que foi feito e como verificar o comportamento.",
+            "Credenciais sem contexto não mostram a execução.",
+            "Imagem sozinha não permite reproduzir o comportamento."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Publique uma entrega de estudo com instruções e evidências úteis."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Sobre READMEs — GitHub",
+          "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+          "focus": "Use objetivo, execução e exemplos; confira os comandos com uma pessoa nova.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Sobre releases — GitHub",
+          "url": "https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases",
+          "focus": "Planeje versão, changelog e o que cada release inclui; confira compatibilidade.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Projeto legível, Git e testes básicos.",
+      "hours": "8–12 h",
+      "explanation": "Manter um repositório exige acompanhar dependências, licença, mudanças e processo de revisão. Uma atualização pode mudar comportamento mesmo se o build continuar verde.",
+      "walkthrough": [
+        "Faça inventário de dependências diretas e suas versões/licenças.",
+        "Escolha uma atualização pequena, leia release notes e execute testes de contrato.",
+        "Registre compatibilidade, revisão e política de release; não adicione proteção que impede qualquer contribuição de estudo."
+      ],
+      "example": "Release: v0.2\nMudança: dependência X atualizada\nEvidência: testes de contrato e exemplo executável\nLimite: migração necessária em Y.",
+      "expected": "A manutenção tem decisão e validação documentadas, não uma atualização cega.",
+      "challenge": [
+        "Prepare uma atualização com impacto, testes e changelog.",
+        "Defina um fluxo de issue → branch → PR → release no seu repositório."
+      ],
+      "unblock": "Comece com uma dependência e um cenário de consumo; evite atualizar tudo de uma vez.",
+      "questions": [
+        {
+          "prompt": "Atualizar dependência sem ler mudanças e só compilar comprova compatibilidade?",
+          "options": [
+            "Sim, versão nova nunca muda contratos.",
+            "Não; confira release notes e comportamento usado.",
+            "Sim, estrelas do projeto garantem isso."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Versões podem alterar APIs e comportamento.",
+            "Correto. A manutenção tem decisão e validação documentadas, não uma atualização cega.",
+            "Popularidade não comprova compatibilidade com seu uso."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Prepare uma atualização com impacto, testes e changelog."
+        },
+        {
+          "prompt": "O exemplo só funciona com uma configuração que você não documentou. O kit está reproduzível?",
+          "options": [
+            "Sim, porque funciona na máquina do autor.",
+            "Sim, se houver uma captura.",
+            "Ainda não; registre pré-requisito e valide em ambiente novo."
+          ],
+          "correct": 2,
+          "feedback": [
+            "A máquina do autor pode conter dependências ausentes no README.",
+            "Imagem não fornece a configuração necessária para executar.",
+            "Correto. Dependências ocultas impedem onboarding e revisão."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Defina um fluxo de issue → branch → PR → release no seu repositório."
+        }
+      ],
+      "name": "Mantenha com governança",
+      "learn": [
+        "Dependências e licenças",
+        "Compatibilidade e changelog",
+        "Revisão e releases"
+      ],
+      "practice": "Planeje uma atualização pequena e prove seu impacto.",
+      "proof": "Inventário, atualização validada e fluxo de contribuição.",
+      "situation": "Seu repositório cresce e precisa continuar utilizável por outras pessoas.",
+      "outcome": "Inventário, atualização validada e fluxo de contribuição.",
+      "attention": "Licenças precisam ser lidas para o uso pretendido; esta atividade não substitui orientação jurídica.",
+      "checks": [
+        "Versão e licença das dependências estão registradas.",
+        "A atualização tem teste de comportamento.",
+        "Release e revisão têm regras claras."
+      ],
+      "materials": [
+        {
+          "title": "Sobre releases — GitHub",
+          "url": "https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases",
+          "focus": "Planeje versão, changelog e o que cada release inclui; confira compatibilidade.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Segurança do GitHub Actions",
+          "url": "https://docs.github.com/pt/actions/how-tos/secure-your-work",
+          "focus": "Revise permissões mínimas, dependências e dados não confiáveis no workflow.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Documentação, contribuição e manutenção praticadas.",
+      "hours": "10–16 h",
+      "explanation": "Projeto: kit público de aprendizado reproduzível. Uma pessoa nova deve encontrar objetivo, executar o exemplo e validar uma tarefa sem conversar com o autor.",
+      "walkthrough": [
+        "Escolha um problema pequeno de outro módulo e publique código/arquivos com licença apropriada.",
+        "Inclua README, kit inicial, exercício e resposta comentada em seção separada.",
+        "Defina regras de contribuição e prepare release com changelog.",
+        "Peça teste de onboarding a uma pessoa e registre onde precisou de ajuda.",
+        "Prepare PR para corrigir a maior dificuldade observada."
+      ],
+      "example": "Onboarding: clonar → instalar → executar → tarefa → conferir\nEvidência: tempo e bloqueio observados, sem dados pessoais.",
+      "expected": "O kit é útil porque outra pessoa consegue usá-lo e validar o resultado.",
+      "challenge": [
+        "Entregue repositório, release de estudo e relatório do onboarding.",
+        "Explique uma decisão de licença, escopo e manutenção futura."
+      ],
+      "unblock": "Um exemplo pequeno bem explicado vale mais que publicar vários projetos incompletos.",
+      "questions": [
+        {
+          "prompt": "Como saber se o kit é fácil de começar?",
+          "options": [
+            "Presumir porque você já sabe executar.",
+            "Adicionar mais badges ao topo.",
+            "Observar alguém seguindo o README e corrigir os bloqueios."
+          ],
+          "correct": 2,
+          "feedback": [
+            "O autor conhece passos que podem estar faltando no texto.",
+            "Badges não substituem instruções compreensíveis.",
+            "Correto. O kit é útil porque outra pessoa consegue usá-lo e validar o resultado."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue repositório, release de estudo e relatório do onboarding."
+        },
+        {
+          "prompt": "O exemplo só funciona com uma configuração que você não documentou. O kit está reproduzível?",
+          "options": [
+            "Ainda não; registre pré-requisito e valide em ambiente novo.",
+            "Sim, porque funciona na máquina do autor.",
+            "Sim, se houver uma captura."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. Dependências ocultas impedem onboarding e revisão.",
+            "A máquina do autor pode conter dependências ausentes no README.",
+            "Imagem não fornece a configuração necessária para executar."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Explique uma decisão de licença, escopo e manutenção futura."
+        }
+      ],
+      "name": "Projeto: kit para outra pessoa",
+      "learn": [
+        "Onboarding e documentação",
+        "Release e contribuição",
+        "Curadoria e manutenção"
+      ],
+      "practice": "Publique um kit que uma pessoa nova consiga executar e conferir.",
+      "proof": "Repositório reproduzível com release e onboarding validado.",
+      "situation": "Seu conhecimento precisa ser acessível a quem chega pela primeira vez.",
+      "outcome": "Repositório reproduzível com release e onboarding validado.",
+      "attention": "Não declare competência só por ter certificado; a entrega deve mostrar a prática.",
+      "checks": [
+        "Outra pessoa seguiu o README e registrou bloqueios.",
+        "A release inclui exercício e verificação.",
+        "Limites, licença e manutenção estão documentados."
+      ],
+      "materials": [
+        {
+          "title": "Contribuir com projetos — GitHub",
+          "url": "https://docs.github.com/pt/get-started/exploring-projects-on-github/contributing-to-a-project",
+          "focus": "Leia contribuição, fork e revisão. Pratique no seu fork antes de enviar a mantenedores.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Sobre READMEs — GitHub",
+          "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+          "focus": "Use objetivo, execução e exemplos; confira os comandos com uma pessoa nova.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Licenciar um repositório — GitHub",
+          "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+          "focus": "Leia por que a licença importa; registre direitos e limites para o uso pretendido.",
+          "language": "Português",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ],
+  "8": [
+    {
+      "prerequisite": "Nenhum; frases básicas e tradução contextual são apoio permitido.",
+      "hours": "4–6 h",
+      "explanation": "Ler documentação começa por encontrar a ideia central. Você não precisa traduzir cada palavra: identifique tarefa, comando e resultado esperado.",
+      "walkthrough": [
+        "No kit registro-ingles-tecnico.md, anote a pergunta que uma documentação curta deve responder.",
+        "Leia título, primeiro parágrafo e exemplo. Marque verbos como create, run e return.",
+        "Resuma em português e confira o sentido de três termos no contexto."
+      ],
+      "example": "“Run the application.” → Execute a aplicação.\nrun = ação; application = o que executar.",
+      "expected": "O resumo preserva a tarefa; os termos foram entendidos dentro da frase.",
+      "challenge": [
+        "Resuma um trecho de cinco linhas e anote três termos.",
+        "Escreva uma instrução simples em inglês para executar seu exemplo."
+      ],
+      "unblock": "Use um trecho curto e tradução como apoio; confira se consegue explicar a ação depois.",
+      "questions": [
+        {
+          "prompt": "Para entender uma instrução curta, por onde começar?",
+          "options": [
+            "Traduzir todas as palavras antes de ler o título.",
+            "Copiar o comando sem entender o que ele faz.",
+            "Verbo de ação, objeto e resultado esperado."
+          ],
+          "correct": 2,
+          "feedback": [
+            "Tradução palavra por palavra pode esconder o objetivo.",
+            "Executar sem entender não comprova compreensão e pode causar erro.",
+            "Correto. O resumo preserva a tarefa; os termos foram entendidos dentro da frase."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Resuma um trecho de cinco linhas e anote três termos."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Inglês — Kultivi",
+          "url": "https://kultivi.com/curso/ingles?lang=pt",
+          "focus": "Comece por frases e verbos básicos; aplique três termos à sua tarefa técnica. Confira o acesso atual na plataforma.",
+          "language": "Português",
+          "format": "Curso",
+          "time": "Uma aula por sessão",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "A2 English for Developers — freeCodeCamp",
+          "url": "https://www.freecodecamp.org/learn/a2-english-for-developers",
+          "focus": "Pratique uma unidade curta de instruções e atualizações de trabalho; compare com o seu próprio exemplo.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Entender instruções simples e reconhecer termos recorrentes.",
+      "hours": "6–10 h",
+      "explanation": "Uma atualização técnica clara diz o que aconteceu, o que você tentou e qual ajuda precisa. Frases simples permitem validar sentido e gramática sem improvisar termos desconhecidos.",
+      "walkthrough": [
+        "Assista a 2 minutos de uma aula em inglês com legenda; anote três ideias e confira o trecho novamente.",
+        "Escreva três frases sobre um bug fictício: expected, actual e steps.",
+        "Revise verbo e clareza; compare seu texto com o exemplo abaixo, sem trocar o problema por um texto pronto."
+      ],
+      "example": "Expected: The API returns the item.\nActual: The request returns 404.\nSteps: Send GET /items/1.",
+      "expected": "O leitor consegue reproduzir o problema e distinguir esperado de observado.",
+      "challenge": [
+        "Escreva uma issue fictícia com contexto, passos e pergunta.",
+        "Resuma um vídeo curto e confira uma frase que entendeu errado."
+      ],
+      "unblock": "Reduza a uma frase por ideia; confira os termos antes de acrescentar detalhes.",
+      "questions": [
+        {
+          "prompt": "Qual frase informa o resultado observado?",
+          "options": [
+            "The request returns 404.",
+            "I like this framework.",
+            "Please fix everything."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. O leitor consegue reproduzir o problema e distinguir esperado de observado.",
+            "Preferência não descreve a falha.",
+            "O pedido amplo não informa comportamento nem reprodução."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Escreva uma issue fictícia com contexto, passos e pergunta."
+        }
+      ],
+      "materials": [
+        {
+          "title": "LearnEnglish — British Council",
+          "url": "https://learnenglish.britishcouncil.org/",
+          "focus": "Escolha listening/writing no nível adequado. Confira exercícios e respostas antes de subir a dificuldade.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Write & Improve — Cambridge",
+          "url": "https://writeandimprove.com/",
+          "focus": "Use o feedback para revisar uma versão própria do texto; feedback automático não certifica proficiência.",
+          "language": "Inglês",
+          "format": "Prática",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Leitura contextual e atualização escrita curta.",
+      "hours": "8–12 h",
+      "explanation": "Fala técnica organiza problema, decisão e próximo passo. Clareza inclui confirmar entendimento e pedir reformulação quando uma instrução é ambígua.",
+      "walkthrough": [
+        "Grave 30 segundos sobre um projeto fictício: problema, decisão e teste.",
+        "Escute e identifique uma frase que não ficou compreensível; regrave só esse trecho.",
+        "Simule uma pergunta de colega e peça confirmação com suas palavras."
+      ],
+      "example": "We added a timeout because the API can be slow.\nDo you mean the client timeout or the server timeout?",
+      "expected": "A explicação tem causa e decisão; a pergunta de confirmação reduz ambiguidade.",
+      "challenge": [
+        "Grave dois minutos sobre uma entrega e responda duas perguntas.",
+        "Faça autoavaliação de clareza e peça feedback humano quando possível."
+      ],
+      "unblock": "Leia um roteiro curto primeiro; reduza o roteiro progressivamente, sem buscar sotaque perfeito.",
+      "questions": [
+        {
+          "prompt": "O colega diz “change the timeout”, sem especificar a camada. O que ajuda?",
+          "options": [
+            "Alterar ambos sem confirmar.",
+            "Perguntar se é o timeout do cliente ou do servidor.",
+            "Dizer que entendeu mesmo sem entender."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Alterar duas camadas pode produzir uma mudança não solicitada.",
+            "Correto. A explicação tem causa e decisão; a pergunta de confirmação reduz ambiguidade.",
+            "Confirmar sem compreensão mantém a ambiguidade."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Grave dois minutos sobre uma entrega e responda duas perguntas."
+        }
+      ],
+      "materials": [
+        {
+          "title": "LearnEnglish — British Council",
+          "url": "https://learnenglish.britishcouncil.org/",
+          "focus": "Escolha listening/writing no nível adequado. Confira exercícios e respostas antes de subir a dificuldade.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "A2 English for Developers — freeCodeCamp",
+          "url": "https://www.freecodecamp.org/learn/a2-english-for-developers",
+          "focus": "Pratique uma unidade curta de instruções e atualizações de trabalho; compare com o seu próprio exemplo.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Explicar um projeto e escrever questões técnicas.",
+      "hours": "10–16 h",
+      "explanation": "Comunicação avançada neste módulo é negociar decisões com clareza, preservar incerteza e revisar textos técnicos. Isso não equivale a uma certificação de proficiência linguística.",
+      "walkthrough": [
+        "Escreva duas alternativas de integração com vantagens, riscos e recomendação técnica, sem dados reais.",
+        "Simule uma review: peça evidência quando uma afirmação estiver vaga.",
+        "Revise a mensagem para indicar o que é observado, hipótese e próximo teste."
+      ],
+      "example": "Observation: The request timed out.\nHypothesis: The dependency was slow.\nNext step: Check trace timings before changing retries.",
+      "expected": "A mensagem não apresenta uma hipótese como fato e propõe verificação.",
+      "challenge": [
+        "Escreva uma review de PR e resposta a duas objeções.",
+        "Regrave uma explicação mantendo contexto, decisão, evidência e limite."
+      ],
+      "unblock": "Use a estrutura observation/hypothesis/next step e revise cada frase.",
+      "questions": [
+        {
+          "prompt": "Qual frase preserva incerteza corretamente?",
+          "options": [
+            "The dependency is broken, sem evidência.",
+            "It works everywhere, após um teste local.",
+            "The dependency may be slow; we need trace timings."
+          ],
+          "correct": 2,
+          "feedback": [
+            "A afirmação apresenta uma causa não verificada como fato.",
+            "Um teste local não comprova todos os ambientes.",
+            "Correto. A mensagem não apresenta uma hipótese como fato e propõe verificação."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Escreva uma review de PR e resposta a duas objeções."
+        },
+        {
+          "prompt": "“The API is broken” sem evidência é uma boa atualização técnica?",
+          "options": [
+            "É melhor indicar observação, hipótese e próximo teste.",
+            "Sim; sempre identifica a causa exata.",
+            "Sim; substitui passos de reprodução."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. A estrutura deixa claro o que se sabe e o que precisa ser investigado.",
+            "Uma falha observada não identifica por si só a causa.",
+            "Sem reprodução o colega não consegue verificar o problema."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Regrave uma explicação mantendo contexto, decisão, evidência e limite."
+        }
+      ],
+      "name": "Argumente e revise em inglês",
+      "learn": [
+        "Trade-offs e incerteza",
+        "Review de PR e feedback",
+        "Confirmação de entendimento"
+      ],
+      "practice": "Defenda uma decisão e revise uma hipótese com evidências.",
+      "proof": "Texto de decisão e simulação de review com clareza de limites.",
+      "situation": "Uma discussão técnica exige precisão além de vocabulário isolado.",
+      "outcome": "Texto de decisão e simulação de review com clareza de limites.",
+      "attention": "O nível deste módulo é de tarefa técnica; proficiência B2/C1 precisa de avaliação específica.",
+      "checks": [
+        "Diferencio fato e hipótese em inglês.",
+        "Justifico duas alternativas com limites.",
+        "Peço e incorporo feedback de clareza."
+      ],
+      "materials": [
+        {
+          "title": "Guia de estilo técnico — Microsoft",
+          "url": "https://learn.microsoft.com/en-us/style-guide/welcome/",
+          "focus": "Leia clareza e escolha de palavras; revise uma issue ou PR sem usar frases mais complexas que o necessário.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "Write & Improve — Cambridge",
+          "url": "https://writeandimprove.com/",
+          "focus": "Use o feedback para revisar uma versão própria do texto; feedback automático não certifica proficiência.",
+          "language": "Inglês",
+          "format": "Prática",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    },
+    {
+      "prerequisite": "Leitura, escrita, fala e negociação técnica praticadas.",
+      "hours": "12–20 h",
+      "explanation": "Projeto: apresentar uma integração fictícia em inglês. Você prepara documentos e uma demonstração, recebe perguntas e revisa o que não comunicou bem.",
+      "walkthrough": [
+        "Escolha uma entrega de API/agente já feita e prepare README curto em inglês.",
+        "Escreva issue, PR e resumo da arquitetura com exemplos fictícios.",
+        "Grave uma demonstração de três minutos e simule cinco perguntas, incluindo uma que você não sabe responder.",
+        "Registre correções de compreensão e linguagem; repita a demonstração após sete dias."
+      ],
+      "example": "I do not have enough evidence yet.\nI will check the API contract and update the PR.",
+      "expected": "Reconhecer o limite e propor o próximo passo comunica responsabilidade sem fingir fluência ou conhecimento.",
+      "challenge": [
+        "Entregue README, issue, PR e gravação com perguntas/respostas.",
+        "Peça uma revisão humana ou use comparação de texto, declarando que autoavaliação não certifica nível."
+      ],
+      "unblock": "Faça o projeto em três partes: escrita, áudio curto e perguntas; não precisa concluir tudo numa sessão.",
+      "questions": [
+        {
+          "prompt": "Numa demo, você não sabe a causa de uma falha. O que dizer?",
+          "options": [
+            "Declare a dúvida e o próximo passo para investigar.",
+            "Inventar uma causa para manter a apresentação.",
+            "Prometer que nunca acontece em produção."
+          ],
+          "correct": 0,
+          "feedback": [
+            "Correto. Reconhecer o limite e propor o próximo passo comunica responsabilidade sem fingir fluência ou conhecimento.",
+            "Inventar causa prejudica a precisão e a confiança.",
+            "A promessa não tem base verificável."
+          ],
+          "review": "Volte ao exemplo resolvido e compare a evidência com o resultado esperado.",
+          "apply": "Entregue README, issue, PR e gravação com perguntas/respostas."
+        },
+        {
+          "prompt": "“The API is broken” sem evidência é uma boa atualização técnica?",
+          "options": [
+            "Sim; substitui passos de reprodução.",
+            "É melhor indicar observação, hipótese e próximo teste.",
+            "Sim; sempre identifica a causa exata."
+          ],
+          "correct": 1,
+          "feedback": [
+            "Sem reprodução o colega não consegue verificar o problema.",
+            "Correto. A estrutura deixa claro o que se sabe e o que precisa ser investigado.",
+            "Uma falha observada não identifica por si só a causa."
+          ],
+          "review": "Compare o comportamento observado com o contrato e o resultado esperado do projeto.",
+          "apply": "Peça uma revisão humana ou use comparação de texto, declarando que autoavaliação não certifica nível."
+        }
+      ],
+      "name": "Projeto: demo técnica em inglês",
+      "learn": [
+        "Documentação e demonstração",
+        "Perguntas e handoff",
+        "Revisão após feedback"
+      ],
+      "practice": "Apresente uma integração fictícia e seus limites em inglês.",
+      "proof": "Pacote de comunicação com demo, perguntas e revisão.",
+      "situation": "É preciso comunicar projeto e falhas a alguém de outro contexto.",
+      "outcome": "Pacote de comunicação com demo, perguntas e revisão.",
+      "attention": "Concluir esta tarefa demonstra comunicação aplicada; não certifica fluência geral.",
+      "checks": [
+        "Os textos preservam o sentido técnico.",
+        "A demo inclui perguntas e limites de conhecimento.",
+        "Uma revisão foi feita após feedback e intervalo."
+      ],
+      "materials": [
+        {
+          "title": "Guia de estilo técnico — Microsoft",
+          "url": "https://learn.microsoft.com/en-us/style-guide/welcome/",
+          "focus": "Leia clareza e escolha de palavras; revise uma issue ou PR sem usar frases mais complexas que o necessário.",
+          "language": "Inglês",
+          "format": "Leitura",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        },
+        {
+          "title": "LearnEnglish — British Council",
+          "url": "https://learnenglish.britishcouncil.org/",
+          "focus": "Escolha listening/writing no nível adequado. Confira exercícios e respostas antes de subir a dificuldade.",
+          "language": "Inglês",
+          "format": "Curso",
+          "time": "25–40 min no trecho indicado",
+          "certificate": "Certificado não informado; não é requisito da etapa"
+        }
+      ]
+    }
+  ]
+}

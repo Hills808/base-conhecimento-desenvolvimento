@@ -1,10 +1,11 @@
+import advancedModules from './advanced-modules.json';
 export type Stage = { name: string; learn: string[]; practice: string; proof: string };
 export type Module = {
   id: number; title: string; short: string; area: string; symbol: string;
-  color: string; prerequisite: string; outcome: string; stages: [Stage, Stage, Stage]; guide: string;
+  color: string; prerequisite: string; outcome: string; stages: Stage[]; guide: string;
 };
 
-export const modules: Module[] = [
+const baseModules: Module[] = [
   {
     id: 0, title: "Aprender a aprender", short: "Monte uma rotina que cabe na vida real.", area: "Comece aqui", symbol: "↗", color: "#f1c661",
     prerequisite: "Nenhum.", outcome: "Um plano de estudo e um projeto para acompanhar a evolução.", guide: "00-comecando",
@@ -47,7 +48,7 @@ export const modules: Module[] = [
     stages: [
       { name: "Pergunte aos dados", learn: ["Tabelas e relações", "SELECT, filtros e JOINs", "Modelagem básica"], practice: "Consulte uma base pequena e responda a três perguntas verificáveis.", proof: "Você explica o resultado e a origem dos dados." },
       { name: "Analise e compare", learn: ["Limpeza e exploração", "Métricas", "Viés e validação"], practice: "Faça uma análise reproduzível com hipótese e resultado.", proof: "Você aponta limitações em vez de afirmar certeza indevida." },
-      { name: "Modele com critério", learn: ["Machine learning", "Deep learning", "MLOps e monitoramento"], practice: "Compare baseline e modelo, documentando o conjunto de teste.", proof: "Você consegue defender a escolha com métricas apropriadas." }
+      { name: "Modele com critério", learn: ["Baseline e modelo simples", "Divisão treino, validação e teste", "Pipeline de pré-processamento"], practice: "Compare baseline e modelo, documentando o conjunto de teste.", proof: "Você consegue defender a escolha com métricas apropriadas." }
     ]
   },
   {
@@ -87,7 +88,7 @@ export const modules: Module[] = [
     ]
   },
   {
-    id: 9, title: "Laboratório MCP com C#", short: "14 etapas para trabalhar com APIs, agentes, MCP e Skills.", area: "Laboratório", symbol: "✺", color: "#f8c98c",
+    id: 9, title: "Laboratório MCP com C#", short: "14 etapas em cinco níveis: APIs, agentes, MCP e Skills.", area: "Laboratório", symbol: "✺", color: "#f8c98c",
     prerequisite: "Comece por HTTP e JSON; C# entra antes da implementação. Avance pelas entregas.", outcome: "Uma integração testada: API .NET, agente, MCP, RAG e Skill de leitura, com dados fictícios.", guide: "09-trilha-pratica-mcp-csharp-agentes",
     stages: [
       { name: "Primeiro contato", learn: ["HTTP e JSON no Bruno", "Conceitos de C#", "O que muda com MCP"], practice: "Faça uma requisição à JSONPlaceholder e documente seu resultado.", proof: "Você aponta onde estão status, campos e erros." },
@@ -97,4 +98,9 @@ export const modules: Module[] = [
   }
 ];
 
-export const guideUrl = (guide: string) => `https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/guias/${guide}.md`;
+export const modules: Module[] = baseModules.map(module => module.id === 9 ? module : ({
+  ...module,
+  stages: [...module.stages, ...advancedModules[String(module.id) as keyof typeof advancedModules].map(({ name, learn, practice, proof }) => ({ name, learn, practice, proof }))]
+}));
+
+export const guideUrl = (guide: string) => `https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/guias/${guide.startsWith('09-') ? '' : 'trilhas/'}${guide}.md`;

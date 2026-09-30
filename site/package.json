@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite --host 0.0.0.0"
+    "build": "node scripts/validate-curriculum.mjs && vite build",
+    "dev": "vite --host 0.0.0.0",
+    "check:curriculum": "node scripts/validate-curriculum.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",

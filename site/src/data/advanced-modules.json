@@ -1,0 +1,344 @@
+{
+  "0": [
+    {
+      "name": "Verifique seu próprio aprendizado",
+      "learn": [
+        "Recuperação sem consulta",
+        "Transferência e contraexemplos",
+        "Avaliação de fontes"
+      ],
+      "practice": "Audite seu plano usando duas tarefas inéditas.",
+      "proof": "Um registro de tentativa, correção e evidência de transferência.",
+      "situation": "Você termina materiais, mas trava quando o exemplo muda.",
+      "outcome": "Um registro de tentativa, correção e evidência de transferência.",
+      "attention": "Não confunda familiaridade com capacidade de executar.",
+      "checks": [
+        "Resolvi uma variação sem copiar o exemplo.",
+        "Conferi uma afirmação na fonte original.",
+        "Expliquei um erro e como corrigi."
+      ]
+    },
+    {
+      "name": "Projeto: plano com evidências",
+      "learn": [
+        "Planejamento adaptável",
+        "Revisão espaçada",
+        "Critérios de competência"
+      ],
+      "practice": "Execute e revise um ciclo de estudo de quatro semanas.",
+      "proof": "Plano legível, entregas e revisão de uma tarefa inédita.",
+      "situation": "Você precisa sustentar a evolução mesmo com pouco tempo.",
+      "outcome": "Plano legível, entregas e revisão de uma tarefa inédita.",
+      "attention": "Este módulo desenvolve autonomia para estudar; competências técnicas dependem de suas trilhas.",
+      "checks": [
+        "A primeira semana foi executada e registrada.",
+        "Uma variação foi feita sem resposta aberta.",
+        "Outra pessoa identifica a próxima ação pelo plano."
+      ]
+    }
+  ],
+  "1": [
+    {
+      "name": "Teste e refatore sem regressão",
+      "learn": [
+        "Testes de unidade e borda",
+        "Complexidade e medição",
+        "Separação de responsabilidades"
+      ],
+      "practice": "Refatore o catálogo sob proteção de testes que detectam defeitos.",
+      "proof": "Catálogo com seis casos, falha controlada detectada e comparação de alternativas.",
+      "situation": "Uma mudança pequena quebra outra regra sem aviso.",
+      "outcome": "Catálogo com seis casos, falha controlada detectada e comparação de alternativas.",
+      "attention": "Otimização sem medida pode piorar clareza sem benefício demonstrado.",
+      "checks": [
+        "Um teste falha com um defeito intencional.",
+        "Casos vazio, duplicado e ausente estão cobertos.",
+        "Justifiquei a estrutura de dados e seus limites."
+      ]
+    },
+    {
+      "name": "Projeto: tarefas com persistência",
+      "learn": [
+        "Descoberta de regras",
+        "Persistência e erros",
+        "Entrega e revisão de código"
+      ],
+      "practice": "Crie um gerenciador local testado, documentado e extensível.",
+      "proof": "Projeto com oito casos e alteração de requisito demonstrada.",
+      "situation": "Uma tarefa nova combina lógica, dados e arquivo.",
+      "outcome": "Projeto com oito casos e alteração de requisito demonstrada.",
+      "attention": "Não declare domínio de uma linguagem inteira; demonstre as competências e registre tópicos futuros.",
+      "checks": [
+        "O README permite execução do zero.",
+        "A persistência e os erros foram testados.",
+        "Uma mudança inédita passou pelos testes."
+      ]
+    }
+  ],
+  "2": [
+    {
+      "name": "Proteja e torne a API resiliente",
+      "learn": [
+        "Autorização por recurso",
+        "Timeout, cancelamento e idempotência",
+        "Testes de integração e logs seguros"
+      ],
+      "practice": "Simule acesso cruzado e falhas transitórias com testes reproduzíveis.",
+      "proof": "API com matriz de permissões, testes negativos e política de falhas.",
+      "situation": "A API funciona no caminho feliz, mas pode expor dados ou duplicar uma escrita.",
+      "outcome": "API com matriz de permissões, testes negativos e política de falhas.",
+      "attention": "Autenticação não substitui autorização; retries dependem da operação.",
+      "checks": [
+        "Acesso de A ao recurso de B é negado no servidor.",
+        "Timeout e campo inválido têm teste e estado definido.",
+        "Logs e coleção não contêm segredos."
+      ]
+    },
+    {
+      "name": "Projeto: API pronta para revisão",
+      "learn": [
+        "Descoberta e OpenAPI",
+        "Compatibilidade e contratos",
+        "PR, testes e diagnóstico"
+      ],
+      "practice": "Entregue catálogo .NET com contrato, Bruno, segurança e migração simulada.",
+      "proof": "PR reproduzível com oito cenários e decisão de compatibilidade.",
+      "situation": "Um consumidor precisa usar sua API sem combinar detalhes por mensagem.",
+      "outcome": "PR reproduzível com oito cenários e decisão de compatibilidade.",
+      "attention": "Avançado aqui significa desenhar e investigar esta integração; produção ainda exige revisão e operação.",
+      "checks": [
+        "O contrato e os testes conferem campos e estados.",
+        "Uma falha de mapeamento foi reproduzida e corrigida.",
+        "O PR explica execução, compatibilidade e rollback."
+      ]
+    }
+  ],
+  "3": [
+    {
+      "name": "Teste concorrência e experiência",
+      "learn": [
+        "Respostas fora de ordem",
+        "Segurança de conteúdo remoto",
+        "Testes de interação e performance"
+      ],
+      "practice": "Proteja a busca contra corrida e valide o fluxo completo.",
+      "proof": "Testes de interação, resposta tardia controlada e medida de performance.",
+      "situation": "Uma busca rápida mostra o resultado errado sem falhar visivelmente.",
+      "outcome": "Testes de interação, resposta tardia controlada e medida de performance.",
+      "attention": "Métricas automáticas não substituem o comportamento real nem testes manuais.",
+      "checks": [
+        "Resposta antiga não sobrescreve a nova.",
+        "Conteúdo remoto é tratado como dado.",
+        "Teclado e recuperação de erro têm evidências."
+      ]
+    },
+    {
+      "name": "Projeto: portal acessível",
+      "learn": [
+        "Descoberta e tarefas",
+        "Integração e validação de uso",
+        "Revisão e entrega"
+      ],
+      "practice": "Crie portal de procedimentos com busca, estados e avaliação de uso.",
+      "proof": "Projeto revisável com seis cenários e teste de tarefas.",
+      "situation": "Uma interface precisa comunicar informação e falhas de forma confiável.",
+      "outcome": "Projeto revisável com seis cenários e teste de tarefas.",
+      "attention": "Teste só com dados fictícios e peça feedback sobre o fluxo, não apenas a aparência.",
+      "checks": [
+        "Uma pessoa concluiu tarefas documentadas.",
+        "Estados e teclado foram testados.",
+        "O PR explica decisões, validação e limites."
+      ]
+    }
+  ],
+  "4": [
+    {
+      "name": "Audite validade e monitoramento",
+      "learn": [
+        "Vazamento de dados",
+        "Validação temporal e por grupo",
+        "Mudança de distribuição"
+      ],
+      "practice": "Reproduza uma métrica enganosa e corrija sua avaliação.",
+      "proof": "Auditoria de features, divisão adequada e critérios de monitoramento.",
+      "situation": "O modelo parece ótimo no notebook, mas falha em dados novos.",
+      "outcome": "Auditoria de features, divisão adequada e critérios de monitoramento.",
+      "attention": "Não confunda métrica agregada alta com validade para todos os cenários.",
+      "checks": [
+        "Features só usam informação disponível na previsão.",
+        "A divisão respeita a pergunta e o tempo.",
+        "Limitações por grupo e monitoramento estão documentadas."
+      ]
+    },
+    {
+      "name": "Projeto: previsão auditável",
+      "learn": [
+        "Problema e protocolo de avaliação",
+        "Reprodutibilidade e monitoramento",
+        "Comunicação de incerteza"
+      ],
+      "practice": "Entregue comparação de volume fictício com pipeline e limites de uso.",
+      "proof": "Experimento reproduzível, teste temporal e decisão baseada em métricas.",
+      "situation": "É preciso justificar se o modelo vale a complexidade.",
+      "outcome": "Experimento reproduzível, teste temporal e decisão baseada em métricas.",
+      "attention": "Este projeto não credencia decisões de alto impacto nem recomenda investimentos.",
+      "checks": [
+        "Há baseline, teste reservado e métrica justificada.",
+        "O experimento pode ser reproduzido.",
+        "Mudança de distribuição e limites foram demonstrados."
+      ]
+    }
+  ],
+  "5": [
+    {
+      "name": "Avalie segurança e regressões",
+      "learn": [
+        "Conjuntos de avaliação separados",
+        "Prompt injection e falha fechada",
+        "Rubricas e gates críticos"
+      ],
+      "practice": "Avalie vinte casos, incluindo regressão intencional e acesso indevido.",
+      "proof": "Relatório por cenário com versões, falhas e bloqueadores de segurança.",
+      "situation": "Uma alteração de modelo ou prompt muda o uso de ferramentas.",
+      "outcome": "Relatório por cenário com versões, falhas e bloqueadores de segurança.",
+      "attention": "Dados recuperados não podem conceder autoridade ou ampliar a allowlist.",
+      "checks": [
+        "Há conjunto de validação separado.",
+        "Violações de permissão bloqueiam a versão.",
+        "Uma regressão introduzida foi detectada."
+      ]
+    },
+    {
+      "name": "Projeto: agente governado",
+      "learn": [
+        "Descoberta e fluxo",
+        "MCP/Skill e contratos",
+        "Avaliação, segurança e PR"
+      ],
+      "practice": "Entregue assistente fictício com tools de leitura e debrief rastreável.",
+      "proof": "Projeto revisável com vinte cenários e falhas de contrato/segurança demonstradas.",
+      "situation": "É preciso explicar e validar o comportamento ponta a ponta.",
+      "outcome": "Projeto revisável com vinte cenários e falhas de contrato/segurança demonstradas.",
+      "attention": "Use somente dados fictícios; não execute envio nem aconselhamento financeiro.",
+      "checks": [
+        "O fluxo e os contratos são reproduzíveis.",
+        "As cinco falhas aplicadas foram demonstradas.",
+        "A publicação exige avaliação e revisão explícitas."
+      ]
+    }
+  ],
+  "6": [
+    {
+      "name": "Planeje operação e recuperação",
+      "learn": [
+        "Indicadores e limites de falha",
+        "Deploy governado e rollback",
+        "Runbook e segurança de dependências"
+      ],
+      "practice": "Simule incidente e recuperação com condições verificáveis.",
+      "proof": "Runbook, linha do tempo e recuperação testada em estudo.",
+      "situation": "Um deploy passa no build e falha durante o uso.",
+      "outcome": "Runbook, linha do tempo e recuperação testada em estudo.",
+      "attention": "Rollback de código e recuperação de dados são decisões distintas.",
+      "checks": [
+        "O alerta tem uma condição mensurável.",
+        "A recuperação foi testada com compatibilidade.",
+        "O runbook preserva evidências sem dados sensíveis."
+      ]
+    },
+    {
+      "name": "Projeto: serviço operável",
+      "learn": [
+        "Entrega ponta a ponta",
+        "Qualidade e configuração",
+        "Incidente e recuperação"
+      ],
+      "practice": "Entregue serviço fictício com pipeline e runbook reproduzíveis.",
+      "proof": "PR com gate demonstrado, incidente e recuperação de estudo.",
+      "situation": "O projeto precisa ser entendido por quem vai revisar e operar.",
+      "outcome": "PR com gate demonstrado, incidente e recuperação de estudo.",
+      "attention": "Cloud pode gerar custo; use execução local e simulação quando suficiente.",
+      "checks": [
+        "Uma mudança ruim é bloqueada no pipeline.",
+        "Não há segredos em código, imagem ou logs.",
+        "O incidente e a recuperação são reproduzíveis."
+      ]
+    }
+  ],
+  "7": [
+    {
+      "name": "Mantenha com governança",
+      "learn": [
+        "Dependências e licenças",
+        "Compatibilidade e changelog",
+        "Revisão e releases"
+      ],
+      "practice": "Planeje uma atualização pequena e prove seu impacto.",
+      "proof": "Inventário, atualização validada e fluxo de contribuição.",
+      "situation": "Seu repositório cresce e precisa continuar utilizável por outras pessoas.",
+      "outcome": "Inventário, atualização validada e fluxo de contribuição.",
+      "attention": "Licenças precisam ser lidas para o uso pretendido; esta atividade não substitui orientação jurídica.",
+      "checks": [
+        "Versão e licença das dependências estão registradas.",
+        "A atualização tem teste de comportamento.",
+        "Release e revisão têm regras claras."
+      ]
+    },
+    {
+      "name": "Projeto: kit para outra pessoa",
+      "learn": [
+        "Onboarding e documentação",
+        "Release e contribuição",
+        "Curadoria e manutenção"
+      ],
+      "practice": "Publique um kit que uma pessoa nova consiga executar e conferir.",
+      "proof": "Repositório reproduzível com release e onboarding validado.",
+      "situation": "Seu conhecimento precisa ser acessível a quem chega pela primeira vez.",
+      "outcome": "Repositório reproduzível com release e onboarding validado.",
+      "attention": "Não declare competência só por ter certificado; a entrega deve mostrar a prática.",
+      "checks": [
+        "Outra pessoa seguiu o README e registrou bloqueios.",
+        "A release inclui exercício e verificação.",
+        "Limites, licença e manutenção estão documentados."
+      ]
+    }
+  ],
+  "8": [
+    {
+      "name": "Argumente e revise em inglês",
+      "learn": [
+        "Trade-offs e incerteza",
+        "Review de PR e feedback",
+        "Confirmação de entendimento"
+      ],
+      "practice": "Defenda uma decisão e revise uma hipótese com evidências.",
+      "proof": "Texto de decisão e simulação de review com clareza de limites.",
+      "situation": "Uma discussão técnica exige precisão além de vocabulário isolado.",
+      "outcome": "Texto de decisão e simulação de review com clareza de limites.",
+      "attention": "O nível deste módulo é de tarefa técnica; proficiência B2/C1 precisa de avaliação específica.",
+      "checks": [
+        "Diferencio fato e hipótese em inglês.",
+        "Justifico duas alternativas com limites.",
+        "Peço e incorporo feedback de clareza."
+      ]
+    },
+    {
+      "name": "Projeto: demo técnica em inglês",
+      "learn": [
+        "Documentação e demonstração",
+        "Perguntas e handoff",
+        "Revisão após feedback"
+      ],
+      "practice": "Apresente uma integração fictícia e seus limites em inglês.",
+      "proof": "Pacote de comunicação com demo, perguntas e revisão.",
+      "situation": "É preciso comunicar projeto e falhas a alguém de outro contexto.",
+      "outcome": "Pacote de comunicação com demo, perguntas e revisão.",
+      "attention": "Concluir esta tarefa demonstra comunicação aplicada; não certifica fluência geral.",
+      "checks": [
+        "Os textos preservam o sentido técnico.",
+        "A demo inclui perguntas e limites de conhecimento.",
+        "Uma revisão foi feita após feedback e intervalo."
+      ]
+    }
+  ]
+}

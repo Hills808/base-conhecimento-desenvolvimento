@@ -2549,5 +2549,295 @@
     "section": "Antes de levar a um sistema real",
     "type": "Leitura",
     "host": "github.com"
+  },
+  {
+    "module": 0,
+    "title": "Learning how to learn — Open University",
+    "url": "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0",
+    "section": "Trilha por competências",
+    "type": "Curso",
+    "host": "www.open.edu",
+    "note": "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 1,
+    "title": "C# para iniciantes — Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/",
+    "section": "Trilha por competências",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com",
+    "note": "Assista ao episódio correspondente a executar, variáveis ou depuração. A página é traduzida; confira legendas no player.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 1,
+    "title": "Coleções e estruturas de dados — .NET",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/standard/collections/",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Compare List e Dictionary pela forma de acesso; não memorize todas as coleções.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 1,
+    "title": "Testes C# com xUnit — Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Siga criação da solução e primeiro teste que falha; depois aplique aos casos do seu catálogo.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 1,
+    "title": "Nomes de propriedades JSON — System.Text.Json",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/standard/serialization/system-text-json/customize-properties",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Leia JsonPropertyName e política de nomes; compare className com NomeClasse.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 2,
+    "title": "APIs .NET para iniciantes — Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/",
+    "section": "Trilha por competências",
+    "type": "Vídeo",
+    "host": "learn.microsoft.com",
+    "note": "Veja introdução a APIs e implementação. Narração em inglês; a página traduzida ajuda a localizar cada episódio.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 2,
+    "title": "Nomes de propriedades JSON — System.Text.Json",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/standard/serialization/system-text-json/customize-properties",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Leia JsonPropertyName e política de nomes; compare className com NomeClasse.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 2,
+    "title": "Autorização por recurso — ASP.NET Core",
+    "url": "https://learn.microsoft.com/pt-br/aspnet/core/security/authorization/resource-based?view=aspnetcore-10.0",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Leia IAuthorizationService e a verificação após carregar o recurso; aplique a identidades fictícias.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 2,
+    "title": "HTTP resiliente — .NET",
+    "url": "https://learn.microsoft.com/pt-br/dotnet/core/resilience/http-resilience",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Leia timeout e repetição de métodos não seguros; explique como evitar duplicar uma escrita.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 3,
+    "title": "Aprendendo desenvolvimento web — MDN",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development",
+    "section": "Trilha por competências",
+    "type": "Curso",
+    "host": "developer.mozilla.org",
+    "note": "Comece por estrutura HTML e CSS; execute uma página mínima antes de estudar frameworks.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 3,
+    "title": "Guia JavaScript — MDN",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "developer.mozilla.org",
+    "note": "Leia funções, promises e tratamento de erros de acordo com o passo que bloqueia a interface.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 3,
+    "title": "Acessibilidade — MDN",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Accessibility",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "developer.mozilla.org",
+    "note": "Leia HTML, controles e ferramentas. Teste uma tarefa com teclado depois de cada ajuste.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 3,
+    "title": "Performance — MDN",
+    "url": "https://developer.mozilla.org/pt-BR/docs/Web/Performance",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "developer.mozilla.org",
+    "note": "Escolha uma medida ligada à tarefa; registre antes/depois no mesmo cenário.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 3,
+    "title": "Testes de interface — Playwright",
+    "url": "https://playwright.dev/docs/intro",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "playwright.dev",
+    "note": "Crie um teste do fluxo de busca e erro usando seletores por papel e nome; siga os passos da documentação.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 4,
+    "title": "Consultar dados com SQL — Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/training/paths/get-started-querying-with-transact-sql/",
+    "section": "Trilha por competências",
+    "type": "Curso",
+    "host": "learn.microsoft.com",
+    "note": "Estude SELECT, filtros e JOIN. O material usa T-SQL; o kit tem SQL simples para SQLite/PostgreSQL.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 4,
+    "title": "Machine Learning Crash Course — Google",
+    "url": "https://developers.google.com/machine-learning/crash-course?hl=pt-br",
+    "section": "Trilha por competências",
+    "type": "Curso",
+    "host": "developers.google.com",
+    "note": "Estude conjuntos de dados, treino/teste e métricas antes de redes neurais.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 4,
+    "title": "Vazamento e boas práticas — scikit-learn",
+    "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "scikit-learn.org",
+    "note": "Leia inconsistent preprocessing e data leakage; compare com o exemplo em português desta etapa.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 4,
+    "title": "Avaliação e validação — scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "scikit-learn.org",
+    "note": "Leia holdout e validação cruzada. Escolha divisão temporal quando a pergunta depende de tempo.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 5,
+    "title": "Desenho e avaliação de RAG — Microsoft",
+    "url": "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "learn.microsoft.com",
+    "note": "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 5,
+    "title": "Segurança MCP — documentação oficial",
+    "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "modelcontextprotocol.io",
+    "note": "Leia token passthrough, audience e confused deputy. Registre quem autoriza cada chamada; nada de credencial real.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 6,
+    "title": "Início rápido do GitHub Actions",
+    "url": "https://docs.github.com/pt/actions/get-started/quickstart",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Adapte o build e teste ao seu projeto; comprove que a regra quebrada deixa o workflow vermelho.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 6,
+    "title": "Segurança do GitHub Actions",
+    "url": "https://docs.github.com/pt/actions/how-tos/secure-your-work",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Revise permissões mínimas, dependências e dados não confiáveis no workflow.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 6,
+    "title": "Ambientes de implantação — GitHub",
+    "url": "https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Confira revisões e regras disponíveis no plano do repositório; simule o processo se o recurso exigir outro plano.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Sobre READMEs — GitHub",
+    "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Use objetivo, execução e exemplos; confira os comandos com uma pessoa nova.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Licenciar um repositório — GitHub",
+    "url": "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Leia por que a licença importa; registre direitos e limites para o uso pretendido.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Contribuir com projetos — GitHub",
+    "url": "https://docs.github.com/pt/get-started/exploring-projects-on-github/contributing-to-a-project",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Leia contribuição, fork e revisão. Pratique no seu fork antes de enviar a mantenedores.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Pro Git — edição em português",
+    "url": "https://git-scm.com/book/pt-br/v2",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "git-scm.com",
+    "note": "Leia snapshots, branches e desfazer alterações; pratique num repositório de estudo.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Sobre releases — GitHub",
+    "url": "https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Planeje versão, changelog e o que cada release inclui; confira compatibilidade.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
+  },
+  {
+    "module": 7,
+    "title": "Segurança do GitHub Actions",
+    "url": "https://docs.github.com/pt/actions/how-tos/secure-your-work",
+    "section": "Trilha por competências",
+    "type": "Leitura",
+    "host": "docs.github.com",
+    "note": "Revise permissões mínimas, dependências e dados não confiáveis no workflow.",
+    "access": "Material de estudo gratuito; condições de credenciais devem ser conferidas na fonte."
   }
 ]

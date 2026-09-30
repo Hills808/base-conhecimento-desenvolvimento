@@ -1,0 +1,102 @@
+/* Curriculum keeps one readable lesson visible; the library stays a separate reference area. */
+.curriculum-journey .journey-intro { align-items:center; }
+.curriculum-journey .journey-intro h2 { font-size:clamp(30px,3.4vw,43px); }
+.curriculum-journey .journey-progress progress { width:100%; height:8px; accent-color:var(--blue); }
+.curriculum-start { display:flex; gap:15px; background:#eef2ec; border-left:3px solid #526d55; padding:20px; margin:24px 0 12px; }
+.curriculum-start>svg { flex:none; color:#426449; margin-top:3px; }
+.curriculum-start strong { font-size:17px; }
+.curriculum-start p { margin:7px 0 0; font-size:16px; line-height:1.65; color:#43534b; }
+.curriculum-start button { margin-top:12px; display:inline-flex; align-items:center; gap:8px; padding:8px 0; color:var(--blue); border:0; background:none; font-family:inherit; font-weight:700; font-size:16px; cursor:pointer; text-decoration:underline; text-underline-offset:4px; }
+.curriculum-standard { border-bottom:1px solid #bbc6c0; padding:12px 0 17px; }
+.curriculum-standard summary { cursor:pointer; font-size:16px; font-weight:700; }
+.curriculum-standard p { max-width:75ch; font-size:16px; line-height:1.65; color:#4b5c65; }
+.curriculum-journey .journey-stages { grid-template-columns:repeat(5,minmax(0,1fr)); margin-top:24px; }
+.curriculum-journey .journey-stage { padding:16px 12px; min-height:158px; }
+.curriculum-journey .journey-stage strong { font-size:16px; line-height:1.3; }
+.curriculum-journey .journey-stage small { font-size:13px; line-height:1.4; opacity:1; }
+.curriculum-journey .journey-stage>span { font-size:13px; }
+.curriculum-journey .journey-card-head h3 { scroll-margin-top:105px; }
+.curriculum-prerequisite { margin-top:18px; border-top:1px solid #d3dace; padding-top:14px; font-size:16px; line-height:1.6; color:#40535c; }
+.curriculum-block { padding:28px 30px; border-bottom:1px solid #d5dcd5; }
+.curriculum-block h4,.curriculum-journey .module-stage-checks h4 { font-family:"Space Grotesk",sans-serif; font-size:24px; line-height:1.3; margin:10px 0 16px; letter-spacing:-.5px; }
+.curriculum-block p,.curriculum-block li,.curriculum-journey .module-stage-checks p,.curriculum-journey .module-stage-checks label { font-size:17px; line-height:1.7; }
+.curriculum-block p { max-width:75ch; color:#3d5059; }
+.curriculum-journey .journey-label { font-size:12px; }
+.curriculum-concepts { padding-left:23px; margin:20px 0; display:grid; gap:7px; }
+.curriculum-concepts li::marker { color:var(--blue); }
+.curriculum-result { border-left:3px solid #657f58; background:#f0f4eb; padding:15px 18px; margin-top:19px; }
+.curriculum-result strong { font-size:16px; }
+.curriculum-result p { margin:5px 0 0; }
+.curriculum-focus { border-bottom:1px solid #d5dcd5; padding:18px 30px; }
+.curriculum-focus>summary,.curriculum-unblock>summary { font-size:16px; font-weight:700; cursor:pointer; line-height:1.5; }
+.curriculum-focus .study-focus { margin:18px 0 0; }
+.curriculum-journey .journey-materials { grid-template-columns:1fr; gap:14px; border-top:0; }
+.curriculum-journey .journey-materials>div>p { font-size:16px; margin:0; }
+.curriculum-filters { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:18px; }
+.curriculum-filters label { display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:700; }
+.curriculum-filters select { min-width:145px; font:inherit; font-size:16px; color:var(--ink); background:#fff; border:1px solid #adbbb7; border-radius:4px; padding:9px 30px 9px 10px; min-height:42px; }
+.curriculum-resources { display:grid; gap:12px; }
+.curriculum-resources>a { padding:18px 20px; border:1px solid #becbc4; background:#fff; color:var(--ink); text-decoration:none; }
+.curriculum-resources>a:hover { background:#f2f6fc; border-color:var(--blue); }
+.curriculum-resources>a>span { font-size:12px; letter-spacing:.6px; color:var(--blue); font-weight:800; }
+.curriculum-resources strong { display:flex; align-items:flex-start; gap:10px; justify-content:space-between; font-size:18px; line-height:1.35; margin:9px 0 7px; }
+.curriculum-resources strong svg { flex:none; }
+.curriculum-resources small { display:block; font-size:13px; line-height:1.5; color:#526670; }
+.curriculum-resources p { margin:12px 0; font-size:16px; }
+.curriculum-empty { padding:14px; border:1px dashed #aebdb5; }
+.curriculum-empty button { border:0; background:transparent; text-decoration:underline; color:var(--blue); font:inherit; cursor:pointer; }
+.curriculum-situation { padding-bottom:16px; border-bottom:1px solid #d5dcd5; }
+.curriculum-steps { list-style:none; padding:0; margin:0; display:grid; gap:16px; }
+.curriculum-steps li { display:flex; align-items:flex-start; gap:13px; }
+.curriculum-steps li>span { flex:none; display:grid; place-items:center; width:28px; height:28px; margin-top:2px; background:#eaf0fb; color:#2451a4; font-size:14px; font-weight:800; border-radius:50%; }
+.curriculum-steps p { margin:0; }
+.curriculum-example { background:#152b38; color:#f0f5f7; margin:22px 0; padding:20px; border-radius:4px; }
+.curriculum-example>span { color:#ebc583; font-size:11px; letter-spacing:.6px; font-weight:700; }
+.curriculum-example pre { margin:14px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; font:15px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace; }
+.curriculum-unblock { padding:15px 0 0; }
+.curriculum-unblock p { margin:12px 0 0; }
+.curriculum-challenge { background:#fcfaf1; }
+.curriculum-challenge ol { padding-left:23px; display:grid; gap:10px; }
+.curriculum-challenge aside { display:flex; gap:13px; background:#fff4da; padding:16px; border-left:3px solid #b68b35; margin:23px 0; }
+.curriculum-challenge aside svg { flex:none; color:#91672a; margin-top:3px; }
+.curriculum-challenge aside p { margin:5px 0 0; font-size:16px; }
+.curriculum-evidence { display:flex; flex-direction:column; gap:8px; font-size:16px; font-weight:700; }
+.curriculum-evidence small { font-size:14px; line-height:1.55; font-weight:400; color:#58686c; }
+.curriculum-evidence textarea { width:100%; resize:vertical; min-height:120px; border:1px solid #a7b9b1; border-radius:4px; padding:14px; font-family:inherit; font-weight:400; font-size:16px; line-height:1.6; color:var(--ink); background:#fffefa; }
+.curriculum-journey .lab-quiz { margin:0; padding:28px 30px; border-width:0 0 1px; border-radius:0; background:#f4f7fc; }
+.curriculum-journey .lab-quiz-heading h3 { font-size:24px; }
+.curriculum-journey .lab-quiz-heading { gap:20px; }
+.curriculum-journey .lab-quiz-heading p,.curriculum-journey .lab-quiz-question p,.curriculum-journey .lab-quiz-feedback li,.curriculum-journey .lab-quiz-options button { font-size:16px; line-height:1.6; }
+.curriculum-journey .lab-quiz-options button { min-height:48px; }
+.curriculum-journey .module-stage-checks { padding:28px 30px; }
+.curriculum-journey .module-stage-checks label { padding:12px; }
+.curriculum-journey .journey-actions { flex-wrap:wrap; padding:0 30px 26px; }
+.curriculum-journey .journey-actions>small { flex-basis:100%; font-size:14px; color:#596b72; }
+.curriculum-pagination { display:flex; gap:16px; justify-content:space-between; padding:22px 30px; border-top:1px solid #cbd5cd; }
+.curriculum-pagination button { display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid #afbdb7; border-radius:4px; background:#fff; color:var(--ink); font-family:inherit; font-weight:700; font-size:15px; cursor:pointer; }
+.curriculum-pagination button:disabled { opacity:.45; cursor:default; }
+.curriculum-migration { display:flex; align-items:flex-start; gap:10px; padding:16px 30px; margin:0; background:#fff4da; font-size:15px; line-height:1.5; }
+.curriculum-migration svg { flex:none; }
+.curriculum-note { font-size:13px; line-height:1.6; color:#586b72; margin-top:20px; }
+.curriculum-notice { min-height:24px; font-size:15px; color:#325640; }
+.curriculum-journey .module-review { margin:0; border-radius:0; padding:20px 30px; }
+@media(max-width:1100px) {
+  .curriculum-journey .journey-stages { display:flex; overflow-x:auto; overscroll-behavior-x:contain; }
+  .curriculum-journey .journey-stage { flex:0 0 180px; min-height:145px; }
+}
+@media(max-width:700px) {
+  .curriculum-journey .journey-intro { grid-template-columns:1fr; gap:20px; }
+  .curriculum-journey .journey-progress { border-left:0; padding:0; max-width:230px; }
+  .curriculum-start { padding:16px; }
+  .curriculum-block,.curriculum-journey .lab-quiz,.curriculum-journey .module-stage-checks { padding:24px 18px; }
+  .curriculum-focus { padding:18px; }
+  .curriculum-journey .journey-card-head { padding:24px 18px; }
+  .curriculum-journey .journey-actions { padding:0 18px 24px; }
+  .curriculum-pagination { padding:18px; gap:8px; }
+  .curriculum-pagination button { font-size:14px; padding:10px 8px; }
+  .curriculum-pagination svg { width:15px; }
+  .curriculum-journey .lab-quiz-heading { flex-wrap:wrap; }
+  .curriculum-resources>a { padding:16px; }
+  .curriculum-migration { padding:16px 18px; }
+  .curriculum-journey .module-review { padding:18px; }
+}

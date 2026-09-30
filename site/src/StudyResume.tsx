@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BookOpen, CalendarClock, Check, FlaskConical } from "lucide-react";
 import curriculum from "./data/laboratory.json";
 import { modules } from "./data/modules";
-import { readModuleProgress, type ModuleProgress } from "./moduleProgress";
+import { readModuleProgress, isStageVerified, type ModuleProgress } from "./moduleProgress";
 
 type LabProgress = { done: string[]; last: number; completedAt: Record<string, string>; reviews: Record<string, boolean> };
 type Props = { onOpenModule: (id: number) => void; onOpenLabStep: (index: number) => void };
@@ -30,9 +30,9 @@ export default function StudyResume({ onOpenModule, onOpenLabStep }: Props) {
     return () => { window.removeEventListener("curva-aberta-progress-change", refresh); window.removeEventListener("storage", refresh); };
   }, []);
 
-  const moduleDone = moduleProgress.done.length;
+  const moduleDone = modules.filter(module => module.id !== 9).reduce((sum,module) => sum + module.stages.filter((_,i) => isStageVerified(moduleProgress,module.id,i)).length,0);
   const labDone = labProgress.done.length;
-  const lastModuleId = Object.keys(moduleProgress.lastByModule).map(Number).find(id => modules[id]);
+  const lastModuleId = moduleProgress.lastModule ?? Object.keys(moduleProgress.lastByModule).map(Number).find(id => modules[id]);
   const moduleStage = lastModuleId === undefined ? 0 : moduleProgress.lastByModule[lastModuleId] ?? 0;
   const currentModule = lastModuleId === undefined ? null : modules[lastModuleId];
   const pendingReviews = reviewCount(moduleProgress, labProgress);
@@ -41,7 +41,7 @@ export default function StudyResume({ onOpenModule, onOpenLabStep }: Props) {
     <div className="resume-heading"><div><span className="eyebrow ink">SEU ESTUDO NESTE NAVEGADOR</span><h2>Continue daqui.</h2><p>Progresso por entregas, não por tempo de tela. Nada é enviado para uma conta.</p></div>{pendingReviews > 0 && <span className="resume-review-count"><CalendarClock size={16}/>{pendingReviews} revisão{pendingReviews > 1 ? "ões" : ""} pendente{pendingReviews > 1 ? "s" : ""}</span>}</div>
     <div className="resume-grid">
       <article><FlaskConical size={21}/><span>LABORATÓRIO MCP</span><strong>{labDone}/{curriculum.steps.length} entregas</strong><p>{labDone ? `Próxima referência: ${curriculum.steps[labProgress.last].title}.` : "Comece por HTTP e JSON; depois avance para .NET, MCP e Skills."}</p><button onClick={() => onOpenLabStep(labProgress.last)}>{labDone ? "Retomar laboratório" : "Começar laboratório"}</button></article>
-      <article><BookOpen size={21}/><span>MÓDULOS GERAIS</span><strong>{moduleDone}/27 entregas</strong><p>{currentModule ? `Você estava em ${currentModule.title}, etapa ${moduleStage + 1}.` : "Escolha uma área e marque apenas entregas que você realmente comprovou."}</p><button onClick={() => onOpenModule(currentModule?.id ?? 0)}>{currentModule ? "Retomar módulo" : "Explorar começo"}</button></article>
+      <article><BookOpen size={21}/><span>MÓDULOS GERAIS</span><strong>{moduleDone}/45 entregas verificadas</strong><p>{currentModule ? `Você estava em ${currentModule.title}, nível ${moduleStage}.` : "Cinco níveis por área: do primeiro exemplo ao projeto avançado com critérios e revisão."}</p><button onClick={() => onOpenModule(currentModule?.id ?? 0)}>{currentModule ? "Retomar módulo" : "Explorar começo"}</button></article>
       <article className={pendingReviews ? "resume-review-card due" : "resume-review-card"}><CalendarClock size={21}/><span>REVISÃO FUTURA</span><strong>{pendingReviews ? `${pendingReviews} para revisar` : "Nada pendente"}</strong><p>{pendingReviews ? "Abra a entrega, explique sem consultar e registre uma revisão curta." : "Quando concluir uma entrega, ela volta aqui em sete dias."}</p><button onClick={() => pendingReviews ? onOpenModule(currentModule?.id ?? 0) : onOpenModule(0)}>{pendingReviews ? "Ver minha última entrega" : "Entender o método"}</button></article>
     </div>
     <p className="resume-note"><Check size={15}/> Você pode reabrir uma entrega a qualquer momento; concluir não bloqueia caminhos nem cria uma sequência obrigatória.</p>

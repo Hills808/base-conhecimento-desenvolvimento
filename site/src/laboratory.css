@@ -128,3 +128,5 @@
 .lab-recall-feedback{margin-top:13px;padding:14px 16px;border-left:3px solid #3d7450;background:#fffefa}
 .lab-recall-feedback p:last-child{margin-bottom:0}
 @media(max-width:700px){.lab-quiz-heading{display:block}.lab-quiz-heading>strong{display:block;text-align:left;margin-top:15px}.lab-quiz-question{padding:15px}.lab-quiz-options button{font-size:15px}}
+
+.lab-final-rubric{padding:25px;border:1px solid #b4c5bf;margin:26px 0;background:#f4f6ee}.lab-final-rubric h3{font-size:24px;margin:10px 0}.lab-final-rubric p{font-size:16px;line-height:1.65}.lab-final-rubric a{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.lab-rubric-table{overflow-x:auto;margin:18px 0}.lab-rubric-table table{border-collapse:collapse;width:100%;font-size:16px;line-height:1.6}.lab-rubric-table th,.lab-rubric-table td{border-bottom:1px solid #c2cec3;padding:13px;text-align:left;vertical-align:top}.lab-rubric-table th{font-weight:700}.lab-rubric-table thead{background:#e3eadc}@media(max-width:700px){.lab-final-rubric{padding:18px}.lab-rubric-table th,.lab-rubric-table td{padding:10px 7px;font-size:15px}}

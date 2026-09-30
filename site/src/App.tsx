@@ -1,21 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "./Tabs";
 import { modules, guideUrl } from "./data/modules";
 import Laboratory from "./Laboratory";
-import ModuleJourney from "./ModuleJourney";
+const ModuleJourney = lazy(() => import("./ModuleJourney"));
 import StudyResume from "./StudyResume";
 import AnimatedMascot from "./AnimatedMascot";
 import rawResources from "./data/resources.json";
-import startingPoints from "./data/starting-points.json";
 import curriculum from "./data/laboratory.json";
 
 type Resource = { module: number; title: string; url: string; section: string; type: string; host: string; access?: string; note?: string };
 const resources = rawResources as Resource[];
 const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
-const levels = ["Começar", "Construir", "Aprofundar"];
 const types = ["Todos", "Curso", "Vídeo", "Leitura", "Prática", "Ferramenta"];
 const areas = ["Todos", "Desenvolvimento", "Dados & IA", "Engenharia", "Além do código", "Laboratório"];
 
@@ -33,7 +30,6 @@ function ResourceCard({ item, compact = false }: { item: Resource; compact?: boo
 export default function Home() {
   const [selected, setSelected] = useState<number | null>(null);
   const [area, setArea] = useState("Todos");
-  const [stage, setStage] = useState("0");
   const [type, setType] = useState("Todos");
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(false);
@@ -75,25 +71,14 @@ export default function Home() {
   }, []);
 
   function openModule(id: number | null) {
-    setSelected(id); setStage(String(id === null ? 0 : Math.max(0, [0,1,2].find(i => !done.includes(`${id}-${i}`)) ?? 0))); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false);
+    setSelected(id); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false);
     const base = import.meta.env.BASE_URL;
     const url = id === null ? base : `${base}?modulo=${String(id).padStart(2, "0")}`;
     window.history.pushState({}, "", url);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-  function toggleDone(key: string) {
-    const next = done.includes(key) ? done.filter(v => v !== key) : [...done, key];
-    setDone(next);
-    try {
-      localStorage.setItem("curva-aberta-progress", JSON.stringify(next));
-      const completed = next.includes(key);
-      setNotice(completed ? "Etapa registrada neste navegador." : "Etapa reaberta para revisão.");
-      if (completed) window.dispatchEvent(new CustomEvent("curva-aberta-study-complete", { detail: { source: "module", key } }));
-    }
-    catch { setNotice("Progresso atualizado nesta sessão. O navegador não permitiu salvá-lo para depois."); }
-  }
   function openLabStep(index: number) {
-    setSelected(9); setStage("0"); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    setSelected(9); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
     const url = `${import.meta.env.BASE_URL}?modulo=09&etapa=${index + 1}`;
     window.history.pushState({}, "", url); window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -110,9 +95,7 @@ export default function Home() {
   const available = moduleResources;
   const filtered = available.filter(r => type === "Todos" || r.type === type);
   const shown = expanded ? filtered : filtered.slice(0, 6);
-  const complete = active ? [0,1,2].filter(i => done.includes(`${active.id}-${i}`)).length : 0;
 
-  const resume = done.length ? modules[Number(done[done.length-1].split("-")[0])] : null;
   const quickItems = useMemo(() => [
     { id:"home", title:"Explorar todos os módulos", detail:"Página inicial", action: () => openModule(null) },
     { id:"lab", title:"Abrir Laboratório MCP com C#", detail:"14 etapas guiadas", action: () => openModule(9) },
@@ -157,44 +140,7 @@ export default function Home() {
 
         {active.id === 9 ? <Laboratory /> : <div className="detail-layout">
           <div className="detail-primary">
-            <ModuleJourney module={active}/>
-            <div className="section-intro">
-              <div><span className="eyebrow ink">01 / SEU PERCURSO</span><h2>Um passo de cada vez.</h2><p>Escolha um nível, entenda o que vem nele e coloque a mão na massa.</p></div>
-              <div className="progress-mini"><span>{complete}/3 etapas registradas</span><div><i style={{width:`${complete/3*100}%`}}/></div></div>
-            </div>
-            <Tabs value={stage} onValueChange={v => { setStage(v); setType("Todos"); setExpanded(false); }} className="learning-tabs legacy-stages">
-              <TabsList className="stage-tabs" aria-label="Níveis de estudo">
-                {levels.map((label,i)=><TabsTrigger className="stage-tab" value={String(i)} key={i}><span className="stage-number">0{i+1}</span><span>{label}</span>{done.includes(`${active.id}-${i}`) && <Check size={16}/>}</TabsTrigger>)}
-              </TabsList>
-              {levels.map((label,i) => {
-                const s = active.stages[i], key = `${active.id}-${i}`;
-                return <TabsContent value={String(i)} key={i} className="stage-panel">
-                  <div className="stage-kicker">NÍVEL 0{i+1} <span>·</span> {label.toUpperCase()}</div>
-                  <h3>{s.name}</h3>
-                  <div className="stage-grid">
-                    <div><h4>Você vai entender</h4><ul className="learn-list">{s.learn.map(x=><li key={x}><span className="tiny-cross">✳</span>{x}</li>)}</ul></div>
-                    <div className="practice-box"><span className="practice-label">COLOQUE EM PRÁTICA ↗</span><p>{s.practice}</p><div className="proof"><strong>Como saber que aprendeu</strong>{s.proof}</div></div>
-                  </div>
-                  <div className="start-here"><div className="start-heading"><span>COMECE POR ESTE MATERIAL</span><small>Os demais são apoio, não uma lista obrigatória.</small></div>
-                    {startingPoints[active.id][i].map((url, index) => {
-                      const resource = resources.find(r => r.url === url)!;
-                      return <a href={url} key={url} target="_blank" rel="noopener noreferrer" className="start-resource"><span className="start-order">{index === 0 ? "01" : "+"}</span><span><small>{index === 0 ? "PRINCIPAL" : "APOIO"} · {resource.type}</small><strong>{resource.title}</strong></span><ArrowUpRight size={19}/></a>;
-                    })}
-                  </div>
-                  {active.id === 9 && i === 2 && <div className="project-deliverables"><h4>Entrega final: assistente de procedimentos fictícios</h4><ol>
-                    <li><strong>Requisito:</strong> escreva três perguntas que o assistente responde e duas que estão fora do escopo.</li>
-                    <li><strong>Contrato:</strong> defina entradas, campos disponíveis e saídas resolved, partial, ambiguous e out_of_scope. Nunca complete dados ausentes por inferência.</li>
-                    <li><strong>Fluxo:</strong> documente APP → ROUTER → AGENT → TOOL. Sincronize instruções em Markdown com a configuração JSON.</li>
-                    <li><strong>Segurança:</strong> identidade do contexto autenticado, autorização no servidor, falha fechada e apenas tools de leitura aprovadas.</li>
-                    <li><strong>Validação:</strong> teste colisão de rotas, campo ausente, timeout, acesso negado e instrução maliciosa dentro de um documento. Use somente dados fictícios.</li>
-                    <li><strong>PR:</strong> reúna contrato, Skill, coleção Bruno, resultados dos testes e evidência de que o follow-up é apenas um rascunho.</li>
-                  </ol></div>}
-                  <button className={`done-button ${done.includes(key) ? "is-done" : ""}`} onClick={() => toggleDone(key)}><Check size={17}/>{done.includes(key) ? "Etapa registrada" : "Registrar etapa concluída"}</button>
-                  {done.includes(key) && i < 2 && <button className="next-level" onClick={() => { setStage(String(i+1)); setType("Todos"); }}>Ir para {levels[i+1].toLowerCase()} <ArrowRight size={16}/></button>}
-                </TabsContent>;
-              })}
-            </Tabs>
-
+            <Suspense fallback={<div className="curriculum-loading" role="status">Preparando sua trilha: níveis, exemplos e práticas…</div>}><ModuleJourney key={active.id} module={active}/></Suspense>
             <section className="material-section" aria-labelledby="materials-heading">
               <div className="section-intro materials-intro"><div><span className="eyebrow ink">02 / BIBLIOTECA DO MÓDULO</span><h2 id="materials-heading">Explore além da trilha.</h2><p>Todos os níveis reunidos para consulta. A seleção acima indica por onde começar; este catálogo amplia suas opções.</p></div><span className="material-count">{filtered.length} opções</span></div>
               <div className="type-filters" aria-label="Filtrar materiais por formato"><Filter size={16}/>{types.map(t => <button key={t} className={type===t?"active":""} onClick={() => {setType(t);setExpanded(false)}} aria-pressed={type===t}>{t}</button>)}</div>
@@ -220,7 +166,7 @@ export default function Home() {
           <div className="searchbar"><Search size={21}/><input type="search" value={query} onChange={e=>{setQuery(e.target.value);setExpanded(false)}} placeholder="Busque um tema, curso ou ferramenta..." aria-label="Buscar materiais"/>{query && <button onClick={()=>setQuery("")} aria-label="Limpar busca"><X size={17}/></button>}<span>{resources.length} referências</span></div>
           {query.trim().length >= 2 ? <div className="search-results"><div className="results-heading"><strong>{searchResults.length ? `Resultados para “${query}”` : "Nenhum resultado"}</strong><span>{searchResults.length} materiais encontrados</span></div>{searchResults.length ? <><div className="resources-grid">{searchResults.slice(0,expanded?undefined:24).map(r=><div key={`${r.module}-${r.url}`} className="result-item"><span className="result-module">M{String(r.module).padStart(2,"0")} · {modules[r.module].title}</span><ResourceCard item={r} compact/></div>)}</div>{searchResults.length>24 && <button className="show-more" onClick={()=>setExpanded(v=>!v)}>{expanded?"Mostrar menos":`Ver mais ${searchResults.length-24} materiais`} <ChevronDown className={expanded?"up":""} size={17}/></button>}</> : <p>Tente outro termo, como “MCP”, “SQL” ou “inglês”.</p>}</div> : <>
             <div className="area-filters" aria-label="Filtrar áreas">{areas.map(a=><button key={a} onClick={()=>setArea(a)} className={area===a?"active":""} aria-pressed={area===a}>{a}</button>)}</div>
-            <div className="explore-layout"><div className="module-grid">{filteredModules.map(m=><button className="module-card" key={m.id} onClick={()=>openModule(m.id)} style={{"--module-accent":m.color} as React.CSSProperties}><span className="card-top"><span className="module-id">MÓDULO {String(m.id).padStart(2,"0")}</span><span className="module-symbol">{m.symbol}</span></span><span className="card-body"><span className="module-area">{m.area}</span><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "Percurso guiado" : `${resources.filter(r=>r.module===m.id).length} materiais`} <span className="small-dot">·</span> {m.id === 9 ? "14 etapas · 4 níveis" : "3 etapas"}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></button>)}</div>
+            <div className="explore-layout"><div className="module-grid">{filteredModules.map(m=><button className="module-card" key={m.id} onClick={()=>openModule(m.id)} style={{"--module-accent":m.color} as React.CSSProperties}><span className="card-top"><span className="module-id">MÓDULO {String(m.id).padStart(2,"0")}</span><span className="module-symbol">{m.symbol}</span></span><span className="card-body"><span className="module-area">{m.area}</span><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "Percurso guiado" : `${resources.filter(r=>r.module===m.id).length} materiais`} <span className="small-dot">·</span> {m.id === 9 ? "14 etapas · 5 níveis" : "5 níveis · projeto avançado"}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></button>)}</div>
               <aside className="overview-aside"><div className="aside-head"><span>✳</span><small>GUIA RÁPIDO<br/>PARA COMEÇAR</small></div><h3>Seu ritmo,<br/>seu caminho.</h3><ol><li><span>01</span> Escolha um assunto que resolva uma curiosidade ou necessidade sua.</li><li><span>02</span> Comece na etapa que faz sentido. Cada uma mostra o que estudar e uma prática.</li><li><span>03</span> Use um material principal e produza algo pequeno para testar o aprendizado.</li></ol><button onClick={()=>openModule(0)}>Ver o módulo de orientação <ArrowRight size={16}/></button></aside>
             </div>
           </>}

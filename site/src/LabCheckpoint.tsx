@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { labCheckpoints } from "./data/lab-checkpoints";
+import { labCheckpoints, type Checkpoint } from "./data/lab-checkpoints";
 
-type Props = { stepId: string; passed: string[]; onPass: (index: number) => void; onReset: () => void };
+type Props = { stepId: string; passed: string[]; onPass: (index: number) => void; onReset: () => void; questions?: Checkpoint[]; title?: string };
 
-export default function LabCheckpoint({ stepId, passed, onPass, onReset }: Props) {
+export default function LabCheckpoint({ stepId, passed, onPass, onReset, questions: supplied, title = '04. Teste seu raciocínio' }: Props) {
   const [selected, setSelected] = useState<Record<number, number>>({});
-  const questions = labCheckpoints[stepId];
+  const questions = supplied ?? labCheckpoints[stepId];
   const score = questions.filter((_, index) => passed.includes(`${stepId}-${index}`)).length;
 
   return <section className="lab-quiz" aria-label="Teste seu raciocínio">
-    <div className="lab-quiz-heading"><div><span className="eyebrow">VERIFICAÇÃO COM EXPLICAÇÃO</span><h3>04. Teste seu raciocínio</h3><p>Escolha uma resposta. Se ela não encaixar, veja o motivo, volte ao exemplo e tente novamente. Este teste confere uma decisão; sua entrega prática ainda precisa ser feita.</p></div><strong>{score}/{questions.length}<small>situações compreendidas</small></strong></div>
+    <div className="lab-quiz-heading"><div><span className="eyebrow">VERIFICAÇÃO COM EXPLICAÇÃO</span><h3>{title}</h3><p>Escolha uma resposta. Se ela não encaixar, veja o motivo, volte ao exemplo e tente novamente. Este teste confere uma decisão; sua entrega prática ainda precisa ser feita.</p></div><strong>{score}/{questions.length}<small>situações compreendidas</small></strong></div>
     {questions.map((question, index) => {
       const isPassed = passed.includes(`${stepId}-${index}`);
       const answer = isPassed ? question.correct : selected[index];

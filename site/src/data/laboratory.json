@@ -15,8 +15,12 @@
       "subtitle": "Construa a integração por camadas."
     },
     {
-      "title": "Segurança e entrega avançada",
-      "subtitle": "RAG, Skills, avaliações e projeto final."
+      "title": "Confiabilidade e avaliação",
+      "subtitle": "Segurança, RAG, Skills, falhas e regressões antes de publicar."
+    },
+    {
+      "title": "Projeto avançado e revisão",
+      "subtitle": "Descoberta, integração, defesa de decisões e mudança de requisito."
     }
   ],
   "steps": [
@@ -695,7 +699,7 @@
     },
     {
       "id": "projeto",
-      "phase": 3,
+      "phase": 4,
       "title": "Entregue um projeto revisável de ponta a ponta",
       "hours": "12–20 h",
       "prerequisite": "Etapas anteriores demonstradas pelas entregas.",
@@ -723,19 +727,29 @@
           "language": "Português",
           "format": "Leitura",
           "focus": "Escolha critérios observáveis para o seu conjunto de testes. Uma resposta bonita não comprova fidelidade ao contrato."
+        },
+        {
+          "title": "Segurança MCP — documentação oficial",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+          "language": "Inglês · apoio da explicação em português",
+          "format": "Leitura",
+          "focus": "Revise audiência de tokens, ausência de token passthrough e confused deputy. Aplique a servidores de estudo com identidade simulada apenas em testes."
         }
       ],
       "tasks": [
         "Escreva requisito, perguntas atendidas, fora de escopo, critérios de aceite e dependências; registre em um item de trabalho fictício.",
         "Entregue APP/ROUTER/AGENT/TOOL, API .NET, contrato, prompts e runtime sincronizados, MCP e Skill read-only.",
         "Demonstre colisão de rotas, campo de perfil ausente, valor por fator não fornecido, follow-up não enviado e divergência de mapeamento.",
-        "Execute a matriz de testes, registre riscos restantes e prepare PR com instruções de reprodução e rollback. Peça revisão a um colega usando somente dados fictícios."
+        "Execute a matriz de testes, registre riscos restantes e prepare PR com instruções de reprodução e rollback. Peça revisão a um colega usando somente dados fictícios.",
+        "Separe conjunto de desenvolvimento e validação; mostre o resultado por cenário. Acesso indevido, tool proibida, envio ou número inventado bloqueiam a entrega, qualquer que seja a média.",
+        "Defenda duas alternativas de desenho com vantagens e limites. Receba uma mudança inédita: API passa a renomear className, ou uma fonte RAG contradiz outra. Ajuste contrato e testes sem abrir acesso adicional.",
+        "Use roteiro-projeto-avancado.md para revisar descoberta, contratos, segurança, avaliação e PR. Peça revisão humana e registre o que ficou pendente."
       ],
       "deliverable": "PR demonstrável com código, documentos, coleção Bruno, testes e evidências.",
       "checks": [
-        "Outra pessoa executa o projeto seguindo o README.",
-        "Explico as cinco falhas sem depender de uma resposta pronta de IA.",
-        "O PR mostra validação, limites, versões e como desfazer a mudança."
+        "Outra pessoa executa e confere contrato, coleção Bruno e testes pelo README.",
+        "As cinco falhas e uma mudança inédita foram demonstradas; nenhum bloqueador de segurança permanece.",
+        "O PR mostra alternativas, versões, validação separada, limites, revisão e como desfazer."
       ],
       "help": "Se o projeto ficou grande, reduza o número de tools e registros. Preserve os testes de contrato e segurança; são parte da entrega.",
       "example": null
