@@ -2,7 +2,7 @@
   --furina-ink: #302d49;
   position: fixed;
   z-index: 45;
-  width: 148px;
+  width: 118px;
   color: var(--furina-ink);
   pointer-events: none;
 }
@@ -11,8 +11,8 @@
 .furina-character {
   display: block;
   position: relative;
-  width: 148px;
-  height: 197px;
+  width: 118px;
+  height: 157px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -152,8 +152,8 @@
 @keyframes furina-invite-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 720px) {
-  .furina-guide, .furina-character { width: 112px; }
-  .furina-character { height: 149px; }
+  .furina-guide, .furina-character { width: 104px; }
+  .furina-character { height: 138px; }
   .furina-invite { top: 7px; right: -2px; font-size: 10px; }
   .furina-hide { opacity: 1; right: 0; bottom: 0; }
 .furina-guide.dock-left .furina-hide { left: 0; }

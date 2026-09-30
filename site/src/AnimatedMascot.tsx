@@ -11,8 +11,8 @@ type Saved = { dock: "left" | "right"; x: number; offsetY: number; hidden: boole
 const storageKey = "curva-aberta-furina-v2";
 const edge = 8;
 const danceDuration = 2800;
-const mascotWidth = (viewportWidth: number) => viewportWidth <= 720 ? 112 : 148;
-const mascotHeight = (viewportWidth: number) => viewportWidth <= 720 ? 149 : 197;
+const mascotWidth = (viewportWidth: number) => viewportWidth <= 720 ? 104 : 118;
+const mascotHeight = (viewportWidth: number) => viewportWidth <= 720 ? 138 : 157;
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 type DancePose = [x: number, y: number, stretch: number, turn: number, head: number, torso: number, leftArm: number, rightArm: number, legs: number];
 const danceKeys: { at: number; pose: DancePose }[] = [
