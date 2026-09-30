@@ -2,11 +2,19 @@
 
 **[Acessar a plataforma de estudos →](https://hills808.github.io/base-conhecimento-desenvolvimento/)** · [Explorar os guias no GitHub](#base-e-desenvolvimento)
 
-Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organizada em **10 módulos**. Explore uma área, veja o que ela ensina e escolha uma prática para consolidar o aprendizado.
+Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organizada em **10 módulos**. Nove áreas têm cinco níveis com explicações em português, exemplos guiados, exercícios, perguntas com feedback e um projeto para revisão. O laboratório reúne APIs, agentes, .NET e MCP em 14 etapas.
+
+## Comece por aqui
+
+1. [Abra o site](https://hills808.github.io/base-conhecimento-desenvolvimento/) e escolha uma área. Se você ainda não conhece o assunto, entre no **nível 0**; se já pratica, leia os pré-requisitos e tente o desafio do nível adequado.
+2. Estude um material principal, acompanhe o exemplo e faça uma variação por conta própria. A pergunta explica cada resposta; confira também os critérios na entrega que você produziu.
+3. Retome pelo painel **Continue daqui**. O progresso e os rascunhos ficam somente no seu navegador. A conclusão registrada é uma autoavaliação, então peça revisão do projeto e teste uma situação nova.
+
+Prefere ler pelo GitHub? Cada módulo abaixo oferece o catálogo de recursos e uma [trilha completa de cinco níveis](guias/trilhas/00-comecando.md), com exemplos, desafios e respostas comentadas. Para integrar APIs, agentes e MCP, [comece pelo laboratório](site/public/lab/guia-laboratorio.md).
 
 [Base e desenvolvimento](#base-e-desenvolvimento) · [Dados e IA](#dados-e-inteligência-artificial) · [Engenharia, ferramentas e idiomas](#engenharia-ferramentas-e-idiomas) · [Laboratório integrado](#laboratório-integrado)
 
-> **Como navegar:** cada módulo mostra seus conhecimentos e a aplicação prática. Clique em **Abrir módulo** para acessar o conteúdo ou expanda **Percurso e materiais** para ir direto a um assunto. A numeração identifica os guias; não é preciso concluir todos em sequência.
+> **Como navegar:** **Abrir catálogo** leva à seleção ampla de materiais; **Seguir trilha de cinco níveis** leva ao roteiro prático. A numeração organiza as áreas e não exige que você conclua todas em sequência.
 
 ## Base e desenvolvimento
 
@@ -16,7 +24,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Montar um plano de estudo e acompanhar um projeto progressivo.
 
-[Abrir módulo 00 →](guias/00-comecando.md)
+[Abrir catálogo →](guias/00-comecando.md) · [Seguir trilha de cinco níveis →](guias/trilhas/00-comecando.md)
 
 <details>
 <summary>Percurso e materiais — módulo 00</summary>
@@ -40,7 +48,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Escolher uma linguagem e praticar a construção de pequenos programas.
 
-[Abrir módulo 01 →](guias/01-fundamentos-e-linguagens.md)
+[Abrir catálogo →](guias/01-fundamentos-e-linguagens.md) · [Seguir trilha de cinco níveis →](guias/trilhas/01-fundamentos-e-linguagens.md)
 
 <details>
 <summary>Percurso e materiais — módulo 01</summary>
@@ -61,7 +69,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Consumir e investigar uma API, depois construir e testar um serviço próprio.
 
-[Abrir módulo 02 →](guias/02-backend-apis-e-arquitetura.md)
+[Abrir catálogo →](guias/02-backend-apis-e-arquitetura.md) · [Seguir trilha de cinco níveis →](guias/trilhas/02-backend-apis-e-arquitetura.md)
 
 <details>
 <summary>Percurso e materiais — módulo 02</summary>
@@ -85,7 +93,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Criar uma interface conectada a uma API, com formulários e estados de erro, vazio e carregamento.
 
-[Abrir módulo 03 →](guias/03-frontend-mobile-e-acessibilidade.md)
+[Abrir catálogo →](guias/03-frontend-mobile-e-acessibilidade.md) · [Seguir trilha de cinco níveis →](guias/trilhas/03-frontend-mobile-e-acessibilidade.md)
 
 <details>
 <summary>Percurso e materiais — módulo 03</summary>
@@ -110,7 +118,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Consultar e organizar dados; avançar para um projeto de análise ou modelo com métricas.
 
-[Abrir módulo 04 →](guias/04-bancos-dados-e-ia.md)
+[Abrir catálogo →](guias/04-bancos-dados-e-ia.md) · [Seguir trilha de cinco níveis →](guias/trilhas/04-bancos-dados-e-ia.md)
 
 <details>
 <summary>Percurso e materiais — módulo 04</summary>
@@ -133,7 +141,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Projetar um assistente com fontes e ferramentas, testar respostas e definir limites de atuação.
 
-[Abrir módulo 05 →](guias/05-ia-generativa-agentes-e-mlops.md)
+[Abrir catálogo →](guias/05-ia-generativa-agentes-e-mlops.md) · [Seguir trilha de cinco níveis →](guias/trilhas/05-ia-generativa-agentes-e-mlops.md)
 
 <details>
 <summary>Percurso e materiais — módulo 05</summary>
@@ -162,7 +170,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Evoluir um serviço com pipeline, testes, logs e um processo de implantação verificável.
 
-[Abrir módulo 06 →](guias/06-cloud-devops-qualidade-e-seguranca.md)
+[Abrir catálogo →](guias/06-cloud-devops-qualidade-e-seguranca.md) · [Seguir trilha de cinco níveis →](guias/trilhas/06-cloud-devops-qualidade-e-seguranca.md)
 
 <details>
 <summary>Percurso e materiais — módulo 06</summary>
@@ -186,7 +194,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Encontrar materiais úteis, preparar contribuições e identificar oportunidades de formação.
 
-[Abrir módulo 07 →](guias/07-github-ferramentas-e-certificados.md)
+[Abrir catálogo →](guias/07-github-ferramentas-e-certificados.md) · [Seguir trilha de cinco níveis →](guias/trilhas/07-github-ferramentas-e-certificados.md)
 
 <details>
 <summary>Percurso e materiais — módulo 07</summary>
@@ -209,7 +217,7 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 **Na prática:** Ler documentação, explicar um projeto e praticar comunicação profissional no seu nível.
 
-[Abrir módulo 08 →](guias/08-idiomas-para-tecnologia.md)
+[Abrir catálogo →](guias/08-idiomas-para-tecnologia.md) · [Seguir trilha de cinco níveis →](guias/trilhas/08-idiomas-para-tecnologia.md)
 
 <details>
 <summary>Percurso e materiais — módulo 08</summary>
@@ -231,21 +239,22 @@ Uma biblioteca de cursos, vídeos, documentação, ferramentas e projetos, organ
 
 ### 09 · APIs, agentes e MCP com C# — percurso guiado
 
-**14 etapas em quatro níveis**, com materiais em português, exercícios, ajuda para destravar e critérios de conclusão.
+**14 etapas em cinco níveis**, com materiais em português, exemplos resolvidos, exercícios, ajuda para destravar e critérios de conclusão.
 
 1. **APIs:** HTTP/JSON → Bruno → contratos e estados.
 2. **Agentes:** prompts/configuração → roteamento e regressão.
 3. **Implementação:** C# essencial → API/DTO → MCP → integração com agente.
-4. **Entrega avançada:** segurança → RAG → Skills → qualidade → projeto final.
+4. **Confiabilidade:** segurança → RAG → Skills → avaliação de comportamento.
+5. **Projeto avançado:** integração fictícia, testes de regressão e segurança, mudança de requisito e PR revisável.
 
 **Na prática:** construir um assistente fictício de preparação de atendimento com dados autorizados, tools de leitura e follow-up não enviado.
 
-[Começar pela etapa 1 no site →](https://hills808.github.io/base-conhecimento-desenvolvimento/?modulo=9&etapa=1) · [Ler o guia completo](guias/09-trilha-pratica-mcp-csharp-agentes.md)
+[Abrir o laboratório no site →](https://hills808.github.io/base-conhecimento-desenvolvimento/) · [Seguir o roteiro completo](site/public/lab/guia-laboratorio.md) · [Ver o projeto final e a rubrica](site/public/lab/roteiro-projeto-avancado.md) · [Consultar o catálogo anterior](guias/09-trilha-pratica-mcp-csharp-agentes.md)
 
 <details>
 <summary>Entregas e materiais do laboratório</summary>
 
-Cada etapa contém objetivo, pré-requisito, explicação em português, material principal, apoios, exercício e verificação. As estimativas são editoriais e o ritmo depende da prática.
+Cada etapa contém objetivo, pré-requisito, explicação em português, material principal, apoios, exercício e verificação. O roteiro completo reúne as 14 etapas; os links abaixo levam ao catálogo anterior, que continua disponível como referência. As estimativas são editoriais e o ritmo depende da prática.
 
 - [Etapas 1–3: APIs e contratos](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-1)
 - [Etapas 4–5: arquitetura e roteamento](guias/09-trilha-pratica-mcp-csharp-agentes.md#etapa-4)
