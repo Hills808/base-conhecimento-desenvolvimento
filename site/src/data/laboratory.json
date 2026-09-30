@@ -308,6 +308,13 @@
           "language": "Português",
           "format": "Documentação",
           "focus": "Leia a introdução e a diferença entre operação assíncrona e trabalho bloqueante. Refaça o exemplo em um método pequeno."
+        },
+        {
+          "title": "ASP.NET Core para iniciantes — Microsoft Learn",
+          "url": "https://learn.microsoft.com/pt-br/training/paths/aspnet-core-web-app/",
+          "language": "Português",
+          "format": "Curso",
+          "focus": "Ponte para a próxima etapa: depois de variáveis, métodos e DTOs, estude o módulo de API Web. Não avance enquanto não executar o console e explicar null."
         }
       ],
       "tasks": [
@@ -423,6 +430,13 @@
           "language": "Português",
           "format": "Vídeo",
           "focus": "Use como visão conceitual antes do código. Para comandos e versões, siga o SDK oficial indicado acima."
+        },
+        {
+          "title": "Arquitetura MCP — especificação oficial",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+          "language": "Inglês",
+          "format": "Leitura",
+          "focus": "Aprofundamento: compare host, client, server, transporte e versão com o SDK do seu exemplo. Não misture código de versões diferentes."
         }
       ],
       "tasks": [
@@ -532,6 +546,13 @@
           "language": "Português",
           "format": "Documentação",
           "focus": "Leia IAuthorizationService e autorização com recurso. Adapte o conceito; o exemplo de interface não é o seu backend pronto."
+        },
+        {
+          "title": "Boas práticas de segurança MCP — oficial",
+          "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+          "language": "Inglês",
+          "format": "Leitura",
+          "focus": "Depois do exemplo em português: revise limites de confiança, token passthrough, SSRF e escopos mínimos. Escolha um risco e escreva um teste negativo."
         }
       ],
       "tasks": [
