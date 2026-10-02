@@ -3,7 +3,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
 import { modules, guideUrl } from "./data/modules";
-import Laboratory from "./Laboratory";
+const Laboratory = lazy(() => import("./Laboratory"));
 const ModuleJourney = lazy(() => import("./ModuleJourney"));
 import StudyResume from "./StudyResume";
 import AnimatedMascot from "./AnimatedMascot";
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="detail-stamp" aria-hidden="true"><small>CADERNO / {String(active.id).padStart(2,"0")}</small><span>{String(active.id).padStart(2,"0")}</span><small>APRENDA · PRATIQUE · REVISE</small></div>
         </div>
 
-        {active.id === 9 ? <Laboratory /> : <div className="detail-layout">
+        {active.id === 9 ? <Suspense fallback={<div className="curriculum-loading" role="status">Preparando as oficinas do laboratório…</div>}><Laboratory /></Suspense> : <div className="detail-layout">
           <div className="detail-primary">
             <Suspense fallback={<div className="curriculum-loading" role="status">Preparando sua trilha: níveis, exemplos e práticas…</div>}><ModuleJourney key={active.id} module={active}/></Suspense>
             <section className="material-section" aria-labelledby="materials-heading">

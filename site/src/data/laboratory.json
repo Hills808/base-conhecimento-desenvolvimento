@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "reviewed": "2026-09-29",
+  "reviewed": "2026-10-02",
   "phases": [
     {
       "title": "Primeiro contato com APIs",
@@ -65,11 +65,11 @@
         }
       ],
       "tasks": [
-        "Abra a resposta de demonstração da aula 0. Ache id e title sem copiar a explicação.",
-        "Abra primeiro-json.json pelo atalho abaixo. Anote os valores de id, notes e views. A chave author aparece?",
-        "Escreva uma frase que o arquivo permite responder e outra que não permite. A resposta sem dado deve dizer que a informação não veio."
+        "Leia o JSON de Lia no exemplo guiado. Escreva os valores de nome, preferenciaContato e biografia; valorCarteira aparece?",
+        "Compare com primeiro-json.json: notes=null, views=0 e author ausente. Explique por que esses três casos são diferentes.",
+        "Mude atividades para uma lista com um item tipo ligação. Diga o que passou a saber e o que continua desconhecido."
       ],
-      "deliverable": "Uma tabela de campos e duas respostas com suas evidências.",
+      "deliverable": "Uma tabela campo/origem/disponibilidade de Lia e duas frases: uma sustentada pelo JSON e outra declarando ausência. Guarde também a comparação null/zero/campo ausente.",
       "checks": [
         "Explico método, URL, status e corpo com minhas palavras.",
         "Distingo null, zero e campo ausente.",
@@ -155,6 +155,13 @@
           "language": "Inglês",
           "format": "Referência",
           "focus": "Consulte object, properties e required. Use o exemplo fornecido como ponto de partida."
+        },
+        {
+          "title": "Como agentes usam ferramentas — Microsoft, capítulo PT",
+          "url": "https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/pt-BR/04-tool-use/README.md",
+          "language": "Português",
+          "format": "Leitura",
+          "focus": "Apoio depois do contrato resolvido: compare descrição, argumentos e execução. Exemplos de frameworks são opcionais nesta etapa."
         }
       ],
       "tasks": [
@@ -197,15 +204,15 @@
           "focus": "Leia componentes, ferramentas e handoffs. Desenhe primeiro o fluxo; implementar um framework vem depois."
         },
         {
-          "title": "Agentes de IA para iniciantes — Microsoft",
-          "url": "https://github.com/microsoft/ai-agents-for-beginners",
-          "language": "Inglês · traduções no repositório",
-          "format": "Curso",
-          "focus": "Use a introdução e os conceitos de tool use; selecione a tradução disponível e não percorra todas as lições agora."
+          "title": "O que é um agente? — Microsoft, capítulo em português",
+          "url": "https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/pt-BR/01-intro-to-ai-agents/README.md",
+          "language": "Português",
+          "format": "Leitura",
+          "focus": "Leia os componentes de um agente e compare modelo, tool e orquestração com a simulação desta etapa. O código completo do curso não é pré-requisito hoje."
         }
       ],
       "tasks": [
-        "Desenhe o fluxo do assistente Perfil de Demonstração com duas tools de consulta e uma rota fora de escopo.",
+        "Desenhe o fluxo de consultar_perfil antes de ampliar: pedido, rota, argumentos, resultado e resposta. Depois proponha consultar_historico, deixando explícito que ainda é apenas contrato, não tool implementada.",
         "Escreva prompt.md com objetivo, limites, fontes, ausência e formato de resposta.",
         "Crie runtime.json com as mesmas tools e versões. Faça uma tabela de correspondência e retire uma tool para testar a detecção da divergência."
       ],
@@ -404,11 +411,25 @@
       ],
       "resources": [
         {
+          "title": "Primeiro entenda MCP — Microsoft, introdução em português",
+          "url": "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/00-Introduction/README.md",
+          "language": "Português",
+          "format": "Leitura",
+          "focus": "Leia a introdução e identifique host, cliente e servidor. Não execute todos os exemplos do repositório; use o kit guiado desta etapa."
+        },
+        {
           "title": "MCP para iniciantes — Microsoft",
           "url": "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/01-CoreConcepts/README.md",
           "language": "Português · tradução",
           "format": "Curso",
           "focus": "Estude host, cliente, servidor, tools, resources e prompts. A tradução pode atrasar: confirme APIs do SDK na fonte oficial."
+        },
+        {
+          "title": "Let’s Learn MCP: C# (Português) — Microsoft Reactor",
+          "url": "https://www.youtube.com/watch?v=YWLD1jNTFgA",
+          "language": "Português",
+          "format": "Vídeo",
+          "focus": "Sessão em português para observar descoberta e chamadas. Assista em blocos; instalações cloud/Docker não são necessárias para nosso exemplo stdio. O vídeo pode usar SDK anterior: comandos atuais do kit são referência."
         },
         {
           "title": "Primeiro servidor C# — SDK oficial MCP",
@@ -440,10 +461,11 @@
         }
       ],
       "tasks": [
-        "Crie consultar_perfil_ficticio com um identificador e saída estruturada compatível com seu contrato.",
-        "No Inspector, liste a tool e execute entrada válida, inválida e registro ausente.",
+        "Execute primeiro-mcp.md e liste consultar_perfil no Inspector. Compare nome, entrada e resultado textual com o contrato; o primeiro exemplo não usa structuredContent.",
+        "No Inspector, chame demo-1, demo-2, texto vazio e argumento numérico. Anote resultado ou erro e explique por que campo ausente não é acesso negado.",
         "Explique a diferença entre tool, resource e prompt usando exemplos próprios.",
-        "Salve versões, comando de execução e respostas de exemplo."
+        "Salve versões, comando de execução e respostas de exemplo.",
+        "Depois que o caso textual funcionar, estude outputSchema/structuredContent na documentação da mesma versão. Justifique a forma de saída e atualize o teste de contrato antes de migrar."
       ],
       "deliverable": "Servidor local reproduzível com tool inspecionável e validação de argumentos.",
       "checks": [
@@ -657,7 +679,7 @@
         }
       ],
       "tasks": [
-        "Escreva a Skill de debrief com objetivo, fontes permitidas, ausência e formato de saída.",
+        "Baixe debrief-SKILL.md, leia os comentários e salve como SKILL.md na pasta suportada pelo host. Personalize procedimento e formato somente com dados fictícios.",
         "Permita somente consultar_perfil e consultar_historico no ambiente de teste; não exponha tool de envio.",
         "Teste pedido legítimo, pedido fora do escopo, tool indisponível e tentativa de enviar o follow-up.",
         "Documente versão, responsável, revisão, prazo de retenção do ambiente fictício e procedimento de retirada da Skill."

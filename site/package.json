@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/validate-curriculum.mjs && node scripts/validate-learning-method.mjs && vite build",
+    "build": "node scripts/validate-curriculum.mjs && node scripts/validate-learning-method.mjs && node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check && vite build",
     "dev": "vite --host 0.0.0.0",
     "check:curriculum": "node scripts/validate-curriculum.mjs",
-    "check:learning": "node scripts/validate-learning-method.mjs"
+    "check:learning": "node scripts/validate-learning-method.mjs",
+    "check:lab": "node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check"
   },
   "dependencies": {
     "lucide-react": "1.31.0",
