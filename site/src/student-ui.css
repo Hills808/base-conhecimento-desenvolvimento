@@ -1,6 +1,14 @@
 /* Interface de estudo: tarefas, prática e descoberta. */
 :root{--ink:#18243d;--paper:#f4f6fb;--white:#fff;--line:#d9dfec;--blue:#3b47cb;--muted:#526079;--primary:var(--blue);--border:var(--line)}
 body{background:var(--paper);color:var(--ink)}
+.study-intro,.session-preview{color:var(--ink)}
+.study-intro h1,.session-preview h2{color:var(--ink)}
+.curriculum-journey .curriculum-start{background:#edf2ff;border-color:#c3d0f1}
+.curriculum-journey .curriculum-example{background:#17243d;color:#e6edff}
+.curriculum-journey .curriculum-challenge,.curriculum-journey .lab-quiz{background:#eef2ff}
+.curriculum-journey .curriculum-steps li>span{background:#e5eaff;color:#33449e}
+.curriculum-journey .curriculum-resources>a{background:#fff;border-color:var(--line);border-radius:10px}
+.curriculum-journey .curriculum-resources>a:hover{background:#edf2ff}
 ::selection{background:#cbd6ff;color:#18243d}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #4357da;outline-offset:4px}
 h1,h2,h3,h4,.brand-name,.footer-brand,.card-body strong,.resume-grid article>strong,.module-id,.detail-stamp>span{font-family:'Space Grotesk','DM Sans',Arial,sans-serif!important;font-weight:700!important;font-style:normal;letter-spacing:-.7px}
