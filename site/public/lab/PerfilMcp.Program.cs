@@ -9,7 +9,7 @@ using System.Text.Json;
 
 var host = Host.CreateApplicationBuilder(args);
 host.Logging.AddConsole(settings => settings.LogToStandardErrorThreshold = LogLevel.Trace);
-host.Services.AddMcpServer().WithStdioServerTransport().WithTools<PerfilTools>();
+host.Services.AddMcpServer().WithStdioServerTransport().WithToolsFromAssembly();
 await host.Build().RunAsync();
 
 [McpServerToolType]
