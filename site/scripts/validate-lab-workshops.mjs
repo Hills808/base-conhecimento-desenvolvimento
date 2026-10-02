@@ -14,7 +14,9 @@ for(const s of lab.steps){
  assert.ok(w.variation.answer&&w.variation.reason&&w.study.stop);
  assert.equal(new Set(s.resources.map(r=>r.url)).size,s.resources.length,'Duplicate resource');
 }
-for(const filename of ['ApiPerfil.Program.cs','PerfilMcp.Program.cs','debrief-SKILL.md','roteiro-projeto-avancado.md','primeiro-mcp.md'])assert.ok(existsSync(new URL('../public/lab/'+filename,import.meta.url)),filename);
+for(const filename of ['ApiPerfil.Program.cs','PerfilMcp.Program.cs','debrief-SKILL.md','projeto-preparacao-atendimento.md','roteiro-projeto-avancado.md','primeiro-mcp.md'])assert.ok(existsSync(new URL('../public/lab/'+filename,import.meta.url)),filename);
+const projectGuide=read('public/lab/projeto-preparacao-atendimento.md');
+for(const section of ['O que você vai construir','Arquitetura: quem faz o quê','O que criar, em ordem','Matriz de testes obrigatória','Checklist de segurança','README e PR','Como saber que terminou'])assert.ok(projectGuide.includes(section),`Project guide missing ${section}`);
 const results=Object.fromEntries(demoCases.map(c=>[c.id,simulateDemo(c)]));
 assert.equal(results.collision.route,'perfil');
 assert.equal(chooseDemoRoute('/perfilXYZ agenda'),'agenda','Only exact command tokens take precedence');

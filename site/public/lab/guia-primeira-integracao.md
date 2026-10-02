@@ -1432,9 +1432,9 @@ Ao fechar: Demonstre a mudança inédita e registre feedback humano ou revisão 
 - [Avaliação de agentes — Microsoft Learn](https://learn.microsoft.com/pt-br/agents/agent-evaluation/) · Português · Leitura. Escolha critérios observáveis para o seu conjunto de testes. Uma resposta bonita não comprova fidelidade ao contrato.
 - [Segurança MCP — documentação oficial](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) · Inglês · apoio da explicação em português · Leitura. Revise audiência de tokens, ausência de token passthrough e confused deputy. Aplique a servidores de estudo com identidade simulada apenas em testes.
 
-### Faça comigo 1: Descubra antes de implementar
+### Faça comigo 1: Leia o projeto antes de implementar
 
-Escreva um item de trabalho fictício com perguntas, limites e dúvidas em aberto.
+Baixe projeto-preparacao-atendimento.md e percorra as cinco fatias. Copie a seção de descoberta para um item de trabalho fictício, preenchendo perguntas, limites e dúvidas em aberto.
 
 ```text
 Objetivo: preparar atendimento com perfil e histórico autorizados
@@ -1444,9 +1444,9 @@ Aceite: dados com origem; ausência explícita; nenhuma escrita
 Dúvida: qual política define vigência de documentos?
 ```
 
-O que acontece: Uma boa descoberta define o que falta decidir. Não disfarce uma dependência em um prompt mais longo.
+O que acontece: A documentação diz o que construir, em qual ordem, como executar e como verificar cada fatia. Uma boa descoberta define o que falta decidir; não esconda dependência em um prompt mais longo.
 
-Resultado esperado: Requisito, escopo e critérios claros antes de escolher componentes.
+Resultado esperado: Requisito, escopo e critérios claros antes de escolher componentes. Você sabe que deve começar pela API/Bruno, não pelo agente.
 
 ### Faça comigo 2: Entregue por fatias
 
