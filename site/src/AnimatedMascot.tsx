@@ -91,7 +91,8 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     let state: MotionState = "idle";
     let disposed = false;
     const tick = (now: number) => {
-      const delta = last ? Math.min(48, now - last) : 0;
+      // Timelines use elapsed wall time, not frame count. Damping clamps its own step.
+      const delta = last ? Math.max(0, now - last) : 0;
       last = now;
       const input = motion.current;
       const next: MotionState = input.dragging ? "dragging" : input.celebrating ? "celebrating" : input.greeting || input.open ? "interacting" : input.unreadTip ? "tip" : "idle";
@@ -232,7 +233,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       current.moved = true;
       cancelAutoClose();
       look.current = 0;
-      setDragging(true); setOpen(false); setGreeting(false);
+      setDragging(true); setOpen(false); setGreeting(false); setCelebrating(false);
     }
     if (!current.moved) return;
     current.left = clamp(event.clientX - current.grabX, 12, window.innerWidth - current.width - 12);
@@ -323,7 +324,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
     <div className="furina-controls">
-      <button onClick={() => { setGreeting(false); setCelebrating(false); setSaved(value => ({ ...value, paused: !value.paused })); }} aria-label={saved.paused ? "Retomar animações da Furina" : "Pausar animações da Furina"} aria-pressed={saved.paused} disabled={reduced} title={reduced ? "Movimento reduzido ativo no dispositivo" : saved.paused ? "Retomar animações" : "Pausar animações"}>{saved.paused || reduced ? <Play size={15}/> : <Pause size={15}/>}</button>
+      <button onClick={() => { setGreeting(false); setCelebrating(false); setSaved(value => ({ ...value, paused: !value.paused })); }} aria-label={reduced ? "Animações desativadas: movimento reduzido" : saved.paused ? "Retomar animações da Furina" : "Pausar animações da Furina"} aria-pressed={saved.paused || reduced} disabled={reduced} title={reduced ? "Movimento reduzido ativo no dispositivo" : saved.paused ? "Retomar animações" : "Pausar animações"}>{saved.paused || reduced ? <Play size={15}/> : <Pause size={15}/>}</button>
       <button onClick={() => { cancelAutoClose(); cancelSideMove(); setOpen(false); setGreeting(false); setCelebrating(false); setSaved(value => ({ ...value, hidden: true })); }} aria-label="Ocultar Furina" title="Ocultar Furina"><X size={15}/></button>
     </div>
     <p className="furina-live" role="status" aria-live="polite">{announcement}</p>
