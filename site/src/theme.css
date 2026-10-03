@@ -41,6 +41,8 @@ html[data-theme="dark"] {
   --theme-danger: #462b38; --theme-danger-text: #ffb8cb;
 }
 html[data-theme="dark"] ::selection { background: #4b5c95; color: #fff; }
+html[data-theme="dark"] .brand-mark { color: var(--theme-action-text); }
+html[data-theme="dark"] .brand-mark span { color: var(--blue); }
 html[data-theme="dark"] :is(button, a, input, select, textarea, summary):focus-visible { outline-color: var(--blue); }
 html[data-theme="dark"] :is(input, select, textarea) { color: var(--ink); background-color: var(--paper); border-color: var(--line); accent-color: var(--blue); }
 html[data-theme="dark"] :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
@@ -61,6 +63,9 @@ html[data-theme="dark"] .searchbar { background: var(--white); border-color: var
 html[data-theme="dark"] :is(.command-search, .command-palette footer, .command-results button, .command-palette kbd) { color: var(--ink); border-color: var(--line); }
 html[data-theme="dark"] :is(.command-palette>p, .command-results small, .command-empty, .command-palette footer, .command-results button>span) { color: var(--muted); }
 html[data-theme="dark"] .command-results button:hover { background: var(--theme-hover); }
+html[data-theme="dark"] .command-palette kbd { background: var(--paper); }
+html[data-theme="dark"] .material-count { background: var(--theme-tint); }
+html[data-theme="dark"] .section-intro p { color: var(--muted); }
 html[data-theme="dark"] :is(.skip-link, .status-message:not(:empty)) { background: var(--white); color: var(--ink); border-color: var(--blue); }
 
 /* Lessons, practice, curriculum and resource metadata. */
@@ -88,6 +93,8 @@ html[data-theme="dark"] .lab-recall-feedback { background: var(--theme-success);
 html[data-theme="dark"] .lab-quiz-note { color: var(--muted); }
 html[data-theme="dark"] .lab-quiz-reset { color: var(--blue); }
 html[data-theme="dark"] .focus-suggestion button { color: var(--theme-warning-text); }
+html[data-theme="dark"] .milestone-map li>span { color: var(--ink); border-color: var(--blue); }
+html[data-theme="dark"] .milestone-map li.earned>span { background: var(--theme-action); color: var(--theme-action-text); }
 
 /* A lighter blue reads as a link; a filled action has its own foreground. */
 html[data-theme="dark"] :is(.intro-main-action, .session-preview button, .closing-banner button, .area-filters button.active, .type-filters button.active, .lab-action, .focus-card .lab-action, .focus-presets>button.active, .lab-answer-toggle, .lab-level-options button.active, .lab-level-options button:last-child.active, .lab-material-filter button.active, .journey-stage.active, .learning-path button, .practice-studio button, .done-button, .lab .agent-demo-controls button:last-child, .lab .agent-demo-track .active) { background: var(--theme-action); color: var(--theme-action-text); border-color: var(--theme-action); }

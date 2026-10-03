@@ -44,9 +44,12 @@ Atualizado em 03/10/2026. Este arquivo distingue decisões, código verificado e
 ## Validação desta retomada
 
 - Build de produção e todos os validadores do projeto aprovados.
+- TypeScript sem erros com os tipos React 19 e Vite disponíveis no ambiente de validação. Esses pacotes de tipos foram usados somente localmente; dependências do projeto não foram alteradas.
 - Inicialização de tema: 20 combinações de preferência salva, tema do sistema, valor inválido e armazenamento bloqueado aprovadas em Node com ambiente simulado.
 - Contraste calculado dos pares principais: texto/superfície 12,43:1; apoio/bloco 6,74:1; link/superfície 7,88:1; botão 8,49:1; apoio/aviso 6,66:1. Isso verifica a paleta, não constitui auditoria WCAG completa da página.
-- Verificação interativa da nova publicação: pendente no momento deste registro; atualizar após observar o site publicado.
+- Publicação inicial desta alteração: `0c25e0a6f778f067e0860438a3a43b2c52f3513b`; build, deploy Pages, Markdown e links aprovados no GitHub Actions.
+- Navegador desktop: escolha Escuro aplicada, cores computadas conferidas e ausência de overflow horizontal na página inicial. Claro/Escuro na primeira oficina preservou uma resposta escrita; preferência e resposta continuaram após recarga. Texto de teste removido pela interface.
+- Navegação para módulo de APIs e carregamento tardio das aulas, abertura/fechamento da dica da Furina e do painel de atalhos verificados. Contraste calculado sobre os elementos de texto renderizados identificou ajustes no logotipo, números de marco, teclas dos atalhos e apresentação da biblioteca; ajustes incorporados nesta alteração.
 - O driver de navegador disponível não oferece emulação de viewport móvel nem alteração da preferência de cores do sistema. Responsividade é revisada no CSS; não declarar homologação em aparelho físico. Python Playwright e agent-browser CLI não estão disponíveis; usar o navegador CUA autorizado.
 
 ## Furina: pendências reais
