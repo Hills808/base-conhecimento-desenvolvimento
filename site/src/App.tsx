@@ -1,6 +1,6 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
 import { modules, guideUrl } from "./data/modules";
 const Laboratory = lazy(() => import("./Laboratory"));
@@ -38,6 +38,29 @@ export default function Home() {
   const [notice, setNotice] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
   const [commandQuery, setCommandQuery] = useState("");
+  const commandPanel = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!commandOpen || !commandPanel.current) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const overlay = commandPanel.current.parentElement;
+    const siblings = Array.from(overlay?.parentElement?.children ?? []).filter((node): node is HTMLElement => node instanceof HTMLElement && node !== overlay);
+    const previousInert = siblings.map(node => node.inert);
+    siblings.forEach(node => { node.inert = true; });
+    commandPanel.current.querySelector<HTMLInputElement>("input")?.focus();
+    return () => {
+      siblings.forEach((node, index) => { node.inert = previousInert[index]; });
+      if (previous?.isConnected) previous.focus({ preventScroll: true });
+    };
+  }, [commandOpen]);
+
+  function containCommandFocus(event: React.KeyboardEvent<HTMLElement>) {
+    if (event.key !== "Tab") return;
+    const elements = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('input, button, a[href]')).filter(element => !element.hasAttribute("disabled"));
+    const first = elements[0], last = elements[elements.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  }
 
   useEffect(() => {
     const sync = () => {
@@ -71,16 +94,18 @@ export default function Home() {
   }, []);
 
   function openModule(id: number | null) {
+    setCommandOpen(false); setCommandQuery("");
     setSelected(id); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false);
     const base = import.meta.env.BASE_URL;
     const url = id === null ? base : `${base}?modulo=${String(id).padStart(2, "0")}`;
     window.history.pushState({}, "", url);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
   function openLabStep(index: number) {
     setSelected(9); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
     const url = `${import.meta.env.BASE_URL}?modulo=09&etapa=${index + 1}`;
-    window.history.pushState({}, "", url); window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.pushState({}, "", url); window.dispatchEvent(new PopStateEvent("popstate"));
+    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
 
   const active = selected === null ? null : modules[selected];
@@ -181,8 +206,8 @@ export default function Home() {
     <AnimatedMascot module={active}/>
     <div className="status-message" role="status" aria-live="polite">{notice}</div>
     {commandOpen && <div className="command-overlay" role="presentation" onMouseDown={() => setCommandOpen(false)}>
-      <section className="command-palette" role="dialog" aria-modal="true" aria-label="Ir para uma parte do site" onMouseDown={event => event.stopPropagation()}>
-        <div className="command-search"><Command size={19}/><input autoFocus value={commandQuery} onChange={event => setCommandQuery(event.target.value)} placeholder="Busque um módulo ou etapa..." aria-label="Buscar módulo ou etapa"/><button onClick={() => setCommandOpen(false)} aria-label="Fechar atalho"><X size={17}/><kbd>Esc</kbd></button></div>
+      <section ref={commandPanel} className="command-palette" role="dialog" aria-modal="true" aria-label="Ir para uma parte do site" onKeyDown={containCommandFocus} onMouseDown={event => event.stopPropagation()}>
+        <div className="command-search"><Command size={19}/><input value={commandQuery} onChange={event => setCommandQuery(event.target.value)} placeholder="Busque um módulo ou etapa…" autoComplete="off" name="atalho" aria-label="Buscar módulo ou etapa"/><button onClick={() => setCommandOpen(false)} aria-label="Fechar atalho"><X size={17}/><kbd>Esc</kbd></button></div>
         <p>{commandQuery.trim().length < 2 ? "ATALHOS PRINCIPAIS" : "RESULTADOS"}</p>
         <div className="command-results">{quickResults.length ? quickResults.map((item, index) => <button key={item.id} onClick={item.action}><span>{String(index + 1).padStart(2,"0")}</span><div><strong>{item.title}</strong><small>{item.detail}</small></div><ArrowUpRight size={16}/></button>) : <div className="command-empty">Nenhum atalho encontrado. Tente “API”, “MCP” ou “C#”.</div>}</div>
         <footer><span>Digite para filtrar</span><span><kbd>Esc</kbd> fechar</span></footer>
