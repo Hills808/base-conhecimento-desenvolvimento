@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "identity": "Furina — preservar a arte aprovada",
+  "renderer": "hierarchical DOM cutout; original controller, no external runtime",
+  "coordinates": "percentages of character rectangle, width/height = 3/4",
+  "parts": {
+    "legs": { "asset": "legs.webp", "parent": "root", "pivot": [52, 9] },
+    "upper": { "parent": "root", "pivot": [50, 48] },
+    "leftArm": { "asset": "arm-left.webp", "parent": "upper", "pivot": [88, 10] },
+    "rightArm": { "asset": "arm-right.webp", "parent": "upper", "pivot": [12, 10] },
+    "torso": { "asset": "torso.webp", "parent": "upper" },
+    "head": { "asset": "head.webp", "parent": "upper", "pivot": [50, 91] }
+  },
+  "missingArt": [
+    { "part": "eyelids", "parent": "head", "requirement": "closed and half-closed eyes in the same registration; clean face underlay; do not redraw identity" },
+    { "part": "hairFrontAndBack", "parent": "head", "requirement": "separate strands, clean overlap and face without embedded hair" },
+    { "part": "forearmsAndHands", "parent": "leftArm/rightArm", "requirement": "separate elbow joints with filled overlap, matched source reference" },
+    { "part": "leftAndRightLegs", "parent": "root", "requirement": "separate thigh, calf and foot with filled overlaps" }
+  ],
+  "states": ["idle", "tip", "interacting", "celebrating", "dragging", "paused", "hidden", "reducedMotion"],
+  "priority": "hidden/reducedMotion/paused > dragging > celebrating > interacting > tip > idle",
+  "constraints": { "maximumHeadRotationDeg": 3, "maximumArmRotationDeg": 7, "maximumJumpPx": 9 }
+}

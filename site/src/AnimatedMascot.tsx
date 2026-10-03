@@ -1,59 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, CircleHelp, Lightbulb, ShieldAlert, Sparkles, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CircleHelp, Lightbulb, Pause, Play, ShieldAlert, Sparkles, X } from "lucide-react";
 import type { Module } from "./data/modules";
 import { moduleGuidance } from "./data/module-guidance";
+import { blendPose, bubbleGeometry, celebrationDuration, clamp, mascotGeometry, neutral, targetPose, type MotionState } from "./furina-motion";
 import "./animated-mascot.css";
 
 type Mode = "tip" | "attention" | "review" | "curiosity" | "success";
 type LabContext = { step: number; title: string; tip: string; attention: string; curiosity: string; question: string; answer: string };
 type ModuleContext = { moduleId: number; stage: number };
-type Saved = { dock: "left" | "right"; x: number; offsetY: number; hidden: boolean };
+type Saved = { dock: "left" | "right"; x: number; offsetY: number; hidden: boolean; paused: boolean };
 const storageKey = "curva-aberta-furina-v2";
-const edge = 8;
-const danceDuration = 2800;
-const mascotWidth = (viewportWidth: number) => viewportWidth <= 720 ? 104 : 118;
-const mascotHeight = (viewportWidth: number) => viewportWidth <= 720 ? 138 : 157;
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-type DancePose = [x: number, y: number, stretch: number, turn: number, head: number, torso: number, leftArm: number, rightArm: number, legs: number];
-const danceKeys: { at: number; pose: DancePose }[] = [
-  { at: 0, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
-  { at: 180, pose: [0, 2, .96, -2, 2, -2, -8, 6, 4] },
-  { at: 360, pose: [-4, -7, 1.03, -3, -2, 2, 14, -12, 2] },
-  { at: 580, pose: [-8, -16, 1.01, -5, -4, 3, 21, -19, -2] },
-  { at: 780, pose: [-7, -9, 1, -3, 1, 0, 16, -14, 2] },
-  { at: 970, pose: [-4, 2, .94, 2, 5, -2, 10, -9, -5] },
-  { at: 1130, pose: [-2, 0, 1, 1, 2, 0, 8, -8, 0] },
-  { at: 1280, pose: [-1, 2, .96, 3, -2, 1, -5, 7, 4] },
-  { at: 1490, pose: [4, -7, 1.03, 4, 2, -2, 14, -13, -2] },
-  { at: 1700, pose: [8, -15, 1.01, 5, 4, -3, 20, -21, 2] },
-  { at: 1900, pose: [7, -8, 1, -1, 0, 1, 15, -16, -2] },
-  { at: 2090, pose: [4, 2, .94, -3, -4, 2, 10, -12, 4] },
-  { at: 2300, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] },
-  { at: 2470, pose: [0, 0, 1, 0, -3, 0, 0, -14, 0] },
-  { at: 2640, pose: [0, 0, 1, 0, 1, 0, 0, -24, 0] },
-  { at: danceDuration, pose: [0, 0, 1, 0, 0, 0, 0, 0, 0] }
-];
-
-// Cubic interpolation keeps the velocity continuous through each dance pose.
-function dancePose(time: number): DancePose {
-  const index = danceKeys.findIndex(key => key.at >= time);
-  if (index <= 0) return danceKeys[0].pose;
-  const next = danceKeys[index];
-  const current = danceKeys[index - 1];
-  const before = danceKeys[Math.max(0, index - 2)];
-  const after = danceKeys[Math.min(danceKeys.length - 1, index + 1)];
-  const span = next.at - current.at;
-  const u = (time - current.at) / span;
-  const h00 = 2 * u ** 3 - 3 * u ** 2 + 1;
-  const h10 = u ** 3 - 2 * u ** 2 + u;
-  const h01 = -2 * u ** 3 + 3 * u ** 2;
-  const h11 = u ** 3 - u ** 2;
-  return current.pose.map((value, channel) => {
-    const velocityIn = index === 1 ? 0 : (next.pose[channel] - before.pose[channel]) / (next.at - before.at);
-    const velocityOut = index === danceKeys.length - 1 ? 0 : (after.pose[channel] - current.pose[channel]) / (after.at - current.at);
-    return h00 * value + h10 * span * velocityIn + h01 * next.pose[channel] + h11 * span * velocityOut;
-  }) as DancePose;
-}
 const curiosities: Record<number, string> = {
   0: "Explicar com suas palavras revela dúvidas que passaram despercebidas durante a leitura.",
   1: "Depurar um programa pequeno ensina mais do que copiar um projeto longo sem conseguir explicá-lo.",
@@ -71,29 +27,33 @@ function readSaved(): Saved {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
     const dock = saved?.dock === "left" ? "left" : "right";
-    return { dock, x: Number.isFinite(saved?.x) ? clamp(saved.x, 0, 1) : dock === "left" ? 0 : 1, offsetY: Number.isFinite(saved?.offsetY) ? Math.max(0, saved.offsetY) : 0, hidden: saved?.hidden === true };
-  } catch { return { dock: "right", x: 1, offsetY: 0, hidden: false }; }
+    return { dock, x: Number.isFinite(saved?.x) ? clamp(saved.x, 0, 1) : dock === "left" ? 0 : 1, offsetY: Number.isFinite(saved?.offsetY) ? Math.max(0, saved.offsetY) : 0, hidden: saved?.hidden === true, paused: saved?.paused === true };
+  } catch { return { dock: "right", x: 1, offsetY: 0, hidden: false, paused: false }; }
 }
 
 export default function AnimatedMascot({ module }: { module: Module | null }) {
   const [saved, setSaved] = useState<Saved>(readSaved);
   const [open, setOpen] = useState(false);
+  const [unreadTip, setUnreadTip] = useState(true);
   const [mode, setMode] = useState<Mode>("tip");
   const [expanded, setExpanded] = useState(false);
   const [lab, setLab] = useState<LabContext | null>(null);
   const [moduleContext, setModuleContext] = useState<ModuleContext | null>(null);
   const [celebrating, setCelebrating] = useState(false);
-  const [greeting, setGreeting] = useState(true);
+  const [greeting, setGreeting] = useState(false);
   const [motionToken, setMotionToken] = useState(0);
+  const [reduced, setReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [viewport, setViewport] = useState(() => ({ width: window.innerWidth, height: window.innerHeight }));
   const [announcement, setAnnouncement] = useState("");
   const [dragging, setDragging] = useState(false);
   const root = useRef<HTMLElement>(null);
   const puppet = useRef<HTMLSpanElement>(null);
-  const drag = useRef<{ pointerId: number; x: number; y: number; grabX: number; grabY: number; moved: boolean; left: number; bottom: number } | null>(null);
-  const suppressClick = useRef(false);
-  const greetTimer = useRef<number | null>(null);
-  const danceTimer = useRef<number | null>(null);
+  const drag = useRef<{ pointerId: number; x: number; y: number; grabX: number; grabY: number; width: number; height: number; moved: boolean; left: number; bottom: number } | null>(null);
+  const suppressClickUntil = useRef(0);
+  const look = useRef(0);
+  const motionPose = useRef(neutral());
+  const motion = useRef({ paused: saved.paused, reduced, dragging, open, unreadTip, greeting, celebrating, motionToken });
+  const preferences = useRef(saved);
   const autoCloseTimer = useRef<number | null>(null);
   const sideTimer = useRef<number | null>(null);
   const stageIndex = module && moduleContext?.moduleId === module.id ? moduleContext.stage : 0;
@@ -104,62 +64,66 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
 
   function greet() {
     if (celebrating || drag.current?.moved) return;
-    if (greetTimer.current) window.clearTimeout(greetTimer.current);
-    setGreeting(false);
-    window.requestAnimationFrame(() => {
-      setGreeting(true);
-      greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
-    });
+    setGreeting(!saved.paused && !reduced);
+    setMotionToken(value => value + 1);
   }
 
   useEffect(() => {
-    greetTimer.current = window.setTimeout(() => setGreeting(false), 1900);
-    return () => {
-      if (greetTimer.current) window.clearTimeout(greetTimer.current);
-      if (sideTimer.current) window.clearTimeout(sideTimer.current);
-    };
-  }, []);
+    motion.current = { paused: saved.paused, reduced, dragging, open, unreadTip, greeting, celebrating, motionToken };
+    preferences.current = saved;
+  }, [saved, reduced, dragging, open, unreadTip, greeting, celebrating, motionToken]);
 
   useEffect(() => {
-    const stage = puppet.current?.querySelector<HTMLElement>(".furina-puppet-stage");
-    const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
-    const leftArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-left-arm");
-    const rightArm = puppet.current?.querySelector<HTMLElement>(".furina-rig-right-arm");
-    const upper = puppet.current?.querySelector<HTMLElement>(".furina-rig-upper");
-    const legs = puppet.current?.querySelector<HTMLElement>(".furina-rig-legs");
-    const parts = [stage, upper, head, leftArm, rightArm, legs];
-    if (!stage || !upper || !head || !leftArm || !rightArm || !legs || window.matchMedia("(prefers-reduced-motion: reduce)").matches || (!celebrating && !greeting)) return;
-    const duration = celebrating ? danceDuration : 1900;
-    let start = 0;
-    let frame = 0;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => { setReduced(preference.matches); if (preference.matches) { setCelebrating(false); setGreeting(false); } };
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+
+  // One owner for every joint. Pointer input is a target, never a competing writer.
+  useEffect(() => {
+    if (saved.hidden || saved.paused || reduced) return;
+    const get = (name: string) => puppet.current?.querySelector<HTMLElement>(name);
+    const stage = get(".furina-puppet-stage"), head = get(".furina-rig-head"), upper = get(".furina-rig-upper");
+    const leftArm = get(".furina-rig-left-arm"), rightArm = get(".furina-rig-right-arm"), legs = get(".furina-rig-legs");
+    if (!stage || !head || !upper || !leftArm || !rightArm || !legs) return;
+    let pose = motionPose.current, frame = 0, last = 0, elapsed = 0, idleTime = 0, token = -1;
+    let state: MotionState = "idle";
+    let disposed = false;
     const tick = (now: number) => {
-      if (!start) start = now;
-      const t = Math.min(duration, now - start);
-      const fraction = t / duration;
-      if (celebrating) {
-        const [x, y, stretch, turn, face, chest, left, right, feet] = dancePose(t);
-        stage.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0) rotate(${turn.toFixed(2)}deg) scaleY(${stretch.toFixed(3)})`;
-        head.style.transform = `rotate(${face.toFixed(2)}deg)`;
-        upper.style.transform = `rotate(${chest.toFixed(2)}deg)`;
-        leftArm.style.transform = `rotate(${left.toFixed(2)}deg)`;
-        rightArm.style.transform = `rotate(${right.toFixed(2)}deg)`;
-        legs.style.transform = `rotate(${feet.toFixed(2)}deg)`;
-      } else {
-        const ease = Math.sin(Math.PI * fraction);
-        stage.style.transform = `translate3d(0,${(-2 * ease).toFixed(2)}px,0) rotate(${(-2 * ease).toFixed(2)}deg)`;
-        head.style.transform = `rotate(${(5 * ease).toFixed(2)}deg)`;
-        rightArm.style.transform = `rotate(${(-12 * Math.sin(2 * Math.PI * fraction) ** 2).toFixed(2)}deg)`;
-      }
-      if (t < duration) frame = window.requestAnimationFrame(tick);
-      else parts.forEach(part => { if (part) part.style.transform = ""; });
+      const delta = last ? Math.min(48, now - last) : 0;
+      last = now;
+      const input = motion.current;
+      const next: MotionState = input.dragging ? "dragging" : input.celebrating ? "celebrating" : input.greeting || input.open ? "interacting" : input.unreadTip ? "tip" : "idle";
+      if (next !== state || token !== input.motionToken) { state = next; token = input.motionToken; elapsed = 0; }
+      elapsed += delta; idleTime += delta;
+      pose = blendPose(pose, targetPose(state, elapsed, idleTime, look.current), delta);
+      motionPose.current = pose;
+      stage.style.transform = `translate3d(${pose.x.toFixed(2)}px,${pose.y.toFixed(2)}px,0) rotate(${pose.turn.toFixed(2)}deg) scaleY(${pose.scale.toFixed(4)})`;
+      head.style.transform = `rotate(${pose.head.toFixed(2)}deg)`;
+      upper.style.transform = `translateY(${(-Math.abs(pose.torso) * .7).toFixed(2)}px) rotate(${pose.torso.toFixed(2)}deg)`;
+      leftArm.style.transform = `rotate(${pose.left.toFixed(2)}deg)`;
+      rightArm.style.transform = `rotate(${pose.right.toFixed(2)}deg)`;
+      legs.style.transform = `rotate(${pose.legs.toFixed(2)}deg)`;
+      if (state === "celebrating" && elapsed > celebrationDuration + 250) setCelebrating(false);
+      if (input.greeting && elapsed > 1200) setGreeting(false);
+      if (!disposed && !document.hidden) frame = window.requestAnimationFrame(tick);
     };
-    frame = window.requestAnimationFrame(tick);
-    return () => { window.cancelAnimationFrame(frame); parts.forEach(part => { if (part) part.style.transform = ""; }); };
-  }, [greeting, celebrating, motionToken]);
+    const visibility = () => { window.cancelAnimationFrame(frame); last = 0; if (!document.hidden) frame = window.requestAnimationFrame(tick); };
+    document.addEventListener("visibilitychange", visibility);
+    if (!document.hidden) frame = window.requestAnimationFrame(tick);
+    return () => { disposed = true; window.cancelAnimationFrame(frame); document.removeEventListener("visibilitychange", visibility); };
+  }, [saved.hidden, saved.paused, reduced]);
+
+  useEffect(() => {
+    // Motion preference changes must also remove residual transforms.
+    if (reduced) { motionPose.current = neutral(); puppet.current?.querySelectorAll<HTMLElement>(".furina-puppet-stage,.furina-rig-upper,.furina-puppet img").forEach(part => { part.style.transform = ""; }); }
+  }, [reduced]);
 
   useEffect(() => {
     const onContext = (event: Event) => {
       const detail = (event as CustomEvent<LabContext | ModuleContext>).detail;
+      if (!detail || typeof detail !== "object") return;
       if ("moduleId" in detail) setModuleContext(detail);
       else setLab(detail);
     };
@@ -168,7 +132,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }, []);
 
   useEffect(() => {
-    setMode("tip"); setExpanded(false);
+    setMode("tip"); setExpanded(false); setUnreadTip(true);
     setAnnouncement(module ? `Dicas para ${labActive && lab ? lab.title : module.title}.` : "Furina ajuda você a escolher por onde começar.");
     // Reset the note only when the study context changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -179,29 +143,24 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   }, [saved]);
 
   useEffect(() => {
-    for (const part of ["head", "torso", "arm-left", "arm-right", "legs"]) {
-      const image = new Image(); image.src = `${import.meta.env.BASE_URL}furina-rig/${part}.webp`;
-    }
     const celebrate = () => {
-      if (danceTimer.current) window.clearTimeout(danceTimer.current);
+      if (preferences.current.hidden) return;
       if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current);
-      setSaved(value => ({ ...value, hidden: false }));
-      setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1);
-      setAnnouncement("Etapa concluída! Furina está comemorando com você.");
-      danceTimer.current = window.setTimeout(() => setCelebrating(false), danceDuration);
+      setMode("success"); setExpanded(false); setOpen(true); setGreeting(false); setCelebrating(!motion.current.paused && !motion.current.reduced); setMotionToken(value => value + 1);
+      setAnnouncement("Etapa concluída! Guarde sua entrega para a revisão.");
       autoCloseTimer.current = window.setTimeout(() => setOpen(false), 7000);
     };
     window.addEventListener("curva-aberta-study-complete", celebrate);
     return () => {
       window.removeEventListener("curva-aberta-study-complete", celebrate);
-      if (danceTimer.current) window.clearTimeout(danceTimer.current);
       if (autoCloseTimer.current) window.clearTimeout(autoCloseTimer.current);
+      if (sideTimer.current) window.clearTimeout(sideTimer.current);
     };
   }, []);
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") { setOpen(false); root.current?.querySelector<HTMLButtonElement>(".furina-character")?.focus({ preventScroll: true }); } };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -209,7 +168,7 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   useEffect(() => {
     const resize = () => {
       setViewport({ width: window.innerWidth, height: window.innerHeight });
-      setSaved(value => ({ ...value, offsetY: Math.min(value.offsetY, Math.max(0, window.innerHeight - mascotHeight(window.innerWidth) - edge)) }));
+      setSaved(value => ({ ...value, offsetY: mascotGeometry({ width: window.innerWidth, height: window.innerHeight }, value.x, value.offsetY).bottom - 12 }));
     };
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
@@ -243,67 +202,65 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   function cancelSideMove() { if (sideTimer.current) window.clearTimeout(sideTimer.current); sideTimer.current = null; }
   function moveTo(nextX: number, nextDock: Saved["dock"]) {
     cancelSideMove();
-    const reopen = open && (nextDock !== saved.dock || Math.abs(nextX - saved.x) > .3);
-    if (reopen) setOpen(false);
     setSaved(value => ({ ...value, x: nextX, dock: nextDock }));
-    if (reopen) sideTimer.current = window.setTimeout(() => { setOpen(true); sideTimer.current = null; }, 420);
   }
   function changeMode(next: Mode) {
     cancelAutoClose(); setMode(next); setExpanded(false);
     if (next === "success") {
-      if (danceTimer.current) window.clearTimeout(danceTimer.current);
-      setGreeting(false); setCelebrating(true); setMotionToken(value => value + 1); danceTimer.current = window.setTimeout(() => setCelebrating(false), danceDuration);
+      setGreeting(false); setCelebrating(!saved.paused && !reduced); setMotionToken(value => value + 1);
     }
     setAnnouncement(next === "success" ? "Furina está comemorando com você." : `${next === "tip" ? "Dica" : next === "attention" ? "Ponto de atenção" : next === "review" ? "Pergunta" : "Curiosidade"} atualizada.`);
   }
   function startDrag(event: React.PointerEvent<HTMLButtonElement>) {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || !event.isPrimary) return;
     cancelSideMove();
-    event.currentTarget.setPointerCapture(event.pointerId);
     const box = root.current?.getBoundingClientRect();
     if (!box) return;
-    drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, grabX: event.clientX - box.left, grabY: event.clientY - box.top, moved: false, left: box.left, bottom: window.innerHeight - box.bottom };
+    suppressClickUntil.current = 0;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, grabX: event.clientX - box.left, grabY: event.clientY - box.top, width: box.width, height: box.height, moved: false, left: box.left, bottom: window.innerHeight - box.bottom };
   }
   function moveDrag(event: React.PointerEvent<HTMLButtonElement>) {
     const current = drag.current;
     if (!current) {
-      if (celebrating || greeting || !puppet.current) return;
-      const head = puppet.current.querySelector<HTMLElement>(".furina-rig-head");
       const box = event.currentTarget.getBoundingClientRect();
-      const angle = clamp((event.clientX - box.left) / box.width * 8 - 4, -4, 4);
-      if (head) head.style.transform = `rotate(${angle.toFixed(1)}deg)`;
+      look.current = clamp((event.clientX - box.left) / box.width * 2 - 1, -1, 1);
       return;
     }
     if (current.pointerId !== event.pointerId || !root.current) return;
     if (!current.moved && Math.hypot(event.clientX - current.x, event.clientY - current.y) > 5) {
       current.moved = true;
+      cancelAutoClose();
+      look.current = 0;
       setDragging(true); setOpen(false); setGreeting(false);
     }
     if (!current.moved) return;
-    const box = root.current.getBoundingClientRect();
-    current.left = clamp(event.clientX - current.grabX, edge, window.innerWidth - box.width - edge);
-    const top = clamp(event.clientY - current.grabY, edge, window.innerHeight - box.height - edge);
-    current.bottom = window.innerHeight - top - box.height;
+    current.left = clamp(event.clientX - current.grabX, 12, window.innerWidth - current.width - 12);
+    const top = clamp(event.clientY - current.grabY, 12, window.innerHeight - current.height - 12);
+    current.bottom = window.innerHeight - top - current.height;
     root.current.style.left = `${current.left}px`;
     root.current.style.bottom = `${current.bottom}px`;
   }
   function endDrag(event: React.PointerEvent<HTMLButtonElement>) {
     if (drag.current?.pointerId !== event.pointerId) return;
     if (drag.current.moved) {
-      suppressClick.current = true;
-      window.setTimeout(() => { suppressClick.current = false; }, 0);
-      const available = Math.max(1, window.innerWidth - mascotWidth(window.innerWidth) - 2 * edge);
-      const x = clamp((drag.current.left - edge) / available, 0, 1);
-      const offsetY = Math.max(0, drag.current.bottom - edge);
+      suppressClickUntil.current = performance.now() + 350;
+      const available = Math.max(1, window.innerWidth - drag.current.width - 24);
+      const x = clamp((drag.current.left - 12) / available, 0, 1);
+      const offsetY = Math.max(0, drag.current.bottom - 12);
       setSaved(value => ({ ...value, x, dock: x < .5 ? "left" : "right", offsetY }));
     }
     drag.current = null; setDragging(false);
   }
+  function cancelDrag() {
+    if (!drag.current) return;
+    const geometry = mascotGeometry(viewport, saved.x, saved.offsetY);
+    if (root.current) { root.current.style.left = `${geometry.left}px`; root.current.style.bottom = `${geometry.bottom}px`; }
+    suppressClickUntil.current = performance.now() + 350;
+    drag.current = null; setDragging(false);
+  }
   function leaveCharacter() {
-    if (!drag.current && !celebrating && !greeting) {
-      const head = puppet.current?.querySelector<HTMLElement>(".furina-rig-head");
-      if (head) head.style.transform = "";
-    }
+    look.current = 0;
   }
   function moveByKeyboard(event: React.KeyboardEvent<HTMLButtonElement>) {
     const horizontal = event.key === "ArrowLeft" ? -.15 : event.key === "ArrowRight" ? .15 : 0;
@@ -314,27 +271,28 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     const dock = x < .5 ? "left" : "right";
     if (horizontal && dock !== saved.dock) moveTo(x, dock);
     else setSaved(value => {
-      const maxOffset = Math.max(0, viewport.height - mascotHeight(viewport.width) - 2 * edge);
+      const maxOffset = Math.max(0, mascotGeometry(viewport, value.x, 0).maxY - 12);
       return { ...value, x, dock, offsetY: clamp(value.offsetY + vertical, 0, maxOffset) };
     });
   }
   function clickCharacter() {
-    if (suppressClick.current) return;
+    if (performance.now() < suppressClickUntil.current) return;
     cancelSideMove();
     cancelAutoClose();
     greet();
+    if (!open) setUnreadTip(false);
     setOpen(value => !value);
     setAnnouncement(open ? "Dica recolhida." : "Furina abriu uma dica para esta etapa.");
   }
 
-  const width = mascotWidth(viewport.width);
-  const left = edge + saved.x * Math.max(0, viewport.width - width - 2 * edge);
-  const bottom = edge + Math.min(saved.offsetY, Math.max(0, viewport.height - mascotHeight(viewport.width) - 2 * edge));
-  const style = { left: `${left}px`, bottom: `${bottom}px`, "--furina-bottom": `${bottom}px` } as React.CSSProperties;
+  const geometry = mascotGeometry(viewport, saved.x, saved.offsetY);
+  const bubble = bubbleGeometry(viewport, geometry.left, geometry.bottom, geometry.width);
+  const style = { left: `${geometry.left}px`, bottom: `${geometry.bottom}px`, "--furina-width": `${geometry.width}px`, "--furina-height": `${geometry.characterHeight}px` } as React.CSSProperties;
+  const bubbleStyle = { left: `${bubble.left}px`, bottom: `${bubble.bottom}px`, width: `${bubble.width}px`, maxHeight: `${bubble.maxHeight}px` };
   if (saved.hidden) return <button className={`furina-return dock-${saved.dock}`} onClick={() => setSaved(value => ({ ...value, hidden: false }))} aria-label="Mostrar Furina"><Lightbulb size={16}/>Furina</button>;
 
-  return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""} ${greeting ? "is-greeting" : ""}`} style={style} aria-label="Furina, guia de estudos">
-    {open && <section className="furina-speech" aria-label="Dica da Furina">
+  return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""} ${saved.paused || reduced ? "is-paused" : ""}`} style={style} aria-label="Furina, guia de estudos">
+    {open && <section id="furina-tip" className="furina-speech" style={bubbleStyle} aria-label="Dica da Furina">
       <div className="furina-speech-head"><span className="furina-speech-name">Furina <small>· {labActive && lab ? `etapa ${lab.step + 1}` : module ? module.title : "guia de estudos"}</small></span><button onClick={() => setOpen(false)} aria-label="Fechar dica"><X size={17}/></button></div>
       <h3>{card.title}</h3><p>{card.text}</p>
       {expanded && <p className="furina-extra">{card.extra}</p>}
@@ -346,25 +304,28 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         <button className={mode === "curiosity" ? "active" : ""} onClick={() => changeMode("curiosity")}><Sparkles size={15}/>Curiosidade</button>
         <button className={mode === "success" ? "active" : ""} onClick={() => changeMode("success")}><Check size={15}/>Consegui!</button>
       </div>
-      <div className="furina-speech-foot"><span>Dicas escritas para esta trilha</span><div><button onClick={() => moveTo(0, "left")} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => moveTo(1, "right")} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
+      <div className="furina-speech-foot"><span>Dicas da etapa · sem IA<br/>Arraste Furina ou use as setas.</span><div><button onClick={() => moveTo(0, "left")} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => moveTo(1, "right")} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
     </section>}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
-    <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={endDrag} onPointerLeave={leaveCharacter} onKeyDown={moveByKeyboard} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste ou use as setas para mover" : "Abrir dica da Furina; arraste ou use as setas para mover"} aria-expanded={open}>
+    <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={cancelDrag} onLostPointerCapture={cancelDrag} onPointerLeave={leaveCharacter} onKeyDown={moveByKeyboard} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste ou use as setas para mover" : "Abrir dica da Furina; arraste ou use as setas para mover"} aria-expanded={open} aria-controls="furina-tip">
       <span className="furina-puppet" ref={puppet} aria-hidden="true">
         <span className="furina-puppet-stage">
-          <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} alt="" draggable={false}/>
+          <img className="furina-rig-legs" src={`${import.meta.env.BASE_URL}furina-rig/legs.webp`} width={290} height={579} alt="" draggable={false}/>
           <span className="furina-rig-upper">
-            <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} alt="" draggable={false}/>
-            <img className="furina-rig-right-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} alt="" draggable={false}/>
-            <img className="furina-rig-torso" src={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} alt="" draggable={false}/>
-            <img className="furina-rig-head" src={`${import.meta.env.BASE_URL}furina-rig/head.webp`} alt="" draggable={false}/>
+            <img className="furina-rig-left-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-left.webp`} width={365} height={365} alt="" draggable={false}/>
+            <img className="furina-rig-right-arm" src={`${import.meta.env.BASE_URL}furina-rig/arm-right.webp`} width={365} height={365} alt="" draggable={false}/>
+            <img className="furina-rig-torso" src={`${import.meta.env.BASE_URL}furina-rig/torso.webp`} width={570} height={800} alt="" draggable={false}/>
+            <img className="furina-rig-head" src={`${import.meta.env.BASE_URL}furina-rig/head.webp`} width={400} height={272} alt="" draggable={false}/>
           </span>
         </span>
       </span>
-      {!open && !celebrating && <span className="furina-invite"><Lightbulb size={14}/> Dica</span>}
+      {!open && !celebrating && unreadTip && <span className="furina-invite" aria-hidden="true">?</span>}
       {open && mode === "attention" && !celebrating && <span className="furina-alert" aria-hidden="true">!</span>}
     </button>
-    <button className="furina-hide" onClick={() => { cancelAutoClose(); cancelSideMove(); setOpen(false); setSaved(value => ({ ...value, hidden: true })); }} aria-label="Ocultar Furina" title="Ocultar Furina"><X size={16}/></button>
+    <div className="furina-controls">
+      <button onClick={() => { setGreeting(false); setCelebrating(false); setSaved(value => ({ ...value, paused: !value.paused })); }} aria-label={saved.paused ? "Retomar animações da Furina" : "Pausar animações da Furina"} aria-pressed={saved.paused} disabled={reduced} title={reduced ? "Movimento reduzido ativo no dispositivo" : saved.paused ? "Retomar animações" : "Pausar animações"}>{saved.paused || reduced ? <Play size={15}/> : <Pause size={15}/>}</button>
+      <button onClick={() => { cancelAutoClose(); cancelSideMove(); setOpen(false); setGreeting(false); setCelebrating(false); setSaved(value => ({ ...value, hidden: true })); }} aria-label="Ocultar Furina" title="Ocultar Furina"><X size={15}/></button>
+    </div>
     <p className="furina-live" role="status" aria-live="polite">{announcement}</p>
   </aside>;
 }
