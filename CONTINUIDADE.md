@@ -87,6 +87,20 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 - Validação: metadados e estrutura das oito novas skills aprovados; sintaxe dos scripts Python importados e do helper de depuração conferida. A curadoria passou por avaliação independente com materiais parcialmente pagos, legendas em português, duração e certificado desconhecidos: apresentou seleção provisória e critérios baseados em prática, sem inventar verificações externas.
 - Instalar uma skill não instala automaticamente todos os CLIs, SDKs, serviços ou runtimes necessários ao seu uso. Não foram realizadas novas alterações na interface ou nas animações neste pedido.
 
+## Estudo de implementação — 03/10/2026
+
+- Pedido: ler e aplicar as skills pertinentes para estudar a evolução completa do site.
+- Base da auditoria: `b6747ff60e3918c0b26259a601a6a848d40b38a8`. Estrutura confirmada em `site/`, React 19.2.6 e Vite 8.0.13.
+- Entrega: [ESTUDO-IMPLEMENTACAO.md](ESTUDO-IMPLEMENTACAO.md), com aplicação das 15 skills, 22 itens priorizados, dependências, critérios de aceite, plano de design, curadoria, laboratório e animação. As propostas ainda não foram implementadas.
+- Problemas confirmados por inspeção/reprodução das expressões: pausa do foco arredonda segundos para minutos (601 vira 660); meta aceita 140 caracteres, mas restauração rejeita mais de 90; treino de autonomia não conserva resposta ainda não registrada; gravação de módulos silencia falha de armazenamento; meta description anuncia três níveis apesar dos cinco atuais.
+- Curadoria: estimativas genéricas e idioma inferido em resourceMeta precisam de identificação explícita e proveniência; não declarar as 342 referências individualmente verificadas.
+- Infraestrutura de validação: build e validadores aprovados. CI de PR cobre Markdown/links, mas falta build/tipos/interface. Há package-lock, mas não tsconfig de validação no projeto. O build Vite não substitui checagem de tipos.
+- Navegador desktop: início e módulo de APIs em escuro sem overflow horizontal, cinco níveis carregados; atalhos abriram com foco na busca e Escape retornou ao botão. Esta rodada não homologou celular, leitor de tela ou todos os estados dos temas.
+- Correção de alcance do registro anterior: 44px foi assegurado nos controles de tema; não em todas as ações existentes. Ações do Continue daqui com 33px foram observadas no desktop. Isso é uma oportunidade de conforto, sem concluir automaticamente violação do mínimo WCAG AA de 24px.
+- Furina: arte existente inspecionada visualmente; aparência preservada. Rive/Spine devem ser comparados em prova após preparar recortes, com condições de exportação/licença verificadas. Nenhum runtime adicionado.
+- Python Playwright, agent-browser CLI e dotnet indisponíveis. O navegador autorizado permitiu a amostragem desktop; os exemplos C# não foram compilados neste estudo.
+- Continuação recomendada: confiabilidade do armazenamento, cronômetro, rascunhos e regressões; depois backup, leitura/acessibilidade, curadoria e kits reproduzíveis. Preparação da arte pode avançar em paralelo, sem misturar migração de progresso e troca do renderer.
+
 ## Próxima troca de chat
 
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.
