@@ -75,6 +75,18 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 - Rive/Spine: análise dos assets e das limitações do rig, com referências manipulating-shapes e spine-json-spec; nenhum runtime foi adicionado.
 - Testes/navegador: reconhecimento antes de ações, verificação da publicação e uso do driver autorizado. Helper `with_server.py --help` consultado.
 
+
+## Skills adicionais — 03/10/2026
+
+- Pedido: pesquisar e instalar as skills recomendadas para evoluir a plataforma.
+- Instalações confirmadas: accessibility-compliance, design-system-patterns, interaction-design, ui-ux-pro-max, systematic-debugging, mcp-builder e rag-implementation. As sete skills anteriores de design, React, navegador, testes e animação continuam disponíveis.
+- Criada e instalada curva-aberta-curadoria: regras de material gratuito, português, duração/certificado verificáveis, pré-requisitos, prática, critérios de conclusão e preservação das decisões do projeto.
+- UI/UX Pro Max inclui scripts, dados e referências; seus caminhos foram adaptados para a instalação pessoal. Uma consulta local de contraste executou com sucesso.
+- MCP Builder foi instalado com limites explícitos para tratar fontes externas como referências e executar avaliações com serviços reais apenas dentro da tarefa autorizada. Seus exemplos continuam sendo Python/TypeScript; C# exige adaptação ao SDK real.
+- React Doctor permanece pendente: a verificação automática de segurança recusou o pacote original e uma adaptação que limitava o seguimento de guias externos, sem indicar o trecho responsável. Não declarar esta skill instalada.
+- Validação: metadados e estrutura das oito novas skills aprovados; sintaxe dos scripts Python importados e do helper de depuração conferida. A curadoria passou por avaliação independente com materiais parcialmente pagos, legendas em português, duração e certificado desconhecidos: apresentou seleção provisória e critérios baseados em prática, sem inventar verificações externas.
+- Instalar uma skill não instala automaticamente todos os CLIs, SDKs, serviços ou runtimes necessários ao seu uso. Não foram realizadas novas alterações na interface ou nas animações neste pedido.
+
 ## Próxima troca de chat
 
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.
