@@ -6,5 +6,6 @@ import "./design-refresh.css";
 import "./identity.css";
 import "./laboratory.css";
 import "./student-ui.css";
+import "./theme.css";
 
 createRoot(document.getElementById("root")!).render(<React.StrictMode><App /></React.StrictMode>);

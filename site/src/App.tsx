@@ -7,6 +7,7 @@ const Laboratory = lazy(() => import("./Laboratory"));
 const ModuleJourney = lazy(() => import("./ModuleJourney"));
 import StudyResume from "./StudyResume";
 import AnimatedMascot from "./AnimatedMascot";
+import ThemePicker from "./ThemePicker";
 import rawResources from "./data/resources.json";
 import curriculum from "./data/laboratory.json";
 
@@ -146,7 +147,10 @@ export default function Home() {
           <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
           <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Base no GitHub <ArrowUpRight size={15} /></a>
         </nav>
-        <button className="menu-button" aria-expanded={mobileMenu} aria-controls="main-nav" onClick={() => setMobileMenu(v => !v)} aria-label={mobileMenu ? "Fechar menu" : "Abrir menu"}>{mobileMenu ? <X /> : <Menu />}</button>
+        <div className="topbar-tools">
+          <ThemePicker />
+          <button className="menu-button" aria-expanded={mobileMenu} aria-controls="main-nav" onClick={() => setMobileMenu(v => !v)} aria-label={mobileMenu ? "Fechar menu" : "Abrir menu"}>{mobileMenu ? <X /> : <Menu />}</button>
+        </div>
       </div>
     </header>
 

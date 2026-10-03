@@ -1,0 +1,106 @@
+/* The existing light theme remains the baseline. Scoped selectors also cover lazy lesson CSS. */
+:root { color-scheme: light; --theme-action: #3b47cb; --theme-action-text: #fff; }
+.topbar-inner { gap: 24px; }
+.topnav { margin-left: auto; gap: 18px; }
+.topbar-tools { display: flex; align-items: center; gap: 10px; flex: none; }
+.theme-picker { display: flex; align-items: center; gap: 7px; color: var(--muted); }
+.theme-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.theme-picker select { min-height: 44px; width: 98px; padding: 9px 6px; background: var(--white); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; font: 600 14px 'DM Sans', Arial, sans-serif; cursor: pointer; }
+.theme-picker select:hover { border-color: var(--blue); }
+.theme-picker select:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.theme-picker option { background: var(--white); color: var(--ink); }
+@media (max-width: 1100px) {
+  .topnav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--white); padding: 16px 24px 22px; flex-direction: column; align-items: stretch; gap: 10px; z-index: 10; border-bottom: 1px solid var(--line); margin: 0; }
+  .topnav.open { display: flex; }
+  .menu-button { display: grid; place-items: center; }
+  .topbar-tools { margin-left: auto; }
+}
+@media (max-width: 620px) {
+  .topnav { top: 68px; }
+  .topbar-inner { padding: 0 16px; gap: 12px; }
+  .topbar-tools { gap: 4px; }
+  .theme-picker { gap: 4px; }
+  .theme-picker select { width: 88px; }
+  .brand { gap: 8px; }
+}
+@media (max-width: 380px) {
+  .brand-mark { display: none; }
+  .brand-name { font-size: 21px; }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #151c2a; --white: #1d2738; --ink: #e5eaf3;
+  --muted: #b4c0d4; --line: #41516a; --blue: #abb8ff;
+  --background: var(--paper); --foreground: var(--ink); --primary: var(--theme-action);
+  --primary-foreground: var(--theme-action-text); --border: var(--line); --ring: var(--blue);
+  --theme-action: #adbaff; --theme-action-text: #18213d;
+  --theme-hover: #273650; --theme-tint: #263452; --theme-code: #111a29;
+  --theme-success: #203c34; --theme-success-text: #a1e6c8;
+  --theme-warning: #403323; --theme-warning-text: #f0ce91;
+  --theme-danger: #462b38; --theme-danger-text: #ffb8cb;
+}
+html[data-theme="dark"] ::selection { background: #4b5c95; color: #fff; }
+html[data-theme="dark"] :is(button, a, input, select, textarea, summary):focus-visible { outline-color: var(--blue); }
+html[data-theme="dark"] :is(input, select, textarea) { color: var(--ink); background-color: var(--paper); border-color: var(--line); accent-color: var(--blue); }
+html[data-theme="dark"] :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
+html[data-theme="dark"] :is(.topbar, .topnav, .session-preview, .entry-routes button, .study-resume, .module-card, .resource-card, .start-resource, .command-palette) { background: var(--white); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] .detail-heading { background: var(--white) !important; }
+html[data-theme="dark"] :is(.entry-routes button:hover, .module-card:hover, .resource-card:hover, .start-resource:hover) { background: var(--theme-hover); border-color: var(--blue); }
+html[data-theme="dark"] :is(.area-filters button, .type-filters button, .show-more, .all-guide) { background: var(--white); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.area-filters button:hover, .type-filters button:hover) { border-color: var(--blue); }
+html[data-theme="dark"] :is(.session-preview-top>span:last-child, .module-id, .card-arrow, .method-band b, .detail-stamp, .closing-banner) { background: var(--theme-tint); color: var(--blue); border-color: var(--line); }
+html[data-theme="dark"] :is(.resume-grid article, .resume-grid article+article) { background: var(--paper); }
+html[data-theme="dark"] :is(.resume-grid article>span, .resume-note, .resource-context, .resource-bottom, .access-note, .catalog-note, .result-module, .breadcrumbs, .material-count, .detail-facts strong, .source-note, .source-note p) { color: var(--muted); }
+html[data-theme="dark"] :is(.resume-review-card.due, .resume-review-count, .access-note.paid) { background: var(--theme-warning); color: var(--theme-warning-text); }
+html[data-theme="dark"] :is(.session-preview li svg, .resume-note svg) { color: var(--theme-success-text); }
+html[data-theme="dark"] :is(.resource-bottom, .detail-facts, .card-bottom) { border-color: var(--line); }
+html[data-theme="dark"] :is(.session-code, .aside-note, .footer) { background: var(--theme-code); color: var(--ink); }
+html[data-theme="dark"] .aside-note p { color: var(--muted); }
+html[data-theme="dark"] .searchbar { background: var(--white); border-color: var(--line); box-shadow: none; }
+html[data-theme="dark"] :is(.command-search, .command-palette footer, .command-results button, .command-palette kbd) { color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.command-palette>p, .command-results small, .command-empty, .command-palette footer, .command-results button>span) { color: var(--muted); }
+html[data-theme="dark"] .command-results button:hover { background: var(--theme-hover); }
+html[data-theme="dark"] :is(.skip-link, .status-message:not(:empty)) { background: var(--white); color: var(--ink); border-color: var(--blue); }
+
+/* Lessons, practice, curriculum and resource metadata. */
+html[data-theme="dark"] :is(.journey-card, .journey-stage, .module-stage-checks, .module-kit, .curriculum-resources>a, .curriculum-pagination button, .lab-quiz-question, .lab-quiz-options button, .lab-recall aside, .lab-zero, .lab-zero-answer, .lab-level-options button, .lab-materials a, .lab-pagination button, .lab-quiz-feedback button, .lab .agent-demo-scene, .lab .agent-demo-controls button) { background: var(--white); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.journey-card-head, .journey-start, .curriculum-start, .curriculum-challenge, .curriculum-journey .lab-quiz, .lab-onboarding, .lab-prerequisite, .lab-guided, .lab-plain, .lab-zero-try, .lab-kit-shortcut, .lab-recall, .lab-focus-shell, .lab-final-rubric, .lab .workshop-intro, .lab .workshop-study, .lab .agent-demo) { background: var(--theme-tint); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.module-kit a, .lab-level-options button:last-child, .lab-concepts span, .milestone-map li, .cue, .lab .agent-demo-track span) { background: var(--theme-hover); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.lab-map button, .lab-map-shell>summary, .lab-focus-shell>summary, .lab-pagination button, .lab-quiz-question legend, .lab-quiz-heading>strong, .lab-quiz-feedback details summary, .curriculum-start>svg) { color: var(--ink); }
+html[data-theme="dark"] :is(.lab-map button.selected, .lab-map button:hover, .lab-lesson-index button:hover, .curriculum-resources>a:hover, .lab-materials a:hover, .module-kit a:hover, .journey-stage:hover, .lab-level-options button:hover:not(.active), .lab-quiz-options button:hover:not(:disabled)) { background: var(--theme-hover); color: var(--ink); border-color: var(--blue); }
+html[data-theme="dark"] :is(.lab-concepts span, .curriculum-journey .curriculum-steps li>span, .lab .workshop-step summary span) { background: var(--theme-tint); color: var(--blue); }
+html[data-theme="dark"] :is(.curriculum-block, .curriculum-focus, .curriculum-standard, .curriculum-prerequisite, .curriculum-situation, .curriculum-pagination, .journey-stages, .journey-card-head, .journey-materials, .journey-actions, .lab-map, .lab-lesson section, .lab-support details, .lab-guided details, .lab .workshop-intro dl>div, .lab .workshop-step, .lab-time-estimate, .milestone-map, .lab-rubric-table th, .lab-rubric-table td) { border-color: var(--line); }
+html[data-theme="dark"] :is(.lab-resource-label, .lab-support a, .lab-kit-shortcut a, .lab-zero-try a, .lab-time-estimate summary, .lab-notice, .curriculum-notice) { color: var(--blue); }
+html[data-theme="dark"] :is(.journey-intro p, .journey-progress small, .journey-progress strong span, .journey-start p, .journey-card-head p, .journey-actions>small, .module-stage-checks>p, .module-kit>p, .module-kit small, .module-review p, .curriculum-start p, .curriculum-standard p, .curriculum-prerequisite, .curriculum-block p, .curriculum-evidence small, .curriculum-resources small, .curriculum-note, .learning-small, .lab .lab-small, .lab-checks>small, .lab-phase h4>span, .lab-phase>p, .lab-map button small, .lab-level-picker p, .lab-level-options small, .lab-materials a>span:not(.lab-resource-label), .lab-materials small, .lab-quiz-heading p, .lab-quiz-heading>strong small, .milestone-map small, .milestone-map>div>p, .lab-zero-example span, .lab .workshop-intro dd small) { color: var(--muted); }
+html[data-theme="dark"] :is(.lab-zero-example, .curriculum-result, .module-review, .journey-stage.done:not(.active), .practice-feedback, .practice-schedule, .learning-recommendation, .cue.curiosity, .milestone-map li.earned, .lab .workshop-expected) { background: var(--theme-success); color: var(--ink); border-color: #78ba9e; }
+html[data-theme="dark"] :is(.cue.attention, .curriculum-challenge aside, .curriculum-migration, .lab-zero-reassure, .lab .workshop-variation, .lab-quiz-feedback, .lab-quiz-options button.incorrect) { background: var(--theme-warning); color: var(--ink); border-color: var(--theme-warning-text); }
+html[data-theme="dark"] .curriculum-challenge aside svg { color: var(--theme-warning-text); }
+html[data-theme="dark"] :is(.lab-quiz-feedback.correct, .lab-quiz-options button.correct) { background: var(--theme-success); border-color: #78ba9e; }
+html[data-theme="dark"] .lab-deliverable { background: var(--theme-tint); border-color: var(--blue); }
+html[data-theme="dark"] .practice-case { background: var(--theme-tint); color: var(--ink); }
+html[data-theme="dark"] :is(.lab-welcome, .journey-closing, .focus-card, .lab-guided-example, .curriculum-journey .curriculum-example, .lab-lesson pre) { background: var(--theme-code); color: var(--ink); }
+html[data-theme="dark"] :is(.lab-welcome .eyebrow, .lab-progress small, .lab-progress>strong span, .focus-heading p, .focus-field-help, .focus-settings, .focus-note, .focus-clock span) { color: var(--muted); }
+html[data-theme="dark"] :is(.focus-suggestion, .focus-presets>button, .focus-clock) { background: var(--theme-tint); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] .focus-complete { background: var(--theme-success); color: var(--ink); }
+html[data-theme="dark"] .lab-rubric-table thead { background: var(--theme-hover); }
+html[data-theme="dark"] .lab-recall-feedback { background: var(--theme-success); color: var(--ink); }
+html[data-theme="dark"] .lab-quiz-note { color: var(--muted); }
+html[data-theme="dark"] .lab-quiz-reset { color: var(--blue); }
+html[data-theme="dark"] .focus-suggestion button { color: var(--theme-warning-text); }
+
+/* A lighter blue reads as a link; a filled action has its own foreground. */
+html[data-theme="dark"] :is(.intro-main-action, .session-preview button, .closing-banner button, .area-filters button.active, .type-filters button.active, .lab-action, .focus-card .lab-action, .focus-presets>button.active, .lab-answer-toggle, .lab-level-options button.active, .lab-level-options button:last-child.active, .lab-material-filter button.active, .journey-stage.active, .learning-path button, .practice-studio button, .done-button, .lab .agent-demo-controls button:last-child, .lab .agent-demo-track .active) { background: var(--theme-action); color: var(--theme-action-text); border-color: var(--theme-action); }
+html[data-theme="dark"] :is(.intro-main-action:hover, .session-preview button:hover, .closing-banner button:hover, .lab-action:hover:not(:disabled), .learning-path button:hover, .practice-studio button:hover) { background: #c4cdff; color: var(--theme-action-text); }
+html[data-theme="dark"] .lab-level-options button.active small { color: var(--theme-action-text); }
+html[data-theme="dark"] .module-card:hover .card-arrow { background: var(--theme-action); color: var(--theme-action-text); }
+
+/* Furina keeps her artwork and animation; only surrounding controls follow the theme. */
+html[data-theme="dark"] :is(.furina-guide, .furina-speech) { color: var(--ink); }
+html[data-theme="dark"] :is(.furina-speech, .furina-controls button, .furina-options button, .furina-return) { background: var(--white); color: var(--ink); border-color: var(--line); }
+html[data-theme="dark"] :is(.furina-speech p, .furina-speech-name small, .furina-speech-foot, .furina-speech-head button, .furina-speech-foot button) { color: var(--muted); }
+html[data-theme="dark"] :is(.furina-speech .furina-extra, .furina-options button.active, .furina-speech button:hover, .furina-controls button:hover) { background: var(--theme-tint); color: var(--blue); border-color: var(--blue); }
+html[data-theme="dark"] :is(.furina-controls button.active, .furina-options button.attention) { background: var(--theme-danger); color: var(--theme-danger-text); border-color: var(--theme-danger-text); }
+html[data-theme="dark"] .furina-more { color: var(--blue); }
+html[data-theme="dark"] .furina-options { border-color: var(--line); }
+html[data-theme="dark"] :is(.furina-guide button:focus-visible, .furina-return:focus-visible) { outline-color: var(--blue); }
