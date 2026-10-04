@@ -65,4 +65,4 @@ Variação: acrescente uma fonte conflitante, crie uma pergunta de avaliação a
 - Guarde uma pergunta sem resposta no corpus e explique a recusa.
 - Declare os limites: fixtures, sem autorização de produção, sem avaliação de LLM, sem envio de mensagens.
 
-Referência do formato de testes: [documentação oficial Bruno](https://docs.usebruno.com/agents/use-cases). Referência de versões: [releases oficiais do SDK C# MCP](https://github.com/modelcontextprotocol/csharp-sdk/releases).
+Referência do formato de testes: [documentação oficial Bruno](https://docs.usebruno.com/testing/tests/introduction). Referência de versões: [releases oficiais do SDK C# MCP](https://github.com/modelcontextprotocol/csharp-sdk/releases).

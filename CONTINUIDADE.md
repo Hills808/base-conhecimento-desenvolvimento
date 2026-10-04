@@ -114,6 +114,14 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 - Pendências mantidas: rig profissional final da Furina, cobertura WCAG e dispositivo físico, revisão individual da curadoria e sincronização automática com backend. A22 é atendido parcialmente por transferência manual de backup, não por conta em nuvem.
 - Detalhes e estado por item: seção de execução em ESTUDO-IMPLEMENTACAO.md.
 
+## Publicação e verificação — 04/10/2026 UTC (03/10 em São Paulo)
+
+- Implementação publicada no commit `c6c4cdd3fb34a15a1cc387653e5e76320db81600`; árvore remota idêntica à validada localmente. Deploy Pages, checagem de interface e workflow .NET aprovados.
+- Checagem de conteúdo encontrou uma referência Bruno 404 no README novo. Corrigida para a introdução oficial de testes e ZIP regenerado; não foi excluído o erro da verificação.
+- Navegador desktop público: tema Escuro conservado após recarga; foco pausado em 24:55 restaurado em 24:55 com a meta intacta; rascunho conservado ao avançar e voltar de etapa sem registrar tentativa; filtro HTTP/Português retornou quatro materiais e refletiu a seleção na URL; controles da dica da Furina responderam; cache offline concluiu preparação.
+- Textos temporários usados nos testes foram esvaziados e foco reiniciado; nenhuma entrega ou tentativa foi registrada. Sem erros de aplicação observados; mensagens de erro pertenciam à extensão do navegador.
+- Evidência visual desktop: `docs/evidencias/curva-aberta-escuro-20261004.jpg`. Offline foi preparado, mas não se simulou perda de rede; importação interativa e dispositivo físico permanecem fora desta amostragem. Importação e conflitos têm regressões automatizadas.
+
 ## Próxima troca de chat
 
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.
