@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Curva Aberta API fictícia",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5080"
+    }
+  ],
+  "paths": {
+    "/clientes/{id}/perfil": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "demo-1"
+              ]
+            }
+          },
+          {
+            "name": "cenario",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "completo",
+                "parcial",
+                "campo-ausente",
+                "negado",
+                "contrato-invalido"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Envelope de estudo; o cenário contrato-invalido viola deliberadamente o schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Fixture de acesso recusado, sem data."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Perfil": {
+        "type": "object",
+        "required": [
+          "nome"
+        ],
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "biografia": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Envelope": {
+        "type": "object",
+        "required": [
+          "status",
+          "data",
+          "source",
+          "missingFields"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "resolved",
+              "partial"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/Perfil"
+          },
+          "source": {
+            "type": "string"
+          },
+          "missingFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

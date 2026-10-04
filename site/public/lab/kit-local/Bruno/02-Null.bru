@@ -1,0 +1,17 @@
+meta {
+  name: Null
+  type: http
+  seq: 2
+}
+get {
+  url: {{baseUrl}}/clientes/demo-1/perfil?cenario=parcial
+  body: none
+  auth: none
+}
+tests {
+  test("Status e evidência: Null", function () {
+    expect(res.getStatus()).to.equal(200);
+    const body = res.getBody();
+    expect(body.data.biografia).to.equal(null);
+  });
+}

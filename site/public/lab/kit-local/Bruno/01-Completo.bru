@@ -1,0 +1,17 @@
+meta {
+  name: Completo
+  type: http
+  seq: 1
+}
+get {
+  url: {{baseUrl}}/clientes/demo-1/perfil?cenario=completo
+  body: none
+  auth: none
+}
+tests {
+  test("Status e evidência: Completo", function () {
+    expect(res.getStatus()).to.equal(200);
+    const body = res.getBody();
+    expect(body.data.biografia).to.be.a("string");
+  });
+}

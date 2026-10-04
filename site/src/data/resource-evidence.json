@@ -1,0 +1,1478 @@
+{
+  "https://www.open.edu/openlearn/education-development/learning-how-learn/content-section-0": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia os exemplos iniciais e a parte de objetivos. Use a explicação em português desta etapa para aplicar ao seu plano."
+    ],
+    "levels": [
+      {
+        "module": 0,
+        "level": 0
+      },
+      {
+        "module": 0,
+        "level": 1
+      },
+      {
+        "module": 0,
+        "level": 2
+      },
+      {
+        "module": 0,
+        "level": 3
+      },
+      {
+        "module": 0,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://roadmap.sh/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use para localizar uma lacuna e seu pré-requisito. Não tente cumprir o mapa inteiro."
+    ],
+    "levels": [
+      {
+        "module": 0,
+        "level": 0
+      },
+      {
+        "module": 0,
+        "level": 2
+      },
+      {
+        "module": 0,
+        "level": 3
+      },
+      {
+        "module": 0,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://www.cursoemvideo.com/curso/curso-de-algoritmo/": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Comece pelas aulas de introdução, variáveis e condições. Volte para simular o desconto antes de avançar."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia estrutura do programa, tipos, condições e funções; use o exemplo mínimo desta etapa."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 0
+      },
+      {
+        "module": 1,
+        "level": 1
+      },
+      {
+        "module": 1,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/shows/csharp-for-beginners/": {
+    "language": "Inglês · página traduzida",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Assista ao episódio correspondente a executar, variáveis ou depuração. A página é traduzida; confira legendas no player."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Um episódio por sessão",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/standard/collections/": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Compare List e Dictionary pela forma de acesso; não memorize todas as coleções."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 2
+      },
+      {
+        "module": 1,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Siga criação da solução e primeiro teste que falha; depois aplique aos casos do seu catálogo."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 3
+      },
+      {
+        "module": 1,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/standard/serialization/system-text-json/customize-properties": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia JsonPropertyName e política de nomes; compare className com NomeClasse.",
+      "Estude JsonPropertyName e política de nomes para entender diferenças entre JSON e C#."
+    ],
+    "levels": [
+      {
+        "module": 1,
+        "level": 4
+      },
+      {
+        "module": 2,
+        "level": 2
+      },
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Web/HTTP": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia visão geral e mensagens HTTP; localize método, status, headers e corpo na sua requisição."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 0
+      },
+      {
+        "module": 2,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/shows/back-end-web-development-with-dotnet-for-beginners/": {
+    "language": "Inglês · página traduzida",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Veja introdução a APIs e implementação. Narração em inglês; a página traduzida ajuda a localizar cada episódio."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 0
+      },
+      {
+        "module": 2,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Um episódio por sessão",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.usebruno.com/testing/tests/introduction": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia como validar status e campos; introduza uma expectativa errada para conferir que falha.",
+      "Use somente a estrutura test/expect e verificações de status e corpo; não é preciso aprender toda a API de scripts."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 1
+      },
+      {
+        "module": 9,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/first-web-api?view=aspnetcore-10.0": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Implemente uma GET, teste a porta local no Bruno e só depois extraia DTO e serviço.",
+      "Escolha as instruções do seu editor e a versão do SDK instalado. Concentre-se em GET, DTO e respostas; adapte para os dados fictícios."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 2
+      },
+      {
+        "module": 2,
+        "level": 4
+      },
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/aspnet/core/security/authorization/resource-based?view=aspnetcore-10.0": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia IAuthorizationService e a verificação após carregar o recurso; aplique a identidades fictícias.",
+      "Leia IAuthorizationService e autorização com recurso. Adapte o conceito; o exemplo de interface não é o seu backend pronto."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 3
+      },
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/core/resilience/http-resilience": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia timeout e repetição de métodos não seguros; explique como evitar duplicar uma escrita."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/aspnet/core/test/integration-tests?view=aspnetcore-10.0": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use WebApplicationFactory no projeto de estudo; identidades simuladas pertencem só ao teste.",
+      "Use WebApplicationFactory e cenários de autenticação simulada apenas no ambiente de teste."
+    ],
+    "levels": [
+      {
+        "module": 2,
+        "level": 4
+      },
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Learn_web_development": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Comece por estrutura HTML e CSS; execute uma página mínima antes de estudar frameworks."
+    ],
+    "levels": [
+      {
+        "module": 3,
+        "level": 0
+      },
+      {
+        "module": 3,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia funções, promises e tratamento de erros de acordo com o passo que bloqueia a interface."
+    ],
+    "levels": [
+      {
+        "module": 3,
+        "level": 0
+      },
+      {
+        "module": 3,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Accessibility": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia HTML, controles e ferramentas. Teste uma tarefa com teclado depois de cada ajuste."
+    ],
+    "levels": [
+      {
+        "module": 3,
+        "level": 2
+      },
+      {
+        "module": 3,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Web/Performance": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Escolha uma medida ligada à tarefa; registre antes/depois no mesmo cenário."
+    ],
+    "levels": [
+      {
+        "module": 3,
+        "level": 2
+      },
+      {
+        "module": 3,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://playwright.dev/docs/intro": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Crie um teste do fluxo de busca e erro usando seletores por papel e nome; siga os passos da documentação."
+    ],
+    "levels": [
+      {
+        "module": 3,
+        "level": 3
+      },
+      {
+        "module": 3,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/training/paths/get-started-querying-with-transact-sql/": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Estude SELECT, filtros e JOIN. O material usa T-SQL; o kit tem SQL simples para SQLite/PostgreSQL."
+    ],
+    "levels": [
+      {
+        "module": 4,
+        "level": 0
+      },
+      {
+        "module": 4,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://www.postgresql.org/docs/current/tutorial.html": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use SELECT e joins; confira a contagem e o registro sem categoria."
+    ],
+    "levels": [
+      {
+        "module": 4,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://developers.google.com/machine-learning/crash-course?hl=pt-br": {
+    "language": "Português · tradução disponível",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Estude conjuntos de dados, treino/teste e métricas antes de redes neurais."
+    ],
+    "levels": [
+      {
+        "module": 4,
+        "level": 1
+      },
+      {
+        "module": 4,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://scikit-learn.org/stable/common_pitfalls.html": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia inconsistent preprocessing e data leakage; compare com o exemplo em português desta etapa."
+    ],
+    "levels": [
+      {
+        "module": 4,
+        "level": 2
+      },
+      {
+        "module": 4,
+        "level": 3
+      },
+      {
+        "module": 4,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://scikit-learn.org/stable/modules/cross_validation.html": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia holdout e validação cruzada. Escolha divisão temporal quando a pergunta depende de tempo."
+    ],
+    "levels": [
+      {
+        "module": 4,
+        "level": 3
+      },
+      {
+        "module": 4,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/generative-ai-for-beginners": {
+    "language": "Português · traduções por lição",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use as traduções pt-br disponíveis. Comece pelos conceitos e só depois acompanhe ferramentas/RAG."
+    ],
+    "levels": [
+      {
+        "module": 5,
+        "level": 0
+      },
+      {
+        "module": 5,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Compare recuperação, geração e avaliação; use simulação local antes de escolher serviços com custos."
+    ],
+    "levels": [
+      {
+        "module": 5,
+        "level": 0
+      },
+      {
+        "module": 5,
+        "level": 2
+      },
+      {
+        "module": 5,
+        "level": 3
+      },
+      {
+        "module": 5,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://www.anthropic.com/engineering/building-effective-agents": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia routing e workflows; desenhe contrato e handoff antes de usar framework."
+    ],
+    "levels": [
+      {
+        "module": 5,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://agentskills.io/specification": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Confira frontmatter e estrutura de SKILL.md; acrescente limites e recursos da sua tarefa.",
+      "Consulte name, description e SKILL.md. allowed-tools é experimental: sua presença não substitui controle de permissão no runtime."
+    ],
+    "levels": [
+      {
+        "module": 5,
+        "level": 2
+      },
+      {
+        "module": 5,
+        "level": 4
+      },
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia token passthrough, audience e confused deputy. Registre quem autoriza cada chamada; nada de credencial real.",
+      "Depois do exemplo em português: revise limites de confiança, token passthrough, SSRF e escopos mínimos. Escolha um risco e escreva um teste negativo.",
+      "Revise audiência de tokens, ausência de token passthrough e confused deputy. Aplique a servidores de estudo com identidade simulada apenas em testes."
+    ],
+    "levels": [
+      {
+        "module": 5,
+        "level": 3
+      },
+      {
+        "module": 5,
+        "level": 4
+      },
+      {
+        "module": 9,
+        "level": 3
+      },
+      {
+        "module": 9,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://git-scm.com/book/pt-br/v2": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia snapshots, branches e desfazer alterações; pratique num repositório de estudo."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 0
+      },
+      {
+        "module": 7,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learngitbranching.js.org/?locale=pt_BR": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Faça os exercícios de commits e branches; desenhe o histórico antes do comando."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/actions/get-started/quickstart": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Adapte o build e teste ao seu projeto; comprove que a regra quebrada deixa o workflow vermelho."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 1
+      },
+      {
+        "module": 6,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.docker.com/get-started/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Rode um exemplo pequeno e confira configuração; não copie segredos para a imagem."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://opentelemetry.io/docs/getting-started/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Entenda traces, métricas e logs; implemente só a correlação necessária ao cenário de estudo."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/actions/how-tos/secure-your-work": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Revise permissões mínimas, dependências e dados não confiáveis no workflow."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 2
+      },
+      {
+        "module": 6,
+        "level": 3
+      },
+      {
+        "module": 7,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Confira revisões e regras disponíveis no plano do repositório; simule o processo se o recurso exigir outro plano."
+    ],
+    "levels": [
+      {
+        "module": 6,
+        "level": 3
+      },
+      {
+        "module": 6,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use objetivo, execução e exemplos; confira os comandos com uma pessoa nova."
+    ],
+    "levels": [
+      {
+        "module": 7,
+        "level": 0
+      },
+      {
+        "module": 7,
+        "level": 2
+      },
+      {
+        "module": 7,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia por que a licença importa; registre direitos e limites para o uso pretendido."
+    ],
+    "levels": [
+      {
+        "module": 7,
+        "level": 0
+      },
+      {
+        "module": 7,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/get-started/exploring-projects-on-github/contributing-to-a-project": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia contribuição, fork e revisão. Pratique no seu fork antes de enviar a mantenedores."
+    ],
+    "levels": [
+      {
+        "module": 7,
+        "level": 1
+      },
+      {
+        "module": 7,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://docs.github.com/pt/repositories/releasing-projects-on-github/about-releases": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Planeje versão, changelog e o que cada release inclui; confira compatibilidade."
+    ],
+    "levels": [
+      {
+        "module": 7,
+        "level": 2
+      },
+      {
+        "module": 7,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://kultivi.com/curso/ingles?lang=pt": {
+    "language": "Português",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Comece por frases e verbos básicos; aplique três termos à sua tarefa técnica. Confira o acesso atual na plataforma."
+    ],
+    "levels": [
+      {
+        "module": 8,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "Uma aula por sessão",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://www.freecodecamp.org/learn/a2-english-for-developers": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Pratique uma unidade curta de instruções e atualizações de trabalho; compare com o seu próprio exemplo."
+    ],
+    "levels": [
+      {
+        "module": 8,
+        "level": 0
+      },
+      {
+        "module": 8,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learnenglish.britishcouncil.org/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Escolha listening/writing no nível adequado. Confira exercícios e respostas antes de subir a dificuldade."
+    ],
+    "levels": [
+      {
+        "module": 8,
+        "level": 1
+      },
+      {
+        "module": 8,
+        "level": 2
+      },
+      {
+        "module": 8,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://writeandimprove.com/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Use o feedback para revisar uma versão própria do texto; feedback automático não certifica proficiência."
+    ],
+    "levels": [
+      {
+        "module": 8,
+        "level": 1
+      },
+      {
+        "module": 8,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/en-us/style-guide/welcome/": {
+    "language": "Inglês",
+    "certificate": "Certificado não informado; não é requisito da etapa",
+    "uses": [
+      "Leia clareza e escolha de palavras; revise uma issue ou PR sem usar frases mais complexas que o necessário."
+    ],
+    "levels": [
+      {
+        "module": 8,
+        "level": 3
+      },
+      {
+        "module": 8,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "25–40 min no trecho indicado",
+    "source": "Seleção editorial da trilha",
+    "verifiedAt": null
+  },
+  "https://www.youtube.com/watch?v=9SbUPqKEWcY": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Assista para reconhecer pedido, resposta e método. Ignore a parte de implementação na primeira vez."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia o início e o exemplo de requisição/resposta. Não precisa estudar cookies e headers avançados agora."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://aws.amazon.com/pt/what-is/api/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia a explicação inicial e API REST. Volte ao seu próprio exemplo de requisição."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://docs.usebruno.com/introduction/quick-start": {
+    "language": "Inglês",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Siga somente seções 1, 2, 4 e 5 com o passo a passo em português abaixo. Ignore POST, scripts e autenticação por enquanto."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 0
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/microsoft-cloud/dev/dev-proxy/concepts/what-is-openapi-spec": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Entenda documento, operações e schemas. Swagger UI é uma ferramenta que exibe/testa esse contrato; não implemente nada ainda."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://json-schema.org/learn": {
+    "language": "Inglês",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Consulte object, properties e required. Use o exemplo fornecido como ponto de partida."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/pt-BR/04-tool-use/README.md": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Apoio depois do contrato resolvido: compare descrição, argumentos e execução. Exemplos de frameworks são opcionais nesta etapa."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/agents": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia componentes, ferramentas e handoffs. Desenhe primeiro o fluxo; implementar um framework vem depois."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      },
+      {
+        "module": 9,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/ai-agents-for-beginners/blob/main/translations/pt-BR/01-intro-to-ai-agents/README.md": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia os componentes de um agente e compare modelo, tool e orquestração com a simulação desta etapa. O código completo do curso não é pré-requisito hoje."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/agents/agent-evaluation/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Escolha critérios observáveis para o seu conjunto de testes. Uma resposta bonita não comprova fidelidade ao contrato."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 1
+      },
+      {
+        "module": 9,
+        "level": 3
+      },
+      {
+        "module": 9,
+        "level": 3
+      },
+      {
+        "module": 9,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/training/paths/get-started-c-sharp-part-1/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Faça o primeiro módulo antes de abrir DTOs: saída no console, variáveis e operações. Não exige conhecimento prévio."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://www.youtube.com/playlist?list=PLk6PnAig6xXKg988f8Ewq1iFm4_ZH9nA5": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Selecione ambiente, variáveis, decisões, métodos, classes e listas; pratique entre as aulas. Interfaces e templates antigos podem diferir."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/ermogenes/aulas-programacao-csharp/blob/master/content/debug.md": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Siga breakpoint e inspeção de variáveis. Faça isso sobre a transformação do seu JSON."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/csharp/asynchronous-programming/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia a introdução e a diferença entre operação assíncrona e trabalho bloqueante. Refaça o exemplo em um método pequeno."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/training/paths/aspnet-core-web-app/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Ponte para a próxima etapa: depois de variáveis, métodos e DTOs, estude o módulo de API Web. Não avance enquanto não executar o console e explicar null."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/training/modules/build-web-api-aspnet-core/": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Faça o módulo guiado para observar projeto, endpoint e execução. Se faltar C#, retorne à etapa anterior."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/00-Introduction/README.md": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia a introdução e identifique host, cliente e servidor. Não execute todos os exemplos do repositório; use o kit guiado desta etapa."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/01-CoreConcepts/README.md": {
+    "language": "Português · tradução",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Estude host, cliente, servidor, tools, resources e prompts. A tradução pode atrasar: confirme APIs do SDK na fonte oficial."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      },
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://www.youtube.com/watch?v=YWLD1jNTFgA": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Sessão em português para observar descoberta e chamadas. Assista em blocos; instalações cloud/Docker não são necessárias para nosso exemplo stdio. O vídeo pode usar SDK anterior: comandos atuais do kit são referência."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://csharp.sdk.modelcontextprotocol.io/v1/concepts/getting-started.html": {
+    "language": "Inglês",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Siga a documentação v1 junto de um pacote compatível. Não misture exemplos v1/v2 nem troque versões durante o exercício."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/modelcontextprotocol/inspector": {
+    "language": "Inglês",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Liste tools, inspecione o schema e execute chamadas manualmente. O exercício não exige contratar um modelo."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://www.youtube.com/watch?v=deprLB_y6Ho": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Use como visão conceitual antes do código. Para comandos e versões, siga o SDK oficial indicado acima."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture": {
+    "language": "Inglês",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Aprofundamento: compare host, client, server, transporte e versão com o SDK do seu exemplo. Não misture código de versões diferentes."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/core/extensions/httpclient-factory": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Estude cliente tipado, configuração e uso por injeção. Implemente timeout e propagação de cancelamento."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/agent-framework/get-started/your-first-agent": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Escolha C# e um provedor disponível. O exemplo pode exigir conta e consumo pago; comece com respostas simuladas se necessário."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/agent-framework/agents/tools/local-mcp-tools": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Conecte apenas seu servidor de teste e confirme descoberta, argumentos e resultado da tool. Respeite versões compatíveis do framework e SDK."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 2
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://github.com/microsoft/mcp-for-beginners/blob/main/translations/pt-BR/02-Security/README.md": {
+    "language": "Português · tradução",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Identifique fronteiras de confiança, uso de tokens e ataques a ferramentas. Converta cada risco em um teste local."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/dotnet/ai/conceptual/rag": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Estude recuperação, fragmentação e metadados. Construa primeiro uma linha de base simples."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://code.claude.com/docs/pt/skills": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Siga criar uma Skill, descrição e arquivos de suporte. As permissões específicas do Claude Code precisam ser verificadas no host usado."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/agent-framework/agents/skills": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia estrutura, descoberta e carregamento. O exemplo usa um framework específico; compare com o formato aberto de Agent Skills."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 3
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  },
+  "https://learn.microsoft.com/pt-br/azure/devops/repos/git/pull-requests?view=azure-devops": {
+    "language": "Português",
+    "certificate": "Certificado não verificado",
+    "uses": [
+      "Leia criação, descrição, revisão e políticas. O mesmo raciocínio se aplica ao PR de estudo no GitHub."
+    ],
+    "levels": [
+      {
+        "module": 9,
+        "level": 4
+      }
+    ],
+    "timeEstimate": "Tempo não informado",
+    "source": "Seleção editorial do laboratório",
+    "verifiedAt": null
+  }
+}

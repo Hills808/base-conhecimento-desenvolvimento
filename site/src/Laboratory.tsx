@@ -10,6 +10,7 @@ import LearningPath from './LearningPath';
 import PracticeStudio from './PracticeStudio';
 import mastery from './data/lab-mastery.json';
 import StudyFocus from "./StudyFocus";
+import { readLabProgress as readProgress, saveLabProgress, isLabVerified } from "./labProgress";
 import { guidance } from "./studyGuidance";
 
 const { steps, phases } = curriculum;
@@ -20,31 +21,13 @@ const levelEntry = [
   { name: "Confiabilidade", test: "Já consigo executar API e tool localmente." },
   { name: "Projeto avançado", test: "Já testei falhas, permissões e regressões; quero integrar e defender decisões." }
 ];
-const storageKey = "curva-aberta-laboratorio-v2";
-type Progress = { done: string[]; checks: Record<string, boolean>; passed: string[]; drafts: Record<string, string>; last: number; completedAt: Record<string, string>; reviews: Record<string, boolean> };
-const empty: Progress = { done: [], checks: {}, passed: [], drafts: {}, last: 0, completedAt: {}, reviews: {} };
+type Progress = import('./labProgress').LabProgress;
 const validStep = (n: number) => Number.isInteger(n) && n >= 0 && n < steps.length;
 function fromUrl() {
   const raw = new URLSearchParams(location.search).get("etapa");
   if (raw === null) return null;
   const n = Number(raw) - 1;
   return validStep(n) ? n : null;
-}
-function readProgress(): Progress {
-  try {
-    const value = JSON.parse(localStorage.getItem(storageKey) || "null");
-    if (!value || typeof value !== "object") return empty;
-    const done = Array.isArray(value.done) ? [...new Set<string>(value.done.filter((id: unknown) => typeof id === "string" && steps.some(s => s.id === id)))] : [];
-    const checks: Record<string, boolean> = {};
-    steps.forEach(s => s.checks.forEach((_, i) => { checks[`${s.id}-${i}`] = value.checks?.[`${s.id}-${i}`] === true; }));
-    const passed = Array.isArray(value.passed) ? [...new Set<string>(value.passed.filter((id: unknown) => typeof id === "string" && steps.some(s => labCheckpoints[s.id].some((_, i) => id === `${s.id}-${i}`))))] : [];
-    const drafts: Record<string, string> = {};
-    steps.forEach(s => { if (typeof value.drafts?.[s.id] === "string") drafts[s.id] = value.drafts[s.id].slice(0, 700); });
-    const completedAt: Record<string, string> = {};
-    const reviews: Record<string, boolean> = {};
-    done.forEach(id => { if (typeof value.completedAt?.[id] === "string") completedAt[id] = value.completedAt[id]; if (value.reviews?.[id] === true) reviews[id] = true; });
-    return { done, checks, passed, drafts, last: validStep(value.last) ? value.last : 0, completedAt, reviews };
-  } catch { return empty; }
 }
 
 export default function Laboratory() {
@@ -60,7 +43,7 @@ export default function Laboratory() {
   const heading = useRef<HTMLHeadingElement>(null);
   const lesson = useRef<HTMLElement>(null);
   const step = steps[current];
-  const finished = progress.done.includes(step.id);
+  const finished = Boolean(isLabVerified(progress, step.id));
   const checksReady = step.checks.every((_, i) => progress.checks[`${step.id}-${i}`]);
   const quizReady = labCheckpoints[step.id].every((_, i) => progress.passed.includes(`${step.id}-${i}`));
   const ready = checksReady && quizReady;
@@ -100,10 +83,14 @@ export default function Laboratory() {
     window.addEventListener("popstate", sync);
     return () => window.removeEventListener("popstate", sync);
   }, []);
+  useEffect(() => {
+    const refresh = () => setProgress(readProgress());
+    window.addEventListener('storage', refresh); window.addEventListener('curva-aberta-backup-restored', refresh);
+    return () => { window.removeEventListener('storage', refresh); window.removeEventListener('curva-aberta-backup-restored', refresh); };
+  }, []);
   function save(next: Progress) {
     setProgress(next);
-    try { localStorage.setItem(storageKey, JSON.stringify(next)); window.dispatchEvent(new Event("curva-aberta-progress-change")); }
-    catch { setNotice("Seu navegador não permitiu salvar. O progresso vale somente nesta sessão."); }
+    if (!saveLabProgress(next)) setNotice("Seu navegador não permitiu salvar. O progresso vale somente nesta visita.");
   }
   function go(index: number) {
     if (!validStep(index)) return;
@@ -174,7 +161,7 @@ export default function Laboratory() {
         <nav className="lab-lesson-index" aria-label="Atalhos desta aula"><span>Nesta aula</span>{[[".lab-essential","Entender"],[".lab-study","Materiais"],[".lab-practice","Praticar"],[".lab-quiz","Testar"],[".lab-checks","Entrega"]].map(([target,label])=><button key={target} onClick={()=>visitSection(target)}>{label}</button>)}</nav>
         <header><span className="eyebrow">NÍVEL {step.phase} · ETAPA {String(current+1).padStart(2,"0")} DE {steps.length} · {step.hours}</span><h2 ref={heading} tabIndex={-1}>{step.title}</h2><p className="lab-goal">{step.goal}</p><WorkshopIntro key={step.id} id={step.id}/><p className="lab-prerequisite"><strong>O que é bom saber antes:</strong> {step.prerequisite}</p></header>
         <section className="lab-essential"><h3>01. Entenda o essencial</h3><div className="lab-concepts">{step.concepts.map(c=><span key={c}>{c}</span>)}</div>{step.lesson.map(p=><p key={p}>{p}</p>)}{step.example && <pre tabIndex={0} aria-label="Exemplo didático"><code>{step.example}</code></pre>}</section>
-        <details className="lab-focus-shell"><summary>Quer usar um cronômetro? Modo foco opcional</summary><StudyFocus stepId={step.id} stepTitle={step.title} suggestedGoal={guide.focusGoal} /></details>
+        <details className="lab-focus-shell"><summary>Quer usar um cronômetro? Modo foco opcional</summary><StudyFocus key={step.id} stepId={step.id} stepTitle={step.title} suggestedGoal={guide.focusGoal} /></details>
         <section className="learning-cues" aria-label="Dicas desta etapa"><h3>Entre no ponto certo</h3><div className="learning-cues-grid"><article className="cue tip"><Lightbulb size={19}/><div><strong>Dica prática</strong><p>{guide.tip}</p></div></article><article className="cue attention"><ShieldAlert size={19}/><div><strong>Ponto de atenção</strong><p>{guide.attention}</p></div></article><article className="cue curiosity"><Sparkles size={19}/><div><strong>Curiosidade técnica</strong><p>{guide.curiosity}</p></div></article></div></section>
         <section className="lab-study"><h3>02. Estude com apoio</h3><WorkshopStudy id={step.id}/><p className="lab-small">O cartão principal indica o primeiro material; leia o trecho indicado, não o curso inteiro. Depois volte para o exemplo guiado. Conteúdos em inglês têm instruções em português nesta página.</p><div className="lab-material-filter" role="group" aria-label="Idioma dos materiais"><button className={effectiveLanguage === "all" ? "active" : ""} aria-pressed={effectiveLanguage === "all"} onClick={()=>setLanguageFilter("all")}>Todos os materiais ({step.resources.length})</button><button className={effectiveLanguage === "pt" ? "active" : ""} aria-pressed={effectiveLanguage === "pt"} disabled={!portugueseCount} onClick={()=>setLanguageFilter("pt")}>Só em português ({portugueseCount})</button></div>{!portugueseCount && <p className="lab-small">Ainda não há tutorial oficial desta ferramenta em português nesta etapa. O exemplo resolvido abaixo explica a operação em português.</p>}<div className="lab-materials">{visibleResources.map((r,index)=><a key={r.url} href={r.url} target="_blank" rel="noopener noreferrer"><span className="lab-resource-label">{index===0?"COMECE POR AQUI":"APOIO"} · {r.format} · {r.language}</span><strong>{r.title} <ExternalLink size={15}/></strong><span>{r.focus}</span><small>Abre em outra aba</small></a>)}</div></section>
         <section className="lab-practice"><h3>03. Faça com apoio, depois sozinho</h3><LabWorkshop key={step.id} id={step.id}/><h4 className="lab-your-turn">Agora é sua vez · tente sem olhar a resposta</h4><p className="lab-small">Pode consultar o exemplo acima se travar. O objetivo é entender o caminho, não acertar de primeira.</p><ol className="lab-tasks">{step.tasks.map(t=><li key={t}>{t}</li>)}</ol>{step.id === "http" && <p className="lab-kit-shortcut">O arquivo citado está aqui: <a href={kit+"primeiro-json.json"} target="_blank" rel="noopener noreferrer">abrir primeiro-json.json <ExternalLink size={15}/></a>. É um exemplo curto e fictício para praticar.</p>}<div className="lab-deliverable"><strong>O que guardar</strong><p>{step.deliverable}</p></div><details className="lab-help"><summary>Travou na entrega? Confira este ponto</summary><p>{step.help}</p></details></section>
@@ -188,7 +175,7 @@ export default function Laboratory() {
       </article>
     </div>
     <div className="lab-support">
-      <details><summary>Kit de prática: arquivos para começar</summary><p>Exemplos fictícios para as atividades. Os contratos são convenções didáticas deste projeto, não requisitos do protocolo MCP.</p><ul>{[["guia-primeira-integracao.md","Oficinas comentadas: os 14 passos"],["projeto-preparacao-atendimento.md","Documentação completa do projeto final"],["ApiPerfil.Program.cs","API local completa em C#"],["primeiro-mcp.md","Seu primeiro MCP: instruções completas"],["PerfilMcp.Program.cs","Código completo do servidor MCP local"],["debrief-SKILL.md","Skill de debrief fictício"],["primeiro-json.json","Primeiro JSON para a etapa 1"],["resposta-parcial.json","Resposta com dados ausentes"],["contrato-tool.json","Schema do resultado de uma tool"],["casos-regressao.csv","Matriz inicial de regressão"],["guia-laboratorio.md","Trilha completa para consulta offline"],["roteiro-projeto-avancado.md","Projeto avançado: roteiro e rubrica"]].map(([file,title])=><li key={file}><a href={kit+file} download><Download size={15}/> {title}</a></li>)}</ul></details>
+      <details><summary>Kit de prática: arquivos para começar</summary><p>Exemplos fictícios para as atividades. Os contratos são convenções didáticas deste projeto, não requisitos do protocolo MCP.</p><ul>{[["kit-local.zip","Kit executável: projetos .NET, Bruno, MCP e recuperação"],["kit-local/README.md","Como executar o kit local"],["guia-primeira-integracao.md","Oficinas comentadas: os 14 passos"],["projeto-preparacao-atendimento.md","Documentação completa do projeto final"],["ApiPerfil.Program.cs","API local completa em C#"],["primeiro-mcp.md","Seu primeiro MCP: instruções completas"],["PerfilMcp.Program.cs","Código completo do servidor MCP local"],["debrief-SKILL.md","Skill de debrief fictício"],["primeiro-json.json","Primeiro JSON para a etapa 1"],["resposta-parcial.json","Resposta com dados ausentes"],["contrato-tool.json","Schema do resultado de uma tool"],["casos-regressao.csv","Matriz inicial de regressão"],["guia-laboratorio.md","Trilha completa para consulta offline"],["roteiro-projeto-avancado.md","Projeto avançado: roteiro e rubrica"]].map(([file,title])=><li key={file}><a href={kit+file} download><Download size={15}/> {title}</a></li>)}</ul></details>
       <details><summary>Glossário e diferenças que evitam confusão</summary><dl><dt>API / tool / MCP</dt><dd>API é uma interface entre sistemas; tool é uma capacidade invocável pelo agente; MCP é um protocolo para expor e acessar capacidades.</dd><dt>Prompt / Skill / runtime</dt><dd>Prompt orienta comportamento; Skill organiza um procedimento e seus recursos; runtime executa e aplica os controles disponíveis no ambiente.</dd><dt>Contrato / DTO / schema</dt><dd>Contrato define o acordo; DTO transporta dados no código; schema descreve sua estrutura e permite validação.</dd><dt>RAG / fonte</dt><dd>RAG recupera material para apoiar a resposta. Uma citação precisa apontar a evidência que de fato sustenta o conteúdo.</dd><dt>Avançado neste percurso</dt><dd>Diagnosticar falhas entre camadas, testar segurança e comportamento, justificar decisões e entregar uma integração revisável. Isso exige prática, revisão e continuidade.</dd></dl></details>
       <details><summary>Biblioteca extra: vídeos, cursos e referências</summary><p>Consulta opcional. A ordem de estudo está nas etapas acima. Vídeos podem usar versões anteriores; uma página Microsoft em português não garante áudio em português.</p><ul>{resources.filter(r=>r.module===9).map(r=><li key={r.url}><a href={r.url} target="_blank" rel="noopener noreferrer">{r.title} <ExternalLink size={13}/></a></li>)}</ul></details>
     </div>

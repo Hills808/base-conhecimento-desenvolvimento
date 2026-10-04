@@ -1,9 +1,9 @@
 .furina-guide { position: fixed; z-index: 45; width: var(--furina-width); height: calc(var(--furina-height) + 44px); color: #202b42; pointer-events: none; isolation: isolate; }
-.furina-guide:not(.is-dragging) { transition: left .32s cubic-bezier(.2,.75,.2,1), bottom .32s cubic-bezier(.2,.75,.2,1); }
-.furina-guide button { font: inherit; touch-action: manipulation; }
+.furina-guide:not(.is-dragging) { transition: transform .26s cubic-bezier(.2,.75,.2,1); }
+.furina-guide button, .furina-speech button { font: inherit; touch-action: manipulation; }
 .furina-character { display: block; position: relative; width: var(--furina-width); height: var(--furina-height); padding: 0; border: 0; background: transparent; cursor: grab; touch-action: none !important; pointer-events: auto; user-select: none; -webkit-tap-highlight-color: transparent; filter: drop-shadow(0 5px 5px #202b421a); }
 .furina-guide.is-dragging .furina-character { cursor: grabbing; }
-.furina-guide button:focus-visible, .furina-return:focus-visible { outline: 3px solid #4149c9; outline-offset: 3px; }
+.furina-guide button:focus-visible, .furina-speech button:focus-visible, .furina-return:focus-visible { outline: 3px solid #4149c9; outline-offset: 3px; }
 .furina-puppet, .furina-puppet-stage { display: block; position: absolute; inset: 0; pointer-events: none; }
 .furina-puppet-stage { transform-origin: 50% 88.75%; }
 .furina-rig-upper { display: block; position: absolute; inset: 0; transform-origin: 50% 48%; }
@@ -20,7 +20,7 @@
 .furina-controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #fffffff2; color: #526078; cursor: pointer; }
 .furina-controls button:hover { color: #4149c9; background: #edf0ff; }
 .furina-controls button:disabled { color: #526078; cursor: default; }
-.furina-speech { position: fixed; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; padding: 12px 14px; border: 1px solid #dce2ef; border-radius: 14px 14px 4px 14px; background: #fff; box-shadow: 0 8px 28px #202b4224; pointer-events: auto; transition: left .32s ease-out, bottom .32s ease-out; animation: furina-speech-in .16s ease-out; }
+.furina-speech { z-index: 46; color: #202b42; position: fixed; box-sizing: border-box; overflow: auto; overscroll-behavior: contain; padding: 12px 14px; border: 1px solid #dce2ef; border-radius: 14px 14px 4px 14px; background: #fff; box-shadow: 0 8px 28px #202b4224; pointer-events: auto; transition: left .32s ease-out, bottom .32s ease-out; animation: furina-speech-in .16s ease-out; }
 .furina-speech-head, .furina-speech-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .furina-speech-name { min-width: 0; font-size: 14px; font-weight: 800; }
 .furina-speech-name small { display: block; color: #526078; font-size: 12px; font-weight: 500; overflow-wrap: anywhere; }
@@ -35,7 +35,7 @@
 .furina-options button.active { border-color: #4149c9; background: #edf0ff; color: #343bb1; }
 .furina-options button.attention { border-color: #c34359; background: #fff2f4; color: #a52d41; }
 .furina-speech-foot { margin-top: 8px; color: #526078; font-size: 11px; line-height: 1.5; }
-.furina-speech-foot div { display: flex; }
+.furina-speech-foot div { display: grid; grid-template-columns: repeat(2, 44px); flex: none; }
 .furina-confetti { position: absolute; left: 50%; top: 35%; pointer-events: none; }
 .furina-confetti i { position: absolute; width: 4px; height: 7px; border-radius: 1px; background: #4149c9; animation: furina-confetti .7s ease-out both; }
 .furina-confetti i:nth-child(2n) { background: #e5a948; }

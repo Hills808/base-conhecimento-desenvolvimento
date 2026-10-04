@@ -3,3 +3,6 @@ Thumbs.db
 .idea/
 .vscode/
 
+
+site/public/lab/kit-local/**/bin/
+site/public/lab/kit-local/**/obj/

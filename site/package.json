@@ -4,11 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node scripts/validate-curriculum.mjs && node scripts/validate-learning-method.mjs && node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check && node scripts/validate-furina.mjs && vite build",
+    "build": "node scripts/validate-curriculum.mjs && node scripts/validate-learning-method.mjs && node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check && node scripts/validate-furina.mjs && vite build && node scripts/build-offline.mjs",
     "dev": "vite --host 0.0.0.0",
     "check:curriculum": "node scripts/validate-curriculum.mjs",
     "check:learning": "node scripts/validate-learning-method.mjs",
-    "check:lab": "node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check"
+    "check:lab": "node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test scripts/test-study.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",
@@ -16,6 +18,8 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.0.2",
     "typescript": "5.9.3",
     "vite": "8.0.13"

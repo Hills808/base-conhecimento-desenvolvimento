@@ -7,5 +7,6 @@ import "./identity.css";
 import "./laboratory.css";
 import "./student-ui.css";
 import "./theme.css";
+import "./study-polish.css";
 
 createRoot(document.getElementById("root")!).render(<React.StrictMode><App /></React.StrictMode>);

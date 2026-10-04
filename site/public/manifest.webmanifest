@@ -1,0 +1,11 @@
+{
+  "name": "Curva Aberta — Aprenda fazendo",
+  "short_name": "Curva Aberta",
+  "lang": "pt-BR",
+  "start_url": "/base-conhecimento-desenvolvimento/",
+  "scope": "/base-conhecimento-desenvolvimento/",
+  "display": "standalone",
+  "background_color": "#151c2a",
+  "theme_color": "#151c2a",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

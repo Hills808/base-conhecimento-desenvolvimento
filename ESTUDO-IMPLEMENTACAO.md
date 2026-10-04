@@ -225,3 +225,24 @@ Essa matriz é o trabalho a executar, não uma certificação da versão atual.
 - [MCP C# SDK — releases e versões](https://github.com/modelcontextprotocol/csharp-sdk/releases).
 
 As condições de serviços e versões devem ser verificadas novamente ao implementar. Duas páginas específicas de documentação Rive sobre meshes/weights não ficaram acessíveis na consulta; nenhuma decisão deste estudo dependeu de supor seu conteúdo.
+
+## Execução após autorização — 03/10/2026
+
+A auditoria acima descreve a base histórica. Após autorização para implementar, foram executadas as entregas abaixo; o pedido não comprova as partes ainda pendentes.
+
+| Itens | Resultado desta implementação | Limite restante |
+| --- | --- | --- |
+| A01–A05 | Storage validado, fallback durante a visita, avisos, segundos de pausa, meta 140, rascunho por treino | Ampliar homologação de interface e conflitos simultâneos entre abas |
+| A06 | Backup JSON, validação, prévia, combinação e cópia anterior à importação | Backup deve ser guardado pelo estudante |
+| A07 / A10 | Registro editorial de 77 URLs reutilizadas, dados desconhecidos explícitos, filtros no catálogo e busca | 342 referências ainda não verificadas individualmente; não inventar certificado ou idioma |
+| A08 | tsconfig, tipos React fixados, 12 regressões, CI de PR/build, lock versionado e npm ci | Ampliar testes de interface assistiva |
+| A09 / A19 / A20 | Kit ZIP com .NET, Bruno/OpenAPI, MCP real e recuperação lexical/extrativa; dez casos no playground | Sem embeddings/LLM; sem integração com serviços reais da empresa |
+| A11 / A12 | Tokens semânticos para novos componentes, alvos de retomada 44px, estados nos temas | Consolidação completa do CSS e auditoria WCAG dependem de cobertura mais ampla |
+| A13 / A18 | Movimento de posição por transform, dica em portal, controles verticais e prevenção de colisão com foco | Rig final articulado e validação física permanecem pendentes |
+| A14–A17 | Links nativos, filtros na URL, revisão atualizada, descrição de cinco níveis e ErrorBoundary | Medição de Web Vitals e homologação ampla de histórico/foco |
+| A21 | Offline opcional por build, cache somente do site, atualização explícita, manifest | Verificar ciclo online/offline e instalação em dispositivos reais |
+| A22 | Exportação/importação permite levar estudo entre navegadores, sem conta | Sincronização automática exige backend, identidade e política de conflito; não criada |
+
+Validação local: tipos e build aprovados; 12 testes de regressão; compilação .NET 10.0.100 sem erros; descoberta/chamada MCP e ausência preservada; cinco cenários HTTP reais; cinco consultas de recuperação. Kit ZIP reproduzível, sem bin/obj. O navegador de nuvem bloqueou o endereço localhost; a validação visual deve usar a publicação.
+
+Nenhuma arte da Furina foi redesenhada. Sem asset .riv/projeto Spine e recortes completos, não tratar a animação final como concluída. As partes que dependem desses assets, de infraestrutura de sincronização ou de aparelho/leitor de tela seguem identificadas, sem apagar o objetivo original.

@@ -101,6 +101,19 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 - Python Playwright, agent-browser CLI e dotnet indisponíveis. O navegador autorizado permitiu a amostragem desktop; os exemplos C# não foram compilados neste estudo.
 - Continuação recomendada: confiabilidade do armazenamento, cronômetro, rascunhos e regressões; depois backup, leitura/acessibilidade, curadoria e kits reproduzíveis. Preparação da arte pode avançar em paralelo, sem misturar migração de progresso e troca do renderer.
 
+## Implementação autorizada — 03/10/2026
+
+- Autorização: implementar as melhorias do estudo com as skills pertinentes. Nenhum site recriado.
+- Entregas: storage validado com fallback entre rotas e avisos; foco em segundos e metas 140; rascunhos de treino; backup com prévia, escolha de conflitos e recuperação; links de módulos nativos e filtros URL; revisão atualizada; metadados honestos e tokens de novos componentes; recuperação de falhas de rota.
+- Catálogo: 77 URLs têm seleção editorial explícita reaproveitada das trilhas; idioma e duração não são mais inferidos da URL/formato. Datas de verificação externa continuam desconhecidas. Catálogo completo permanece com 342 referências.
+- CI: tipos React 19.3.0 fixados, tsconfig, 12 regressões, lock versionado e npm ci; build/validadores mantidos; URLs TS/JSON extraídas para a checagem de links; workflow específico .NET.
+- Kits: ZIP reproduzível com API local, cinco casos Bruno, OpenAPI, servidor/cliente MCP 1.4.1 e recuperação lexical/extrativa com fonte. SDK oficial .NET 10.0.100 obtido para validar: builds sem erros, MCP real aprovado, cinco casos HTTP e cinco consultas de recuperação aprovados. Sem modelo generativo, autenticação de produção ou dados da XP.
+- Offline: opt-in, cache do build completo somente deste site; atualização espera ação explícita e bloqueia recarga quando há gravação falha. Manifest incluído; instalação móvel não homologada.
+- Furina: posição via translate3d, dica em portal, movimentos verticais por botão e prevenção de sobreposição com foco. Artes e articulações preservadas; rig final continua dependente dos recortes/artboard inexistentes.
+- Browser local: ERR_BLOCKED_BY_CLIENT. A publicação será usada para a amostragem visual; não declarar teste móvel/assistivo completo.
+- Pendências mantidas: rig profissional final da Furina, cobertura WCAG e dispositivo físico, revisão individual da curadoria e sincronização automática com backend. A22 é atendido parcialmente por transferência manual de backup, não por conta em nuvem.
+- Detalhes e estado por item: seção de execução em ESTUDO-IMPLEMENTACAO.md.
+
 ## Próxima troca de chat
 
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.

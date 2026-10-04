@@ -27,5 +27,6 @@ assert.equal(results.normal.result.status,'resolved');
 assert.equal(results.ambiguous.lookup,false);assert.equal(results.ambiguous.route,'ambiguous');
 assert.equal(results.scope.calls.length,0);assert.equal(results.injection.writes,0);
 assert.deepEqual(results.injection.calls,['consultar_perfil']);
+assert.deepEqual(results.agenda.calls, ['consultar_agenda']); assert.equal(results.agenda.result.source, 'agenda-demo-v1'); assert.equal(results['agenda-denied'].calls.length, 0);
 assert.ok(!JSON.stringify(results).includes('valorCarteira'));
-console.log('Oficinas válidas: 14 etapas/42 exemplos; 8 cenários didáticos, precedência, ausência, argumentos, acesso e ausência de escrita conferidos. Não valida um modelo real.');
+console.log(`Oficinas válidas: 14 etapas/42 exemplos; ${demoCases.length} cenários didáticos, precedência, ausência, argumentos, acesso e ausência de escrita conferidos. Não valida um modelo real.`);

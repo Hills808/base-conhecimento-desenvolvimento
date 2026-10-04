@@ -45,3 +45,12 @@ Todos os SKILL.md foram lidos na versão instalada, com as adaptações de drive
 | webapp-testing | Descoberta/observação/ação/verificação com capturas e testes de regressão; helper with_server consultado. Driver do host em vez de instalar outra sessão Playwright. | Fluxos de navegador registrados acima e validador executado no build. |
 | agent-browser | Driver permitido, snapshots antes/depois de cada fluxo e seletores obtidos da interface observada. | Verificação do site publicado pelo navegador do ambiente, com capturas antes/depois. |
 | vercel-react-best-practices | Valores por frame e pointer ficam em refs, sem setState por frame; uma assinatura de conclusão e um RAF com cleanup; interromper execução em aba oculta. | Referência rerender-use-ref-transient-values aplicada em `AnimatedMascot.tsx`; nenhuma dependência de animação adicionada. |
+
+## Evolução de interação — 03/10/2026
+
+- Reposicionamento do corpo usa translate3d, com transição própria, em lugar de animar left/bottom. A dica fica em portal no mesmo shell, fora do elemento transformado.
+- Acrescentados botões para cima/baixo, além de esquerda/direita, teclado e arraste.
+- Foco sobreposto recolhe a dica e desloca o guia para o lado oposto. Arraste considera o viewport visual quando o teclado virtual muda a área visível.
+- Arte, pivôs, poses e controlador de articulações preservados. Ainda não é um projeto Rive ou Spine.
+- Rig articulado final permanece pendente: faltam os recortes listados em rig-plan.json e um asset autoral editável/exportado. Não declarar que movimentos de dança articulada, piscar e cabelo deformável foram finalizados.
+- A comparação Rive/Spine e as condições de exportação/licença estão no estudo de implementação. Não foram instalados dois runtimes para o mesmo mascote.

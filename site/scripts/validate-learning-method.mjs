@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
-import ts from 'typescript';
+import { loadTypeScript } from './load-typescript.mjs';
+import { fileURLToPath } from 'node:url';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const lab=JSON.parse(read('src/data/laboratory.json'));
 const mastery=JSON.parse(read('src/data/lab-mastery.json'));
@@ -17,8 +18,7 @@ for(let id=0;id<9;id++){
  const offline=read(`public/kits/treinos-${id}.md`);
  for(const item of transfer[id]){assert.equal(item.length,3);assert.ok(item.every(t=>t.length>40));assert.ok(offline.includes(item[0]));}
 }
-const code=ts.transpileModule(read('src/learningPractice.ts'),{compilerOptions:{module:ts.ModuleKind.ES2022,target:ts.ScriptTarget.ES2022}}).outputText;
-const {nextPractice,readPractice,savePractice}=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
+const {nextPractice,readPractice,savePractice}=loadTypeScript(fileURLToPath(new URL('../src/learningPractice.ts', import.meta.url)));
 const now=new Date('2026-09-30T12:00:00Z');
 const first=nextPractice(undefined,now,true);
 assert.equal(first.due,'2026-10-01T12:00:00.000Z');assert.equal(first.interval,0);

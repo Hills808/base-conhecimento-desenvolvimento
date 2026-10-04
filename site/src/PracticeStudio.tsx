@@ -1,18 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { nextPractice, readPractice, savePractice, type PracticeRecord } from './learningPractice';
 import './learning-method.css';
+import { readDrafts, saveDraft } from './practiceDrafts';
 export type PracticeCase = { sequence: string[]; recall: string; scenario: string; expected: string; transfer: string; rubric: string[] };
 type Props = { id:string; title:string; module:number; stage:number; lab?:boolean; exercise:PracticeCase };
 export default function PracticeStudio({ id,title,module,stage,lab=false,exercise }:Props) {
   const [record,setRecord]=useState(()=>readPractice()[id]);
-  const [answer,setAnswer]=useState('');
-  const [obstacle,setObstacle]=useState('concept');
+  const [draft] = useState(() => readDrafts()[id]);
+  const [answer,setAnswer]=useState(draft?.answer ?? '');
+  const [obstacle,setObstacle]=useState(draft?.obstacle ?? 'concept');
   const [show,setShow]=useState(false);
   const [checks,setChecks]=useState<Record<number,boolean>>({});
   const [notice,setNotice]=useState('');
   const target=useRef<HTMLDetailsElement>(null);
   const [opened,setOpened]=useState(()=>location.hash===`#practice-${id}`);
   useEffect(()=>{if(location.hash===`#practice-${id}`) target.current?.scrollIntoView({block:'start'});},[id]);
+  useEffect(() => {
+    const refresh = () => { const next = readDrafts()[id]; setAnswer(next?.answer ?? ''); setObstacle(next?.obstacle ?? 'concept'); setRecord(readPractice()[id]); };
+    window.addEventListener('storage', refresh); window.addEventListener('curva-aberta-backup-restored', refresh);
+    return () => { window.removeEventListener('storage', refresh); window.removeEventListener('curva-aberta-backup-restored', refresh); };
+  }, [id]);
+  function updateDraft(text: string, difficulty: string) {
+    setAnswer(text); setObstacle(difficulty);
+    if (!saveDraft(id, text, difficulty)) setNotice('Rascunho disponível durante esta visita. O navegador não permitiu salvar.');
+  }
   const ready=answer.trim().length>=20;
   const verified=exercise.rubric.every((_,i)=>checks[i]);
   const helps:Record<string,string>={concept:'Volte à explicação e defina o termo com um exemplo seu.',execution:'Refaça apenas o passo que falhou. Anote entrada, resultado esperado e observado.',contract:'Compare os campos e pré-requisitos com a fonte. Localize onde a expectativa deixou de valer.',explanation:'Explique a decisão em voz alta, usando uma evidência e uma limitação.'};
@@ -27,11 +38,11 @@ export default function PracticeStudio({ id,title,module,stage,lab=false,exercis
     <p>Faça este treino depois do exemplo e da entrega principal. As respostas são comparadas por você com os critérios; o site não corrige texto ou executa seus arquivos.</p>
     <div className="practice-sequence"><strong>Divida o estudo nestes passos</strong><ol>{exercise.sequence.map(s=><li key={s}>{s}</li>)}</ol></div>
     <p><strong>Antes de consultar:</strong> {exercise.recall}</p>
-    <h4>Resolva esta variação</h4><p className="practice-case">{exercise.scenario}</p>
-    <label htmlFor={`practice-answer-${id}`}>Sua tentativa e as evidências<textarea id={`practice-answer-${id}`} value={answer} maxLength={2400} rows={5} onChange={e=>setAnswer(e.target.value)} placeholder="Explique sua decisão, o que testou e o resultado. Use apenas exemplos fictícios."/></label>
+    <p className="learning-small">Sua resposta em andamento é guardada como rascunho; só registrar a tentativa agenda uma revisão.</p><h4>Resolva esta variação</h4><p className="practice-case">{exercise.scenario}</p>
+    <label htmlFor={`practice-answer-${id}`}>Sua tentativa e as evidências<textarea id={`practice-answer-${id}`} value={answer} maxLength={2400} rows={5} onChange={e=>updateDraft(e.target.value, obstacle)} placeholder="Explique sua decisão, o que testou e o resultado. Use apenas exemplos fictícios."/></label>
     <button type="button" aria-expanded={show} onClick={()=>setShow(!show)}>{show?'Ocultar critérios':'Comparar com a análise e os critérios'}</button>
     {show&&<div className="practice-feedback"><h4>Análise esperada</h4><p>{exercise.expected}</p>{exercise.rubric.map((c,i)=><label className="practice-check" key={c}><input type="checkbox" checked={!!checks[i]} onChange={e=>setChecks({...checks,[i]:e.target.checked})}/><span>{c}</span></label>)}<p><strong>Teste de transferência:</strong> {exercise.transfer}</p></div>}
-    <label htmlFor={`obstacle-${id}`}>Se travou, onde estava a dificuldade?<select id={`obstacle-${id}`} value={obstacle} onChange={e=>setObstacle(e.target.value)}><option value="concept">Entender o conceito</option><option value="execution">Executar ou reproduzir</option><option value="contract">Ler requisitos, dados ou contrato</option><option value="explanation">Explicar e justificar</option></select></label><p className="practice-help">{helps[obstacle]}</p>
+    <label htmlFor={`obstacle-${id}`}>Se travou, onde estava a dificuldade?<select id={`obstacle-${id}`} value={obstacle} onChange={e=>updateDraft(answer, e.target.value)}><option value="concept">Entender o conceito</option><option value="execution">Executar ou reproduzir</option><option value="contract">Ler requisitos, dados ou contrato</option><option value="explanation">Explicar e justificar</option></select></label><p className="practice-help">{helps[obstacle]}</p>
     <div className="practice-actions"><button disabled={!ready||!show} onClick={()=>register('again')}>Preciso retomar</button><button disabled={!ready||!show} onClick={()=>register('support')}>Resolvi com apoio</button><button disabled={!ready||!show||!verified} onClick={()=>register('independent')}>Demonstrei sem copiar</button></div>
     {(!ready||!show)&&<p className="learning-small">Escreva uma tentativa de pelo menos 20 caracteres e abra os critérios para registrar. Para declarar autonomia, confira todos os critérios na sua prática.</p>}
     {record&&<aside className="practice-schedule"><strong>Próxima revisão: {new Date(record.due).toLocaleDateString('pt-BR')}</strong><p>{record.attempts} tentativa(s). Na revisão, comece com uma resposta nova e faça o teste de transferência antes de comparar.</p><details><summary>Consultar minha última tentativa</summary><p className="practice-old">{record.answer}</p></details></aside>}

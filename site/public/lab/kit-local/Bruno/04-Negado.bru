@@ -1,0 +1,17 @@
+meta {
+  name: Negado
+  type: http
+  seq: 4
+}
+get {
+  url: {{baseUrl}}/clientes/demo-1/perfil?cenario=negado
+  body: none
+  auth: none
+}
+tests {
+  test("Status e evidência: Negado", function () {
+    expect(res.getStatus()).to.equal(403);
+    const body = res.getBody();
+    expect(body).to.not.have.property("data");
+  });
+}

@@ -1,0 +1,14 @@
+using ModelContextProtocol.Client;
+using ModelContextProtocol.Protocol;
+using System.Text.Json;
+using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+await using var client = await McpClient.CreateAsync(new StdioClientTransport(new StdioClientTransportOptions { Name = "Curva Aberta", Command = Environment.GetEnvironmentVariable("CURVA_DOTNET") ?? "dotnet", Arguments = ["run", "--no-build", "--project", "PerfilMcp/PerfilMcp.csproj"] }), cancellationToken: timeout.Token);
+var tools = await client.ListToolsAsync(cancellationToken: timeout.Token);
+if (!tools.Any(t => t.Name == "consultar_perfil")) throw new Exception("Tool não descoberta.");
+var result = await client.CallToolAsync("consultar_perfil", new Dictionary<string, object?> { ["clienteId"] = "demo-1" }, cancellationToken: timeout.Token);
+if (result.IsError == true) throw new Exception("Consulta de fixture falhou.");
+var text = result.Content.OfType<TextContentBlock>().Single().Text;
+using var json = JsonDocument.Parse(text);
+if (json.RootElement.GetProperty("status").GetString() != "partial") throw new Exception("Estado parcial perdido.");
+if (json.RootElement.GetProperty("data").GetProperty("biografia").ValueKind != JsonValueKind.Null) throw new Exception("Biografia ausente foi inventada.");
+Console.WriteLine("PASS MCP: descoberta, chamada e ausência preservada.");

@@ -30,6 +30,12 @@ jobs:
       - name: Baixar repositório
         uses: actions/checkout@v5
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Extrair links do catálogo
+        run: node site/scripts/catalog-links.mjs
+
       - name: Verificar links
         id: lychee
         uses: lycheeverse/lychee-action@v2.9.0
@@ -39,6 +45,7 @@ jobs:
             --verbose
             --no-progress
             "**/*.md"
+            "site/catalog-links.txt"
           fail: true
           jobSummary: true
 

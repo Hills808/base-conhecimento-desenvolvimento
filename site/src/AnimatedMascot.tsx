@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, CircleHelp, Lightbulb, Pause, Play, ShieldAlert, Sparkles, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Check, CircleHelp, Lightbulb, Pause, Play, ShieldAlert, Sparkles, X } from "lucide-react";
+import { createPortal } from "react-dom";
 import type { Module } from "./data/modules";
 import { moduleGuidance } from "./data/module-guidance";
 import { blendPose, bubbleGeometry, celebrationDuration, clamp, mascotGeometry, neutral, targetPose, type MotionState } from "./furina-motion";
@@ -171,8 +172,28 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
       setViewport({ width: window.innerWidth, height: window.innerHeight });
       setSaved(value => ({ ...value, offsetY: mascotGeometry({ width: window.innerWidth, height: window.innerHeight }, value.x, value.offsetY).bottom - 12 }));
     };
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    const visibleArea = () => {
+      const visual = window.visualViewport;
+      if (visual && visual.height < window.innerHeight - 100) {
+        const minBottom = window.innerHeight - visual.height - visual.offsetTop + 12;
+        setSaved(value => ({ ...value, offsetY: Math.max(value.offsetY, minBottom - 12) }));
+      }
+      resize();
+    };
+    window.addEventListener("resize", resize); window.visualViewport?.addEventListener('resize', visibleArea);
+    return () => { window.removeEventListener("resize", resize); window.visualViewport?.removeEventListener('resize', visibleArea); };
+  }, []);
+
+  useEffect(() => {
+    const avoidFocus = (event: FocusEvent) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement) || root.current?.contains(target) || target.closest('.furina-speech')) return;
+      const guide = root.current?.getBoundingClientRect(); const control = target.getBoundingClientRect();
+      if (!guide || guide.right <= control.left || guide.left >= control.right || guide.bottom <= control.top || guide.top >= control.bottom) return;
+      setOpen(false); moveTo(control.left > window.innerWidth / 2 ? 0 : 1, control.left > window.innerWidth / 2 ? 'left' : 'right');
+    };
+    document.addEventListener('focusin', avoidFocus);
+    return () => document.removeEventListener('focusin', avoidFocus);
   }, []);
 
   const card = useMemo(() => {
@@ -237,10 +258,10 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
     }
     if (!current.moved) return;
     current.left = clamp(event.clientX - current.grabX, 12, window.innerWidth - current.width - 12);
-    const top = clamp(event.clientY - current.grabY, 12, window.innerHeight - current.height - 12);
+    const visual = window.visualViewport;
+    const top = clamp(event.clientY - current.grabY, (visual?.offsetTop ?? 0) + 12, (visual?.offsetTop ?? 0) + (visual?.height ?? window.innerHeight) - current.height - 12);
     current.bottom = window.innerHeight - top - current.height;
-    root.current.style.left = `${current.left}px`;
-    root.current.style.bottom = `${current.bottom}px`;
+    root.current.style.transform = `translate3d(${current.left}px,${-current.bottom}px,0)`;
   }
   function endDrag(event: React.PointerEvent<HTMLButtonElement>) {
     if (drag.current?.pointerId !== event.pointerId) return;
@@ -256,12 +277,17 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
   function cancelDrag() {
     if (!drag.current) return;
     const geometry = mascotGeometry(viewport, saved.x, saved.offsetY);
-    if (root.current) { root.current.style.left = `${geometry.left}px`; root.current.style.bottom = `${geometry.bottom}px`; }
+    if (root.current) { root.current.style.transform = `translate3d(${geometry.left}px,${-geometry.bottom}px,0)`; }
     suppressClickUntil.current = performance.now() + 350;
     drag.current = null; setDragging(false);
   }
   function leaveCharacter() {
     look.current = 0;
+  }
+  function moveVertical(delta: number) {
+    cancelSideMove();
+    setSaved(value => ({ ...value, offsetY: clamp(value.offsetY + delta, 0, Math.max(0, mascotGeometry(viewport, value.x, 0).maxY - 12)) }));
+    setAnnouncement(delta > 0 ? "Furina movida para cima." : "Furina movida para baixo.");
   }
   function moveByKeyboard(event: React.KeyboardEvent<HTMLButtonElement>) {
     const horizontal = event.key === "ArrowLeft" ? -.15 : event.key === "ArrowRight" ? .15 : 0;
@@ -288,12 +314,12 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
 
   const geometry = mascotGeometry(viewport, saved.x, saved.offsetY);
   const bubble = bubbleGeometry(viewport, geometry.left, geometry.bottom, geometry.width);
-  const style = { left: `${geometry.left}px`, bottom: `${geometry.bottom}px`, "--furina-width": `${geometry.width}px`, "--furina-height": `${geometry.characterHeight}px` } as React.CSSProperties;
+  const style = { left: 0, bottom: 0, transform: `translate3d(${dragging && drag.current ? drag.current.left : geometry.left}px,${-(dragging && drag.current ? drag.current.bottom : geometry.bottom)}px,0)`, "--furina-width": `${geometry.width}px`, "--furina-height": `${geometry.characterHeight}px` } as React.CSSProperties;
   const bubbleStyle = { left: `${bubble.left}px`, bottom: `${bubble.bottom}px`, width: `${bubble.width}px`, maxHeight: `${bubble.maxHeight}px` };
   if (saved.hidden) return <button className={`furina-return dock-${saved.dock}`} onClick={() => setSaved(value => ({ ...value, hidden: false }))} aria-label="Mostrar Furina"><Lightbulb size={16}/>Furina</button>;
 
   return <aside ref={root} className={`furina-guide dock-${saved.dock} ${open ? "is-open" : ""} ${dragging ? "is-dragging" : ""} ${celebrating ? "is-celebrating" : ""} ${saved.paused || reduced ? "is-paused" : ""}`} style={style} aria-label="Furina, guia de estudos">
-    {open && <section id="furina-tip" className="furina-speech" style={bubbleStyle} aria-label="Dica da Furina">
+    {open && createPortal(<section id="furina-tip" className="furina-speech" style={bubbleStyle} aria-label="Dica da Furina">
       <div className="furina-speech-head"><span className="furina-speech-name">Furina <small>· {labActive && lab ? `etapa ${lab.step + 1}` : module ? module.title : "guia de estudos"}</small></span><button onClick={() => setOpen(false)} aria-label="Fechar dica"><X size={17}/></button></div>
       <h3>{card.title}</h3><p>{card.text}</p>
       {expanded && <p className="furina-extra">{card.extra}</p>}
@@ -305,8 +331,8 @@ export default function AnimatedMascot({ module }: { module: Module | null }) {
         <button className={mode === "curiosity" ? "active" : ""} onClick={() => changeMode("curiosity")}><Sparkles size={15}/>Curiosidade</button>
         <button className={mode === "success" ? "active" : ""} onClick={() => changeMode("success")}><Check size={15}/>Consegui!</button>
       </div>
-      <div className="furina-speech-foot"><span>Dicas da etapa · sem IA<br/>Arraste Furina ou use as setas.</span><div><button onClick={() => moveTo(0, "left")} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => moveTo(1, "right")} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
-    </section>}
+      <div className="furina-speech-foot"><span>Dicas da etapa · sem IA<br/>Arraste, use as setas ou os botões para mover.</span><div><button onClick={() => moveVertical(44)} aria-label="Mover Furina para cima"><ArrowUp size={16}/></button><button onClick={() => moveVertical(-44)} aria-label="Mover Furina para baixo"><ArrowDown size={16}/></button><button onClick={() => moveTo(0, "left")} aria-label="Mover Furina para a esquerda"><ArrowLeft size={16}/></button><button onClick={() => moveTo(1, "right")} aria-label="Mover Furina para a direita"><ArrowRight size={16}/></button></div></div>
+    </section>, document.querySelector('.site-shell') ?? document.body)}
     {celebrating && <span className="furina-confetti" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></span>}
     <button className="furina-character" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag} onPointerCancel={cancelDrag} onLostPointerCapture={cancelDrag} onPointerLeave={leaveCharacter} onKeyDown={moveByKeyboard} onClick={clickCharacter} aria-label={open ? "Recolher dica da Furina; arraste ou use as setas para mover" : "Abrir dica da Furina; arraste ou use as setas para mover"} aria-expanded={open} aria-controls="furina-tip">
       <span className="furina-puppet" ref={puppet} aria-hidden="true">

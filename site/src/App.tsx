@@ -5,6 +5,11 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, Circ
 import { modules, guideUrl } from "./data/modules";
 const Laboratory = lazy(() => import("./Laboratory"));
 const ModuleJourney = lazy(() => import("./ModuleJourney"));
+import { getResourceMeta, matchesMaterial } from "./resourceMeta";
+import MaterialFilters from "./MaterialFilters";
+import useUrlFilter from "./useUrlFilter";
+import RouteBoundary from "./RouteBoundary";
+import StudyBackup from "./StudyBackup";
 import StudyResume from "./StudyResume";
 import AnimatedMascot from "./AnimatedMascot";
 import ThemePicker from "./ThemePicker";
@@ -18,11 +23,12 @@ const types = ["Todos", "Curso", "Vídeo", "Leitura", "Prática", "Ferramenta"];
 const areas = ["Todos", "Desenvolvimento", "Dados & IA", "Engenharia", "Além do código", "Laboratório"];
 
 function ResourceCard({ item, compact = false }: { item: Resource; compact?: boolean }) {
+  const meta = getResourceMeta(item);
   const icon = item.type === "Vídeo" ? <Play size={15} fill="currentColor" /> : item.type === "Prática" ? <span className="type-glyph">✳</span> : <BookOpen size={15} />;
   return <a className={`resource-card ${compact ? "compact" : ""}`} href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.title} (abre em outra aba)`}>
     <span className="resource-type">{icon} {item.type}</span>
     <strong>{item.title}</strong>
-    <p className="resource-context">{item.note || item.section}</p>
+    <p className="resource-context">{meta.use}</p><div className="resource-meta"><span>{meta.language}</span><span>{meta.time}</span><span>{meta.certificate}</span></div>
     {item.access && <span className={`access-note ${item.access.startsWith("Pago") ? "paid" : ""}`}>{item.access}</span>}
     <span className="resource-bottom"><span>{item.host}</span><ArrowUpRight size={17} /></span>
   </a>;
@@ -30,9 +36,15 @@ function ResourceCard({ item, compact = false }: { item: Resource; compact?: boo
 
 export default function Home() {
   const [selected, setSelected] = useState<number | null>(null);
-  const [area, setArea] = useState("Todos");
-  const [type, setType] = useState("Todos");
-  const [query, setQuery] = useState("");
+  const [area, setArea] = useUrlFilter("area", "Todos", areas);
+  const [type, setType] = useUrlFilter("formato", "Todos", types);
+  const [query, setQuery] = useUrlFilter("busca", "");
+  const [language, setLanguage] = useUrlFilter("idioma", "all", ["all", "pt", "en", "unknown"]);
+  const [time, setTime] = useUrlFilter("tempo", "all", ["all", "30", "60", "unknown"]);
+  const [certificate, setCertificate] = useUrlFilter("certificado", "all", ["all", "indicated", "unknown"]);
+  const [level, setLevel] = useUrlFilter("faixa", "all", ["all", "0", "1", "2", "3", "4"]);
+  const materialFilters = { language, time, certificate, level };
+  function filterChange(field: keyof typeof materialFilters, value: string) { ({ language: setLanguage, time: setTime, certificate: setCertificate, level: setLevel })[field](value); setExpanded(false); }
   const [expanded, setExpanded] = useState(false);
   const [done, setDone] = useState<string[]>([]);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -96,30 +108,35 @@ export default function Home() {
 
   function openModule(id: number | null) {
     setCommandOpen(false); setCommandQuery("");
-    setSelected(id); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false);
+    setSelected(id); setExpanded(false); setMobileMenu(false);
     const base = import.meta.env.BASE_URL;
     const url = id === null ? base : `${base}?modulo=${String(id).padStart(2, "0")}`;
-    window.history.pushState({}, "", url);
+    window.history.pushState({}, "", url); window.dispatchEvent(new Event("curva-aberta-location-change"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
   function openLabStep(index: number) {
-    setSelected(9); setType("Todos"); setExpanded(false); setQuery(""); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    setSelected(9); setExpanded(false); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
     const url = `${import.meta.env.BASE_URL}?modulo=09&etapa=${index + 1}`;
     window.history.pushState({}, "", url); window.dispatchEvent(new PopStateEvent("popstate"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
 
+  function navigate(event: React.MouseEvent<HTMLAnchorElement>, id: number | null) {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault(); openModule(id);
+  }
+  const moduleHref = (id: number | null) => id === null ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}?modulo=${String(id).padStart(2, '0')}`;
   const active = selected === null ? null : modules[selected];
   const filteredModules = modules.filter(m => area === "Todos" || m.area === area);
   const searchResults = useMemo(() => {
     const q = normalize(query.trim());
     if (q.length < 2) return [];
     const terms = q.split(/\s+/);
-    return resources.filter(r => terms.every(term => normalize(`${r.title} ${r.section} ${modules[r.module].title} ${r.type}`).includes(term)));
-  }, [query]);
+    return resources.filter(r => (area === "Todos" || modules[r.module].area === area) && (type === "Todos" || r.type === type) && matchesMaterial(r, materialFilters) && terms.every(term => normalize(`${r.title} ${r.section} ${modules[r.module].title} ${r.type}`).includes(term)));
+  }, [query, area, type, language, time, certificate, level]);
   const moduleResources = active ? resources.filter(r => r.module === active.id) : [];
   const available = moduleResources;
-  const filtered = available.filter(r => type === "Todos" || r.type === type);
+  const filtered = available.filter(r => (type === "Todos" || r.type === type) && matchesMaterial(r, materialFilters));
   const shown = expanded ? filtered : filtered.slice(0, 6);
 
   const quickItems = useMemo(() => [
@@ -137,13 +154,14 @@ export default function Home() {
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header className="topbar">
       <div className="topbar-inner">
-        <button className="brand" onClick={() => openModule(null)} aria-label="Curva Aberta, voltar ao início">
+        <a href={moduleHref(null)} className="brand" onClick={event => navigate(event, null)} aria-label="Curva Aberta, voltar ao início">
           <span className="brand-mark">c<span>✳</span></span>
           <span className="brand-name">curva aberta<span className="brand-dot">.</span><small>aprenda fazendo</small></span>
-        </button>
+        </a>
         <nav id="main-nav" className={`topnav ${mobileMenu ? "open" : ""}`} aria-label="Navegação principal">
-          <button onClick={() => openModule(null)}>Explorar módulos</button>
-          <button onClick={() => openModule(9)}>Laboratório MCP <ArrowUpRight size={15} /></button>
+          <a href={moduleHref(null)} onClick={event => navigate(event, null)}>Explorar módulos</a>
+          <a href={moduleHref(9)} onClick={event => navigate(event, 9)}>Laboratório MCP <ArrowUpRight size={15} /></a>
+          <a href="#guardar-estudo">Meu estudo</a>
           <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
           <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Base no GitHub <ArrowUpRight size={15} /></a>
         </nav>
@@ -154,7 +172,7 @@ export default function Home() {
       </div>
     </header>
 
-    <main id="conteudo" tabIndex={-1}>
+    <main id="conteudo" tabIndex={-1}><RouteBoundary key={selected ?? "home"}>
       {active ? <div className="detail-wrap">
         <div className="breadcrumbs"><button onClick={() => openModule(null)}><ArrowLeft size={16}/> Todos os módulos</button><span>/</span><span>Módulo {String(active.id).padStart(2,"0")}</span></div>
         <div className="detail-heading" style={{ "--module-accent": active.color } as React.CSSProperties}>
@@ -172,6 +190,8 @@ export default function Home() {
             <Suspense fallback={<div className="curriculum-loading" role="status">Preparando sua trilha: níveis, exemplos e práticas…</div>}><ModuleJourney key={active.id} module={active}/></Suspense>
             <section className="material-section" aria-labelledby="materials-heading">
               <div className="section-intro materials-intro"><div><span className="eyebrow ink">02 / BIBLIOTECA DO MÓDULO</span><h2 id="materials-heading">Explore além da trilha.</h2><p>Todos os níveis reunidos para consulta. A seleção acima indica por onde começar; este catálogo amplia suas opções.</p></div><span className="material-count">{filtered.length} opções</span></div>
+              <MaterialFilters value={materialFilters} onChange={filterChange}/>
+              <p className="catalog-note">Estimativas são para estudar um trecho, não a duração do curso. Metadados editoriais ainda exigem confirmação na fonte.</p>
               <div className="type-filters" aria-label="Filtrar materiais por formato"><Filter size={16}/>{types.map(t => <button key={t} className={type===t?"active":""} onClick={() => {setType(t);setExpanded(false)}} aria-pressed={type===t}>{t}</button>)}</div>
               {filtered.length ? <><div className="resources-grid">{shown.map(r=><ResourceCard key={r.url} item={r}/>)}</div>{filtered.length>6 && <button className="show-more" onClick={() => setExpanded(v=>!v)}>{expanded ? "Mostrar menos" : `Ver mais ${filtered.length-6} materiais`} <ChevronDown className={expanded?"up":""} size={17}/></button>}</> : <div className="empty-state">Não há materiais deste formato neste módulo. Escolha outro formato ou <button onClick={()=>setType("Todos")}>mostre todos</button>.</div>}
               <p className="catalog-note">Cursos, ferramentas e exames têm condições diferentes. Os itens pagos estão sinalizados quando identificados; consulte a fonte antes de se inscrever. Acesso à documentação não inclui créditos de API ou cloud.</p>
@@ -199,14 +219,16 @@ export default function Home() {
         <section id="modulos" className="explore-section">
           <div className="explore-heading"><div><span className="eyebrow ink">ESCOLHA SUA PRÓXIMA HABILIDADE</span><h2>O que você quer aprender?</h2></div><p>Escolha uma área. Dentro dela, encontre seu nível, os materiais e a próxima prática.</p></div>
           <div className="searchbar"><Search size={21}/><input type="search" value={query} onChange={e=>{setQuery(e.target.value);setExpanded(false)}} placeholder="Busque um tema, curso ou ferramenta..." aria-label="Buscar materiais"/>{query && <button onClick={()=>setQuery("")} aria-label="Limpar busca"><X size={17}/></button>}<span>{resources.length} referências</span></div>
+          {query.trim().length >= 2 && <MaterialFilters value={materialFilters} onChange={filterChange}/>}
           {query.trim().length >= 2 ? <div className="search-results"><div className="results-heading"><strong>{searchResults.length ? `Resultados para “${query}”` : "Nenhum resultado"}</strong><span>{searchResults.length} materiais encontrados</span></div>{searchResults.length ? <><div className="resources-grid">{searchResults.slice(0,expanded?undefined:24).map(r=><div key={`${r.module}-${r.url}`} className="result-item"><span className="result-module">M{String(r.module).padStart(2,"0")} · {modules[r.module].title}</span><ResourceCard item={r} compact/></div>)}</div>{searchResults.length>24 && <button className="show-more" onClick={()=>setExpanded(v=>!v)}>{expanded?"Mostrar menos":`Ver mais ${searchResults.length-24} materiais`} <ChevronDown className={expanded?"up":""} size={17}/></button>}</> : <p>Tente outro termo, como “MCP”, “SQL” ou “inglês”.</p>}</div> : <>
             <div className="area-filters" aria-label="Filtrar áreas">{areas.map(a=><button key={a} onClick={()=>setArea(a)} className={area===a?"active":""} aria-pressed={area===a}>{a}</button>)}</div>
-            <div className="explore-layout"><div className="module-grid"><div className="index-columns" aria-hidden="true"><span>Nº / ÁREA</span><span>PERCURSO E RESULTADO</span><span>CONTEÚDO</span></div>{filteredModules.map(m=><button className="module-card" key={m.id} onClick={()=>openModule(m.id)}><span className="card-top"><span className="module-id">{String(m.id).padStart(2,"0")}</span><span className="module-area">{m.area}</span></span><span className="card-body"><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "14 etapas guiadas" : `${resources.filter(r=>r.module===m.id).length} materiais · 5 níveis`}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></button>)}</div></div>
+            <div className="explore-layout"><div className="module-grid"><div className="index-columns" aria-hidden="true"><span>Nº / ÁREA</span><span>PERCURSO E RESULTADO</span><span>CONTEÚDO</span></div>{filteredModules.map(m=><a className="module-card" href={moduleHref(m.id)} key={m.id} onClick={event=>navigate(event,m.id)}><span className="card-top"><span className="module-id">{String(m.id).padStart(2,"0")}</span><span className="module-area">{m.area}</span></span><span className="card-body"><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "14 etapas guiadas" : `${resources.filter(r=>r.module===m.id).length} materiais · 5 níveis`}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></a>)}</div></div>
           </>}
         </section>
         <section className="closing-banner"><span>PROJETO GUIADO / 09</span><h2>Junte as peças<br/>num sistema realista.</h2><p>O laboratório MCP com C# combina HTTP, Bruno, API .NET, agentes, RAG e Skills. Cada etapa termina numa entrega verificável, com dados fictícios.</p><button onClick={()=>openModule(9)}>Entrar no laboratório <ArrowRight size={18}/></button><div className="closing-schematic" aria-hidden="true">API <span>↗</span> AGENTE <span>↗</span> TOOL <span>↗</span> MCP</div></section>
       </div>}
-    </main>
+    </RouteBoundary></main>
+    <StudyBackup />
     <AnimatedMascot module={active}/>
     <div className="status-message" role="status" aria-live="polite">{notice}</div>
     {commandOpen && <div className="command-overlay" role="presentation" onMouseDown={() => setCommandOpen(false)}>
