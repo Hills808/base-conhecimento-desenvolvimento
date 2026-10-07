@@ -59,7 +59,7 @@ export default function SharedNotes({ scope }: { scope: string }) {
         </> : <>
           <label htmlFor={label}>Texto compartilhado desta etapa</label>
           <textarea id={label} value={draft} disabled={busy} onChange={event => setDraft(event.target.value)} aria-describedby={`${label}-count`} rows={10}/>
-          <p id={`${label}-count`}>{noteLength(draft).toLocaleString('pt-BR')} / 10.000 caracteres. Texto simples; código e quebras de linha são preservados.</p>
+          <p id={`${label}-count`}>{noteLength(draft).toLocaleString('pt-BR')} / 30.000 caracteres. Texto simples; código e quebras de linha são preservados.</p>
           {conflict ? <div className="shared-notes-conflict"><p>O bloco mudou. Seu rascunho não foi apagado. Compare e ajuste seu texto antes de usar a versão atual como base.</p><pre>{conflict.content || '(Bloco vazio)'}</pre><button type="button" disabled={busy} onClick={() => { setNote(conflict); setConflict(null); setMessage('Base atualizada. Seu rascunho foi mantido; confira antes de publicar.'); }}>Usar versão atual como base</button></div> : null}
           <div className="shared-notes-actions"><button type="button" disabled={busy || !!conflict || noteLength(draft) > NOTE_LIMIT || !draft.trim() || !dirty} onClick={() => publish(draft)}>{busy ? 'Publicando…' : 'Publicar para todos'}</button><button type="button" disabled={busy} onClick={refresh}>Conferir texto atual</button><button type="button" disabled={busy} onClick={() => { setEditing(false); setConflict(null); setDraft(note.content); setMessage('Edição cancelada. Nada foi publicado.'); }}>Cancelar edição</button></div>
         </>}
