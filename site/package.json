@@ -10,7 +10,7 @@
     "check:learning": "node scripts/validate-learning-method.mjs",
     "check:lab": "node scripts/validate-lab-workshops.mjs && node scripts/lab-workshop-guide.mjs --check",
     "typecheck": "tsc --noEmit",
-    "test": "node --test scripts/test-study.mjs"
+    "test": "node --test scripts/test-study.mjs && node scripts/test-shared-notes.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",

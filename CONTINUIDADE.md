@@ -124,4 +124,13 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 
 ## Próxima troca de chat
 
+## Blocos públicos — 07/10/2026
+
+- Pedido confirmado: todos leem, adicionam, editam e apagam; sem login nem histórico; 10.000 caracteres por bloco. Projeto Supabase dedicado Curva Aberta criado na Hills808's Org, região São Paulo, custo de criação informado US$ 0/mês.
+- Backend: 59 blocos fixos, RLS, leitura anônima e UPDATE somente de content. Sem INSERT/DELETE de linhas ou edição de revision/escopo. Trigger invoker exige revisão esperada e intervalo mínimo de 3 segundos por bloco. Não há autoria ou cópia histórica de conteúdo; revision é contador técnico de concorrência. Backups operacionais do provedor não são controlados pela aplicação.
+- Interface: bloco por etapa nos módulos/laboratório; publicação explícita, contador Unicode, confirmação de exclusão, comparação de conflito que preserva rascunho; atualização de leitura em 20s fora da edição. Não entra no backup pessoal nem no cache offline; precisa de internet. Rascunho ainda não publicado deve ser copiado antes de sair de etapa.
+- Validações: tipos, build, 12 regressões existentes e limite Unicode local aprovados. SQL sob role anon comprovou 10.000 aceitos, 10.001 rejeitados, cooldown, conflito e proibição de novos escopos/revisão manual; testes transacionais revertidos. Advisors security sem alertas.
+- Depuração: teste HTTP de cooldown não é confiável com a latência deste ambiente, pois as requisições podem superar 3s. Cooldown validado atomicamente no banco; API testa publicação/leitura/conflito separadamente. Não confundir falha de timing no teste com falha de proteção.
+- Referências: backend/README.md e backend/shared-notes.sql. Chave no frontend é apenas publicável; nenhuma service_role/secret foi utilizada. Limitação deliberada: qualquer pessoa pode vandalizar; cooldown limita frequência, não é moderação nem proteção completa contra bots.
+
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.

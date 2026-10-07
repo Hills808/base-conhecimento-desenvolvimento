@@ -1,0 +1,16 @@
+.shared-notes { margin:24px 0; border:1px solid var(--study-border); border-radius:var(--study-radius); background:var(--study-surface); color:var(--study-text); }
+.shared-notes summary { padding:18px 20px; cursor:pointer; font-weight:650; min-height:48px; }
+.shared-notes-body { padding:0 20px 20px; line-height:1.65; }
+.shared-notes-body > p,.shared-notes-body small { max-width:75ch; color:var(--study-muted); }
+.shared-notes-text { white-space:pre-wrap; overflow-wrap:anywhere; padding:18px; border-left:3px solid var(--study-link); background:var(--study-bg); max-height:480px; overflow:auto; }
+.shared-notes textarea { display:block; box-sizing:border-box; width:100%; padding:14px; font:inherit; line-height:1.6; resize:vertical; color:var(--study-text); background:var(--study-bg); border:1px solid var(--study-border); border-radius:8px; }
+.shared-notes label { display:block; margin:12px 0 8px; font-weight:600; }
+.shared-notes-actions { display:flex; gap:10px; flex-wrap:wrap; margin:16px 0; }
+.shared-notes button { min-height:44px; padding:10px 14px; border:1px solid var(--study-border); border-radius:8px; background:var(--study-surface); color:var(--study-link); font:inherit; cursor:pointer; }
+.shared-notes button:disabled { opacity:.55; cursor:default; }
+.shared-notes :is(button,textarea,summary):focus-visible { outline:3px solid var(--study-focus); outline-offset:3px; }
+.shared-notes-delete { margin:18px 0; }
+.shared-notes-delete button { margin:0 10px 8px 0; }
+.shared-notes-conflict { padding:16px; border:1px solid var(--study-border); background:var(--study-warning-bg); color:var(--study-warning-text); }
+.shared-notes-conflict pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:300px; overflow:auto; font:inherit; }
+@media(max-width:600px) { .shared-notes-body { padding:0 14px 16px; } .shared-notes-actions button { width:100%; } }
