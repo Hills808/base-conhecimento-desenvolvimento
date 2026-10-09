@@ -137,3 +137,5 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 - Ajuste posterior de 07/10: limite aumentado para 30.000 caracteres por bloco, na interface e constraint Postgres, sem apagar conteúdo. Script inicial mantém o limite histórico de 10.000; executar notes-limit-30000.sql após shared-notes.sql em uma instalação nova. Testes atualizados para 30.000/30.001.
 
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.
+
+- Ajuste de 09/10/2026: limite ampliado para 50.000 caracteres por bloco na interface e no Postgres, preservando conteúdo, permissões e revisão. Em instalação nova, aplicar shared-notes.sql e depois notes-limit-50000.sql (substitui a ampliação intermediária para 30.000). Validação local e transacional das fronteiras 50.000/50.001; publicação no GitHub Pages.
