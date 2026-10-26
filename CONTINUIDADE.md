@@ -139,3 +139,11 @@ SKILL.md integrais: personal-context, rive, spine-animation, frontend-design, we
 Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes de editar. Atualizar aqui mudanças, validações e pendências. As referências atuais e o código prevalecem sobre relatos de pedidos ou implementações antigas.
 
 - Ajuste de 09/10/2026: limite ampliado para 50.000 caracteres por bloco na interface e no Postgres, preservando conteúdo, permissões e revisão. Em instalação nova, aplicar shared-notes.sql e depois notes-limit-50000.sql (substitui a ampliação intermediária para 30.000). Validação local e transacional das fronteiras 50.000/50.001; publicação no GitHub Pages.
+
+
+## Indisponibilidade das anotações — 26/10/2026
+
+- Diagnóstico confirmado: projeto Supabase mfpfqzduzywmfmekbiho em INACTIVE; endpoint público das notas retornou HTTP 503. Código atual ainda usa o endpoint correto e limite de 50.000.
+- Pausa automática por baixa atividade é hipótese compatível com o plano gratuito (documentação: https://supabase.com/docs/guides/platform/free-project-pausing); motivo individual da pausa não confirmado pelos logs disponíveis.
+- Reativação solicitada pelo conector restore_project, aceita com sucesso. Estado posterior COMING_UP; chamadas durante a inicialização retornaram HTTP 521 e SQL temporariamente indisponível. Advisors de segurança sem alertas.
+- Nenhuma nota, chave, permissão ou schema foi alterado. Sem upgrade pago e sem tarefas periódicas criadas. Pendente confirmar ACTIVE_HEALTHY, leitura anônima e limite do banco após terminar a inicialização. A interface informa erro genérico de carregamento quando o serviço está indisponível.
