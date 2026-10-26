@@ -6,6 +6,18 @@ assert.equal(noteLength('A😀'), 2);
 await assert.rejects(writeNote('mod-0-0', 'x'.repeat(50001), 0), /limite/);
 assert.equal(NOTE_LIMIT, 50000);
 console.log('Notas: contagem Unicode e limite local aprovados.');
+const originalFetch = globalThis.fetch;
+try {
+ globalThis.fetch = async () => new Response('Service unavailable', { status: 503 });
+ await assert.rejects(readNote('mod-0-0'), /temporariamente indisponível/);
+ await assert.rejects(writeNote('mod-0-0', 'rascunho', 0), /texto continua no editor/);
+ globalThis.fetch = async () => { throw new TypeError('Failed to fetch'); };
+ await assert.rejects(readNote('mod-0-0'), /indisponível ou sem conexão/);
+ const controller = new AbortController(); controller.abort();
+ const abort = new DOMException('aborted', 'AbortError');
+ globalThis.fetch = async () => { throw abort; };
+ await assert.rejects(readNote('mod-0-0', controller.signal), error => error === abort);
+} finally { globalThis.fetch = originalFetch; }
 // Opt-in integration test, only on an empty selected curriculum block.
 if (process.env.CURVA_TEST_SHARED_NOTES === '1') {
  const scope = 'mod-0-0';

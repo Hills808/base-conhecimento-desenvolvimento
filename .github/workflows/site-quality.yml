@@ -1,10 +1,10 @@
 name: Validar estudo e interface
 on:
   pull_request:
-    paths: ["site/**", ".github/workflows/site-quality.yml"]
+    paths: ["site/**", "backend/cloudflare/**", ".github/workflows/site-quality.yml"]
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/site-quality.yml"]
+    paths: ["site/**", "backend/cloudflare/**", ".github/workflows/site-quality.yml"]
 permissions:
   contents: read
 jobs:
@@ -21,3 +21,4 @@ jobs:
         working-directory: site
       - run: npm run typecheck && npm test && npm run build
         working-directory: site
+      - run: node --test backend/cloudflare/*.test.mjs

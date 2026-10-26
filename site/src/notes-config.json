@@ -1,0 +1,5 @@
+{
+  "provider": "supabase",
+  "url": "https://mfpfqzduzywmfmekbiho.supabase.co/rest/v1/shared_study_notes",
+  "publishableKey": "sb_publishable_yMmNLcmmnCo4mhhQE3E1Xw_N28OSFQY"
+}

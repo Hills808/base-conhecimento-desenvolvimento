@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "wrangler": "4.153.0"
+  },
+  "name": "curva-aberta-notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test *.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 migrations apply curva-aberta-notes --local",
+    "db:remote": "wrangler d1 migrations apply curva-aberta-notes --remote"
+  }
+}

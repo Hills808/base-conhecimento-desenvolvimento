@@ -1,0 +1,17 @@
+{
+  "name": "curva-aberta-notes",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-26",
+  "workers_dev": true,
+  "observability": { "enabled": false },
+  "vars": {
+    "ALLOWED_ORIGIN": "https://hills808.github.io",
+    "WRITES_ENABLED": "false"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "curva-aberta-notes",
+    "database_id": "REPLACE_WITH_CREATED_D1_DATABASE_ID",
+    "migrations_dir": "migrations"
+  }]
+}
