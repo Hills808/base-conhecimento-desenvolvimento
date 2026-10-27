@@ -11,7 +11,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "curva-aberta-notes",
-    "database_id": "REPLACE_WITH_CREATED_D1_DATABASE_ID",
+    "database_id": "7f022186-4c83-4512-846b-f10120047eb5",
     "migrations_dir": "migrations"
   }]
 }
