@@ -2,7 +2,7 @@
 
 Implementação preparada, com D1 e Worker inicial criados; backend de notas ainda não publicado. D1: `7f022186-4c83-4512-846b-f10120047eb5`, com 59 blocos vazios conferidos no console. Worker: `https://curva-aberta-notes.henrique-2013ale.workers.dev`, ainda executando o template Hello World, sem binding D1. Não repetir a criação desses recursos. O UUID já está no Wrangler, com escritas desativadas. A conexão ativa fica em `site/src/notes-config.json` e continua no Supabase até concluir a publicação, homologação e transferência. Não há failover automático de gravações: dois bancos ativos dividiriam as anotações.
 
-O editor do dashboard permaneceu carregando. A alternativa de publicação por GitHub está preparada na página de instalação da integração oficial Cloudflare Workers and Pages, limitada a este repositório e aguardando confirmação do novo acesso persistente. Ver detalhes e estado em [CONTINUIDADE.md](../../CONTINUIDADE.md).
+A integração oficial Cloudflare Workers and Pages já está conectada ao GitHub, branch `main`, raiz `backend/cloudflare`, build `npm test` e deploy `npx wrangler deploy`. A instalação de dependências usa o lockfile. O backend permanece com escritas desativadas até concluir a transferência. Ver detalhes e estado em [CONTINUIDADE.md](../../CONTINUIDADE.md).
 
 ## Contrato preservado
 
@@ -26,8 +26,8 @@ Testes usam SQLite real para conferir SQL, 50.000 emojis, limite excedido, Unico
 ## Publicação e transferência — executar com acesso Cloudflare
 
 1. Autenticar a conta permanente com `npx wrangler login`. Não usar conta temporária para armazenar anotações. Não enviar tokens pelo chat nem adicioná-los ao repositório.
-2. `npx wrangler d1 create curva-aberta-notes`. Colocar o UUID retornado em `wrangler.jsonc`, campo `database_id`. Manter `WRITES_ENABLED: "false"`.
-3. `npm run db:remote` e `npm run deploy`. Guardar a URL efetivamente retornada pelo deploy. `/health` deve responder `ready: true`, `writesEnabled: false`.
+2. Reutilizar o D1 e o Worker identificados acima. Não executar `d1 create` nesta instalação. O `database_id` correto já consta em `wrangler.jsonc`. Manter `WRITES_ENABLED: "false"`.
+3. A estrutura inicial já foi aplicada neste D1; não repetir a criação da tabela. Publicar o backend pelo build GitHub conectado ou `npm run deploy`. Guardar a URL efetivamente retornada pelo deploy. `/health` deve responder `ready: true`, `writesEnabled: false`.
 4. Somente quando o destino estiver validado, congelar as gravações do Supabase pelo administrador: `revoke update(content) on public.shared_study_notes from anon;`. O site antigo ainda lê; edições não publicadas devem ser copiadas pelo visitante. Não congelar antes de obter acesso ao destino.
 5. `node transfer.mjs export`. Exporta todas as notas para `migration-data/notes.json`, diretório ignorado pelo Git. Conferir 59 blocos. Isso deve acontecer novamente após congelar a origem, mesmo que exista uma cópia anterior de preparação.
 6. Definir no ambiente `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_DATABASE_ID` e um `CLOUDFLARE_API_TOKEN` autorizado para D1. Usar o mecanismo seguro do ambiente, sem gravar o token em arquivo versionado. Executar `node transfer.mjs import <URL_WORKER>/rest/v1/shared_study_notes --source-frozen`. Transfere com parâmetros pela API D1, sem embutir textos longos no SQL. Só altera linhas ainda vazias na base nova; uma transferência interrompida pode ser retomada se as linhas já importadas coincidirem integralmente.
