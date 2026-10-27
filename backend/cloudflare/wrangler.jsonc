@@ -6,7 +6,7 @@
   "observability": { "enabled": false },
   "vars": {
     "ALLOWED_ORIGIN": "https://hills808.github.io",
-    "WRITES_ENABLED": "false"
+    "WRITES_ENABLED": "true"
   },
   "d1_databases": [{
     "binding": "DB",
