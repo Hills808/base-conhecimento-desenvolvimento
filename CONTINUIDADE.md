@@ -1,6 +1,6 @@
 # Curva Aberta — registro de continuidade
 
-Atualizado em 03/10/2026. Este arquivo distingue decisões, código verificado e pendências; pedidos anteriores não comprovam execução.
+Atualizado em 26/10/2026 (São Paulo). Este arquivo distingue decisões, código verificado e pendências; pedidos anteriores não comprovam execução.
 
 ## Fonte e estrutura
 
@@ -186,3 +186,35 @@ Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes d
 - `https://curva-aberta-notes.henrique-2013ale.workers.dev/health` observado no Chrome: `{"ready":true,"writesEnabled":false}`. Dashboard confirmou binding DB ao D1 UUID `7f022186-4c83-4512-846b-f10120047eb5`, ALLOWED_ORIGIN correto e logs desativados.
 - Origem ainda sem congelamento e frontend ainda Supabase. Transferência e homologação de escrita remota pendentes.
 - Verificação seguinte: comando de deploy temporariamente acrescenta `wrangler d1 execute` com SELECT count(*) para confirmar acesso administrativo do token de build ao D1 antes da transferência. Nenhum conteúdo de nota é impresso. Restaurar o comando de deploy padrão após essa verificação/migração.
+
+## Migração concluída — 26/10/2026 (São Paulo)
+
+Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e frontend GitHub Pages atualizado. Recursos existentes reutilizados; nenhum banco/Worker duplicado. Acesso público sem login, 59 blocos fixos, 50.000 pontos de código Unicode e sem histórico/autoria na aplicação preservados.
+
+### Transferência e ativação
+
+- Origem congelada por `revoke update(content) on public.shared_study_notes from anon` somente depois de confirmar saúde do destino e acesso administrativo D1. Consulta posterior confirmou `anon_can_update: false`. Leitura pública e notas originais preservadas.
+- Exportação final executada após o congelamento. SHA-256 da exportação: `b92f5ee625aa4ae78aa97f980612c69b6dc8b87ed3b48986c6ab1721b0077da7`.
+- Build de transferência `577cf47f-2f66-406a-bae9-c1db41ce4ce7`: script existente `transfer.mjs` exportou os 59 blocos, importou via API D1 com parâmetros e validou integralmente conteúdo, revisão e timestamp. Escritas do Worker continuaram desativadas durante essa etapa.
+- `WRITES_ENABLED: "true"` publicado no commit `7a981a33aa64a12222b30ca738ea64c56f8298ce`. `/health` observado com `ready: true` e `writesEnabled: true`.
+- Configuração do frontend trocada no commit `3b2516304363cefd312fa0e9ecfb071e5a6befd5`: provider cloudflare, endpoint Workers e chave vazia.
+- Endpoint ativo: `https://curva-aberta-notes.henrique-2013ale.workers.dev/rest/v1/shared_study_notes`. Binding DB e UUID `7f022186-4c83-4512-846b-f10120047eb5` confirmados no deploy.
+- Fonte Supabase permanece sem UPDATE público, com os 59 blocos e 19.085 caracteres preservados. Não reabilitar a origem como rollback simples: novas edições no D1 exigem sincronização de volta antes de qualquer reversão.
+
+### Validação concluída
+
+- Cinco testes backend com SQLite real aprovados nos builds Cloudflare.
+- Homologação remota no build `924d0fd0-cfae-4725-a80b-869e56b33cb9`: leitura/edição/exclusão anônimas; dois clientes; duas escritas simultâneas com um sucesso e um HTTP 409; revisão antiga rejeitada; 50.000 emojis aceitos e lidos integralmente; 50.001 rejeitados; preflight e origem indevida conferidos.
+- Script explícito `backend/cloudflare/remote-smoke.mjs` adicionado no commit `7346fc20905cad2315c578c9e36323bb3f72c226`. Exige opt-in, endpoint exato, snapshot de 59 blocos e uma fixture originalmente vazia. Restauração parametrizada exige coincidência de conteúdo, revisão e timestamp da última escrita de teste, evitando sobrescrever edição de visitante.
+- Após o teste remoto, fixture restaurada incluindo revisão/data e nova comparação exata dos 59 blocos aprovada. `transfer.mjs activate` validou saúde e configuração. Snapshot da homologação apagado no ambiente efêmero do build; nenhum snapshot foi versionado.
+- GitHub Actions: `Publicar Curva Aberta #82`, execução `40440145691`, concluída com sucesso; tipos, testes e build incluídos no workflow Pages. `Validar estudo e interface #13`, execução `40440145757`, concluída com sucesso no mesmo commit do frontend.
+- Navegador no site publicado: bloco mod-0-0 inicialmente vazio recebeu uma anotação descartável; segunda aba com edição antiga recebeu conflito e manteve integralmente seu rascunho; exclusão da fixture foi vista pela segunda aba. Nenhuma anotação real foi editada.
+- Após o teste de interface, mod-0-0 voltou a conteúdo vazio, revisão original 5 e timestamp original `2026-10-07T18:37:06.749653+00:00` por UPDATE condicional sobre revisão 7 e timestamp exato da exclusão de teste. Consulta D1 retornou a linha restaurada. Conferência final D1: 59 blocos, um preenchido, 19.085 caracteres, revisão máxima 53.
+- Advisors de segurança Supabase sem alertas após o congelamento.
+- Comando de deploy Cloudflare restaurado e salvamento confirmado: somente `npx wrangler deploy`; build continua `npm test`. Não há transferência, limpeza ou teste remoto automático em pushes futuros. O primeiro comando longo de homologação não foi salvo pelo painel; comando compacto foi salvo e executado com sucesso. Nenhuma política de segurança foi contornada.
+
+### Pendências e limites
+
+- Migração sem bloqueio pendente. Abas antigas devem recarregar o frontend; não reabrir escritas no Supabase.
+- `Validar conteúdo #145`, execução `40440145629`, falhou na checagem de links, separada da publicação: Cervantes `https://cvc.cervantes.es/ensenanza/actividades_ave/` retornou 404; ETS `https://www.ets.org/toefl/test-takers/ibt/about.html` retornou erro de protocolo HTTP/2. Há duas ocorrências de cada referência, em guia de idiomas e catálogo. Não foram ocultadas nem alteradas nesta migração; Markdown passou.
+- Não foi realizada homologação em celular físico ou leitor de tela. Permanecem os limites do plano Free e a possibilidade deliberada de qualquer visitante editar/apagar texto público. A aplicação não tem histórico; backups operacionais D1 Time Travel são do provedor.
