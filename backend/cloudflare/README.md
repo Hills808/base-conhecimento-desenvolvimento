@@ -1,14 +1,31 @@
-# Migração das anotações para Workers + D1
+# Anotações compartilhadas em Workers + D1
 
-Backend de notas publicado pelo GitHub. `/health` confirmado com `ready: true` e `writesEnabled: false`; transferência ainda pendente. D1: `7f022186-4c83-4512-846b-f10120047eb5`, com 59 blocos vazios conferidos no console. Worker: `https://curva-aberta-notes.henrique-2013ale.workers.dev`, com binding `DB` para o D1 correto e gravações públicas desativadas. Não repetir a criação desses recursos. O UUID já está no Wrangler, com escritas desativadas. A conexão ativa fica em `site/src/notes-config.json` e continua no Supabase até concluir a publicação, homologação e transferência. Não há failover automático de gravações: dois bancos ativos dividiriam as anotações.
+Migração concluída em 26/10/2026 (São Paulo). O site publicado no GitHub Pages usa o backend Cloudflare. Não recriar os recursos nem repetir a transferência.
 
-A integração oficial Cloudflare Workers and Pages já está conectada ao GitHub, branch `main`, raiz `backend/cloudflare`, build `npm test` e deploy `npx wrangler deploy`. A instalação de dependências usa o lockfile. O backend permanece com escritas desativadas até concluir a transferência. Ver detalhes e estado em [CONTINUIDADE.md](../../CONTINUIDADE.md).
+| Recurso | Produção |
+| --- | --- |
+| Worker | https://curva-aberta-notes.henrique-2013ale.workers.dev |
+| API | https://curva-aberta-notes.henrique-2013ale.workers.dev/rest/v1/shared_study_notes |
+| D1 | `curva-aberta-notes` |
+| UUID | `7f022186-4c83-4512-846b-f10120047eb5` |
+| Binding | `DB` |
+| Saúde | `/health`: `ready: true`, `writesEnabled: true` |
+| Frontend | `site/src/notes-config.json`, provider `cloudflare`, sem chave |
+| GitHub conectado | `main`, raiz `backend/cloudflare`, build `npm test`, deploy `npx wrangler deploy` |
+
+Os 59 blocos foram importados e comparados exatamente com a exportação final: conteúdo, revisão e timestamp. Conferência após os testes: 59 blocos, um preenchido, 19.085 caracteres, revisão máxima 53. O Supabase foi preservado com leitura pública e UPDATE de `content` revogado de `anon`, evitando dois bancos recebendo edições.
+
+A homologação no D1 remoto passou para leitura/edição/exclusão sem login, dois clientes, conflito simultâneo, 50.000 emojis aceitos, 50.001 rejeitados e CORS. As fixtures foram restauradas condicionalmente, incluindo revisão e timestamp. No site publicado, duas abas confirmaram publicação, conflito com rascunho preservado e exclusão compartilhada; a fixture também foi removida e seus metadados restaurados.
+
+Tipos, testes e build do site passaram no GitHub Actions, com deploy Pages do commit `3b2516304363cefd312fa0e9ecfb071e5a6befd5`. Scripts temporários não permanecem no comando de deploy. Exportações ficaram somente no ambiente efêmero do build e a cópia da homologação foi apagada após a conferência. Nenhum texto de nota ou credencial foi adicionado ao Git ou impresso pelos scripts.
+
+Veja commits, builds e pendências em [CONTINUIDADE.md](../../CONTINUIDADE.md). Abas com o frontend antigo precisam ser recarregadas; o banco antigo permanece sem gravações. Não religar a origem como rollback após novas edições no D1 sem congelar o destino e sincronizar os dados de volta.
 
 ## Contrato preservado
 
 59 blocos fixos, acesso público sem login, 50.000 pontos de código Unicode, edição e apagamento explícitos, revisão condicional e intervalo de três segundos por bloco. A API não cria escopos, não expõe SQL e não grava histórico/autoria. `PATCH content: ""` apaga o texto mantendo a revisão. O serviço pode manter backups operacionais (D1 Time Travel); ausência de histórico na aplicação não significa eliminação imediata de backups.
 
-Worker com escritas desativadas por padrão. SQL parametrizado, limite de corpo com leitura em streaming, validação de Unicode e erro genérico sem conteúdo nos logs. CORS aceita a origem GitHub Pages existente; CORS não é autenticação nem moderação. A configuração desativa observabilidade do Worker. O cooldown continua sendo por bloco, sem identificação de visitantes.
+O Worker de produção está com escritas habilitadas. Para uma nova migração, definir explicitamente `WRITES_ENABLED: "false"` antes de publicar o destino. SQL parametrizado, limite de corpo com leitura em streaming, validação de Unicode e erro genérico sem conteúdo nos logs. CORS aceita a origem GitHub Pages existente; CORS não é autenticação nem moderação. A configuração desativa observabilidade do Worker. O cooldown continua sendo por bloco, sem identificação de visitantes.
 
 ## Validação local
 
@@ -23,7 +40,9 @@ npm run dev -- --local --port 8787 --var WRITES_ENABLED:true
 
 Testes usam SQLite real para conferir SQL, 50.000 emojis, limite excedido, Unicode inválido, conflitos concorrentes, cooldown, exclusão, escopos e manutenção. `wrangler deploy --dry-run` valida o empacotamento; não publica nada. O teste local não equivale à homologação do D1 remoto.
 
-## Publicação e transferência — executar com acesso Cloudflare
+## Referência para uma futura transferência
+
+Este procedimento já foi concluído nesta conta. Não executá-lo novamente na produção ativa. Para uma transferência futura, primeiro preparar um destino sem gravações e revisar os identificadores.
 
 1. Autenticar a conta permanente com `npx wrangler login`. Não usar conta temporária para armazenar anotações. Não enviar tokens pelo chat nem adicioná-los ao repositório.
 2. Reutilizar o D1 e o Worker identificados acima. Não executar `d1 create` nesta instalação. O `database_id` correto já consta em `wrangler.jsonc`. Manter `WRITES_ENABLED: "false"`.
