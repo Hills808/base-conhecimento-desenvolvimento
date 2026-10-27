@@ -1,6 +1,8 @@
 # Migração das anotações para Workers + D1
 
-Implementação preparada, ainda sem recursos Cloudflare de produção. A conexão ativa fica em `site/src/notes-config.json` e continua no Supabase até concluir os passos abaixo. Não há failover automático de gravações: dois bancos ativos dividiriam as anotações.
+Implementação preparada, com D1 e Worker inicial criados; backend de notas ainda não publicado. D1: `7f022186-4c83-4512-846b-f10120047eb5`, com 59 blocos vazios conferidos no console. Worker: `https://curva-aberta-notes.henrique-2013ale.workers.dev`, ainda executando o template Hello World, sem binding D1. Não repetir a criação desses recursos. O UUID já está no Wrangler, com escritas desativadas. A conexão ativa fica em `site/src/notes-config.json` e continua no Supabase até concluir a publicação, homologação e transferência. Não há failover automático de gravações: dois bancos ativos dividiriam as anotações.
+
+O editor do dashboard permaneceu carregando. A alternativa de publicação por GitHub está preparada na página de instalação da integração oficial Cloudflare Workers and Pages, limitada a este repositório e aguardando confirmação do novo acesso persistente. Ver detalhes e estado em [CONTINUIDADE.md](../../CONTINUIDADE.md).
 
 ## Contrato preservado
 
