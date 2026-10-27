@@ -177,3 +177,12 @@ Ler este registro, conferir `git status`, `git log` e os arquivos atuais antes d
 - Consulta somente leitura no Supabase confirmou 59 blocos, um preenchido, 19.085 caracteres e revisão máxima 53. Não é snapshot final: reexportar depois do congelamento. Nenhum conteúdo foi exibido nessa consulta.
 - Origem NÃO congelada, frontend continua Supabase, nenhuma nota transferida/apagada. Não criar outro banco ou Worker ao retomar. Nenhuma chave Cloudflare criada e nenhuma configuração de segurança do navegador alterada.
 - CLI local: clone GitHub falhou com `getaddrinfo() thread failed to start`; não foi usado para contornar o bloqueio de rede registrado anteriormente. Recursos foram criados pela sessão Chrome explicitamente autorizada.
+
+## Backend Cloudflare publicado — 26/10/2026 (São Paulo)
+
+- Integração Cloudflare–GitHub encontrada já conectada ao repositório correto, branch main. Nenhuma nova permissão foi concedida nesta retomada.
+- Configurado diretório raiz `backend/cloudflare`, build `npm test`, instalação automática `npm clean-install` pelo lockfile e deploy `npx wrangler deploy`.
+- Publicação do commit `6151eee0e3cf65100b7b51bf1a3098357467cf31` concluída no build Cloudflare `b8cdb418-ba19-4fa9-b3cc-4b89e6c5f6c8`. Cinco testes backend aprovados. Worker deixou o template Hello World.
+- `https://curva-aberta-notes.henrique-2013ale.workers.dev/health` observado no Chrome: `{"ready":true,"writesEnabled":false}`. Dashboard confirmou binding DB ao D1 UUID `7f022186-4c83-4512-846b-f10120047eb5`, ALLOWED_ORIGIN correto e logs desativados.
+- Origem ainda sem congelamento e frontend ainda Supabase. Transferência e homologação de escrita remota pendentes.
+- Verificação seguinte: comando de deploy temporariamente acrescenta `wrangler d1 execute` com SELECT count(*) para confirmar acesso administrativo do token de build ao D1 antes da transferência. Nenhum conteúdo de nota é impresso. Restaurar o comando de deploy padrão após essa verificação/migração.
