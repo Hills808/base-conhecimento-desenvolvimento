@@ -139,3 +139,32 @@ test('autonomy drafts survive storage fallback and backup preserves current evid
  assert.equal(backup.mergeSection(autonomy.autonomyKey,current,incoming,false).records.prever.build,record.build);
  assert.notEqual(backup.mergeSection(autonomy.autonomyKey,current,incoming,true).records.prever.build,record.build);
 });
+
+test('formation diagnosis targets a gap without completing a mission', () => {
+  const f=src('formationProgress'); const p=f.parseFormation({diagnostic:{0:1,1:1,2:0,3:0}});
+  assert.equal(f.suggestedMission(p).id,'C03'); assert.deepEqual(p.attempts,{});
+  assert.equal(f.completeMission(p,'C03'),p);
+});
+test('formation completion needs correct predictions and practice, but not text length or calendar gates', () => {
+  const f=src('formationProgress'); const p=f.parseFormation({attempts:{C03:{...f.freshAttempt(),answers:{0:1,1:1},checked:true,checks:[true,true]}}});
+  assert(f.canComplete('C03',p.attempts.C03));
+  const done=f.completeMission(p,'C03',Date.parse('2026-10-01'));
+  assert.equal(done.attempts.C03.note,''); assert.equal(f.dueMissions(done,Date.parse('2026-10-09')).length,1);
+  assert(f.canComplete('C03',done.attempts.C03));
+  assert(!f.canComplete('C03',{...p.attempts.C03,answers:{0:0,1:1}}));
+  assert.equal(f.completeMission(done,'C03'),done);
+});
+test('formation drafts and diagnoses round-trip through backup and preserve conflicts', () => {
+  const f=src('formationProgress'); const current=f.parseFormation({last:'C02',diagnostic:{0:1},attempts:{C02:{...f.freshAttempt(),note:'Meu rascunho',step:2}}});
+  f.saveFormation(current);
+  const b=backup.parseBackup(JSON.stringify(backup.makeBackup())); assert.equal(b.data[f.formationKey].attempts.C02.note,'Meu rascunho');
+  const incoming=f.parseFormation({attempts:{C02:{...f.freshAttempt(),note:'Outra resposta'},H01:f.freshAttempt()}});
+  const merged=backup.mergeSection(f.formationKey,current,incoming,false);
+  assert.equal(merged.attempts.C02.note,'Meu rascunho'); assert(merged.attempts.H01);
+  assert.equal(backup.mergeSection(f.formationKey,current,incoming,true).attempts.C02.note,'Outra resposta');
+});
+test('formation rejects invalid IDs and keeps drafts when storage is blocked', () => {
+ const f=src('formationProgress');const p=f.parseFormation({last:'BAD',diagnostic:{99:1},attempts:{BAD:{},C01:{step:99,answers:{0:100},note:'texto'}}});
+ assert.equal(p.last,'C01');assert.deepEqual(p.diagnostic,{});assert.equal(p.attempts.BAD,undefined);assert.equal(p.attempts.C01.step,0);assert.deepEqual(p.attempts.C01.answers,{});
+ blocked=true;assert.equal(f.saveFormation(p),false);assert.equal(f.readFormation().attempts.C01.note,'texto');blocked=false;f.saveFormation(p);
+});
