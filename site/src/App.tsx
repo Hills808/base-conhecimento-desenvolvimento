@@ -3,6 +3,8 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Check, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
 import { modules, guideUrl } from "./data/modules";
+const AutonomyLab = lazy(() => import("./AutonomyLab"));
+import "./autonomy.css";
 const Laboratory = lazy(() => import("./Laboratory"));
 const ModuleJourney = lazy(() => import("./ModuleJourney"));
 import { getResourceMeta, matchesMaterial } from "./resourceMeta";
@@ -35,6 +37,8 @@ function ResourceCard({ item, compact = false }: { item: Resource; compact?: boo
 }
 
 export default function Home() {
+  const [laboratoryView] = useUrlFilter("laboratorio", "", ["", "autonomia"]);
+  const isAutonomy = laboratoryView === "autonomia";
   const [selected, setSelected] = useState<number | null>(null);
   const [area, setArea] = useUrlFilter("area", "Todos", areas);
   const [type, setType] = useUrlFilter("formato", "Todos", types);
@@ -95,7 +99,7 @@ export default function Home() {
     return () => window.removeEventListener("popstate", sync);
   }, []);
 
-  useEffect(() => { document.getElementById("conteudo")?.focus({ preventScroll: true }); }, [selected]);
+  useEffect(() => { document.getElementById("conteudo")?.focus({ preventScroll: true }); }, [selected, isAutonomy]);
   useEffect(() => { if (!notice) return; const timer = window.setTimeout(() => setNotice(""), 5000); return () => window.clearTimeout(timer); }, [notice]);
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -113,6 +117,12 @@ export default function Home() {
     const url = id === null ? base : `${base}?modulo=${String(id).padStart(2, "0")}`;
     window.history.pushState({}, "", url); window.dispatchEvent(new Event("curva-aberta-location-change"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+  function openAutonomy() {
+    setSelected(null); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    window.history.pushState({}, "", `${import.meta.env.BASE_URL}?laboratorio=autonomia`);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
   function openLabStep(index: number) {
     setSelected(9); setExpanded(false); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
@@ -141,6 +151,7 @@ export default function Home() {
 
   const quickItems = useMemo(() => [
     { id:"home", title:"Explorar todos os módulos", detail:"Página inicial", action: () => openModule(null) },
+    { id:"autonomy", title:"Laboratório de autonomia", detail:"Construir, explicar e refazer sem pular etapas", action: openAutonomy },
     { id:"lab", title:"Abrir Laboratório MCP com C#", detail:"14 etapas guiadas", action: () => openModule(9) },
     ...modules.map(module => ({ id:`module-${module.id}`, title:`Módulo ${String(module.id).padStart(2,"0")} · ${module.title}`, detail:module.outcome, action: () => openModule(module.id) })),
     ...curriculum.steps.map((step, index) => ({ id:`lab-${step.id}`, title:`Etapa ${String(index + 1).padStart(2,"0")} · ${step.title}`, detail:`Laboratório · ${step.hours}`, action: () => openLabStep(index) }))
@@ -161,6 +172,7 @@ export default function Home() {
         <nav id="main-nav" className={`topnav ${mobileMenu ? "open" : ""}`} aria-label="Navegação principal">
           <a href={moduleHref(null)} onClick={event => navigate(event, null)}>Explorar módulos</a>
           <a href={moduleHref(9)} onClick={event => navigate(event, 9)}>Laboratório MCP <ArrowUpRight size={15} /></a>
+          <a href={`${import.meta.env.BASE_URL}?laboratorio=autonomia`} onClick={event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { event.preventDefault(); openAutonomy(); } }}>Autonomia</a>
           <a href="#guardar-estudo">Meu estudo</a>
           <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
           <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Base no GitHub <ArrowUpRight size={15} /></a>
@@ -172,8 +184,8 @@ export default function Home() {
       </div>
     </header>
 
-    <main id="conteudo" tabIndex={-1}><RouteBoundary key={selected ?? "home"}>
-      {active ? <div className="detail-wrap">
+    <main id="conteudo" tabIndex={-1}><RouteBoundary key={isAutonomy ? "autonomy" : selected ?? "home"}>
+      {isAutonomy ? <div className="home-wrap"><Suspense fallback={<p role="status">Preparando seu laboratório de autonomia…</p>}><AutonomyLab /></Suspense></div> : active ? <div className="detail-wrap">
         <div className="breadcrumbs"><button onClick={() => openModule(null)}><ArrowLeft size={16}/> Todos os módulos</button><span>/</span><span>Módulo {String(active.id).padStart(2,"0")}</span></div>
         <div className="detail-heading" style={{ "--module-accent": active.color } as React.CSSProperties}>
           <div className="detail-lead">
@@ -214,7 +226,8 @@ export default function Home() {
           </div>
         </section>
         <section className="method-band" aria-label="Como estudar aqui"><span>COMO FUNCIONA</span><ol><li><b>01</b> Entenda uma ideia</li><li><b>02</b> Teste com apoio</li><li><b>03</b> Faça uma variação</li><li><b>04</b> Mostre o resultado</li></ol></section>
-        <StudyResume onOpenModule={openModule} onOpenLabStep={openLabStep}/>
+        <section className="autonomy-entry" aria-labelledby="autonomy-entry-title"><div><h2 id="autonomy-entry-title">Quero conseguir explicar o que faço.</h2><p>Um laboratório para consolidar C# e APIs: uma entrega por vez, variações sem copiar e revisão de memória.</p></div><button onClick={openAutonomy}>Começar meu laboratório de autonomia</button></section>
+        <StudyResume onOpenModule={openModule} onOpenLabStep={openLabStep} onOpenAutonomy={openAutonomy}/>
 
         <section id="modulos" className="explore-section">
           <div className="explore-heading"><div><span className="eyebrow ink">ESCOLHA SUA PRÓXIMA HABILIDADE</span><h2>O que você quer aprender?</h2></div><p>Escolha uma área. Dentro dela, encontre seu nível, os materiais e a próxima prática.</p></div>

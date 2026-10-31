@@ -91,3 +91,51 @@ test('restored module evidence still needs its reasoning verification', () => {
   assert.equal(progress.isStageVerified(value, 2, 0), false);
   value.passed = ['mod-2-0-0']; assert.equal(progress.isStageVerified(value, 2, 0), true);
 });
+
+const autonomy = src('autonomyProgress');
+const exampleEvidence = () => ({ ...autonomy.emptyEvidence(), plan:'Minha previsão detalhada antes de executar a regra e seus limites.', build:'Entrada 25: esperado foco, obtido foco; código e saída em Program.cs.', explain:'Eu escolhi >= para incluir a fronteira de 25; o teste de 24 cobre a outra saída.', checks:[true,true,true] });
+test('autonomy cannot skip prerequisites or complete from checks alone', () => {
+ const now = Date.parse('2026-10-30T12:00:00Z');
+ let value = autonomy.parseAutonomy({records:{prever:{...autonomy.emptyEvidence(),checks:[true,true,true]}}});
+ assert.equal(autonomy.completeStage(value,0,now),value);
+ value.records.prever=exampleEvidence(); value.records.decidir=exampleEvidence();
+ assert.equal(autonomy.canOpen(value,1,now),false);
+ assert.equal(autonomy.completeStage(value,1,now),value);
+ value=autonomy.completeStage(value,0,now);
+ assert.equal(autonomy.canOpen(value,1,now),true);
+ assert.equal(autonomy.canOpen(value,2,now),false);
+ assert.equal(autonomy.canOpen(value,1,now+86400000),false);
+ assert.equal(autonomy.completeStage(value,0,now+1000),value, 'repeated completion cannot postpone a review');
+});
+test('autonomy help requires a reconstruction note and completion is validated on restore', () => {
+ const record = {...exampleEvidence(), help:'ai', helpNote:''};
+ assert.equal(autonomy.evidenceReady(record),false);
+ record.helpNote='Recebi uma pista sobre limites e refiz o teste com 25 sem consultar.';
+ assert.equal(autonomy.evidenceReady(record),true);
+ const cleaned = autonomy.parseAutonomy({last:999,records:{unknown:record,prever:{completedAt:new Date().toISOString(),checks:[true,true,true]}}});
+ assert.equal(cleaned.last,0); assert.equal(cleaned.records.unknown,undefined);
+ assert.equal(autonomy.verifiedEvidence(cleaned.records.prever),false);
+});
+test('autonomy review requires due date, reconstruction and explanation before advancing', () => {
+ const now=Date.parse('2026-10-30T12:00:00Z');
+ let value=autonomy.completeStage(autonomy.parseAutonomy({records:{prever:exampleEvidence()}}),0,now);
+ value.records.prever.reviewDraft='Expliquei sem consultar a diferença entre atribuir um valor e imprimir uma expressão.';
+ value.records.prever.reviewBuild='Refiz em arquivo vazio com 15 e 12; obtive 27 e 54 e conferi minha previsão.';
+ value.records.prever.reviewChecks=[true,true,true];
+ assert.equal(autonomy.completeReview(value,0,now),value);
+ const reviewed=autonomy.completeReview(value,0,now+86400000);
+ assert.equal(reviewed.records.prever.reviewRound,1);
+ assert.equal(Date.parse(reviewed.records.prever.reviewDue),now+4*86400000);
+ assert.equal(autonomy.canOpen(reviewed,1,now+86400000),true);
+ assert.equal(autonomy.completeReview(reviewed,0,now+86400000),reviewed);
+});
+test('autonomy drafts survive storage fallback and backup preserves current evidence', () => {
+ const record=exampleEvidence(); blocked=true;
+ assert.equal(autonomy.saveAutonomy({last:0,records:{prever:record}}),false);
+ assert.equal(autonomy.readAutonomy().records.prever.build,record.build); blocked=false;
+ const exported=backup.parseBackup(JSON.stringify(backup.makeBackup()));
+ assert.equal(exported.data[autonomy.autonomyKey].records.prever.build,record.build);
+ const current=autonomy.parseAutonomy({records:{prever:record}}), incoming=autonomy.parseAutonomy({records:{prever:{...record,build:'Versão importada que não deve substituir meu texto atual por padrão.'}}});
+ assert.equal(backup.mergeSection(autonomy.autonomyKey,current,incoming,false).records.prever.build,record.build);
+ assert.notEqual(backup.mergeSection(autonomy.autonomyKey,current,incoming,true).records.prever.build,record.build);
+});

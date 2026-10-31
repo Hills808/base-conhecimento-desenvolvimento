@@ -1,0 +1,282 @@
+{
+  "stages": [
+    {
+      "id": "prever",
+      "title": "Prever antes de executar",
+      "level": "Fundamentos",
+      "goal": "Ler um programa pequeno e explicar cada mudança de valor.",
+      "idea": "Uma variável guarda um valor. Atribuir outro valor substitui o anterior; Console.WriteLine mostra o valor no momento daquela linha. Antes de executar, simule no papel.",
+      "example": "int minutos = 20;\nint pausa = 5;\nminutos = minutos + 10;\nConsole.WriteLine(minutos);\nConsole.WriteLine(minutos + pausa);",
+      "walkthrough": "A primeira saída é 30 e a segunda é 35. A pausa não foi somada à variável minutos: foi usada apenas na expressão da última linha.",
+      "steps": [
+        "Confira dotnet --info. Se o SDK faltar, use o guia C# indicado abaixo. Crie uma pasta de exercícios com dotnet new console -n AutonomiaConsole e entre nela com cd AutonomiaConsole.",
+        "Antes de copiar o exemplo para Program.cs, escreva as duas saídas esperadas e explique por quê. Execute com dotnet run e compare.",
+        "Troque a expressão da última linha por minutos = minutos + pausa; e imprima minutos novamente. Registre o que mudou."
+      ],
+      "challenge": "Feche o exemplo. Crie um programa que parte de 15 minutos de estudo, acrescenta 12 e mostra o total e o dobro desse total. Compare com sua previsão.",
+      "expected": "O total é 27 e o dobro é 54. A explicação precisa separar o valor guardado da expressão calculada.",
+      "criteria": [
+        "Previ as saídas antes de executar e comparei com a saída real.",
+        "Refiz a variação em arquivo vazio, sem copiar o exemplo nem uma resposta de IA.",
+        "Consigo apontar a atribuição, a expressão e a saída e explicar a diferença."
+      ],
+      "oral": [
+        "O que cada variável representa?",
+        "O que aconteceria se a atribuição viesse depois da impressão?",
+        "Como você comprova sua previsão?"
+      ],
+      "mistake": "Se a saída surpreendeu, registre a linha em que sua previsão divergiu. Isso é um diagnóstico útil, não motivo para trocar de tecnologia.",
+      "hint": "Faça uma tabela com uma coluna para a linha executada e outra para o valor de minutos.",
+      "source": "csharp"
+    },
+    {
+      "id": "decidir",
+      "title": "Decidir e testar limites",
+      "level": "Fundamentos",
+      "goal": "Transformar uma regra em condição, cobrindo as fronteiras.",
+      "idea": "Uma condição decide qual caminho executar. Os sinais > e >= tratam o limite de formas diferentes. Uma regra deve dizer também o que fazer com entradas inválidas.",
+      "example": "int minutos = 25;\nif (minutos <= 0)\n    Console.WriteLine(\"Duração inválida\");\nelse if (minutos >= 25)\n    Console.WriteLine(\"Sessão de foco\");\nelse\n    Console.WriteLine(\"Sessão curta\");",
+      "walkthrough": "Com 25, a saída é Sessão de foco. Com 24, é Sessão curta. Zero e negativos entram no primeiro caso, porque uma duração de estudo precisa ser positiva.",
+      "steps": [
+        "No mesmo projeto console, escreva em português a regra de classificação antes do código.",
+        "Preveja e execute cinco casos: -1, 0, 24, 25 e 26. Registre entrada, saída esperada e saída obtida.",
+        "Troque >= por > e descubra qual teste revela a diferença. Restaure a regra original."
+      ],
+      "challenge": "Sem consultar, classifique minutos: até zero é inválido; de 1 a 19 é sessão curta; a partir de 20 é foco. Cubra 0, 1, 19, 20 e 21.",
+      "expected": "0 é inválido; 1 e 19 são sessões curtas; 20 e 21 são foco. Um teste em 20 diferencia > de >=.",
+      "criteria": [
+        "Minha regra escrita coincide com todos os caminhos do código.",
+        "Registrei um caso inválido e os dois lados do limite.",
+        "Refiz outra regra de classificação sem copiar e expliquei qual teste pega um erro de fronteira."
+      ],
+      "oral": [
+        "Por que você escolheu >=?",
+        "Qual teste falharia se o limite mudasse?",
+        "O que ocorre quando mais de uma condição parece verdadeira?"
+      ],
+      "mistake": "Só testar um caso que funciona esconde erros na fronteira. O teste que contradiz sua hipótese costuma ensinar mais.",
+      "hint": "Desenhe uma linha numérica e marque os intervalos antes de escrever os ifs.",
+      "source": "csharp"
+    },
+    {
+      "id": "funcoes",
+      "title": "Dar nome a uma responsabilidade",
+      "level": "Fundamentos",
+      "goal": "Usar funções e percorrer uma coleção sem esconder a regra.",
+      "idea": "Uma função recebe entradas e retorna uma saída. Separar cálculo de impressão facilita verificar a regra. Uma coleção reúne valores que podem ser percorridos com foreach.",
+      "example": "int Dobrar(int valor) => valor * 2;\nint[] sessoes = [10, 20, 30];\nforeach (int minutos in sessoes)\n    Console.WriteLine(Dobrar(minutos));",
+      "walkthrough": "As saídas são 20, 40 e 60. A função não conhece a lista nem escreve na tela: ela só calcula. O foreach seleciona cada entrada, em ordem.",
+      "steps": [
+        "Execute o exemplo no console com SDK .NET 10. Escreva para cada chamada o argumento recebido e o resultado devolvido.",
+        "Implemente SomarMinutos(int[] valores) com uma variável total e foreach. Decida e documente como lidar com negativos.",
+        "Teste lista vazia, um valor e três valores. Não abra uma API ainda: primeiro isole essa regra."
+      ],
+      "challenge": "Em arquivo vazio, escreva uma função que conte quantas sessões têm pelo menos 25 minutos. Teste [], [24] e [24, 25, 40].",
+      "expected": "Os resultados são 0, 0 e 2. A função devolve a contagem; a impressão fica fora dela.",
+      "criteria": [
+        "Mostrei entradas e saídas para lista vazia e para o limite 25.",
+        "A regra funciona sem depender de Console.WriteLine dentro da função.",
+        "Reescrevi a contagem sem copiar e expliquei o papel do acumulador."
+      ],
+      "oral": [
+        "O que a função recebe e devolve?",
+        "Por que separar calcular de mostrar?",
+        "Como você trataria uma nova regra sobre valores negativos?"
+      ],
+      "mistake": "Não crie várias camadas para um exercício de cinco linhas. Primeiro deixe explícita a responsabilidade de cada trecho.",
+      "hint": "Comece com contador igual a zero. Para cada valor, decida se o contador deve crescer.",
+      "source": "csharp"
+    },
+    {
+      "id": "http",
+      "title": "Explicar uma chamada HTTP",
+      "level": "APIs",
+      "goal": "Ler pedido e resposta no Bruno antes de construir um servidor.",
+      "idea": "O cliente envia método, endereço, cabeçalhos e, quando necessário, corpo. O servidor devolve status, cabeçalhos e corpo. JSON é um formato de dados; HTTP é o protocolo da conversa.",
+      "example": "GET http://localhost:5080/sessoes/1\n\nHTTP 200\nContent-Type: application/json\n\n{ \"id\": 1, \"minutos\": 25 }",
+      "walkthrough": "Este é um contrato fictício, não uma chamada executada nesta página. GET consulta uma sessão; 200 indica sucesso. Para um ID inexistente, definiremos 404. O número 25 pertence ao corpo JSON, não ao status HTTP.",
+      "steps": [
+        "No laboratório MCP existente, faça a primeira oficina HTTP e Bruno. Use o kit local daquela oficina se não houver um servidor disponível.",
+        "No Bruno, monte uma consulta e registre método, URL, status e um campo da resposta. Não use dados ou tokens do trabalho.",
+        "Explique o caminho cliente → servidor → resposta e descreva um ID que não existe. Diferencie falha de conexão de uma resposta 404."
+      ],
+      "challenge": "Sem consultar o exemplo, escreva o pedido e a resposta esperada para consultar a sessão 2. Depois explique o que deveria mudar quando ela não existir.",
+      "expected": "O método continua GET; o ID muda na URL. O contrato de ausência precisa explicitar 404; uma falha de conexão não é um 404 recebido do servidor.",
+      "criteria": [
+        "Registrei uma chamada real no Bruno com método, URL, status e corpo.",
+        "Diferenciei sucesso, recurso ausente e servidor indisponível.",
+        "Consegui explicar HTTP versus JSON e desenhar a conversa sem copiar."
+      ],
+      "oral": [
+        "Quem envia e quem responde?",
+        "O que muda entre GET e POST?",
+        "Como você distingue uma resposta de erro de não ter recebido resposta?"
+      ],
+      "mistake": "Ver um JSON bonito não prova que a chamada está correta. Confira o status e o comportamento esperado.",
+      "hint": "Use quatro rótulos na sua explicação: pedido, regra do servidor, status e corpo.",
+      "source": "http"
+    },
+    {
+      "id": "api",
+      "title": "Construir uma API pequena e previsível",
+      "level": "APIs",
+      "goal": "Implementar e demonstrar uma consulta com sucesso e ausência.",
+      "idea": "Um endpoint liga método e rota a um comportamento. Comece com dados em memória: você quer entender o contrato antes de adicionar banco, autenticação ou agente.",
+      "example": "var builder = WebApplication.CreateBuilder(args);\nvar app = builder.Build();\napp.MapGet(\"/sessoes/{id:int}\", (int id) =>\n    id == 1\n        ? Results.Ok(new { id, minutos = 25 })\n        : Results.NotFound());\napp.Run();",
+      "walkthrough": "O parâmetro id vem da rota. Com 1, retornamos 200 e um objeto; com outro inteiro, 404. Não há persistência: o exemplo serve para aprender o contrato da consulta.",
+      "steps": [
+        "Com SDK .NET 10, execute dotnet new web -n AutonomiaApi e cd AutonomiaApi. Substitua Program.cs pelo exemplo. Rode dotnet run --urls http://localhost:5080.",
+        "No Bruno, consulte /sessoes/1 e /sessoes/99. Guarde pedido, status e resposta e explique cada linha do endpoint.",
+        "Desenhe o contrato de um POST para registrar minutos: entrada, validação positiva, sucesso e erro. Implemente apenas depois de conseguir explicar a consulta."
+      ],
+      "challenge": "Sem copiar o endpoint, acrescente GET /sessoes/{id}/resumo: 1 retorna um resumo dos 25 minutos; ID ausente retorna 404. Declare a forma do JSON antes de implementar.",
+      "expected": "Os testes precisam conferir o status e o formato que você escolheu. Reiniciar o app não deve ser descrito como persistência de dados.",
+      "criteria": [
+        "Demonstrei o endpoint funcionando no Bruno e o caso 404.",
+        "Implementei uma variação com contrato escrito antes do código.",
+        "Expliquei de onde vem id, como o status é escolhido e por que não há banco neste passo."
+      ],
+      "oral": [
+        "Qual é a entrada e qual é a saída?",
+        "Onde a regra é executada?",
+        "O que você precisaria mudar para persistir uma sessão?"
+      ],
+      "mistake": "Adicionar banco, agente ou arquitetura completa agora pode ocultar uma dúvida sobre a rota. Resolva essa dúvida primeiro.",
+      "hint": "Separe em três perguntas: como capturar id, como decidir se existe e como responder.",
+      "source": "api"
+    },
+    {
+      "id": "testar",
+      "title": "Encontrar e corrigir uma falha",
+      "level": "Confiabilidade",
+      "goal": "Demonstrar um teste que falha antes de consertar a regra.",
+      "idea": "Um teste compara o comportamento obtido com o esperado. Reproduza o erro, forme uma hipótese, altere uma coisa e rode novamente. Um teste que nunca falhou pode estar olhando para o lugar errado.",
+      "example": "bool EhSessaoDeFoco(int minutos) => minutos > 25;\n// Regra combinada: 25 ou mais deve ser foco.\nConsole.WriteLine(EhSessaoDeFoco(25)); // obtido: false\n// esperado: true; a fronteira revela o defeito.",
+      "walkthrough": "O problema é o operador >. Trocar por >= corrige a fronteira. Os casos 24 e 26 evitam corrigir um caso quebrando seus vizinhos. Em um projeto de testes, essa comparação vira uma asserção automatizada.",
+      "steps": [
+        "Registre o teste em 25 falhando e descreva sua hipótese antes de editar a função.",
+        "Corrija o operador e rode 24, 25 e 26. Guarde saída anterior e posterior.",
+        "Siga o guia oficial de xUnit abaixo para criar um projeto de testes e automatize esses três casos. Use a estrutura e a versão indicadas no guia; registre dotnet test."
+      ],
+      "challenge": "Escreva testes para uma regra que aceita sessões de 1 até 90 minutos, inclusive. Introduza um erro de fronteira, veja o teste falhar e só então corrija.",
+      "expected": "0 e 91 são inválidos; 1 e 90 são válidos. O teste deve falhar quando você troca um dos limites inclusivos por exclusivo.",
+      "criteria": [
+        "Tenho evidência de um teste falhando antes da correção.",
+        "dotnet test passa e cobre as duas fronteiras e entradas inválidas.",
+        "Expliquei a causa, a correção e um teste que detectaria a regressão."
+      ],
+      "oral": [
+        "Qual era sua hipótese e qual evidência a confirmou?",
+        "O teste exercita a regra ou apenas repete a implementação?",
+        "O que você investigaria se a falha voltasse?"
+      ],
+      "mistake": "Mudar três arquivos até ficar verde impede saber qual mudança resolveu a causa. Faça uma hipótese de cada vez.",
+      "hint": "Escreva a regra em uma frase e liste seu menor e seu maior valor válido.",
+      "source": "testes"
+    },
+    {
+      "id": "decisoes",
+      "title": "Explicar por que o código está organizado assim",
+      "level": "Consolidação",
+      "goal": "Defender uma decisão pequena com vantagens e limites.",
+      "idea": "Arquitetura começa por responsabilidades e dependências. Extraia uma regra quando isso permite testá-la ou mudá-la com clareza, não para imitar o desenho de outro projeto.",
+      "example": "Rota HTTP → regra de duração → resultado\n\nDecisão: extrair a validação de minutos para uma função.\nMotivo: testar limites sem iniciar servidor.\nAlternativa: manter a condição dentro da rota.\nLimite: a função sozinha não testa o contrato HTTP.",
+      "walkthrough": "A decisão relaciona uma mudança a uma necessidade verificável. Não afirma que mais arquivos sempre melhoram o sistema. Separar a regra ajuda nos testes; ainda precisamos conferir status e JSON no endpoint.",
+      "steps": [
+        "Desenhe o caminho de uma requisição no seu projeto atual e atribua uma responsabilidade a cada trecho.",
+        "Extraia a regra de duração e demonstre que os testes continuam passando. Não adicione novas funcionalidades junto.",
+        "Escreva uma decisão com contexto, escolha, alternativa e custo. Apresente em dois minutos sem ler o código."
+      ],
+      "challenge": "Receba a mudança: agora sessões podem ter até 120 minutos. Antes de editar, aponte onde a regra e os testes mudam; depois demonstre que o contrato continua coerente.",
+      "expected": "A explicação aponta locais concretos, prevê testes afetados e reconhece o que a extração não resolve, como persistência e autorização.",
+      "criteria": [
+        "O desenho corresponde aos arquivos e chamadas que existem.",
+        "Mudei uma regra e demonstrei os testes afetados.",
+        "Defendi uma escolha e uma alternativa, incluindo uma desvantagem da minha escolha."
+      ],
+      "oral": [
+        "Qual problema esta separação resolveu?",
+        "Quando você manteria tudo mais simples?",
+        "Qual parte do desenho você realmente implementou?"
+      ],
+      "mistake": "Nomear camadas sem saber percorrer uma chamada dá uma sensação falsa de domínio. Aponte as chamadas reais.",
+      "hint": "Use a frase: escolhi X para resolver Y; considerei Z; aceitei o custo W.",
+      "source": "api"
+    },
+    {
+      "id": "entregar",
+      "title": "Conduzir uma demanda do início à explicação",
+      "level": "Consolidação",
+      "goal": "Entregar uma mudança pequena com plano, testes e demonstração própria.",
+      "idea": "Autonomia não é nunca pedir ajuda. É delimitar o problema, propor uma solução, buscar ajuda específica, verificar o resultado e reconhecer o que ainda não sabe.",
+      "example": "Demanda fictícia: consultar sessões por duração mínima.\nContrato: GET /sessoes?minutosMinimos=25\nCasos: filtro válido, sem resultados, filtro inválido.\nEntrega: código, testes, exemplos Bruno e decisão escrita.",
+      "walkthrough": "Esse é um escopo de trabalho, sem solução pronta. Especifique quais entradas são inválidas e o contrato de lista vazia. Construa usando o que consolidou; documente os limites do armazenamento em memória.",
+      "steps": [
+        "Escreva critérios de aceite antes de codificar: entradas, status, JSON, falhas e o que fica fora do escopo.",
+        "Implemente em uma branch pequena, rode testes e monte os exemplos Bruno. Peça à IA revisão ou uma pergunta específica depois de sua tentativa.",
+        "Faça uma demonstração de cinco minutos: problema, plano, código, falha tratada, testes e decisão. Convide alguém para perguntar; se estiver sozinho, responda às perguntas abaixo sem consultar."
+      ],
+      "challenge": "Mude o requisito para filtrar também por duração máxima. Planeje e implemente sozinho, depois explique uma interação entre os dois filtros que pode dar errado.",
+      "expected": "Uma pessoa consegue reproduzir a execução, entender o contrato e encontrar evidências dos casos positivos e negativos. Você explica também uma limitação real.",
+      "criteria": [
+        "Meu README permite executar e reproduzir testes e chamadas.",
+        "Entreguei a variação e demonstrei sucesso, vazio e entrada inválida.",
+        "Apresentei sem ler e respondi uma pergunta imprevista ou registrei uma dúvida específica para revisar."
+      ],
+      "oral": [
+        "Que decisão você tomaria diferente com dados persistentes?",
+        "Qual evidência sustenta que o comportamento está correto?",
+        "O que você consegue fazer sozinho e em que ponto pediria revisão?"
+      ],
+      "mistake": "Não use a conclusão para começar cinco stacks novas. Repita este ciclo com outra demanda pequena. Depois retome MCP, tools e RAG no laboratório existente.",
+      "hint": "Reduza o escopo até conseguir escrever três critérios de aceite que uma outra pessoa possa conferir.",
+      "source": "testes"
+    }
+  ],
+  "sources": {
+    "csharp": {
+      "title": "Tutorial introdutório de C#",
+      "provider": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/tutorials/hello-world",
+      "use": "Execute os trechos localmente; consulte as lições seguintes quando uma expressão ou estrutura ainda não estiver clara.",
+      "language": "Português — texto",
+      "duration": "Duração não informada",
+      "certificate": "Não se aplica: documentação",
+      "access": "Leitura gratuita; execução local requer SDK .NET quando indicado. Codespaces tem condições próprias.",
+      "verified": "2026-10-30"
+    },
+    "http": {
+      "title": "Uma visão geral do HTTP",
+      "provider": "MDN",
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+      "use": "Consulte pedido, resposta e a relação cliente/servidor. Depois faça a primeira oficina do laboratório MCP.",
+      "language": "Português — texto",
+      "duration": "Duração não informada",
+      "certificate": "Não se aplica: documentação",
+      "access": "Leitura gratuita; execução local requer SDK .NET quando indicado. Codespaces tem condições próprias.",
+      "verified": "2026-10-30"
+    },
+    "api": {
+      "title": "Criar uma API mínima",
+      "provider": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/pt-br/aspnet/core/tutorials/min-web-api?view=aspnetcore-10.0",
+      "use": "Use como consulta de rotas e respostas; construa primeiro o exemplo pequeno desta etapa.",
+      "language": "Português — texto",
+      "duration": "Duração não informada",
+      "certificate": "Não se aplica: documentação",
+      "access": "Leitura gratuita; execução local requer SDK .NET quando indicado. Codespaces tem condições próprias.",
+      "verified": "2026-10-30"
+    },
+    "testes": {
+      "title": "Testes C# com dotnet test e xUnit",
+      "provider": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/pt-br/dotnet/core/testing/unit-testing-csharp-with-xunit",
+      "use": "Siga a criação da solução e dos projetos; adapte as asserções à sua regra de minutos.",
+      "language": "Português — texto",
+      "duration": "Duração não informada",
+      "certificate": "Não se aplica: documentação",
+      "access": "Leitura gratuita; execução local requer SDK .NET quando indicado. Codespaces tem condições próprias.",
+      "verified": "2026-10-30"
+    }
+  }
+}
