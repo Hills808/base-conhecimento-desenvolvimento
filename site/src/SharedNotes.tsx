@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { NOTE_LIMIT, noteLength, NoteError, readNote, writeNote, type SharedNote } from './sharedNotes';
 import './shared-notes.css';
+import Attachments from './Attachments';
 
 export default function SharedNotes({ scope }: { scope: string }) {
   const label = useId();
@@ -65,6 +66,7 @@ export default function SharedNotes({ scope }: { scope: string }) {
         </>}
         {note.content ? <div className="shared-notes-delete">{deleting ? <><p>Apagar todo o conteúdo deste bloco para todos? Não há recuperação.</p><button type="button" disabled={busy || !!conflict} onClick={() => publish('')}>Confirmar: apagar para todos</button><button type="button" onClick={() => setDeleting(false)}>Não apagar</button></> : <button type="button" disabled={busy || dirty} onClick={() => setDeleting(true)}>Apagar para todos</button>}</div> : null}
       </> : <button type="button" disabled={busy} onClick={refresh}>Tentar carregar novamente</button>}
+      <Attachments scope={scope}/>
       <small>Precisa de internet. A leitura é atualizada a cada 20 segundos enquanto o bloco está aberto e você não está editando. Estas notas públicas não fazem parte do backup pessoal.</small>
     </div> : null}
   </details>;

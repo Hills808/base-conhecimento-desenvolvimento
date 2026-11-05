@@ -14,3 +14,8 @@
 .shared-notes-conflict { padding:16px; border:1px solid var(--study-border); background:var(--study-warning-bg); color:var(--study-warning-text); }
 .shared-notes-conflict pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:300px; overflow:auto; font:inherit; }
 @media(max-width:600px) { .shared-notes-body { padding:0 14px 16px; } .shared-notes-actions button { width:100%; } }
+
+.attachments { border-top:1px solid var(--study-border); margin:24px 0; padding-top:16px; }
+.attachments li { margin:10px 0; overflow-wrap:anywhere; }
+.attachments input { display:block; max-width:100%; padding:10px; color:var(--study-text); background:var(--study-bg); border:1px solid var(--study-border); border-radius:8px; font:inherit; }
+.attachments input:focus-visible, .attachments a:focus-visible { outline:3px solid var(--study-focus); outline-offset:3px; }
