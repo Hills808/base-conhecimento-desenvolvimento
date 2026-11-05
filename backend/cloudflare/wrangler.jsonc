@@ -8,7 +8,7 @@
   },
   "vars": {
     "ALLOWED_ORIGIN": "https://hills808.github.io",
-    "WRITES_ENABLED": "false"
+    "WRITES_ENABLED": "true"
   },
   "d1_databases": [
     {
@@ -19,8 +19,8 @@
     },
     {
       "binding": "ATTACHMENTS_DB",
-      "database_name": "curva-aberta-anexos-teste",
-      "database_id": "e5973cd0-6b74-4d48-ae8d-614b746843ef"
+      "database_name": "curva-aberta-anexos",
+      "database_id": "d2210a76-0d1f-4721-8ae2-ae059c93f105"
     }
   ],
   "previews": {

@@ -1,6 +1,6 @@
 {
   "name": "curva-aberta-notes",
-  "main": "staging-worker.mjs",
+  "main": "backend/cloudflare/worker.mjs",
   "compatibility_date": "2026-10-26",
   "previews": {
     "vars": {
