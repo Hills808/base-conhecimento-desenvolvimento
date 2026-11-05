@@ -5,7 +5,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname !== '/_staging-check') return worker.fetch(request, env, ctx);
-    if (request.method !== 'POST') return new Response('POST required', { status: 405 });
+    if (request.method !== 'GET') return new Response('GET required', { status: 405 });
     const key = crypto.randomUUID() + crypto.randomUUID();
     const testEnv = { ...env, ATTACHMENTS_ADMIN_SECRET: key, WRITES_ENABLED: 'false' };
     const base = 'https://example.test/attachments?scope=mod-0-0';
