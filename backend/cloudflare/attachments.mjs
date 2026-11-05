@@ -1,4 +1,5 @@
 // Independent attachment storage. The existing notes API never depends on this feature.
+import { attachmentStore } from './attachment-store.mjs';
 const PATH = '/attachments';
 const MAX = 5 * 1024 * 1024;
 const LIMIT = 5;
@@ -41,7 +42,8 @@ export async function attachments(request, env, headers) {
   const reply = (status, data) => new Response(JSON.stringify(data), { status, headers });
   if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: { ...headers, 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'authorization, content-type, x-file-name', 'Access-Control-Max-Age': '3600' } });
   if (!['GET', 'POST', 'DELETE'].includes(request.method)) return reply(405, { code: 'METHOD' });
-  if (!env.ATTACHMENTS) return reply(503, { code: 'UNAVAILABLE' });
+  if (!env.ATTACHMENTS_DB) return reply(503, { code: 'UNAVAILABLE' });
+  const store = attachmentStore(env.ATTACHMENTS_DB);
   const scope = url.searchParams.get('scope') || '';
   if (!/^[a-z0-9-]{1,77}$/.test(scope)) return reply(400, { code: 'SCOPE' });
   const slot = url.searchParams.get('slot');
@@ -52,17 +54,17 @@ export async function attachments(request, env, headers) {
     if (!exists) return reply(404, { code: 'SCOPE' });
     const prefix = `attachments/${scope}/`;
     if (request.method === 'GET' && slot === null) {
-      const objects = await Promise.all(Array.from({ length: LIMIT }, (_, index) => env.ATTACHMENTS.head(prefix + index)));
+      const objects = await Promise.all(Array.from({ length: LIMIT }, (_, index) => store.head(prefix + index)));
       return reply(200, objects.flatMap((item, index) => item ? [{ slot: index, name: item.customMetadata.name, size: item.size }] : []));
     }
     if (request.method === 'GET') {
-      const item = await env.ATTACHMENTS.get(prefix + slot);
+      const item = await store.get(prefix + slot);
       if (!item) return reply(404, { code: 'NOT_FOUND' });
       return new Response(item.body, { headers: { ...headers, 'Content-Type': 'application/octet-stream', 'Content-Disposition': `attachment; filename="download"; filename*=UTF-8''${encodeURIComponent(item.customMetadata.name).replace(/['()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase())}`, 'Content-Security-Policy': "default-src 'none'; sandbox", 'X-Content-Type-Options': 'nosniff' } });
     }
     if (request.method === 'DELETE') {
       if (slot === null) return reply(400, { code: 'SLOT' });
-      await env.ATTACHMENTS.delete(prefix + slot);
+      await store.delete(prefix + slot);
       return reply(200, { ok: true });
     }
     let name;
@@ -75,7 +77,7 @@ export async function attachments(request, env, headers) {
     try { bytes = await readLimited(request); } catch (error) { return reply(error.message === 'size' ? 413 : 400, { code: 'SIZE' }); }
     if (!validFile(bytes, ext)) return reply(415, { code: 'TYPE' });
     for (let i = 0; i < LIMIT; i++) {
-      const saved = await env.ATTACHMENTS.put(prefix + i, bytes, { onlyIf: new Headers({ 'If-None-Match': '*' }), customMetadata: { name } });
+      const saved = await store.put(prefix + i, bytes, { customMetadata: { name } });
       if (saved) return reply(201, { slot: i, name, size: bytes.length });
     }
     return reply(409, { code: 'FULL' });
