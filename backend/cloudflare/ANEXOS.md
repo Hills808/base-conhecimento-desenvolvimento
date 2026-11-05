@@ -1,11 +1,9 @@
-# Anexos compartilhados — preparação
+# Anexos D1 — homologação em andamento
 
-Implementação preparada, não ativada em produção. A API existente de notas permanece independente dos anexos. É necessário validar em ambiente de testes com R2 antes de integrar e publicar.
+Esta branch é exclusiva para testes. Não mesclar nem publicar em produção: sua configuração aponta para o banco de teste e mantém escritas de notas desativadas.
 
-- Arquivos PDF, DOCX, MD e TXT, até 5 MiB, no máximo cinco por etapa. Os arquivos são públicos e o download é forçado como anexo.
-- Os envios e exclusões exigem um segredo forte enviado por HTTPS no cabeçalho Authorization, definido exclusivamente como secret do Worker. Não colocar essa chave no código, em variáveis públicas, no Git, em prints ou em mensagens. A interface guarda a chave somente na memória do componente até fechá-lo. Alterar a chave invalida a antiga; não é autenticação pessoal individual, nem implementa proteção de tentativas ou recuperação de conta.
-- O teste automatizado usa um R2 simulado; ainda é obrigatória validação com R2 real ou local do Wrangler, incluindo operações concorrentes. A validação de assinatura de PDF/DOCX é superficial e não equivale a varredura de malware. Somente documentos de confiança devem ser enviados.
-- Usar ambiente separado para homologação. Ativar assinatura do R2 na conta Cloudflare somente após revisar o fluxo e eventuais custos. Criar bucket **privado**, sem URL pública, e associá-lo ao Worker como `ATTACHMENTS`. Definir secret `ATTACHMENTS_ADMIN_SECRET` com ao menos 32 caracteres aleatórios (preferencialmente 32 bytes aleatórios), usando o painel seguro; não expor o valor ao GitHub nem ao chat. Não usar senhas pessoais existentes.
-- No Wrangler, acrescentar ao ambiente de implantação o binding `r2_buckets` com `binding: "ATTACHMENTS"` e `bucket_name` do bucket criado. Não alterar o D1, seus dados ou `WRITES_ENABLED`. As notas continuam disponíveis sem binding; os anexos respondem indisponível.
-- Validar upload e download em duas sessões, nomes com acentos, 5 MB, bloqueio acima do limite, cinco posições e concorrência, chave ausente/incorreta, exclusão e origem CORS. Confirmar também autenticação e custos no painel, e só então publicar frontend e backend para produção.
-- O endpoint público devolve os arquivos sem varredura. Como os links são públicos, não carregar dados pessoais nem informações internas. O limite de 5 por etapa corresponde a até 1.475 MiB nas 59 etapas, excluindo eventuais versões ou backups do provedor.
+O armazenamento separa cada arquivo em partes em um banco D1 próprio, com operações em lote. O banco de notas existente não foi modificado. Limites propostos: cinco arquivos por etapa, até 5 MiB, tipos PDF, DOCX, MD e TXT, downloads públicos e gerenciamento com segredo no Worker.
+
+O teste local usa SQLite real com adaptador D1 simulado e não comprova o comportamento em Cloudflare D1. Faltam validar uploads, downloads, concorrência, tamanho máximo, permissões e CORS em uma prévia isolada usando o banco `curva-aberta-anexos-teste`. A validação de assinatura de PDF/DOCX é superficial e não é varredura de malware.
+
+Após a homologação, aplicar o esquema em `curva-aberta-anexos`, configurar o binding de produção e um segredo privado forte, preservar o binding `DB` atual, manter `WRITES_ENABLED=true` em produção, executar testes completos e só então integrar e publicar. O segredo nunca deve ser versionado ou enviado ao chat.
