@@ -1,3 +1,4 @@
+import { attachments } from './attachments.mjs';
 // Public study notes. No identity or content history is recorded by this app.
 export const LIMIT = 50000;
 const MAX_BODY = 600100; // Also admits JSON with every Unicode code point escaped.
@@ -36,6 +37,8 @@ export default {
         return reply(row.blocks === 59 ? 200 : 503, { ready: row.blocks === 59, writesEnabled: env.WRITES_ENABLED === 'true' });
       } catch { return error(503, 'UNAVAILABLE', 'Database unavailable'); }
     }
+    const attachmentResponse = await attachments(request, env, headers);
+    if (attachmentResponse) return attachmentResponse;
     if (url.pathname !== PATH) return error(404, 'NOT_FOUND', 'Not found');
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: { ...headers, 'Access-Control-Allow-Methods': 'GET, PATCH, OPTIONS', 'Access-Control-Allow-Headers': 'content-type, x-curva-revision, apikey, prefer', 'Access-Control-Max-Age': '3600' } });
     if (!['GET', 'PATCH'].includes(request.method)) return reply(405, { code: 'METHOD' }, { Allow: 'GET, PATCH, OPTIONS' });
