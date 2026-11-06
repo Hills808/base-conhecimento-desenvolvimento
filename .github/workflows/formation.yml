@@ -2,9 +2,9 @@ name: Validar primeiras práticas
 on:
   push:
     branches: [main]
-    paths: ['site/src/data/formation.ts', 'site/scripts/test-formation-examples.mjs', 'site/public/formacao/**', '.github/workflows/formation.yml']
+    paths: ['site/src/data/formation.ts', 'site/src/data/beginner-lessons.json', 'site/scripts/test-formation-examples.mjs', 'site/public/formacao/**', '.github/workflows/formation.yml']
   pull_request:
-    paths: ['site/src/data/formation.ts', 'site/scripts/test-formation-examples.mjs', 'site/public/formacao/**', '.github/workflows/formation.yml']
+    paths: ['site/src/data/formation.ts', 'site/src/data/beginner-lessons.json', 'site/scripts/test-formation-examples.mjs', 'site/public/formacao/**', '.github/workflows/formation.yml']
 permissions:
   contents: read
 jobs:

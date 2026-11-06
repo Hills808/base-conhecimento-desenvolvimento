@@ -1,0 +1,176 @@
+[
+  {
+    "title": "O que significa programar?",
+    "goal": "Distinguir a instrução escrita do resultado que ela produz.",
+    "before": "Nenhum conhecimento de programação.",
+    "paragraphs": [
+      "Um programa é um conjunto de instruções que um computador consegue executar. Você escreve o que deve acontecer usando uma linguagem com regras próprias. Aqui usaremos C#, pronunciado “C sharp”.",
+      "Imagine um painel de atendimento. A pessoa quer ver a mensagem “Bem-vindo”. O código é a instrução para mostrar essa mensagem; a mensagem que aparece é o resultado. Escrever a instrução e executá-la são ações diferentes.",
+      "Código-fonte é o texto escrito por quem programa. Executar é fazer o programa realizar suas instruções. Saída é o que o programa apresenta, como uma mensagem. Vamos começar com saídas de texto; telas com botões ficam para depois."
+    ],
+    "code": "Console.WriteLine(\"Bem-vindo\");",
+    "output": "Bem-vindo",
+    "explanation": "Esta instrução pede ao programa que mostre Bem-vindo em uma linha. Os símbolos fazem parte da instrução; não aparecem na mensagem. Você vai aprender cada um na próxima aula.",
+    "prompt": "Em outro painel, queremos mostrar “Atendimento aberto”. Qual parte é a saída desejada?",
+    "options": [
+      "A mensagem Atendimento aberto",
+      "O ato de escrever o código",
+      "O nome da linguagem C#"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. A saída é a mensagem que a pessoa verá depois da execução.",
+      "Escrever cria as instruções. A saída aparece quando elas são executadas.",
+      "C# é a linguagem usada para escrever instruções. Não é a mensagem do painel."
+    ],
+    "hint": "Pergunte: o que a pessoa que usa o painel deve ver?",
+    "challenge": "Um programa mostra “Pedido recebido”. Explique em voz alta a diferença entre o código que foi escrito e essa mensagem.",
+    "answer": "O código contém a instrução para exibir texto. Pedido recebido é a saída produzida ao executar essa instrução.",
+    "mistake": "Abrir um arquivo de código no editor não significa executá-lo. Um editor permite ler e alterar o texto; é preciso executar o programa para observar seu resultado."
+  },
+  {
+    "title": "Sua primeira mensagem",
+    "goal": "Ler uma instrução C# e reconhecer o papel de cada símbolo.",
+    "before": "Saber que código é uma instrução e saída é o resultado apresentado.",
+    "paragraphs": [
+      "Vamos ler uma única linha. Console é o recurso usado para trabalhar com a entrada e a saída de texto do programa. WriteLine é o nome da operação que escreve um valor e termina a linha. Chamamos uma operação desse tipo de método.",
+      "O ponto liga Console ao método WriteLine. Os parênteses delimitam o valor que passamos ao método. As aspas delimitam um texto literal: um texto escrito diretamente no código. O ponto e vírgula termina esta instrução.",
+      "Você não precisa decorar todos os métodos. Nesta aula, precisa reconhecer o padrão Console.WriteLine(...); e localizar o que será mostrado. C# diferencia letras maiúsculas de minúsculas: WriteLine e writeline não são o mesmo nome."
+    ],
+    "code": "Console.WriteLine(\"Olá, Ana\");",
+    "output": "Olá, Ana",
+    "explanation": "Leia assim: “Use WriteLine de Console para escrever o texto Olá, Ana”. As aspas marcam o começo e o fim do texto; não fazem parte da saída.",
+    "prompt": "Qual alteração mostra Olá, Bia sem mudar a operação?",
+    "options": [
+      "Console.WriteLine(\"Olá, Bia\");",
+      "Console.WriteLine(Olá, Bia);",
+      "console.writeline(\"Olá, Bia\");"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Certo. Você mudou somente o texto entre aspas.",
+      "Sem aspas, esse trecho não representa o texto literal desejado. Mantenha as duas aspas.",
+      "Os nomes têm letras maiúsculas específicas. Preserve Console e WriteLine."
+    ],
+    "hint": "Mude apenas o conteúdo entre as duas aspas. Preserve os nomes e os símbolos.",
+    "challenge": "Escreva em um papel ou editor uma instrução que mostre “Minha primeira leitura”. Depois explique aspas, parênteses e ponto e vírgula.",
+    "answer": "Console.WriteLine(\"Minha primeira leitura\");\nAspas delimitam o texto; parênteses contêm o valor passado ao método; ponto e vírgula termina a instrução.",
+    "mistake": "Aspas curvas de um editor de texto (“ ”) não substituem as aspas retas (\") do código. Uma aspa faltando pode impedir a compilação, antes mesmo de qualquer mensagem aparecer."
+  },
+  {
+    "title": "Uma instrução depois da outra",
+    "goal": "Acompanhar a ordem de execução de um programa simples.",
+    "before": "Reconhecer Console.WriteLine e texto entre aspas.",
+    "paragraphs": [
+      "Neste programa, sem desvios nem repetições, as instruções são executadas de cima para baixo. A primeira mensagem aparece antes da segunda. WriteLine termina a linha após escrever, então a próxima mensagem começa em outra linha.",
+      "O computador segue a ordem escrita. Ele não reorganiza as instruções para combinar com a nossa intenção. Se você escreveu a confirmação antes da abertura, verá essa ordem.",
+      "Para ler código, use o dedo ou o cursor como marcador. Leia uma instrução e anote sua saída. Só então passe para a seguinte. Isso é rastrear a execução."
+    ],
+    "code": "Console.WriteLine(\"Abrir atendimento\");\nConsole.WriteLine(\"Confirmar pedido\");",
+    "output": "Abrir atendimento\nConfirmar pedido",
+    "explanation": "Primeiro aparece Abrir atendimento. A execução passa à segunda instrução e mostra Confirmar pedido na linha seguinte. As duas saídas permanecem visíveis.",
+    "prompt": "Se invertermos as duas instruções, o que acontece?",
+    "options": [
+      "A saída continua igual porque o programa entende a intenção",
+      "Confirmar pedido aparece primeiro",
+      "As duas mensagens aparecem na mesma linha"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Neste exemplo, a ordem escrita determina a ordem da saída. O programa não adivinha a intenção.",
+      "Isso. Trocar a ordem das instruções troca a ordem dessas mensagens.",
+      "Cada WriteLine termina sua linha, mesmo após trocar a ordem."
+    ],
+    "hint": "Leia a instrução que passou a estar no topo. Ela será executada primeiro.",
+    "challenge": "Preveja a saída deste outro programa, sem consultar o exemplo resolvido:\nConsole.WriteLine(\"Fim\");\nConsole.WriteLine(\"Início\");",
+    "answer": "Fim\nInício\nOs textos não comandam a ordem: são apenas mensagens. A posição das instruções determina qual aparece primeiro.",
+    "mistake": "Um texto escrito entre aspas não vira uma ordem. Escrever “Apagar tudo” dentro de WriteLine apenas mostra essa mensagem; não apaga arquivos."
+  },
+  {
+    "title": "Texto não é número",
+    "goal": "Distinguir uma mensagem de um cálculo simples.",
+    "before": "Ler chamadas de WriteLine e acompanhar sua ordem.",
+    "paragraphs": [
+      "Um valor é um dado usado pelo programa, como o número 3 ou o texto “Olá”. O tipo indica a categoria desse dado e influencia quais operações fazem sentido. Vamos comparar números inteiros e textos.",
+      "Sem aspas, 3 + 2 é uma expressão numérica: um trecho que calcula um valor. A expressão resulta em 5, e WriteLine mostra esse resultado. Entre aspas, \"3 + 2\" é texto: os caracteres são mostrados como foram escritos.",
+      "Quando os dois lados de + são textos, como \"3\" + \"2\", o operador junta os textos e produz \"32\". Aqui + não está somando quantidades. Observe os valores antes de decidir o que um símbolo faz."
+    ],
+    "code": "Console.WriteLine(3 + 2);\nConsole.WriteLine(\"3 + 2\");\nConsole.WriteLine(\"3\" + \"2\");",
+    "output": "5\n3 + 2\n32",
+    "explanation": "A primeira linha calcula uma soma. A segunda mostra uma frase formada por números e símbolos. A terceira junta dois textos. As aspas mudam como esses valores são interpretados.",
+    "prompt": "O que Console.WriteLine(\"4\" + \"1\"); mostra?",
+    "options": [
+      "5",
+      "41",
+      "4 + 1"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Seria 5 se os dois valores fossem números sem aspas. Aqui são textos.",
+      "Correto. Os textos 4 e 1 são unidos em 41.",
+      "O + está fora das aspas e realiza a união. Para mostrar 4 + 1, esse conteúdo inteiro precisaria estar dentro de aspas."
+    ],
+    "hint": "Confira se cada valor está entre aspas. Você está juntando textos ou somando números?",
+    "challenge": "Preveja separadamente:\nConsole.WriteLine(6 + 2);\nConsole.WriteLine(\"6 + 2\");\nDepois explique por que as saídas são diferentes.",
+    "answer": "8\n6 + 2\nA primeira expressão soma números; a segunda é um texto literal.",
+    "mistake": "Um número escrito como texto, como \"30\", não se torna automaticamente uma quantidade para todas as operações. Mais adiante aprenderemos a converter entradas digitadas."
+  },
+  {
+    "title": "Guardar um valor com um nome",
+    "goal": "Ler a declaração de uma variável inteira e consultar seu valor.",
+    "before": "Distinguir números de textos.",
+    "paragraphs": [
+      "Às vezes precisamos usar um dado mais de uma vez. Uma variável permite guardar um valor e referenciá-lo por um nome. Pense em uma identificação que permite localizar um dado; não é necessário entender a memória física do computador agora.",
+      "Em int pedidos = 3;, int indica o tipo inteiro, usado para números sem parte fracionária dentro de uma faixa. pedidos é o nome que escolhemos. O sinal = atribui o valor à variável. O número 3 é o valor inicial. Essa linha declara e inicializa a variável.",
+      "Em Console.WriteLine(pedidos);, não há aspas: o programa consulta o valor da variável. Em Console.WriteLine(\"pedidos\");, há aspas: o programa mostra literalmente a palavra pedidos. Declarar a variável não mostra nada por si só."
+    ],
+    "code": "int pedidos = 3;\nConsole.WriteLine(pedidos);\nConsole.WriteLine(\"pedidos\");",
+    "output": "3\npedidos",
+    "explanation": "A primeira instrução guarda 3 sob o nome pedidos. A segunda consulta esse valor e o mostra. A terceira mostra um texto que, por coincidência, tem as mesmas letras do nome.",
+    "prompt": "Depois de int vagas = 8;, qual instrução mostra o valor guardado?",
+    "options": [
+      "Console.WriteLine(\"vagas\");",
+      "Console.WriteLine(vagas);",
+      "int vagas = 8;"
+    ],
+    "correct": 1,
+    "feedback": [
+      "As aspas fariam aparecer a palavra vagas, não o valor 8.",
+      "Isso. Sem aspas, vagas identifica a variável que será consultada.",
+      "Declarar e inicializar não produz saída. Além disso, repetir essa declaração no mesmo bloco daria erro."
+    ],
+    "hint": "Para consultar a variável, use o nome sem aspas dentro de WriteLine.",
+    "challenge": "Leia este código e diga qual linha guarda um valor e qual o mostra:\nint caixas = 6;\nConsole.WriteLine(caixas);",
+    "answer": "A primeira declara caixas, do tipo int, e atribui 6. A segunda consulta caixas e mostra 6.",
+    "mistake": "O nome escolhido precisa ser usado de forma consistente. pedidos e Pedidos são nomes diferentes em C#. Usar um nome não declarado neste contexto gera um erro."
+  },
+  {
+    "title": "Calcular, guardar e mostrar",
+    "goal": "Explicar por que mostrar uma soma não atualiza uma variável.",
+    "before": "Ler int, atribuição (=) e consulta de variável.",
+    "paragraphs": [
+      "Uma expressão calcula um valor. Uma atribuição guarda um valor. Uma chamada de WriteLine mostra um valor. Essas três ações podem aparecer juntas, mas não são a mesma coisa.",
+      "Em pedidos = pedidos + 2;, primeiro o lado direito usa o valor atual de pedidos e soma 2. Depois o = guarda o resultado em pedidos, substituindo o valor anterior. Se havia 3, passa a haver 5.",
+      "Na atualização, não repetimos int: a variável já foi declarada. Em programação, = está atribuindo um valor; não é uma afirmação de igualdade como em uma equação. Você aprenderá a comparar valores em outra aula."
+    ],
+    "code": "int pedidos = 3;\nConsole.WriteLine(pedidos + 2);\nConsole.WriteLine(pedidos);\npedidos = pedidos + 2;\nConsole.WriteLine(pedidos);",
+    "output": "5\n3\n5",
+    "explanation": "Após a declaração, pedidos vale 3. A primeira impressão calcula e mostra 5, mas não o guarda. A segunda ainda mostra 3. A atribuição seguinte guarda 5; por isso a última impressão mostra 5.",
+    "prompt": "Depois de int saldo = 4; e Console.WriteLine(saldo + 1);, quanto saldo guarda?",
+    "options": [
+      "5, porque foi mostrado 5",
+      "4, porque não houve nova atribuição",
+      "1, porque é o último número escrito"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Mostrar o resultado não o atribui a saldo. Procure uma linha com saldo = para identificar uma atualização.",
+      "Correto. O cálculo produziu 5 para a saída; o valor guardado continua 4.",
+      "O número 1 participa da soma. Ele não é atribuído a saldo."
+    ],
+    "hint": "Procure o sinal =. Depois da declaração, existe alguma instrução guardando um novo valor em saldo?",
+    "challenge": "Sem copiar o exemplo, escreva um programa que começa com 8 vagas, guarda a ocupação de 2 vagas e mostra as vagas restantes. Use - para subtrair. Explique por que restam 6.",
+    "answer": "int vagas = 8;\nvagas = vagas - 2;\nConsole.WriteLine(vagas);\nO lado direito calcula 8 - 2. A atribuição guarda 6 e WriteLine consulta esse valor.",
+    "mistake": "Escrever apenas Console.WriteLine(vagas - 2); mostra 6, mas deixa vagas com 8. Se outra parte do programa consultar a variável, ainda verá o valor antigo."
+  }
+]

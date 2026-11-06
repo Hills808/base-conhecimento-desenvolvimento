@@ -280,3 +280,12 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - Mapa distingue as quatro práticas disponíveis das etapas planejadas. As 60 unidades planejadas ainda não estão implementadas.
 - Progresso e identificadores permanecem compatíveis; backend, D1 e anexos não foram alterados.
 - Publicação condicionada aos checks do workflow Pages (tipagem, testes e build). Conferir resultado no GitHub Actions para o commit desta alteração.
+
+
+## 06/11/2026 — Começo para quem nunca programou
+
+- Sete aulas introdutórias em `?visao=formacao&inicio=1`: programa/saída, símbolos, ordem, texto/número, variável, atribuição e execução local. Entradas visíveis em Hoje, Formação e ajuda das missões.
+- Seis aulas conceituais com exemplo resolvido, tentativa orientada, feedback por alternativa, pista, erro comum e transferência com solução recolhida. Sétima explica editor, terminal, SDK, projeto, compilação e erros de preparação.
+- Não há execução C# no navegador nem certificação automática. Respostas introdutórias são transitórias e isso está explícito; URL mantém a aula escolhida. Progresso anterior e notas públicas preservados.
+- Fontes Microsoft Learn primeiro código/variáveis e download SDK .NET 10 abertas em 06/11/2026. Textos em português gratuitos, duração/certificado não confirmados.
+- Validador existente ampliado para compilar os seis exemplos reais e comparar saída publicada com execução .NET. Workflow ampliado para mudanças no novo conteúdo. Consultar Actions deste commit para resultado; inspeção visual permanece pendente.

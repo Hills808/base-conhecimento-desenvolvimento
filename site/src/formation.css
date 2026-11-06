@@ -20,3 +20,14 @@
 .formation-roadmap{padding-left:24px}.formation-roadmap li{padding:8px 0 14px 8px}.formation-roadmap small{display:block;color:var(--f-muted);font-size:14px;margin-top:5px}
 @media(min-width:1000px){.formation-sidebar{position:sticky;top:110px;align-self:start;max-height:calc(100vh - 130px);overflow:auto}}
 @media(max-width:520px){.execution-values{grid-template-columns:1fr}.execution-walkthrough{padding:16px}.formation-steps button{font-size:14px}.reading-number{margin-right:10px}}
+
+.beginner-entry{border-left:4px solid var(--study-link,var(--blue));padding:6px 24px 20px;margin:24px 0 36px;background:var(--f-bg)}
+.beginner-example{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;margin:24px 0}
+.beginner-example>div{min-width:0}.beginner-example h3{font-size:16px;margin-top:0}
+.formation .beginner-example pre{margin:0}
+.beginner-practice{border-block:1px solid var(--f-line);padding:20px 0;margin:32px 0}
+.beginner-task{white-space:pre-wrap}
+.formation .beginner-answer{white-space:pre-wrap;overflow-wrap:anywhere}
+.beginner-next{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:32px 0}
+.beginner-glossary dt{font-weight:700;margin-top:20px}.beginner-glossary dd{margin:6px 0 0;line-height:1.7;max-width:65ch}
+@media(max-width:800px){.beginner-example{grid-template-columns:1fr}.beginner-entry{padding:4px 16px 16px}.beginner-course .formation-sidebar nav{grid-template-columns:1fr}}

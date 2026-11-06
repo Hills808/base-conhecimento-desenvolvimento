@@ -27,4 +27,13 @@ try {
   }
   console.log(`${m.id}: compilação e casos aprovados.`);
  }
+ const beginners=JSON.parse(fs.readFileSync('src/data/beginner-lessons.json','utf8'));
+ for (const lesson of beginners) {
+  assert.equal(lesson.options.length,lesson.feedback.length);
+  assert.ok(Number.isInteger(lesson.correct)&&lesson.correct>=0&&lesson.correct<lesson.options.length);
+  fs.writeFileSync(path.join(root,'Program.cs'),lesson.code);
+  run(['build','--nologo','--verbosity','quiet','--no-restore']);
+  assert.equal(run([path.join(root,'bin/Debug/net10.0/Mesa.dll')]).replace(/\r/g,''),lesson.output);
+  console.log(lesson.title+': exemplo compilado e saída conferida.');
+ }
 } finally {fs.rmSync(root,{recursive:true,force:true});}
