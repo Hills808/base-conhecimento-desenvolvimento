@@ -271,3 +271,12 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - Proposta: exemplo resolvido A, previsão em código B, execução/investigação, modificação, construção/defesa e recuperação em variante C. Ler, construir, investigar, explicar e transferir têm evidências distintas. Calendário vencido não bloqueia estudo, ajuda não recebe punição e autorrelato não equivale a competência automaticamente verificada.
 - Fontes originais abertas: Raspberry Pi Foundation/PRIMM, Learning Scientists, estudo Anthropic sobre formação de habilidades, Microsoft Learn C# partes 1–6 e arquitetura, MDN HTTP, Pro Git e introdução EF Core. Limites das fontes e metadados não verificados registrados no documento.
 - Entrega desta rodada: arquitetura pedagógica/técnica, inventário curricular, aula de referência, estados de evidência, preservação de progresso e critérios de aceite. Integridade dos 60 IDs e 12 etapas conferida. Não representa implementação das 60 aulas, compilação do exemplo novo, teste visual ou publicação de uma nova formação. Interface, notas, anexos e D1 não foram alterados nesta especificação.
+
+
+## 06/11/2026 — Interface para leitura e raciocínio
+
+- Formação agora apresenta código numerado, previsão com código visível, explicação sob demanda e quatro passos explícitos: ler, prever, executar/modificar e explicar.
+- C01 inclui rastreamento ilustrado das quatro instruções, com valores e saída acumulada. Não é um interpretador C#; execução real permanece no ambiente local.
+- Mapa distingue as quatro práticas disponíveis das etapas planejadas. As 60 unidades planejadas ainda não estão implementadas.
+- Progresso e identificadores permanecem compatíveis; backend, D1 e anexos não foram alterados.
+- Publicação condicionada aos checks do workflow Pages (tipagem, testes e build). Conferir resultado no GitHub Actions para o commit desta alteração.
