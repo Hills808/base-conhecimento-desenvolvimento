@@ -1,0 +1,465 @@
+[
+  {
+    "id": "U06",
+    "title": "Faça uma pergunta ao código",
+    "goal": "Ler uma comparação e prever se o resultado será verdadeiro ou falso.",
+    "before": "Saber ler um valor guardado em uma variável.",
+    "reviewLesson": "I05",
+    "paragraphs": [
+      "A equipe marca uma espera a partir de 30 minutos. Antes de mostrar qualquer aviso, o programa precisa responder a uma pergunta: a duração chegou a 30 minutos?",
+      "Leia espera >= 30 como “espera é maior ou igual a 30?”. O operador > pergunta “é maior?”. O operador >= inclui o próprio 30.",
+      "Em C#, o tipo bool guarda uma resposta com dois valores possíveis: true (verdadeiro) ou false (falso). No código, escrevemos em minúsculas. Ao mostrar um bool, o console escreve True ou False."
+    ],
+    "terms": [
+      {
+        "term": "Comparação",
+        "meaning": "Uma pergunta sobre dois valores. Por exemplo, 30 >= 30 é verdadeiro."
+      },
+      {
+        "term": "= e ==",
+        "meaning": "Um sinal de igual guarda um valor. Dois sinais de igual verificam se os valores são iguais."
+      }
+    ],
+    "code": "int espera = 30;\nbool atingiuLimite = espera >= 30;\nConsole.WriteLine(atingiuLimite);",
+    "output": "True",
+    "explanation": "A primeira linha guarda 30. A segunda lê esse 30, compara com o limite e guarda true. A última mostra o valor guardado.",
+    "prompt": "O que o console mostra neste outro programa?",
+    "questionCode": "int pontos = 10;\nConsole.WriteLine(pontos > 10);",
+    "options": [
+      "10",
+      "True",
+      "False"
+    ],
+    "correct": 2,
+    "feedback": [
+      "WriteLine recebe o resultado da comparação. Leia a pergunta pontos > 10 antes de decidir o que será mostrado.",
+      "Maior significa que precisa passar de 10. O próprio 10 só entraria se a pergunta usasse >=.",
+      "Isso. 10 é igual a 10, então a pergunta “10 é maior que 10?” é falsa."
+    ],
+    "hint": "Troque o nome pontos pelo valor guardado. Leia a expressão como “10 é maior que 10?”.",
+    "hintDetail": "Compare 9, 10 e 11 com o limite 10. Com >, apenas 11 passa. Com >=, 10 e 11 passam.",
+    "challenge": "Preveja as duas saídas. Explique por que o mesmo valor produz respostas diferentes.",
+    "challengeCode": "int quantidade = 5;\nConsole.WriteLine(quantidade == 5);\nConsole.WriteLine(quantidade < 5);",
+    "answer": "True\nFalse\nO primeiro operador pergunta se 5 é igual a 5. O segundo pergunta se 5 é menor que 5.",
+    "mistake": "Ao ler um símbolo desconhecido, escreva a pergunta por extenso. Isso ajuda a perceber, por exemplo, que “menor que 5” deixa o 5 de fora.",
+    "reference": "boolean"
+  },
+  {
+    "id": "U07",
+    "title": "Siga o caminho de um if",
+    "goal": "Encontrar o bloco que será executado quando uma condição for verdadeira ou falsa.",
+    "before": "Conseguir ler comparações com > e >=.",
+    "reviewLesson": "U06",
+    "paragraphs": [
+      "Uma sala registra vagas disponíveis. Se houver pelo menos uma vaga, o programa avisa que a reserva pode ser feita. Caso contrário, avisa que há lista de espera.",
+      "if significa “se”. A pergunta fica dentro dos parênteses. O trecho entre as chaves { e } é o bloco que executa quando a resposta é true.",
+      "else significa “senão”. Seu bloco executa quando a pergunta do if dá false. Depois da decisão, o programa segue para a próxima instrução fora dos blocos."
+    ],
+    "terms": [
+      {
+        "term": "Condição",
+        "meaning": "Uma expressão que dá true ou false e pode orientar uma escolha no programa."
+      },
+      {
+        "term": "Bloco",
+        "meaning": "Um grupo de instruções delimitado por chaves. A indentação ajuda a enxergar quais linhas pertencem ao bloco."
+      }
+    ],
+    "code": "int vagas = 2;\nif (vagas > 0)\n{\n    Console.WriteLine(\"Reserva disponível\");\n}\nelse\n{\n    Console.WriteLine(\"Lista de espera\");\n}\nConsole.WriteLine(\"Consulta encerrada\");",
+    "output": "Reserva disponível\nConsulta encerrada",
+    "explanation": "Com 2 vagas, 2 > 0 é verdadeiro. O programa mostra Reserva disponível, pula o bloco do else e depois mostra Consulta encerrada.",
+    "explore": {
+      "label": "Número de vagas",
+      "replace": "int vagas = 2;",
+      "cases": [
+        {
+          "value": "1",
+          "replacement": "int vagas = 1;",
+          "line": 4,
+          "output": "Reserva disponível\nConsulta encerrada",
+          "reason": "1 > 0 é verdadeiro. A linha 4 roda. Depois do if e else, a linha 10 também roda."
+        },
+        {
+          "value": "0",
+          "replacement": "int vagas = 0;",
+          "line": 8,
+          "output": "Lista de espera\nConsulta encerrada",
+          "reason": "0 > 0 é falso. O programa pula o primeiro bloco, roda a linha 8 e termina na linha 10."
+        }
+      ]
+    },
+    "prompt": "Quais mensagens aparecem, na ordem?",
+    "questionCode": "int estoque = 0;\nif (estoque > 0)\n{\n    Console.WriteLine(\"Separar item\");\n}\nConsole.WriteLine(\"Verificação concluída\");",
+    "options": [
+      "Somente Verificação concluída",
+      "Separar item, depois Verificação concluída",
+      "Nenhuma mensagem"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. O if é falso. A última instrução está fora do bloco e executa normalmente.",
+      "A mensagem Separar item está dentro das chaves. Confira se 0 > 0 é verdadeiro.",
+      "O if controla só o trecho entre as chaves. A última linha vem depois do bloco."
+    ],
+    "hint": "Use a última chave de fechamento para identificar onde termina o trecho controlado pelo if.",
+    "hintDetail": "Com estoque igual a 0, a resposta à pergunta 0 > 0 é false. Pule até a primeira instrução depois da chave de fechamento.",
+    "challenge": "O aviso “Reserva disponível” deve aparecer apenas se houver pelo menos uma vaga. Leia o trecho, encontre o erro com zero e diga qual símbolo mudaria.",
+    "challengeCode": "int vagas = 0;\nif (vagas >= 0)\n{\n    Console.WriteLine(\"Reserva disponível\");\n}",
+    "answer": "0 >= 0 é verdadeiro. Esse código oferece reserva mesmo com a sala cheia. Troque >= por > para que só valores acima de zero entrem no bloco.",
+    "mistake": "Quando se perder em um trecho, marque as chaves e leia a condição com um valor concreto. Assim fica mais fácil ver quais linhas dependem dela.",
+    "reference": "branch"
+  },
+  {
+    "id": "U08A",
+    "title": "Leia o que chegou do teclado",
+    "goal": "Distinguir uma linha vazia, um texto com zero e a ausência de uma linha.",
+    "before": "Reconhecer uma comparação de igualdade com ==.",
+    "reviewLesson": "U06",
+    "paragraphs": [
+      "Console.ReadLine() espera uma linha. Ao digitar 30 e apertar Enter, você envia o texto \"30\". O programa ainda precisa converter esse texto se quiser somar minutos.",
+      "Ao apertar Enter sem digitar, você envia uma linha vazia, escrita \"\" no código. Quando a fonte de entrada chega ao fim e nenhuma linha pode ser lida, o método retorna null, que indica ausência de valor.",
+      "O tipo string representa texto. Em string? entrada, o ? indica que entrada também pode guardar null. Vamos comparar os três casos separadamente."
+    ],
+    "terms": [
+      {
+        "term": "Entrada",
+        "meaning": "O dado recebido pelo programa, como uma linha digitada."
+      },
+      {
+        "term": "null",
+        "meaning": "Ausência de valor. \"\" é um texto presente com zero caracteres."
+      }
+    ],
+    "code": "string? entrada = Console.ReadLine();\nConsole.WriteLine(entrada == \"\");\nConsole.WriteLine(entrada == null);",
+    "input": "0",
+    "output": "False\nFalse",
+    "explanation": "Ao digitar 0, o programa recebe o texto \"0\". Ele tem um caractere e está presente, por isso as duas comparações dão False.",
+    "explore": {
+      "label": "O que chega como entrada",
+      "cases": [
+        {
+          "value": "Enter sem texto",
+          "input": "",
+          "line": 2,
+          "output": "True\nFalse",
+          "reason": "Uma linha chegou, mas ela está vazia. Só a comparação com \"\" dá verdadeiro."
+        },
+        {
+          "value": "Fim da entrada",
+          "input": null,
+          "line": 3,
+          "output": "False\nTrue",
+          "reason": "Nenhuma linha chegou porque a entrada terminou. A comparação com null dá verdadeiro."
+        }
+      ]
+    },
+    "prompt": "A pessoa digitou 0 e apertou Enter. Qual valor foi guardado em entrada?",
+    "questionCode": "string? entrada = Console.ReadLine();",
+    "options": [
+      "Um texto com um caractere: \"0\"",
+      "O número inteiro 0",
+      "Uma linha vazia"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. ReadLine recebe texto, inclusive quando ele contém dígitos.",
+      "Receber a linha e converter são ações separadas. Aqui só ocorreu a leitura.",
+      "Só seria uma linha vazia se a pessoa apertasse Enter sem digitar nada."
+    ],
+    "hint": "Conte os caracteres digitados antes de Enter.",
+    "hintDetail": "Uma linha vazia tem zero caracteres. \"0\" tem um caractere cuja aparência é a de um número.",
+    "challenge": "Uma pessoa digita Ana. Outra só aperta Enter. Diga o que muda na saída e explique a comparação.",
+    "challengeCode": "string? nome = Console.ReadLine();\nConsole.WriteLine(nome == \"\");",
+    "answer": "Para Ana, False. Para Enter sem texto, True. Nos dois casos uma linha foi lida. O teste procura uma linha que tenha zero caracteres.",
+    "mistake": "Ao investigar dados que chegam a um programa, observe primeiro o que chegou: a linha com \"0\", a linha vazia e o fim da entrada têm significados diferentes.",
+    "reference": "input"
+  },
+  {
+    "id": "U08",
+    "title": "Transforme texto em um número",
+    "goal": "Explicar o resultado de TryParse e decidir quando usar o número obtido.",
+    "before": "Ler um if e distinguir texto presente, vazio e ausente.",
+    "reviewLesson": "U08A",
+    "paragraphs": [
+      "Queremos somar 5 aos minutos digitados. O teclado entrega texto. Precisamos descobrir se esse texto representa um inteiro antes de usar a soma.",
+      "int.TryParse(texto, out int minutos) tenta converter o texto. Ele devolve true ou false em conseguiu. A anotação out int minutos cria um lugar para receber o inteiro obtido na tentativa.",
+      "Com true, use minutos no cálculo. Com false, oriente a pessoa a digitar um inteiro. Converter \"-2\" funciona. Decidir se uma espera negativa é permitida é uma regra extra do sistema."
+    ],
+    "terms": [
+      {
+        "term": "Converter",
+        "meaning": "Tentar representar o mesmo dado em outro tipo. O texto \"12\" pode virar o inteiro 12."
+      },
+      {
+        "term": "out",
+        "meaning": "Marca um valor preenchido pelo método para quem o chamou. Em caso de falha nesta versão de TryParse, minutos fica com 0, por isso consultamos conseguiu."
+      }
+    ],
+    "code": "string? texto = Console.ReadLine();\nbool conseguiu = int.TryParse(texto, out int minutos);\nif (conseguiu)\n{\n    Console.WriteLine(minutos + 5);\n}\nelse\n{\n    Console.WriteLine(\"Digite um número inteiro.\");\n}",
+    "input": "12",
+    "output": "17",
+    "explanation": "Com \"12\", TryParse devolve true e preenche minutos com 12. O if usa o número e mostra 17.",
+    "explore": {
+      "label": "Texto digitado",
+      "cases": [
+        {
+          "value": "abc",
+          "input": "abc",
+          "line": 9,
+          "output": "Digite um número inteiro.",
+          "reason": "\"abc\" não representa um inteiro. conseguiu é false e o programa segue para o else."
+        },
+        {
+          "value": "−2",
+          "input": "-2",
+          "line": 5,
+          "output": "3",
+          "reason": "\"-2\" representa o inteiro -2. A conversão deu certo e a soma é -2 + 5. Ainda falta uma regra para rejeitar durações negativas."
+        }
+      ]
+    },
+    "prompt": "Alguém digitou “banana”, e TryParse retornou false. O que o programa deve fazer antes de usar minutos?",
+    "options": [
+      "Avisar que precisa de um número inteiro",
+      "Usar 0 como uma espera realmente registrada",
+      "Somar 5, porque todo texto tem um número escondido"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. A mensagem ajuda a pessoa a corrigir a entrada.",
+      "O 0 em minutos não veio de um texto válido. Confira o resultado da tentativa antes de usar o dado.",
+      "A palavra banana não representa um inteiro. O ramo de falha deve explicar como corrigir."
+    ],
+    "hint": "A pergunta agora é “a conversão conseguiu ler um inteiro?”. Comece pelo valor de conseguiu.",
+    "hintDetail": "Siga o código: false pula o primeiro bloco e entra no else. Procure por uma orientação escrita nesse segundo bloco.",
+    "challenge": "Troque a regra da soma por uma que dobre uma quantidade válida. Teste 7, abc e uma linha vazia. Diga quais casos conseguem chegar ao cálculo.",
+    "answer": "Com 7, a conversão passa e minutos * 2 mostra 14. Com abc ou linha vazia, ela falha e o programa orienta a pessoa a digitar um inteiro.",
+    "mistake": "Teste a entrada que parecia funcionar e também outra que deve falhar. Assim você verifica os dois blocos do if.",
+    "reference": "parse"
+  },
+  {
+    "id": "U09",
+    "title": "Combine duas perguntas",
+    "goal": "Ler “e” e “ou” em uma regra e prever quando a segunda pergunta será feita.",
+    "before": "Conseguir dizer o que torna uma condição verdadeira ou falsa.",
+    "reviewLesson": "U07",
+    "paragraphs": [
+      "Para dividir 8 vagas entre as pessoas de um grupo, precisamos que o grupo tenha pelo menos uma pessoa e que cada pessoa receba pelo menos uma vaga. && significa “e”: as duas partes precisam dar true.",
+      "O programa confere da esquerda para a direita. Se pessoas > 0 der false, a resposta inteira já é falsa. Ele pula 8 / pessoas, evitando a divisão por zero. Essa avaliação que termina assim que já se sabe a resposta é chamada de curto-circuito.",
+      "Com ||, leia “ou”. Basta uma das partes dar true. Por exemplo, minutos < 0 || minutos > 120 é verdadeiro quando a duração sai por um dos lados da faixa permitida."
+    ],
+    "terms": [
+      {
+        "term": "&&",
+        "meaning": "As duas condições precisam dar true. Se a primeira der false, a segunda é pulada."
+      },
+      {
+        "term": "||",
+        "meaning": "Pelo menos uma condição precisa dar true. Se a primeira der true, a segunda é pulada."
+      }
+    ],
+    "code": "int pessoas = 0;\nif (pessoas > 0 && 8 / pessoas >= 1)\n{\n    Console.WriteLine(\"Grupo pode reservar\");\n}\nelse\n{\n    Console.WriteLine(\"Confira o tamanho do grupo\");\n}",
+    "output": "Confira o tamanho do grupo",
+    "explanation": "A primeira comparação é falsa com zero. Nenhuma divisão é feita. O else mostra a orientação.",
+    "prompt": "A regra aceita de 0 a 60 minutos, com os limites incluídos. Qual expressão representa a regra para qualquer valor de minutos?",
+    "options": [
+      "minutos >= 0 && minutos <= 60",
+      "minutos >= 0 || minutos <= 60",
+      "minutos == 0 && minutos == 60"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. O valor precisa respeitar tanto o mínimo quanto o máximo.",
+      "Com ou, até 80 passaria porque 80 >= 0 é verdadeiro. A regra pede respeito aos dois limites.",
+      "A expressão exigiria que o mesmo valor fosse igual a 0 e a 60. Use as comparações de limite."
+    ],
+    "hint": "Uma duração aceitável tem que respeitar os dois limites ao mesmo tempo.",
+    "hintDetail": "Leia duas frases: “está acima ou no mínimo” e “está abaixo ou no máximo”. A palavra “e” liga as duas.",
+    "challenge": "Preveja para 0 e para 121 minutos. Explique por que só uma ponta fora da faixa já atende à expressão.",
+    "challengeCode": "int minutos = 121;\nConsole.WriteLine(minutos < 0 || minutos > 120);",
+    "answer": "Com 0, False, pois ele fica dentro da faixa. Com 121, True, pois minutos > 120 já satisfaz o ou.",
+    "mistake": "A ordem importa quando a segunda pergunta depende da primeira. Para dividir, confira que o divisor é diferente de zero antes da divisão.",
+    "reference": "boolean"
+  },
+  {
+    "id": "U10",
+    "title": "Descubra o que acontece no limite",
+    "goal": "Transformar uma regra em faixas e escolher um teste que mostra um erro.",
+    "before": "Acompanhar um if e dizer quando uma comparação é verdadeira.",
+    "reviewLesson": "U07",
+    "paragraphs": [
+      "Na Mesa de atendimento, espera negativa é inválida. Uma espera de 30 minutos ou mais deve receber aviso de atraso. As outras esperas ficam dentro do prazo.",
+      "else if significa “senão, se”. O programa só faz essa segunda pergunta se a primeira der false. Na sequência if, else if, else, o primeiro bloco que serve é o que executa.",
+      "Para testar “30 ou mais”, escolha um valor abaixo, o próprio limite e um acima. Com 29 e 31, > e >= dão as mesmas respostas. O 30 revela a diferença."
+    ],
+    "terms": [
+      {
+        "term": "Caso de fronteira",
+        "meaning": "Um valor no limite entre duas faixas, ou bem perto dele. Por exemplo, 29, 30 e 31 para o limite 30."
+      },
+      {
+        "term": "else if",
+        "meaning": "Uma nova pergunta feita depois de uma condição falsa. A escolha termina quando uma condição é verdadeira."
+      }
+    ],
+    "code": "int minutos = 30;\nif (minutos < 0)\n{\n    Console.WriteLine(\"Espera inválida\");\n}\nelse if (minutos >= 30)\n{\n    Console.WriteLine(\"Atrasada\");\n}\nelse\n{\n    Console.WriteLine(\"Dentro do prazo\");\n}",
+    "output": "Atrasada",
+    "explanation": "30 < 0 é falso. A próxima pergunta, 30 >= 30, é verdadeira. Por isso o console mostra Atrasada.",
+    "explore": {
+      "label": "Minutos de espera",
+      "replace": "int minutos = 30;",
+      "cases": [
+        {
+          "value": "−1",
+          "replacement": "int minutos = -1;",
+          "line": 4,
+          "output": "Espera inválida",
+          "reason": "A primeira pergunta já dá verdadeiro. A espera negativa é recusada antes de classificar o prazo."
+        },
+        {
+          "value": "29",
+          "replacement": "int minutos = 29;",
+          "line": 12,
+          "output": "Dentro do prazo",
+          "reason": "29 é válido e está abaixo de 30. As duas perguntas dão falso e o else roda."
+        },
+        {
+          "value": "30",
+          "replacement": "int minutos = 30;",
+          "line": 8,
+          "output": "Atrasada",
+          "reason": "30 é o próprio limite. >= inclui esse valor."
+        },
+        {
+          "value": "31",
+          "replacement": "int minutos = 31;",
+          "line": 8,
+          "output": "Atrasada",
+          "reason": "31 fica acima do limite. Tanto > quanto >= dariam verdadeiro com 31."
+        }
+      ]
+    },
+    "prompt": "A promoção começa “a partir de 100 reais”. Qual valor denuncia um colega que escreveu total > 100?",
+    "options": [
+      "99",
+      "100",
+      "101"
+    ],
+    "correct": 1,
+    "feedback": [
+      "99 fica abaixo do limite com qualquer um dos dois operadores. Ele é útil, mas não revela a troca.",
+      "Isso. No limite, 100 > 100 é falso e 100 >= 100 é verdadeiro.",
+      "101 entra nos dois casos. Teste também o próprio limite."
+    ],
+    "hint": "Escolha um valor para o qual > e >= dão respostas diferentes.",
+    "hintDetail": "Quando o total é igual a 100, a parte “ou igual” muda o resultado.",
+    "challenge": "Escreva as condições de um aviso de estoque. Negativo é inválido, 0 significa “esgotado”, de 1 a 3 é “repor” e 4 ou mais é “disponível”. Liste os valores que você testaria.",
+    "answer": "Uma ordem possível: testar quantidade < 0, depois quantidade == 0, depois quantidade <= 3 e usar else para o restante. Teste -1, 0, 1, 3 e 4. Cada valor verifica uma mudança de faixa.",
+    "mistake": "Comece pelos casos que se sobrepõem. Se testar quantidade <= 3 antes de tratar os negativos, o código poderia chamar um valor impossível de “repor”.",
+    "reference": "branch"
+  },
+  {
+    "id": "U10P",
+    "title": "Monte seu classificador de espera",
+    "goal": "Juntar leitura, conversão e decisões em um programa que você consegue explicar.",
+    "before": "Entender TryParse, if e as fronteiras de uma faixa.",
+    "reviewLesson": "U10",
+    "paragraphs": [
+      "Antes de escrever o classificador da Mesa de atendimento, vamos ler um programa de reservas. Ele decide em duas etapas: primeiro verifica se recebeu um inteiro e depois aplica as regras da sala.",
+      "O sinal ! significa “não”. Se converteu é false, !converteu é true. O primeiro bloco então pede uma entrada válida. Para um inteiro, o programa segue para conferir as regras de quantidade.",
+      "Use a mesma ordem no seu programa: receber, converter, validar e classificar. Cada caso de teste deve ter um motivo."
+    ],
+    "terms": [
+      {
+        "term": "Validação",
+        "meaning": "Verificar se um dado convertido é aceito pelo sistema. Uma duração negativa é um inteiro, mas não é uma espera válida."
+      },
+      {
+        "term": "!",
+        "meaning": "Troca o valor lógico. !true vira false e !false vira true."
+      }
+    ],
+    "code": "string? texto = Console.ReadLine();\nbool converteu = int.TryParse(texto, out int vagas);\nif (!converteu)\n{\n    Console.WriteLine(\"Digite um número inteiro.\");\n}\nelse if (vagas < 0)\n{\n    Console.WriteLine(\"Quantidade inválida\");\n}\nelse if (vagas == 0)\n{\n    Console.WriteLine(\"Sala lotada\");\n}\nelse\n{\n    Console.WriteLine(\"Vagas disponíveis\");\n}",
+    "input": "0",
+    "output": "Sala lotada",
+    "explanation": "Com \"0\", a conversão passa. O número não é negativo e vale zero, então o programa informa que a sala está lotada.",
+    "explore": {
+      "label": "Quantidade digitada",
+      "cases": [
+        {
+          "value": "abc",
+          "input": "abc",
+          "line": 5,
+          "output": "Digite um número inteiro.",
+          "reason": "A conversão falhou. O primeiro bloco orienta a pessoa e as regras de quantidade são puladas."
+        },
+        {
+          "value": "−1",
+          "input": "-1",
+          "line": 9,
+          "output": "Quantidade inválida",
+          "reason": "O texto representa um inteiro. A primeira regra de quantidade recusa o valor negativo."
+        },
+        {
+          "value": "4",
+          "input": "4",
+          "line": 17,
+          "output": "Vagas disponíveis",
+          "reason": "O número foi convertido, é válido e passa de zero. O else mostra que há vagas."
+        }
+      ]
+    },
+    "prompt": "Qual par de entradas demonstra que conversão e validação são verificações diferentes?",
+    "options": [
+      "abc e -1",
+      "2 e 4",
+      "0 e 3"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. abc falha na conversão. -1 vira inteiro, mas é recusado pela regra.",
+      "Ambos viram inteiros positivos. Falta um caso que falhe na conversão e outro que falhe na regra.",
+      "Ambos viram inteiros e são aceitos. Chegam a dois resultados válidos diferentes."
+    ],
+    "hint": "Escolha uma entrada que nem vira número e outra que vira número, mas viola a regra.",
+    "hintDetail": "Use a sequência de perguntas: “virou inteiro?” e, só depois, “esse inteiro é aceito?”.",
+    "challenge": "No seu projeto de console, escreva um programa que leia os minutos da Mesa de atendimento. Diga o resultado esperado para cada entrada antes de rodar.",
+    "challengeSteps": [
+      "Com texto que não vira inteiro, mostre “Digite um número inteiro.”.",
+      "Com minutos negativos, mostre “Espera inválida”.",
+      "Para 30 ou mais, mostre “Atrasada”. Nos outros casos válidos, mostre “Dentro do prazo”.",
+      "Rode com abc, -1, 0, 29, 30 e 31. Explique qual caso detectaria um > escrito no lugar de >=."
+    ],
+    "checkPrompt": "Antes de registrar, confira no terminal os seis casos. Depois explique com suas palavras a diferença entre falhar na conversão e falhar na regra.",
+    "answer": "abc pede um inteiro. -1 é inválida. 0 e 29 ficam dentro do prazo. 30 e 31 são atrasadas. Só o caso 30 diferencia > de >= nessa lista.",
+    "answerCode": "string? texto = Console.ReadLine();\nbool converteu = int.TryParse(texto, out int minutos);\nif (!converteu)\n{\n    Console.WriteLine(\"Digite um número inteiro.\");\n}\nelse if (minutos < 0)\n{\n    Console.WriteLine(\"Espera inválida\");\n}\nelse if (minutos >= 30)\n{\n    Console.WriteLine(\"Atrasada\");\n}\nelse\n{\n    Console.WriteLine(\"Dentro do prazo\");\n}",
+    "solutionCases": [
+      {
+        "input": "abc",
+        "output": "Digite um número inteiro."
+      },
+      {
+        "input": "-1",
+        "output": "Espera inválida"
+      },
+      {
+        "input": "0",
+        "output": "Dentro do prazo"
+      },
+      {
+        "input": "29",
+        "output": "Dentro do prazo"
+      },
+      {
+        "input": "30",
+        "output": "Atrasada"
+      },
+      {
+        "input": "31",
+        "output": "Atrasada"
+      }
+    ],
+    "mistake": "Se seu programa falhar, escolha só uma entrada. Descubra o valor recebido, o resultado da conversão e a primeira condição verdadeira. Altere uma linha e rode de novo.",
+    "reference": "branch"
+  }
+]

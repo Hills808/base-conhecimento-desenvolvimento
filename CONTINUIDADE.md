@@ -289,3 +289,11 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - Não há execução C# no navegador nem certificação automática. Respostas introdutórias são transitórias e isso está explícito; URL mantém a aula escolhida. Progresso anterior e notas públicas preservados.
 - Fontes Microsoft Learn primeiro código/variáveis e download SDK .NET 10 abertas em 06/11/2026. Textos em português gratuitos, duração/certificado não confirmados.
 - Validador existente ampliado para compilar os seis exemplos reais e comparar saída publicada com execução .NET. Workflow ampliado para mudanças no novo conteúdo. Consultar Actions deste commit para resultado; inspeção visual permanece pendente.
+
+## 26/11/2026 — Primeiros passos e decisões em C#
+
+- Hoje destaca a aula recomendada. Formação usa duas unidades recolhíveis com progresso por prática. A preparação do ambiente faz parte de Começar do zero. Práticas anteriores de C# e HTTP estão na mesma trilha, em Práticas extras.
+- Cada aula guiada tem Entender, Praticar e Explicar. Pistas graduais, glossário e solução aparecem ao abrir a ajuda. A Atkinson Hyperlegible Next é servida pelo próprio site e tem licença SIL OFL em `site/public/fontes/`.
+- Decisões e dados acrescenta seis aulas antes da prática do classificador: comparações, if/else, leitura de texto, TryParse, operadores lógicos e fronteiras. Os exemplos com valores alternativos ilustram o caminho pelo código e informam a saída esperada.
+- O progresso salva a parte da aula, a resposta conferida e a anotação. Minha explicação entra na cópia de estudo e aparece em Meu projeto. O registro reconhece a prática declarada e a resposta objetiva conferida onde ela existe.
+- Referências verificadas, critérios de interface e fontes do conteúdo estão em [Referências para a experiência de estudo](docs/FORMACAO-REFERENCIAS-DE-DESIGN.md). O mapa editorial continua com as próximas unidades de repetição e coleções.

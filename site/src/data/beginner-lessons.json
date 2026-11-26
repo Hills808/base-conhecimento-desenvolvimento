@@ -1,5 +1,6 @@
 [
   {
+    "id": "I01",
     "title": "O que significa programar?",
     "goal": "Distinguir a instrução escrita do resultado que ela produz.",
     "before": "Nenhum conhecimento de programação.",
@@ -26,9 +27,17 @@
     "hint": "Pergunte: o que a pessoa que usa o painel deve ver?",
     "challenge": "Um programa mostra “Pedido recebido”. Explique em voz alta a diferença entre o código que foi escrito e essa mensagem.",
     "answer": "O código contém a instrução para exibir texto. Pedido recebido é a saída produzida ao executar essa instrução.",
-    "mistake": "Abrir um arquivo de código no editor não significa executá-lo. Um editor permite ler e alterar o texto; é preciso executar o programa para observar seu resultado."
+    "mistake": "Abrir um arquivo de código no editor não significa executá-lo. Um editor permite ler e alterar o texto; é preciso executar o programa para observar seu resultado.",
+    "terms": [
+      {
+        "term": "Quando eu olho um código",
+        "meaning": "Ele descreve o que o computador deve fazer. A saída é o texto que você vê depois que a instrução roda."
+      }
+    ],
+    "hintDetail": "Pense em alguém que só vê o painel. Essa pessoa vê a mensagem, mesmo sem ver o texto do código."
   },
   {
+    "id": "I02",
     "title": "Sua primeira mensagem",
     "goal": "Ler uma instrução C# e reconhecer o papel de cada símbolo.",
     "before": "Saber que código é uma instrução e saída é o resultado apresentado.",
@@ -55,9 +64,18 @@
     "hint": "Mude apenas o conteúdo entre as duas aspas. Preserve os nomes e os símbolos.",
     "challenge": "Escreva em um papel ou editor uma instrução que mostre “Minha primeira leitura”. Depois explique aspas, parênteses e ponto e vírgula.",
     "answer": "Console.WriteLine(\"Minha primeira leitura\");\nAspas delimitam o texto; parênteses contêm o valor passado ao método; ponto e vírgula termina a instrução.",
-    "mistake": "Aspas curvas de um editor de texto (“ ”) não substituem as aspas retas (\") do código. Uma aspa faltando pode impedir a compilação, antes mesmo de qualquer mensagem aparecer."
+    "mistake": "Aspas curvas de um editor de texto (“ ”) não substituem as aspas retas (\") do código. Uma aspa faltando pode impedir a compilação, antes mesmo de qualquer mensagem aparecer.",
+    "terms": [
+      {
+        "term": "Parênteses e aspas",
+        "meaning": "Os parênteses contêm o que a operação recebe. Dentro deles, aspas retas delimitam uma mensagem de texto."
+      }
+    ],
+    "hintDetail": "Compare com o exemplo. No novo código, o nome Ana deve mudar para Bia, enquanto as aspas continuam.",
+    "reviewLesson": "I01"
   },
   {
+    "id": "I03",
     "title": "Uma instrução depois da outra",
     "goal": "Acompanhar a ordem de execução de um programa simples.",
     "before": "Reconhecer Console.WriteLine e texto entre aspas.",
@@ -82,11 +100,21 @@
       "Cada WriteLine termina sua linha, mesmo após trocar a ordem."
     ],
     "hint": "Leia a instrução que passou a estar no topo. Ela será executada primeiro.",
-    "challenge": "Preveja a saída deste outro programa, sem consultar o exemplo resolvido:\nConsole.WriteLine(\"Fim\");\nConsole.WriteLine(\"Início\");",
+    "challenge": "Preveja a ordem das mensagens. Explique o que determina essa ordem.",
     "answer": "Fim\nInício\nOs textos não comandam a ordem: são apenas mensagens. A posição das instruções determina qual aparece primeiro.",
-    "mistake": "Um texto escrito entre aspas não vira uma ordem. Escrever “Apagar tudo” dentro de WriteLine apenas mostra essa mensagem; não apaga arquivos."
+    "mistake": "Um texto escrito entre aspas não vira uma ordem. Escrever “Apagar tudo” dentro de WriteLine apenas mostra essa mensagem; não apaga arquivos.",
+    "challengeCode": "Console.WriteLine(\"Fim\");\nConsole.WriteLine(\"Início\");",
+    "terms": [
+      {
+        "term": "Ordem da execução",
+        "meaning": "Leia o programa a partir da primeira linha. Anote a mensagem de uma linha antes de ler a próxima."
+      }
+    ],
+    "hintDetail": "Numere as duas linhas depois da troca. Imagine que o terminal espera uma por vez e as mostra nessa ordem.",
+    "reviewLesson": "I02"
   },
   {
+    "id": "I04",
     "title": "Texto não é número",
     "goal": "Distinguir uma mensagem de um cálculo simples.",
     "before": "Ler chamadas de WriteLine e acompanhar sua ordem.",
@@ -111,11 +139,21 @@
       "O + está fora das aspas e realiza a união. Para mostrar 4 + 1, esse conteúdo inteiro precisaria estar dentro de aspas."
     ],
     "hint": "Confira se cada valor está entre aspas. Você está juntando textos ou somando números?",
-    "challenge": "Preveja separadamente:\nConsole.WriteLine(6 + 2);\nConsole.WriteLine(\"6 + 2\");\nDepois explique por que as saídas são diferentes.",
+    "challenge": "Preveja as duas saídas. Explique por que elas são diferentes.",
     "answer": "8\n6 + 2\nA primeira expressão soma números; a segunda é um texto literal.",
-    "mistake": "Um número escrito como texto, como \"30\", não se torna automaticamente uma quantidade para todas as operações. Mais adiante aprenderemos a converter entradas digitadas."
+    "mistake": "Um número escrito como texto, como \"30\", não se torna automaticamente uma quantidade para todas as operações. Mais adiante aprenderemos a converter entradas digitadas.",
+    "challengeCode": "Console.WriteLine(6 + 2);\nConsole.WriteLine(\"6 + 2\");",
+    "terms": [
+      {
+        "term": "Texto literal",
+        "meaning": "O conteúdo que está inteiro entre aspas é lido como texto. Um + fora das aspas pode juntar dois textos."
+      }
+    ],
+    "hintDetail": "Se imaginar duas etiquetas, uma escrita “4” e outra “1”, encoste as etiquetas. A ordem dos caracteres fica 41.",
+    "reviewLesson": "I03"
   },
   {
+    "id": "I05",
     "title": "Guardar um valor com um nome",
     "goal": "Ler a declaração de uma variável inteira e consultar seu valor.",
     "before": "Distinguir números de textos.",
@@ -140,11 +178,21 @@
       "Declarar e inicializar não produz saída. Além disso, repetir essa declaração no mesmo bloco daria erro."
     ],
     "hint": "Para consultar a variável, use o nome sem aspas dentro de WriteLine.",
-    "challenge": "Leia este código e diga qual linha guarda um valor e qual o mostra:\nint caixas = 6;\nConsole.WriteLine(caixas);",
+    "challenge": "Qual linha guarda um valor? Qual o mostra? Diga o que aparece no console.",
     "answer": "A primeira declara caixas, do tipo int, e atribui 6. A segunda consulta caixas e mostra 6.",
-    "mistake": "O nome escolhido precisa ser usado de forma consistente. pedidos e Pedidos são nomes diferentes em C#. Usar um nome não declarado neste contexto gera um erro."
+    "mistake": "O nome escolhido precisa ser usado de forma consistente. pedidos e Pedidos são nomes diferentes em C#. Usar um nome não declarado neste contexto gera um erro.",
+    "challengeCode": "int caixas = 6;\nConsole.WriteLine(caixas);",
+    "terms": [
+      {
+        "term": "Variável",
+        "meaning": "Um nome que permite guardar e consultar um valor. Em int vagas = 8;, int indica o tipo e vagas é o nome."
+      }
+    ],
+    "hintDetail": "Ao ler o código sem aspas, procure onde aquele nome foi apresentado. Com aspas, você lê as letras como uma mensagem.",
+    "reviewLesson": "I04"
   },
   {
+    "id": "I06",
     "title": "Calcular, guardar e mostrar",
     "goal": "Explicar por que mostrar uma soma não atualiza uma variável.",
     "before": "Ler int, atribuição (=) e consulta de variável.",
@@ -171,6 +219,14 @@
     "hint": "Procure o sinal =. Depois da declaração, existe alguma instrução guardando um novo valor em saldo?",
     "challenge": "Sem copiar o exemplo, escreva um programa que começa com 8 vagas, guarda a ocupação de 2 vagas e mostra as vagas restantes. Use - para subtrair. Explique por que restam 6.",
     "answer": "int vagas = 8;\nvagas = vagas - 2;\nConsole.WriteLine(vagas);\nO lado direito calcula 8 - 2. A atribuição guarda 6 e WriteLine consulta esse valor.",
-    "mistake": "Escrever apenas Console.WriteLine(vagas - 2); mostra 6, mas deixa vagas com 8. Se outra parte do programa consultar a variável, ainda verá o valor antigo."
+    "mistake": "Escrever apenas Console.WriteLine(vagas - 2); mostra 6, mas deixa vagas com 8. Se outra parte do programa consultar a variável, ainda verá o valor antigo.",
+    "terms": [
+      {
+        "term": "Atribuir",
+        "meaning": "Calcular o lado direito e guardar o resultado no nome que está à esquerda de =."
+      }
+    ],
+    "hintDetail": "Faça duas colunas: valor guardado e valor mostrado. Atualize a primeira só ao ler uma atribuição.",
+    "reviewLesson": "I05"
   }
 ]
