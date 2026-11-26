@@ -66,6 +66,7 @@ function WorkedExample({ lesson }: { lesson: GuidedLesson }) {
                 <div className="course-feedback">
                   <p><strong>Saída ilustrada</strong></p>
                   <pre><code>{revealed.output}</code></pre>
+                  <p className="course-meta">Linha {revealed.line} em destaque</p>
                   <p>{revealed.reason}</p>
                 </div>
               )}
@@ -83,7 +84,7 @@ function StudyHelp({ lesson }: { lesson: GuidedLesson }) {
     <details className="course-disclosure course-help">
       <summary>Estou com dificuldade na leitura</summary>
       <p><strong>Antes desta aula</strong><br />{lesson.before}</p>
-      {lesson.reviewLesson && <p><a href={guidedHref(lesson.reviewLesson)}>Rever {getGuidedLesson(lesson.reviewLesson)?.title.toLocaleLowerCase('pt-BR')}</a></p>}
+      {lesson.reviewLesson && <p><a href={guidedHref(lesson.reviewLesson)}>Voltar à aula “{getGuidedLesson(lesson.reviewLesson)?.title}”</a></p>}
       {lesson.terms && (
         <dl className="course-terms">{lesson.terms.map(term => (
           <div key={term.term}><dt>{term.term}</dt><dd>{term.meaning}</dd></div>

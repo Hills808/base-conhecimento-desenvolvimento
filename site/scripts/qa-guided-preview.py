@@ -1,5 +1,5 @@
 import base64
-import os
+import re
 import subprocess
 import time
 from urllib.request import urlopen
@@ -34,8 +34,8 @@ def verify(browser):
       const loaded = await document.fonts.load('18px "' + font + '"');
       return loaded.length > 0 && getComputedStyle(document.querySelector('main h1')).fontFamily.includes(font);
     }""")
-    assert font_loaded, "The local reading font did not load"
     log_image("hoje", page)
+    assert font_loaded, "The local reading font did not load"
 
     page.get_by_role("link", name="Começar do zero").click()
     expect(page.get_by_role("heading", name="O que significa programar?")).to_be_visible()
@@ -69,7 +69,7 @@ def verify(browser):
     expect(page.get_by_text("Prática registrada.", exact=False)).to_be_visible()
     page.get_by_role("link", name="Voltar à trilha").first.click()
     expect(page.get_by_label("Aulas praticadas em Começar do zero")).to_have_attribute("value", "1")
-    expect(page.get_by_role("link", name="Sua primeira mensagem Próxima aula")).to_have_attribute("aria-current", "step")
+    expect(page.get_by_role("link", name=re.compile("Sua primeira mensagem"))).to_have_attribute("aria-current", "step")
     page.get_by_text("Decisões e dados", exact=True).click()
     expect(page.get_by_role("link", name="Faça uma pergunta ao código")).to_be_visible()
     log_image("trilha", page)

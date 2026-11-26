@@ -56,8 +56,8 @@ function Today({ progress }: { progress: FormationProgress }) {
       {(hasMissionInProgress || reviews.length > 0) && (
         <details className="course-disclosure">
           <summary>Práticas para retomar</summary>
-          {hasMissionInProgress && <p><a href={missionHref(lastMission.id)}>Continuar {lastMission.title.toLocaleLowerCase('pt-BR')}</a></p>}
-          {reviews.length > 0 && <p><a href={missionHref(reviews[0].id)}>Revisar {reviews[0].title.toLocaleLowerCase('pt-BR')}</a></p>}
+          {hasMissionInProgress && <p><a href={missionHref(lastMission.id)}>Retomar “{lastMission.title}”</a></p>}
+          {reviews.length > 0 && <p><a href={missionHref(reviews[0].id)}>Revisar “{reviews[0].title}”</a></p>}
         </details>
       )}
     </section>

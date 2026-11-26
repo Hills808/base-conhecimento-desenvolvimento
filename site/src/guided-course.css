@@ -25,6 +25,11 @@ html[data-theme="dark"] :is(.course-overview, .guided-course) {
   --course-complete-text: #a1e6c8;
 }
 
+/* The older catalogue sets a global font on headings. */
+.formation:is(.course-overview, .guided-course) :is(h1, h2, h3) {
+  font-family: var(--course-font) !important;
+}
+
 .course-overview {
   max-width: 62rem;
 }
@@ -542,6 +547,11 @@ html[data-theme="dark"] :is(.course-overview, .guided-course) {
 @media (max-width: 45rem) {
   .course-example-pair {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guided-course .course-code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 
   .course-lesson-list a {
