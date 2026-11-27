@@ -4,7 +4,11 @@ const tokens = /("(?:\\.|[^"\\])*"|\/\/.*|\b(?:int|bool|string|if|else|out)\b|\b
 
 function renderLine(line: string) {
   return line.split(tokens).map((part, index) => {
-    if (index % 2 === 0) return part;
+    if (index % 2 === 0) {
+      return <Fragment key={index}>{part.split(/([.(])/).map((chunk, piece) =>
+        piece % 2 === 0 ? chunk : <Fragment key={piece}>{chunk}<wbr /></Fragment>
+      )}</Fragment>;
+    }
     let kind = 'keyword';
     if (part.startsWith('"')) kind = 'string';
     else if (part.startsWith('//')) kind = 'comment';

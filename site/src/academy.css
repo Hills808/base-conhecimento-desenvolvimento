@@ -42,6 +42,12 @@ html[data-theme="dark"] .academy-shell {
   --academy-focus: #c5baff;
 }
 
+.academy-shell .skip-link {
+  background: var(--academy-ink);
+  color: var(--academy-paper);
+  border-radius: .5rem;
+}
+
 .academy-shell > main {
   flex: 1;
   min-width: 0;
@@ -285,11 +291,26 @@ html[data-theme="dark"] .academy-shell {
   background: var(--academy-panel);
   color: var(--academy-ink);
   min-height: 52px;
+  box-shadow: none;
   font-family: var(--academy-font);
 }
 
 .academy-library .searchbar input {
   min-width: 0;
+}
+
+.academy-library .searchbar input::placeholder {
+  color: var(--academy-muted);
+}
+
+.academy-library .searchbar button {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.academy-library .searchbar:focus-within {
+  border-color: var(--academy-accent);
 }
 
 .academy-library .area-filters {

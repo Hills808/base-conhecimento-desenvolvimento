@@ -97,6 +97,7 @@ def verify(browser):
     page.get_by_role("link", name="Biblioteca", exact=True).click()
     expect(page.get_by_role("heading", name="Biblioteca de estudo")).to_be_visible()
     expect(page.locator(".library-topic")).to_have_count(10)
+    log_image("biblioteca", page)
     search = page.get_by_role("searchbox", name="Buscar materiais")
     search.fill("MCP")
     expect(page.get_by_text("Resultados para “MCP”", exact=True)).to_be_visible()
@@ -139,6 +140,20 @@ def verify(browser):
     log_image("aula-escura", phone)
     phone.get_by_label("Código C#", exact=True).first.scroll_into_view_if_needed()
     log_image("codigo-no-celular", phone)
+    has_number_alignment = phone.get_by_label("Código C#", exact=True).first.evaluate("""code => {
+      return [...code.querySelectorAll('.course-code-line')].every(line => {
+        const number = line.querySelector('.course-line-number').getBoundingClientRect();
+        const text = line.lastElementChild;
+        const range = new Range();
+        const rect = [...text.childNodes].map(node => {
+          if (node.nodeType === 3 && !node.textContent.trim()) return null;
+          range.selectNodeContents(node);
+          return [...range.getClientRects()].find(box => box.width > 0);
+        }).find(Boolean);
+        return !rect || Math.abs(rect.top - number.top) < 12;
+      })
+    }""")
+    assert has_number_alignment, "A code line number is separated from the text it identifies"
     phone.get_by_text("Mudar o valor e acompanhar o caminho", exact=True).click()
     minutes = phone.get_by_label("Minutos de espera")
     minutes.select_option("29")

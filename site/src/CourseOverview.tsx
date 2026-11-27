@@ -159,7 +159,7 @@ export function StudyProject({ progress, children }: { progress: FormationProgre
       <section className="course-project-practice">
         <div>
           <h2>Classificador de espera</h2>
-          <p>Pratique como ler os minutos informados, validar a entrada e decidir se um atendimento está atrasado.</p>
+          <p>Na prática final de Decisões e dados, você vai ler os minutos informados, validar a entrada e decidir se um atendimento está atrasado.</p>
         </div>
         <a className="formation-primary" href={guidedHref('U10P')}>Abrir prática do classificador</a>
       </section>
