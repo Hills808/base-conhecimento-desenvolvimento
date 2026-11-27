@@ -404,6 +404,10 @@
     justify-content: center;
   }
 
+  .academy-tools .theme-picker select {
+    padding-inline: .5rem .25rem;
+  }
+
   .academy-shortcuts span,
   .academy-tools .theme-picker > svg {
     display: none;

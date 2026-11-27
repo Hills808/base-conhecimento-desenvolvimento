@@ -108,10 +108,12 @@ def verify(browser):
     check_theme(phone, "dark", "#14231f")
     phone.set_viewport_size({"width": 320, "height": 740})
     phone.goto(ROOT, wait_until="networkidle")
-    expect(phone.get_by_role("heading", name="Aprenda a programar em C#")).to_be_visible()
+    expect(phone.get_by_role("heading", name="Continue seu estudo")).to_be_visible()
     check_theme(phone, "dark", "#14231f")
     assert phone.evaluate("document.documentElement.scrollWidth <= innerWidth + 1")
-    assert contrast(phone.get_by_role("link", name="Começar do zero")) >= 4.5
+    resume = phone.get_by_role("link", name="Continuar aula")
+    expect(resume).to_have_attribute("href", "/base-conhecimento-desenvolvimento/?visao=formacao&inicio=9")
+    assert contrast(resume) >= 4.5
     assert not errors, errors
     mobile.close()
     print("PASS: brand assets and colors, both themes, 320–1280 px, original preview and practice.")
