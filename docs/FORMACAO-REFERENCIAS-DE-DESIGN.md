@@ -44,3 +44,14 @@ O restante da sequência está no [plano da formação](FORMACAO-LEITURA-E-AUTON
 | [W3C, foco visível](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) | Manter a navegação principal disponível no celular e o contorno de foco visível nos controles e no código. |
 
 O painel de código tem números de linha e cores distintas para palavras da linguagem, valores e textos. O caminho da trilha identifica a aula atual e as praticadas com texto. O projeto reúne as explicações que a pessoa salvou e a Biblioteca apresenta os materiais por assunto.
+
+## Identidade visual
+
+O símbolo é uma curva aberta que lembra um C, com um ponto na ponta. A base em verde-petróleo, o traço em menta e o ponto em verde-lima aparecem na marca, na aba do navegador e na versão instalável.
+
+A interface usa o verde-petróleo para realçar ações no tema claro e o menta no tema escuro. Os fundos, o texto e o console têm cores próprias. A fonte de leitura e da marca é Atkinson Hyperlegible Next.
+
+| Referência consultada | Aplicação |
+| --- | --- |
+| [Material Web, papéis de cor](https://material-web.dev/theming/color/) | Separar as cores de marca dos papéis de superfície, texto, ação e foco. |
+| [W3C, contraste mínimo](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) | Conferir o contraste do texto, dos botões e dos exemplos de código nos dois temas. |

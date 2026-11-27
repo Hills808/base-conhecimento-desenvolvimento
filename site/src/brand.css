@@ -1,0 +1,71 @@
+:root {
+  --brand-petrol: #0d3531;
+  --brand-mint: #a2efd5;
+  --brand-lime: #e9f793;
+  --brand-page: #f3f7f4;
+  --brand-surface: #fff;
+  --brand-text: #172d27;
+  --brand-muted: #4a655b;
+  --brand-border: #cbdad2;
+  --brand-tint: #e1efe7;
+  --brand-accent: #006551;
+  --brand-on-accent: #fff;
+  --brand-focus: #007662;
+  --brand-selection: #c7ebd8;
+  --brand-console: #152b26;
+  --brand-console-border: #435e53;
+  --brand-console-text: #edf7f0;
+  --brand-console-muted: #bbcec3;
+  --brand-console-active: #254b3e;
+  --brand-console-value: #a6e4ed;
+  --brand-success: #e3f2e8;
+  --brand-success-text: #1b563d;
+}
+
+:root[data-theme="dark"] {
+  --brand-page: #14231f;
+  --brand-surface: #1c302a;
+  --brand-text: #edf7f0;
+  --brand-muted: #bbcec3;
+  --brand-border: #425f53;
+  --brand-tint: #263f35;
+  --brand-accent: #a2efd5;
+  --brand-on-accent: #142e25;
+  --brand-focus: #a2efd5;
+  --brand-selection: #345f50;
+  --brand-success: #234438;
+  --brand-success-text: #acebd0;
+}
+
+/* The catalogue, formation and study tools share the same color roles. */
+:root,
+:root[data-theme="dark"] {
+  --paper: var(--brand-page);
+  --white: var(--brand-surface);
+  --ink: var(--brand-text);
+  --muted: var(--brand-muted);
+  --line: var(--brand-border);
+  --blue: var(--brand-accent);
+  --primary: var(--brand-accent);
+  --primary-foreground: var(--brand-on-accent);
+  --theme-action: var(--brand-accent);
+  --theme-action-text: var(--brand-on-accent);
+  --theme-hover: var(--brand-tint);
+  --theme-tint: var(--brand-tint);
+  --theme-code: var(--brand-console);
+  --theme-success: var(--brand-success);
+  --theme-success-text: var(--brand-success-text);
+  --study-bg: var(--brand-page);
+  --study-surface: var(--brand-surface);
+  --study-text: var(--brand-text);
+  --study-muted: var(--brand-muted);
+  --study-border: var(--brand-border);
+  --study-link: var(--brand-accent);
+  --study-focus: var(--brand-focus);
+}
+
+:root ::selection,
+:root[data-theme="dark"] ::selection {
+  background: var(--brand-selection);
+  color: var(--brand-text);
+}

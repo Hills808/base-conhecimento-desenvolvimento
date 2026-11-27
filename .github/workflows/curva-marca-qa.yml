@@ -1,0 +1,30 @@
+name: Conferir a identidade visual
+on:
+  push:
+    branches: [codex/curva-identidade-visual]
+permissions:
+  contents: read
+jobs:
+  previsualizacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Construir e testar o site
+        working-directory: site
+        run: |
+          npm ci --no-audit --no-fund
+          npm run typecheck && npm test && npm run build
+      - name: Preparar o navegador de teste
+        run: |
+          python -m pip install --disable-pip-version-check playwright pillow
+          python -m playwright install --with-deps --only-shell chromium
+      - name: Conferir logo, cores e aulas
+        working-directory: site
+        run: python scripts/qa-brand.py
