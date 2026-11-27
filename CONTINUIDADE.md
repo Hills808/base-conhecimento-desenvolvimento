@@ -298,3 +298,10 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - O progresso salva a parte da aula, a resposta conferida e a anotação. Minha explicação entra na cópia de estudo e aparece em Meu projeto. O registro reconhece a prática declarada e a resposta objetiva conferida onde ela existe.
 - Referências verificadas, critérios de interface e fontes do conteúdo estão em [Referências para a experiência de estudo](docs/FORMACAO-REFERENCIAS-DE-DESIGN.md). O mapa editorial continua com as próximas unidades de repetição e coleções.
 - Verificação antes da publicação no [GitHub Actions](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/runs/45914079111): tipos, testes e build aprovados. Exemplos C# compilados em .NET 10 com saídas e variações conferidas, inclusive os seis casos do classificador. Chromium em 1280, 390 e 320 px conferiu foco de teclado, fontes, tema escuro, abertura de ajuda, persistência após recarga e retomada. As larguras menores foram simuladas no navegador.
+
+## Visual da formação
+
+- Navegação principal fica acessível em uma linha própria no celular. Tema, atalhos, cópia de estudo e opção de mostrar a Furina ficam em controles identificados.
+- Hoje reúne a retomada e uma prévia com o código da aula e a saída esperada sob demanda. Entender aproxima explicação e exemplo em telas largas. Código C# usa a mesma apresentação numerada nas aulas e práticas.
+- Formação destaca a próxima aula e o progresso da trilha. Meu projeto leva à prática final e reúne explicações salvas. Biblioteca organiza os temas em linhas com busca e filtros.
+- Referências oficiais de Exercism, Scrimba e W3C reunidas no [registro de design](docs/FORMACAO-REFERENCIAS-DE-DESIGN.md).

@@ -1,0 +1,32 @@
+name: Conferir novo visual do Curva Aberta
+on:
+  push:
+    branches: [codex/curva-visual-estudo]
+permissions:
+  contents: read
+jobs:
+  navegador:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências e verificações do site
+        working-directory: site
+        run: |
+          npm ci --no-audit --no-fund
+          npm run typecheck && npm test && npm run build
+      - name: Instalar navegador de teste
+        run: |
+          python -m pip install --disable-pip-version-check playwright pillow
+          python -m playwright install --with-deps --only-shell chromium
+      - name: Conferir estudo em claro e escuro
+        working-directory: site
+        run: python scripts/qa-visual-preview.py

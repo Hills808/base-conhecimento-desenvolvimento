@@ -34,3 +34,13 @@ Textos oficiais em português, com leitura gratuita e acesso sem conta. Quando h
 | Quando for executar o programa no computador | [Download oficial do SDK .NET 10](https://dotnet.microsoft.com/pt-br/download/dotnet/10.0) |
 
 O restante da sequência está no [plano da formação](FORMACAO-LEITURA-E-AUTONOMIA.md).
+
+## Interface de estudo
+
+| Referência consultada | Aplicação |
+| --- | --- |
+| [Scrimba, exemplo de uma aula no editor](https://scrimba.com/articles/best-free-coding-websites-and-resources-2026/) | Aproximar o trecho de código da atividade. No Curva Aberta, a tela Hoje traz uma saída esperada que pode ser revelada, e as aulas exibem a explicação ao lado do exemplo em telas largas. |
+| [Exercism, estrutura da trilha](https://exercism.org/docs/building/tracks/syllabus) | Mostrar a ordem dos conceitos e dar ao estudante uma referência visível do passo atual. |
+| [W3C, foco visível](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) | Manter a navegação principal disponível no celular e o contorno de foco visível nos controles e no código. |
+
+O painel de código tem números de linha e cores distintas para palavras da linguagem, valores e textos. O caminho da trilha identifica a aula atual e as praticadas com texto. O projeto reúne as explicações que a pessoa salvou e a Biblioteca apresenta os materiais por assunto.
