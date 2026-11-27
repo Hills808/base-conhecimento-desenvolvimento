@@ -1,28 +1,11 @@
-import base64
 import re
-import subprocess
 import time
-from urllib.request import urlopen
-from io import BytesIO
-from PIL import Image
-from playwright.sync_api import expect, sync_playwright
+from playwright.sync_api import TimeoutError, expect, sync_playwright
 
-ROOT = "http://127.0.0.1:4173/base-conhecimento-desenvolvimento/"
+ROOT = "https://hills808.github.io/base-conhecimento-desenvolvimento/"
 
 def log_image(name, page):
-    page.evaluate("document.fonts.ready.then(() => true)")
-    target = Image.open(BytesIO(page.screenshot(type="png")))
-    target.thumbnail((920, 820), Image.Resampling.LANCZOS)
-    for side in (920, 780, 660, 560, 460):
-        target.thumbnail((side, 820), Image.Resampling.LANCZOS)
-        buffer = BytesIO()
-        target.save(buffer, "WEBP", quality=58)
-        data = base64.b64encode(buffer.getvalue()).decode()
-        if len(data) <= 28500:
-            break
-    for index in range(0, len(data), 960):
-        print(f"CURVA_VISUAL/{name}/{index} {data[index:index+960]}")
-    print(f"CURVA_VISUAL_DONE/{name}/{len(data)}")
+    print(f"Renderizado {name}: {page.locator('main h1').inner_text()}")
 
 def no_page_overflow(page):
     actual = page.evaluate("document.documentElement.scrollWidth")
@@ -187,23 +170,20 @@ def verify(browser):
     small.close()
     print("PASS: resumption, keyboard focus, correction, hints, branching, font, dark theme, legacy routes and 320–1280 px.")
 
-server = subprocess.Popen(["node", "node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", "4173", "--strictPort"])
-try:
-    for _ in range(30):
-        try:
-            with urlopen(ROOT, timeout=2) as response:
-                if response.status == 200:
-                    break
-        except OSError:
-            time.sleep(0.5)
-    else:
-        raise RuntimeError("Vite preview did not start")
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        try:
-            verify(browser)
-        finally:
-            browser.close()
-finally:
-    server.terminate()
-    server.wait(timeout=10)
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    try:
+        ready = browser.new_page()
+        for attempt in range(12):
+            ready.goto(ROOT + "?conferencia=visual" + str(attempt), wait_until="domcontentloaded")
+            try:
+                ready.locator(".academy-topbar").wait_for(timeout=4000)
+                break
+            except TimeoutError:
+                time.sleep(2)
+        else:
+            raise RuntimeError("A nova navegação do site ainda não está disponível.")
+        ready.close()
+        verify(browser)
+    finally:
+        browser.close()
