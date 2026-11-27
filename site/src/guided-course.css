@@ -758,3 +758,24 @@
     max-width: 11rem;
   }
 }
+
+.course-video {
+  max-width: 48rem;
+  border-inline-start: 3px solid var(--academy-accent);
+  padding-inline: .875rem;
+  background: var(--academy-soft);
+}
+
+.course-video-body h2 { margin: .25rem 0; font-size: 1.25rem; }
+.course-video-body .course-meta { margin-top: .375rem; }
+.course-video-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
+.course-video-actions a { display: inline-flex; align-items: center; min-height: 44px; }
+.course-video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
+  margin-top: .75rem;
+  border: 0;
+  background: var(--brand-console);
+}

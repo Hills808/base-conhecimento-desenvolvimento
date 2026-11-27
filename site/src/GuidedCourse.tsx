@@ -3,6 +3,7 @@ import {
   exampleCode, getGuidedLesson, guidedGroups, guidedIds, references, setupLesson, type GuidedLesson,
 } from './data/guidedCourse';
 import StudyCode from './StudyCode';
+import LessonVideo from './LessonVideo';
 import { canRecordGuidedPractice, type GuidedAttempt, type GuidedStep } from './formationProgress';
 
 const base = import.meta.env.BASE_URL;
@@ -243,6 +244,8 @@ export default function GuidedCourse({ id, attempt, change, record }: {
           </button>
         ))}
       </nav>
+
+      {step === 'exemplo' && <LessonVideo key={id} lessonId={id} />}
 
       <section className={step === 'exemplo' && lesson ? 'course-lesson-content is-wide' : 'course-lesson-content'} aria-label={guidedStepLabels.find(item => item.id === step)?.title}>
         {!lesson && <Setup step={step} heading={heading} />}

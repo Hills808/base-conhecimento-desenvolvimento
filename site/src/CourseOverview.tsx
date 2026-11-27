@@ -99,7 +99,7 @@ function Path({ progress }: { progress: FormationProgress }) {
   return (
     <section className="formation course-overview">
       <header className="course-intro course-path-heading">
-        <div><h1>Sua trilha de C#</h1><p>Leia um exemplo, pratique e explique com suas palavras.</p></div>
+        <div><h1>Sua trilha de C#</h1><p>Leia o exemplo ou assista ao vídeo de apoio. Depois, pratique e explique com suas palavras.</p></div>
         <GroupProgress title="toda a trilha" ids={guidedIds} progress={progress} />
       </header>
       <div className="course-path">
