@@ -1,7 +1,7 @@
 "use client";
 
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Menu, Play, Search, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Play, Search, X } from "lucide-react";
 import { modules, guideUrl } from "./data/modules";
 const AutonomyLab = lazy(() => import("./AutonomyLab"));
 import "./autonomy.css";
@@ -55,7 +55,6 @@ export default function Home() {
   function filterChange(field: keyof typeof materialFilters, value: string) { ({ language: setLanguage, time: setTime, certificate: setCertificate, level: setLevel })[field](value); setExpanded(false); }
   const [expanded, setExpanded] = useState(false);
   const [done, setDone] = useState<string[]>([]);
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
   const [showStudyGuide, setShowStudyGuide] = useState(false);
@@ -117,20 +116,20 @@ export default function Home() {
 
   function openModule(id: number | null) {
     setCommandOpen(false); setCommandQuery("");
-    setSelected(id); setExpanded(false); setMobileMenu(false);
+    setSelected(id); setExpanded(false);
     const base = import.meta.env.BASE_URL;
     const url = id === null ? base : `${base}?modulo=${String(id).padStart(2, "0")}`;
     window.history.pushState({}, "", url); window.dispatchEvent(new Event("curva-aberta-location-change"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
   function openAutonomy() {
-    setSelected(null); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    setSelected(null); setCommandOpen(false); setCommandQuery("");
     window.history.pushState({}, "", `${import.meta.env.BASE_URL}?laboratorio=autonomia`);
     window.dispatchEvent(new PopStateEvent("popstate"));
     window.scrollTo({ top: 0, behavior: "auto" });
   }
   function openLabStep(index: number) {
-    setSelected(9); setExpanded(false); setMobileMenu(false); setCommandOpen(false); setCommandQuery("");
+    setSelected(9); setExpanded(false); setCommandOpen(false); setCommandQuery("");
     const url = `${import.meta.env.BASE_URL}?modulo=09&etapa=${index + 1}`;
     window.history.pushState({}, "", url); window.dispatchEvent(new PopStateEvent("popstate"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
@@ -166,23 +165,26 @@ export default function Home() {
     return (q.length < 2 ? quickItems.slice(0, 8) : quickItems.filter(item => normalize(`${item.title} ${item.detail}`).includes(q))).slice(0, 8);
   }, [commandQuery, quickItems]);
 
-  const isLearningPage = selected === null && !isAutonomy && (view === 'hoje' || view === 'formacao' || view === 'diagnostico');
-  return <div className={isLearningPage ? 'site-shell learning-page' : 'site-shell'}>
+  const isLearningPage = selected === null && !isAutonomy;
+  const currentDestination = isLearningPage ? view === 'diagnostico' ? 'formacao' : view : 'biblioteca';
+  return <div className="site-shell academy-shell">
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header className="topbar">
-      <div className="topbar-inner">
-        <a href={moduleHref(null)} className="brand" onClick={event => navigate(event, null)} aria-label="Curva Aberta, voltar ao início">
-          <span className="brand-mark">c<span>✳</span></span>
-          <span className="brand-name">curva aberta<span className="brand-dot">.</span><small>aprenda fazendo</small></span>
+    <header className="academy-topbar">
+      <div className="academy-topbar-inner">
+        <a href={moduleHref(null)} className="academy-brand" onClick={event => navigate(event, null)} aria-label="Curva Aberta, voltar ao início">
+          <span className="academy-mark" aria-hidden="true">c<span>✳</span></span>
+          <span>curva aberta<span className="academy-brand-dot">.</span></span>
         </a>
-        <nav id="main-nav" className={`topnav ${mobileMenu ? "open" : ""}`} aria-label="Navegação principal">
-          {[["hoje","Hoje"],["formacao","Formação"],["projeto","Meu projeto"],["biblioteca","Biblioteca"]].map(([key,label])=><a key={key} href={`${import.meta.env.BASE_URL}?visao=${key}`} aria-current={selected === null && !isAutonomy && view===key?'page':undefined}>{label}</a>)}
-          {!isLearningPage && <a href="#guardar-estudo">Meu estudo</a>}
-          <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
+        <nav className="academy-nav" aria-label="Navegação principal">
+          {[["hoje", "Hoje"], ["formacao", "Formação"], ["projeto", "Meu projeto"], ["biblioteca", "Biblioteca"]].map(([key, label]) => (
+            <a key={key} href={import.meta.env.BASE_URL + '?visao=' + key} aria-current={currentDestination === key ? 'page' : undefined}>{label}</a>
+          ))}
         </nav>
-        <div className="topbar-tools">
+        <div className="academy-tools">
+          <button className="academy-shortcuts" type="button" onClick={() => setCommandOpen(true)} aria-label="Abrir atalhos do site" title="Atalhos do site (Ctrl+K)">
+            <Search size={17} aria-hidden="true" /><span>Atalhos</span>
+          </button>
           <ThemePicker />
-          <button className="menu-button" aria-expanded={mobileMenu} aria-controls="main-nav" onClick={() => setMobileMenu(v => !v)} aria-label={mobileMenu ? "Fechar menu" : "Abrir menu"}>{mobileMenu ? <X /> : <Menu />}</button>
         </div>
       </div>
     </header>
@@ -218,18 +220,35 @@ export default function Home() {
             <div className="source-note"><CircleHelp size={19}/><p>O progresso fica apenas neste navegador. Acesso e certificados podem mudar; confira sempre a página de cada fonte.</p></div>
           </aside>
         </div>}
-      </div> : view !== "biblioteca" ? <Suspense fallback={<p role="status">Preparando sua formação…</p>}><Formation view={view}/></Suspense> : <div className="home-wrap">
-        <header className="formation"><h1>Biblioteca de estudo</h1><p>Consulte seu acervo por tema. Para seguir a formação principal, <a href={`${import.meta.env.BASE_URL}?visao=hoje`}>retome sua prática em Hoje</a>.</p><a href={`${import.meta.env.BASE_URL}?laboratorio=autonomia`}>Consultar o laboratório de autonomia anterior</a></header>
-        <section id="modulos" className="explore-section">
-          <div className="explore-heading"><div><span className="eyebrow ink">ESCOLHA SUA PRÓXIMA HABILIDADE</span><h2>O que você quer aprender?</h2></div><p>Escolha uma área. Dentro dela, encontre seu nível, os materiais e a próxima prática.</p></div>
-          <div className="searchbar"><Search size={21}/><input type="search" value={query} onChange={e=>{setQuery(e.target.value);setExpanded(false)}} placeholder="Busque um tema, curso ou ferramenta..." aria-label="Buscar materiais"/>{query && <button onClick={()=>setQuery("")} aria-label="Limpar busca"><X size={17}/></button>}<span>{resources.length} referências</span></div>
+      </div> : view !== "biblioteca" ? <Suspense fallback={<p role="status">Preparando sua formação…</p>}><Formation view={view}/></Suspense> : <div className="academy-library">
+        <header className="academy-page-heading">
+          <h1>Biblioteca de estudo</h1>
+          <p>Encontre cursos, guias e exercícios por assunto.</p>
+        </header>
+        <section id="modulos" className="academy-library-content" aria-label="Materiais de estudo">
+          <div className="searchbar"><Search size={21}/><input type="search" value={query} onChange={e=>{setQuery(e.target.value);setExpanded(false)}} placeholder="Busque um tema, curso ou ferramenta..." aria-label="Buscar materiais"/>{query && <button onClick={()=>setQuery("")} aria-label="Limpar busca"><X size={17}/></button>}</div>
           {query.trim().length >= 2 && <MaterialFilters value={materialFilters} onChange={filterChange}/>}
           {query.trim().length >= 2 ? <div className="search-results"><div className="results-heading"><strong>{searchResults.length ? `Resultados para “${query}”` : "Nenhum resultado"}</strong><span>{searchResults.length} materiais encontrados</span></div>{searchResults.length ? <><div className="resources-grid">{searchResults.slice(0,expanded?undefined:24).map(r=><div key={`${r.module}-${r.url}`} className="result-item"><span className="result-module">M{String(r.module).padStart(2,"0")} · {modules[r.module].title}</span><ResourceCard item={r} compact/></div>)}</div>{searchResults.length>24 && <button className="show-more" onClick={()=>setExpanded(v=>!v)}>{expanded?"Mostrar menos":`Ver mais ${searchResults.length-24} materiais`} <ChevronDown className={expanded?"up":""} size={17}/></button>}</> : <p>Tente outro termo, como “MCP”, “SQL” ou “inglês”.</p>}</div> : <>
             <div className="area-filters" aria-label="Filtrar áreas">{areas.map(a=><button key={a} onClick={()=>setArea(a)} className={area===a?"active":""} aria-pressed={area===a}>{a}</button>)}</div>
-            <div className="explore-layout"><div className="module-grid"><div className="index-columns" aria-hidden="true"><span>Nº / ÁREA</span><span>PERCURSO E RESULTADO</span><span>CONTEÚDO</span></div>{filteredModules.map(m=><a className="module-card" href={moduleHref(m.id)} key={m.id} onClick={event=>navigate(event,m.id)}><span className="card-top"><span className="module-id">{String(m.id).padStart(2,"0")}</span><span className="module-area">{m.area}</span></span><span className="card-body"><strong>{m.title}</strong><span className="module-short">{m.outcome}</span></span><span className="card-bottom"><span>{m.id === 9 ? "14 etapas guiadas" : `${resources.filter(r=>r.module===m.id).length} materiais · 5 níveis`}</span><span className="card-arrow"><ArrowUpRight size={19}/></span></span></a>)}</div></div>
+            <ul className="library-topics" role="list">
+              {filteredModules.map(module => (
+                <li key={module.id}>
+                  <a className="library-topic" href={moduleHref(module.id)} onClick={event => navigate(event, module.id)}>
+                    <span className="library-topic-area">{module.area}</span>
+                    <span className="library-topic-main"><strong>{module.title}</strong><span>{module.outcome}</span></span>
+                    <span className="library-topic-count">{module.id === 9 ? '14 etapas guiadas' : resources.filter(item => item.module === module.id).length + ' materiais'}</span>
+                    <ArrowUpRight size={18} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </>}
         </section>
-        <section className="closing-banner"><span>PROJETO GUIADO / 09</span><h2>Junte as peças<br/>num sistema realista.</h2><p>O laboratório MCP com C# combina HTTP, Bruno, API .NET, agentes, RAG e Skills. Cada etapa termina numa entrega verificável, com dados fictícios.</p><button onClick={()=>openModule(9)}>Entrar no laboratório <ArrowRight size={18}/></button><div className="closing-schematic" aria-hidden="true">API <span>↗</span> AGENTE <span>↗</span> TOOL <span>↗</span> MCP</div></section>
+        <details className="library-additional">
+          <summary>Outras práticas guiadas</summary>
+          <p><a href={import.meta.env.BASE_URL + '?laboratorio=autonomia'}>Laboratório de autonomia</a></p>
+          <p><a href={moduleHref(9)} onClick={event => navigate(event, 9)}>Laboratório de APIs, MCP e agentes</a></p>
+        </details>
       </div>}
     </RouteBoundary></main>
     <StudyBackup />
@@ -243,6 +262,15 @@ export default function Home() {
         <footer><span>Digite para filtrar</span><span><kbd>Esc</kbd> fechar</span></footer>
       </section>
     </div>}
-    <footer className="footer">{isLearningPage && <button className="footer-study-guide" type="button" aria-pressed={showStudyGuide} onClick={() => setShowStudyGuide(value => !value)}>{showStudyGuide ? 'Ocultar a Furina' : 'Mostrar a Furina'}</button>}<span className="footer-brand">Curva Aberta<span>.</span></span><p>Base de Henrique Alexandre, adaptada para este site · <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p><a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria original no GitHub <ExternalLink size={15}/></a></footer>
+    <footer className="academy-footer">
+      <div className="academy-footer-inner">
+        <div><strong>Curva Aberta</strong><p>Base de Henrique Alexandre. <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p></div>
+        <div className="academy-footer-links">
+          <a href="#guardar-estudo">Guardar meu estudo</a>
+          {isLearningPage && <button type="button" aria-pressed={showStudyGuide} onClick={() => setShowStudyGuide(value => !value)}>{showStudyGuide ? 'Ocultar a Furina' : 'Mostrar a Furina'}</button>}
+          <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria no GitHub <ExternalLink size={14} aria-hidden="true" /></a>
+        </div>
+      </div>
+    </footer>
   </div>;
 }

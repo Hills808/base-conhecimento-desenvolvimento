@@ -2,28 +2,17 @@ import { useId, useRef, useState, type Ref } from 'react';
 import {
   exampleCode, getGuidedLesson, guidedGroups, guidedIds, references, setupLesson, type GuidedLesson,
 } from './data/guidedCourse';
+import StudyCode from './StudyCode';
 import { canRecordGuidedPractice, type GuidedAttempt, type GuidedStep } from './formationProgress';
 
 const base = import.meta.env.BASE_URL;
 export const pathHref = base + '?visao=formacao';
 export const guidedHref = (id: string) => pathHref + '&inicio=' + (guidedIds.indexOf(id) + 1);
-const labels: { id: GuidedStep; title: string }[] = [
+export const guidedStepLabels: { id: GuidedStep; title: string }[] = [
   { id: 'exemplo', title: 'Entender' },
   { id: 'pratica', title: 'Praticar' },
   { id: 'explicacao', title: 'Explicar' },
 ];
-
-function Code({ code, label = 'Código C#', activeLine }: { code: string; label?: string; activeLine?: number }) {
-  return (
-    <pre className="course-code" tabIndex={0} aria-label={label}>
-      <code>{code.split('\n').map((line, i) => (
-        <span key={i} className={activeLine === i + 1 ? 'course-code-line is-active' : 'course-code-line'}>
-          <span className="course-line-number" aria-hidden="true">{i + 1}</span>{line}{'\n'}
-        </span>
-      ))}</code>
-    </pre>
-  );
-}
 
 function WorkedExample({ lesson }: { lesson: GuidedLesson }) {
   const [selection, setSelection] = useState('');
@@ -35,15 +24,16 @@ function WorkedExample({ lesson }: { lesson: GuidedLesson }) {
 
   return (
     <>
-      <figure className="course-example">
-        <figcaption>Exemplo resolvido</figcaption>
-        {lesson.input !== undefined && <p className="course-meta">Entrada digitada <code>{JSON.stringify(lesson.input)}</code></p>}
-        <div className="course-example-pair">
-          <div><span>Código</span><Code code={lesson.code} /></div>
-          <div><span>Saída no console</span><pre tabIndex={0} aria-label="Saída no console"><code>{lesson.output}</code></pre></div>
+      <figure className="study-console course-example">
+        <figcaption><span className="study-file">Program.cs</span><span>Exemplo resolvido</span></figcaption>
+        {lesson.input !== undefined && <p className="study-console-input">Entrada digitada <code>{JSON.stringify(lesson.input)}</code></p>}
+        <StudyCode code={lesson.code} />
+        <div className="study-console-output">
+          <span>Saída no console</span>
+          <pre tabIndex={0} aria-label="Saída no console"><code>{lesson.output}</code></pre>
         </div>
-        <p>{lesson.explanation}</p>
       </figure>
+      <p className="course-example-explanation">{lesson.explanation}</p>
 
       {explore && (
         <details className="course-disclosure">
@@ -56,7 +46,7 @@ function WorkedExample({ lesson }: { lesson: GuidedLesson }) {
             </select>
             {selected && (
               <>
-                <Code code={exampleCode(lesson.code, explore.replace, selected)} activeLine={revealed?.line} />
+                <StudyCode code={exampleCode(lesson.code, explore.replace, selected)} activeLine={revealed?.line} />
                 <p>Que saída você espera para esse caso?</p>
                 <button type="button" onClick={() => setInspected(selection)} disabled={Boolean(revealed)}>Conferir o caminho</button>
               </>
@@ -98,12 +88,16 @@ function StudyHelp({ lesson }: { lesson: GuidedLesson }) {
 
 function Understand({ lesson, heading }: { lesson: GuidedLesson; heading: Ref<HTMLHeadingElement> }) {
   return (
-    <>
-      <h2 ref={heading} tabIndex={-1}>Entenda com um exemplo</h2>
-      {lesson.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-      <WorkedExample lesson={lesson} />
-      <StudyHelp lesson={lesson} />
-    </>
+    <div className="course-understand">
+      <div className="course-reading">
+        <h2 ref={heading} tabIndex={-1}>Entenda com um exemplo</h2>
+        {lesson.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        <StudyHelp lesson={lesson} />
+      </div>
+      <div className="course-workspace">
+        <WorkedExample lesson={lesson} />
+      </div>
+    </div>
   );
 }
 
@@ -117,7 +111,7 @@ function Practice({ lesson, attempt, change, heading }: {
   return (
     <>
       <h2 ref={heading} tabIndex={-1}>Tente responder</h2>
-      {lesson.questionCode && <Code code={lesson.questionCode} label="Código do exercício" />}
+      {lesson.questionCode && <StudyCode code={lesson.questionCode} label="Código do exercício" />}
       <fieldset className="course-options">
         <legend>{lesson.prompt}</legend>
         {lesson.options.map((option, i) => (
@@ -150,7 +144,7 @@ function Explain({ lesson, heading }: { lesson: GuidedLesson; heading: Ref<HTMLH
     <>
       <h2 ref={heading} tabIndex={-1}>{lesson.challengeSteps ? 'Construa o programa' : 'Tente em outro exemplo'}</h2>
       <p>{lesson.challenge}</p>
-      {lesson.challengeCode && <Code code={lesson.challengeCode} label="Código para explicar" />}
+      {lesson.challengeCode && <StudyCode code={lesson.challengeCode} label="Código para explicar" />}
       {lesson.challengeSteps && (
         <>
           <ol className="course-instructions">{lesson.challengeSteps.map(step => <li key={step}>{step}</li>)}</ol>
@@ -188,7 +182,7 @@ function Setup({ step, heading }: { step: GuidedStep; heading: Ref<HTMLHeadingEl
         <p>No terminal da sua pasta de estudos, execute uma linha por vez. Se a subpasta já existir, escolha outro nome nos dois comandos.</p>
         <pre tabIndex={0} aria-label="Comandos no PowerShell"><code>{'dotnet new console -n MeuPrimeiroPrograma --framework net10.0\ncd MeuPrimeiroPrograma'}</code></pre>
         <p>O primeiro comando cria o projeto. O segundo entra na pasta dele. No editor, abra <code>Program.cs</code> dessa pasta, coloque o código abaixo e salve com <kbd>Ctrl</kbd> + <kbd>S</kbd>.</p>
-        <Code code={setupLesson.code} />
+        <StudyCode code={setupLesson.code} />
         <p>No terminal em que você entrou na pasta do projeto, digite <code>dotnet run</code>. Você deve ver:</p>
         <pre tabIndex={0} aria-label="Saída esperada"><code>{setupLesson.output}</code></pre>
         <details className="course-disclosure course-help">
@@ -243,14 +237,14 @@ export default function GuidedCourse({ id, attempt, change, record }: {
         <p>{lesson?.goal ?? setupLesson.goal}</p>
       </header>
       <nav className="course-steps" aria-label="Partes da aula">
-        {labels.map((item, index) => (
+        {guidedStepLabels.map((item, index) => (
           <button key={item.id} type="button" aria-current={item.id === step ? 'step' : undefined} onClick={() => moveTo(item.id)}>
-            <span aria-hidden="true">{index + 1}.</span> {item.title}
+            <span className="course-step-number" aria-hidden="true">{index + 1}</span>{item.title}
           </button>
         ))}
       </nav>
 
-      <section className="course-lesson-content" aria-label={labels.find(item => item.id === step)?.title}>
+      <section className={step === 'exemplo' && lesson ? 'course-lesson-content is-wide' : 'course-lesson-content'} aria-label={guidedStepLabels.find(item => item.id === step)?.title}>
         {!lesson && <Setup step={step} heading={heading} />}
         {lesson && step === 'exemplo' && <Understand lesson={lesson} heading={heading} />}
         {lesson && step === 'pratica' && <Practice lesson={lesson} attempt={attempt} change={change} heading={heading} />}
@@ -264,7 +258,7 @@ export default function GuidedCourse({ id, attempt, change, record }: {
             <details className="course-disclosure">
               <summary>Compare depois de tentar</summary>
               <p className="course-answer">{lesson?.answer ?? 'O programa passa a mostrar a sua mensagem e o número 9. Você alterou e salvou o código no editor. No terminal, dotnet run compilou e executou a versão atual do projeto.'}</p>
-              {lesson?.answerCode && <Code code={lesson.answerCode} label="Uma solução possível" />}
+              {lesson?.answerCode && <StudyCode code={lesson.answerCode} label="Uma solução possível" />}
             </details>
             {attempt.completedAt
               ? <p className="course-feedback is-correct" role="status">✓ Prática registrada.</p>
