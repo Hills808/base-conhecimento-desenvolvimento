@@ -306,3 +306,10 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - Formação destaca a próxima aula e o progresso da trilha. Meu projeto leva à prática final e reúne explicações salvas. Biblioteca organiza os temas em linhas com busca e filtros.
 - Referências oficiais de Exercism, Scrimba e W3C reunidas no [registro de design](docs/FORMACAO-REFERENCIAS-DE-DESIGN.md).
 - A prévia passou por tipos, testes, build e [conferência no Chromium](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/runs/45916248430). Foram testadas larguras de 320, 390 e 1280 px, retomada de aula, abertura de saída e dicas, navegação pelo teclado, tema escuro, busca de material e leitura de código com quebra de linha.
+
+## Identidade visual do Curva Aberta
+
+- A marca reúne a curva aberta em menta, o ponto claro e a base em verde-petróleo. Cabeçalho, rodapé, favicon e versão instalável usam o mesmo símbolo com dimensões próprias.
+- `site/src/brand.css` concentra as cores dos temas claro e escuro, dos controles e da leitura de código. A tipografia usa Atkinson Hyperlegible Next.
+- A aplicação da identidade abrange o site, os exemplos de código e os ícones do aplicativo. As cores dos estados de erro e alerta continuam com papéis próprios.
+- A [prévia](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/runs/45917779356) passou em tipos, testes, build e Chromium. Foram conferidos o símbolo nos tamanhos de 32, 96, 192 e 512 px, os temas, o contraste da ação principal e do código, as larguras de 320 a 1280 px e a retomada da aula.

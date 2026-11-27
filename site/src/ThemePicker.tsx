@@ -13,9 +13,8 @@ function applyTheme(preference: ThemePreference) {
   document.documentElement.dataset.themePreference = preference;
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
-  document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute(
-    "content", theme === "dark" ? "#151c2a" : "#f4f6fb"
-  );
+  const pageColor = getComputedStyle(document.documentElement).getPropertyValue("--brand-page").trim();
+  if (pageColor) document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute("content", pageColor);
 }
 
 export default function ThemePicker() {

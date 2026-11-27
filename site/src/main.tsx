@@ -9,5 +9,6 @@ import "./student-ui.css";
 import "./theme.css";
 import "./study-polish.css";
 import "./academy.css";
+import "./brand.css";
 
 createRoot(document.getElementById("root")!).render(<React.StrictMode><App /></React.StrictMode>);

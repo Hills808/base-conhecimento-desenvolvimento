@@ -19,6 +19,8 @@ import ThemePicker from "./ThemePicker";
 import rawResources from "./data/resources.json";
 import curriculum from "./data/laboratory.json";
 
+const brandMark = import.meta.env.BASE_URL + 'marca-96.png';
+
 type Resource = { module: number; title: string; url: string; section: string; type: string; host: string; access?: string; note?: string };
 const resources = rawResources as Resource[];
 const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
@@ -172,8 +174,8 @@ export default function Home() {
     <header className="academy-topbar">
       <div className="academy-topbar-inner">
         <a href={moduleHref(null)} className="academy-brand" onClick={event => navigate(event, null)} aria-label="Curva Aberta, voltar ao início">
-          <span className="academy-mark" aria-hidden="true">c<span>✳</span></span>
-          <span>curva aberta<span className="academy-brand-dot">.</span></span>
+          <img className="academy-mark" src={brandMark} width={38} height={38} alt="" />
+          <span>Curva Aberta</span>
         </a>
         <nav className="academy-nav" aria-label="Navegação principal">
           {[["hoje", "Hoje"], ["formacao", "Formação"], ["projeto", "Meu projeto"], ["biblioteca", "Biblioteca"]].map(([key, label]) => (
@@ -264,7 +266,9 @@ export default function Home() {
     </div>}
     <footer className="academy-footer">
       <div className="academy-footer-inner">
-        <div><strong>Curva Aberta</strong><p>Base de Henrique Alexandre. <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p></div>
+        <div>
+          <div className="academy-footer-brand"><img className="academy-mark" src={brandMark} width={28} height={28} alt="" /><strong>Curva Aberta</strong></div>
+          <p>Base de Henrique Alexandre. <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p></div>
         <div className="academy-footer-links">
           <a href="#guardar-estudo">Guardar meu estudo</a>
           {isLearningPage && <button type="button" aria-pressed={showStudyGuide} onClick={() => setShowStudyGuide(value => !value)}>{showStudyGuide ? 'Ocultar a Furina' : 'Mostrar a Furina'}</button>}

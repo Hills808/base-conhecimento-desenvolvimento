@@ -5,7 +5,20 @@
   "start_url": "/base-conhecimento-desenvolvimento/",
   "scope": "/base-conhecimento-desenvolvimento/",
   "display": "standalone",
-  "background_color": "#151c2a",
-  "theme_color": "#151c2a",
-  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "background_color": "#f3f7f4",
+  "theme_color": "#f3f7f4",
+  "icons": [
+    {
+      "src": "marca-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "marca-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
