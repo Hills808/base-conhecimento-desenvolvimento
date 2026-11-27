@@ -49,7 +49,11 @@ export function mergeSection(key: string, current: unknown, incoming: unknown, p
   const firstValue = preferIncoming ? current : incoming; const secondValue = preferIncoming ? incoming : current;
   const first = isRecord(firstValue) ? firstValue : {}; const second = isRecord(secondValue) ? secondValue : {};
   const merged: Record<string, unknown> = { ...first, ...second };
-  if (key === formationKey) { merged.attempts = { ...first.attempts, ...second.attempts }; merged.diagnostic = { ...first.diagnostic, ...second.diagnostic }; }
+  if (key === formationKey) {
+    merged.attempts = { ...first.attempts, ...second.attempts };
+    merged.diagnostic = { ...first.diagnostic, ...second.diagnostic };
+    merged.lessons = { ...first.lessons, ...second.lessons };
+  }
   if (key === autonomyKey) merged.records = { ...first.records, ...second.records };
   if (key === moduleProgressKey || key === labKey) {
     for (const field of ['done', 'passed']) merged[field] = [...new Set([...(first[field] || []), ...(second[field] || [])])];
@@ -65,7 +69,8 @@ export function mergeSection(key: string, current: unknown, incoming: unknown, p
 export function backupSummary(backup: Backup) {
   const module = parseModuleProgress(backup.data[moduleProgressKey]); const lab = parseLabProgress(backup.data[labKey]);
   const autonomy = Object.values(parseAutonomy(backup.data[autonomyKey]).records);
-  const formation = Object.values(parseFormation(backup.data[formationKey]).attempts);
+  const { attempts, lessons } = parseFormation(backup.data[formationKey]);
+  const formation = [...Object.values(attempts), ...Object.values(lessons)];
   return { deliveries: formation.filter(a=>a.completedAt).length + module.done.length + lab.done.length + autonomy.filter(verifiedEvidence).length, evidence: formation.filter(a=>a.note.trim()).length + Object.keys(module.drafts).length + Object.keys(lab.drafts).length + autonomy.filter(r => r.build.trim()).length, attempts: Object.keys(parsePractice(backup.data[practiceKey])).length, drafts: Object.keys(parseDrafts(backup.data[draftKey])).length };
 }
 export function restoreBackup(backup: Backup, preferIncoming: boolean) {

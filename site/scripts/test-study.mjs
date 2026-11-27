@@ -168,3 +168,41 @@ test('formation rejects invalid IDs and keeps drafts when storage is blocked', (
  assert.equal(p.last,'C01');assert.deepEqual(p.diagnostic,{});assert.equal(p.attempts.BAD,undefined);assert.equal(p.attempts.C01.step,0);assert.deepEqual(p.attempts.C01.answers,{});
  blocked=true;assert.equal(f.saveFormation(p),false);assert.equal(f.readFormation().attempts.C01.note,'texto');blocked=false;f.saveFormation(p);
 });
+
+test('guided lessons resume in order and require a checked answer to register a concept practice', () => {
+  const f = src('formationProgress');
+  const start = f.parseFormation({ last: 'C02', attempts: { C02: { note: 'Registro anterior' } } });
+  assert.equal(f.recommendedLesson(start), 'I01');
+  assert.equal(f.recordGuidedPractice(start, 'I01'), start);
+
+  const draft = f.parseFormation({
+    ...start,
+    lastLesson: 'U06',
+    lessons: { U06: { step: 'explicacao', answer: 2, checked: true, note: 'Igual não é maior.' } },
+  });
+  assert.equal(f.recommendedLesson(draft), 'U06');
+  const recorded = f.recordGuidedPractice(draft, 'U06', Date.parse('2026-11-26'));
+  assert.equal(recorded.lessons.U06.note, 'Igual não é maior.');
+  assert.equal(recorded.lessons.U06.completedAt, '2026-11-26T00:00:00.000Z');
+  assert.equal(f.recommendedLesson(recorded), 'I01');
+  assert.equal(recorded.attempts.C02.note, 'Registro anterior');
+});
+
+test('previous study copies keep lesson drafts and new ones merge by lesson', () => {
+  const f = src('formationProgress');
+  const current = f.parseFormation({ lastLesson: 'U07', lessons: { U07: { step: 'pratica', note: 'Meu raciocínio' } } });
+  f.saveFormation(current);
+  const currentCopy = backup.parseBackup(JSON.stringify(backup.makeBackup()));
+  assert.equal(currentCopy.data[f.formationKey].lastLesson, 'U07');
+  assert.equal(currentCopy.data[f.formationKey].lessons.U07.step, 'pratica');
+  const old = { format: 'curva-aberta', version: 1, exportedAt: '2026-11-06T19:00:00Z',
+    data: { [f.formationKey]: { last: 'C02', attempts: { C02: { note: 'De outro navegador' } }, diagnostic: {} } } };
+  const previousCopy = backup.parseBackup(JSON.stringify(old)).data[f.formationKey];
+  assert.equal(backup.mergeSection(f.formationKey, current, previousCopy, true).lessons.U07.note, 'Meu raciocínio');
+
+  const external = f.parseFormation({ lessons: { U07: { note: 'Outra versão' }, U06: { step: 'pratica' } } });
+  const merged = backup.mergeSection(f.formationKey, current, external, false);
+  assert.equal(merged.lessons.U07.note, 'Meu raciocínio');
+  assert.equal(merged.lessons.U06.step, 'pratica');
+  assert.equal(backup.mergeSection(f.formationKey, current, external, true).lessons.U07.note, 'Outra versão');
+});

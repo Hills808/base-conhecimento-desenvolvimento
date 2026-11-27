@@ -58,6 +58,7 @@ export default function Home() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
+  const [showStudyGuide, setShowStudyGuide] = useState(false);
   const [commandQuery, setCommandQuery] = useState("");
   const commandPanel = useRef<HTMLElement>(null);
 
@@ -165,7 +166,8 @@ export default function Home() {
     return (q.length < 2 ? quickItems.slice(0, 8) : quickItems.filter(item => normalize(`${item.title} ${item.detail}`).includes(q))).slice(0, 8);
   }, [commandQuery, quickItems]);
 
-  return <div className="site-shell">
+  const isLearningPage = selected === null && !isAutonomy && (view === 'hoje' || view === 'formacao' || view === 'diagnostico');
+  return <div className={isLearningPage ? 'site-shell learning-page' : 'site-shell'}>
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header className="topbar">
       <div className="topbar-inner">
@@ -175,9 +177,8 @@ export default function Home() {
         </a>
         <nav id="main-nav" className={`topnav ${mobileMenu ? "open" : ""}`} aria-label="Navegação principal">
           {[["hoje","Hoje"],["formacao","Formação"],["projeto","Meu projeto"],["biblioteca","Biblioteca"]].map(([key,label])=><a key={key} href={`${import.meta.env.BASE_URL}?visao=${key}`} aria-current={selected === null && !isAutonomy && view===key?'page':undefined}>{label}</a>)}
-          <a href="#guardar-estudo">Meu estudo</a>
+          {!isLearningPage && <a href="#guardar-estudo">Meu estudo</a>}
           <button className="command-launch" onClick={() => setCommandOpen(true)}><Search size={15}/>Ir para <kbd>Ctrl K</kbd></button>
-          <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Base no GitHub <ArrowUpRight size={15} /></a>
         </nav>
         <div className="topbar-tools">
           <ThemePicker />
@@ -232,7 +233,7 @@ export default function Home() {
       </div>}
     </RouteBoundary></main>
     <StudyBackup />
-    <AnimatedMascot module={active}/>
+    {(!isLearningPage || showStudyGuide) && <AnimatedMascot module={active}/> }
     <div className="status-message" role="status" aria-live="polite">{notice}</div>
     {commandOpen && <div className="command-overlay" role="presentation" onMouseDown={() => setCommandOpen(false)}>
       <section ref={commandPanel} className="command-palette" role="dialog" aria-modal="true" aria-label="Ir para uma parte do site" onKeyDown={containCommandFocus} onMouseDown={event => event.stopPropagation()}>
@@ -242,6 +243,6 @@ export default function Home() {
         <footer><span>Digite para filtrar</span><span><kbd>Esc</kbd> fechar</span></footer>
       </section>
     </div>}
-    <footer className="footer"><span className="footer-brand">Curva Aberta<span>.</span></span><p>Base de Henrique Alexandre, adaptada para este site · <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p><a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria original no GitHub <ExternalLink size={15}/></a></footer>
+    <footer className="footer">{isLearningPage && <button className="footer-study-guide" type="button" aria-pressed={showStudyGuide} onClick={() => setShowStudyGuide(value => !value)}>{showStudyGuide ? 'Ocultar a Furina' : 'Mostrar a Furina'}</button>}<span className="footer-brand">Curva Aberta<span>.</span></span><p>Base de Henrique Alexandre, adaptada para este site · <a href="https://github.com/Hills808/base-conhecimento-desenvolvimento/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p><a href="https://github.com/Hills808/base-conhecimento-desenvolvimento" target="_blank" rel="noopener noreferrer">Curadoria original no GitHub <ExternalLink size={15}/></a></footer>
   </div>;
 }
