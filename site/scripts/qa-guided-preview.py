@@ -1,18 +1,10 @@
-import base64
 import re
-import subprocess
-import time
-from urllib.request import urlopen
 from playwright.sync_api import expect, sync_playwright
 
-ROOT = "http://127.0.0.1:4173/base-conhecimento-desenvolvimento/"
+ROOT = "https://hills808.github.io/base-conhecimento-desenvolvimento/"
 
 def log_image(name, page):
-    page.evaluate("document.fonts.ready.then(() => true)")
-    data = base64.b64encode(page.screenshot(type="jpeg", quality=64)).decode()
-    for index in range(0, len(data), 4600):
-        print(f"CURVA_SHOT/{name}/{index} {data[index:index+4600]}")
-    print(f"CURVA_SHOT_DONE/{name}/{len(data)}")
+    print(f"Renderizado {name}: {page.locator('main h1').inner_text()}")
 
 def no_page_overflow(page):
     actual = page.evaluate("document.documentElement.scrollWidth")
@@ -125,23 +117,9 @@ def verify(browser):
     small.close()
     print("PASS: resumption, keyboard focus, correction, hints, branching, font, dark theme, legacy routes and 320–1280 px.")
 
-server = subprocess.Popen(["node", "node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", "4173", "--strictPort"])
-try:
-    for _ in range(30):
-        try:
-            with urlopen(ROOT, timeout=2) as response:
-                if response.status == 200:
-                    break
-        except OSError:
-            time.sleep(0.5)
-    else:
-        raise RuntimeError("Vite preview did not start")
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        try:
-            verify(browser)
-        finally:
-            browser.close()
-finally:
-    server.terminate()
-    server.wait(timeout=10)
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    try:
+        verify(browser)
+    finally:
+        browser.close()
