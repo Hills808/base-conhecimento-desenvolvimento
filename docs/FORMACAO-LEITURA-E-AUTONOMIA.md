@@ -4,7 +4,7 @@ Data: 06/11/2026. Estado em 06/11: projeto pedagógico e especificação de prod
 
 Este documento revisa a direção de [ARQUITETURA-FORMACAO.md](ARQUITETURA-FORMACAO.md). Mantém a formação única em C#/.NET, o projeto Mesa de atendimento e a infraestrutura existente. A mudança central é aprofundar os fundamentos, praticar leitura de código desconhecido em toda a sequência e distinguir desempenho com ajuda de autonomia demonstrada. O mapa anterior de 45 missões passa a ser referência histórica; este inventário editorial propõe 60 unidades no núcleo, com unidades divisíveis em várias sessões.
 
-Em 26/11, o site disponibiliza Começar do zero e Decisões e dados, incluindo o classificador em console. Consulte as [referências de design e ensino](FORMACAO-REFERENCIAS-DE-DESIGN.md) para ver as decisões já aplicadas.
+Em 27/11, a trilha guiada chega a 19 aulas em Começar do zero, Decisões e dados e Repetições e coleções. Cada aula tem videoaula em português, leitura acompanhada e uma oficina de correção. As entregas incluem o classificador em console e o relatório de fila. O inventário abaixo registra o planejamento de longo prazo. Consulte o [registro de implementação](../CONTINUIDADE.md) e as [referências de design e ensino](FORMACAO-REFERENCIAS-DE-DESIGN.md).
 
 ## 1. Resultado que a plataforma deve produzir
 

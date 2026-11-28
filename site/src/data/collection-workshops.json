@@ -1,0 +1,329 @@
+{
+  "U11": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "Coloque 24 sob o índice 0, 51 sob o índice 1 e 37 sob o índice 2. A fila tem três itens."
+      },
+      {
+        "line": 2,
+        "observation": "A variável indice guarda 1. Ela guarda a posição escolhida."
+      },
+      {
+        "line": 3,
+        "observation": "senhas[indice] vira senhas[1]. Na coluna 1 está 51. A primeira linha do console recebe 51."
+      },
+      {
+        "line": 4,
+        "observation": "Length consulta a quantidade de lugares. A linha seguinte do console recebe 3."
+      }
+    ],
+    "task": {
+      "context": "Uma caixa guarda etiquetas por ordem de chegada. Um colega deixou este trecho para imprimir uma etiqueta e a quantidade de etiquetas seguintes à primeira. Leia o que o programa efetivamente imprime, uma linha por vez.",
+      "code": "string[] etiquetas = [\"azul\", \"verde\", \"azul\", \"rosa\"];\nint posicao = 2;\nConsole.WriteLine(etiquetas[posicao]);\nConsole.WriteLine(etiquetas.Length - 1);",
+      "output": "azul\n3",
+      "hint": "Numere todas as etiquetas, inclusive as repetidas. Depois faça a conta da última linha usando a quantidade de etiquetas.",
+      "explain": "O índice 2 aponta para a terceira etiqueta, azul. Há quatro etiquetas e a expressão final calcula 4 - 1. O fato de a palavra azul aparecer duas vezes preserva as duas posições.",
+      "errors": [
+        {
+          "guess": "verde\n3",
+          "feedback": "Você localizou a segunda etiqueta. Vale escrever o índice 0 sobre a primeira para ver onde fica o índice 2."
+        },
+        {
+          "guess": "azul\n4",
+          "feedback": "A primeira linha está certa. Na última, faça também a subtração que aparece depois de Length."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "O painel recebe do público um número de assento, de 1 a 3, e deve mostrar a sala daquele assento. Na posição 1 o painel anuncia Lua, embora o primeiro assento fique na sala Sol. Números fora da faixa recebem “Assento inválido”. Encontre o ponto em que a contagem do público vira uma consulta ao array.",
+      "code": "string[] salas = [\"Sol\", \"Lua\", \"Mar\"];\nbool leu = int.TryParse(Console.ReadLine(), out int assento);\nint indice = assento;\nif (leu && assento >= 1 && indice < salas.Length)\n{\n    Console.WriteLine(salas[indice]);\n}\nelse\n{\n    Console.WriteLine(\"Assento inválido\");\n}",
+      "hint": "Monte pares em duas colunas. Que índice corresponde aos assentos 1, 2 e 3?",
+      "solution": "string[] salas = [\"Sol\", \"Lua\", \"Mar\"];\nbool leu = int.TryParse(Console.ReadLine(), out int assento);\nint indice = assento - 1;\nif (leu && assento >= 1 && indice < salas.Length)\n{\n    Console.WriteLine(salas[indice]);\n}\nelse\n{\n    Console.WriteLine(\"Assento inválido\");\n}",
+      "tests": [
+        {
+          "input": "1",
+          "output": "Sol"
+        },
+        {
+          "input": "3",
+          "output": "Mar"
+        },
+        {
+          "input": "0",
+          "output": "Assento inválido"
+        }
+      ],
+      "explanation": "O número público começa em 1 e o índice começa em 0. Subtrair 1 faz o assento 1 chegar a Sol e o assento 3 chegar a Mar. O teste com 0 confere que o painel continua recusando posições inválidas."
+    }
+  },
+  "U12": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "A ordem das durações é 4, 1 e 3 minutos."
+      },
+      {
+        "line": 2,
+        "observation": "O total começa em 0 antes da primeira visita."
+      },
+      {
+        "line": 3,
+        "observation": "O foreach pega o primeiro item. Nesta volta, espera vale 4."
+      },
+      {
+        "line": 5,
+        "observation": "O programa calcula 0 + 4 e guarda 4 em total."
+      },
+      {
+        "line": 5,
+        "observation": "Na segunda volta, espera vale 1. O cálculo usa o 4 que ficou guardado. Total passa a 5."
+      },
+      {
+        "line": 5,
+        "observation": "Na terceira volta, espera vale 3. A soma parte de 5 e chega a 8."
+      },
+      {
+        "line": 7,
+        "observation": "Não há um quarto item. A execução alcança a impressão e mostra 8 uma vez."
+      }
+    ],
+    "task": {
+      "context": "Ao conferir o caixa de uma feira, uma colega deixou uma impressão dentro do laço e outra depois dele. Descubra quantas linhas ela vai enxergar e o conteúdo de cada uma.",
+      "code": "int[] valores = [2, 0, 5];\nint saldo = 1;\nforeach (int valor in valores)\n{\n    saldo = saldo + valor;\n    Console.WriteLine(saldo);\n}\nConsole.WriteLine(\"Fechado\");",
+      "output": "3\n3\n8\nFechado",
+      "hint": "Escreva uma linha para cada item, mesmo quando ele vale zero. A mensagem Fechado aparece ao sair das chaves.",
+      "explain": "O saldo inicial é 1. As somas produzem 3, 3 e 8. O item zero ocupa uma volta inteira e a impressão acontece também naquela volta. A última linha só executa uma vez.",
+      "errors": [
+        {
+          "guess": "3\n8\nFechado",
+          "feedback": "A segunda volta também executa WriteLine. Somar zero mantém o saldo, e a impressão repete o valor."
+        },
+        {
+          "guess": "8\nFechado",
+          "feedback": "Observe a chave depois da impressão do saldo. Essa impressão acontece uma vez para cada item."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "O relatório de um depósito precisa informar o total de peças recebidas nas três entregas. As caixas trazem 4, 2 e 7 peças, mas o relatório termina com 7. Localize a atribuição em que o total parcial se perde.",
+      "code": "int[] entregas = [4, 2, 7];\nint recebidas = 0;\nforeach (int pecas in entregas)\n{\n    recebidas = pecas;\n}\nConsole.WriteLine(recebidas);",
+      "hint": "Na segunda volta, você tem 4 peças anteriores e mais 2 entrando. Quais desses valores aparecem do lado direito do sinal de igual?",
+      "solution": "int[] entregas = [4, 2, 7];\nint recebidas = 0;\nforeach (int pecas in entregas)\n{\n    recebidas = recebidas + pecas;\n}\nConsole.WriteLine(recebidas);",
+      "tests": [
+        {
+          "output": "13"
+        }
+      ],
+      "explanation": "A versão antiga substituía o total pela entrega atual a cada volta. Com apenas uma entrega o defeito passaria despercebido. Com três entregas, o total deve passar por 4, 6 e 13, portanto o resultado final 7 revela a perda das duas primeiras."
+    }
+  },
+  "U13": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "Os pares de índice e espera são (0, 2), (1, 7) e (2, 1). O tamanho é 3."
+      },
+      {
+        "line": 2,
+        "observation": "Na primeira visita, i vale 0. A comparação 0 < 3 permite entrar."
+      },
+      {
+        "line": 4,
+        "observation": "No índice 0 está 2. Como 2 >= 5 é falso, o bloco de impressão fica de fora."
+      },
+      {
+        "line": 2,
+        "observation": "Após o bloco, i++ leva i a 1. A condição 1 < 3 permite a segunda visita."
+      },
+      {
+        "line": 6,
+        "observation": "A espera no índice 1 é 7. A comparação passa e o console recebe o índice 1."
+      },
+      {
+        "line": 4,
+        "observation": "Na terceira visita, i vale 2. A espera vale 1 e fica abaixo de 5. A impressão é pulada."
+      },
+      {
+        "line": 2,
+        "observation": "O avanço leva i a 3. Como 3 < 3 é falso, o laço termina antes de consultar esperas[3]."
+      }
+    ],
+    "task": {
+      "context": "No inventário, o relatório deve exibir só os nomes dos corredores que ainda faltam conferir. O primeiro corredor já foi visitado. Leia em voz baixa qual parte do for escolhe o primeiro nome a imprimir.",
+      "code": "string[] corredores = [\"Sul\", \"Leste\", \"Norte\", \"Oeste\"];\nfor (int indice = 1; indice < corredores.Length; indice++)\n{\n    Console.WriteLine(corredores[indice]);\n}\nConsole.WriteLine(\"Fim\");",
+      "output": "Leste\nNorte\nOeste\nFim",
+      "hint": "Escreva 0 sobre Sul e avance até o valor inicial de indice. Quando o guardado em indice for igual ao tamanho, passe para a instrução depois das chaves.",
+      "explain": "O percurso começa no índice 1, que contém Leste. Os índices 2 e 3 também são válidos. Com 4, a condição encerra o laço. Fora dele, o console ainda recebe a palavra Fim.",
+      "errors": [
+        {
+          "guess": "Sul\nLeste\nNorte\nOeste\nFim",
+          "feedback": "Confira a atribuição que inicia o for. Com indice igual a 1 na primeira volta, a posição 0 já ficou para trás."
+        },
+        {
+          "guess": "Leste\nNorte\nFim",
+          "feedback": "O índice 3 ainda é menor que 4. A execução visita Oeste antes da saída do laço."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Um letreiro deve anunciar todos os guichês abertos na ordem em que foram cadastrados. A equipe informou três nomes e o último desaparece. Encontre o teste que encerra a repetição cedo demais.",
+      "code": "string[] guiches = [\"A\", \"B\", \"C\"];\nfor (int i = 0; i < guiches.Length - 1; i++)\n{\n    Console.WriteLine(guiches[i]);\n}\nConsole.WriteLine(\"Pronto\");",
+      "hint": "Para os três guichês, qual o último índice válido? Substitua i por esse número na condição que decide se o bloco executa.",
+      "solution": "string[] guiches = [\"A\", \"B\", \"C\"];\nfor (int i = 0; i < guiches.Length; i++)\n{\n    Console.WriteLine(guiches[i]);\n}\nConsole.WriteLine(\"Pronto\");",
+      "tests": [
+        {
+          "output": "A\nB\nC\nPronto"
+        }
+      ],
+      "explanation": "Quando i chega a 2, a condição antiga calcula 2 < 2 e pula o guichê C. A condição corrigida testa 2 < 3, visita C e depois encerra com 3 < 3. Em um teste adicional com um único guichê, a versão antiga pularia até o primeiro."
+    }
+  },
+  "U14": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "Cinco pessoas esperam a van."
+      },
+      {
+        "line": 2,
+        "observation": "Ainda não ocorreu viagem. O contador vale 0."
+      },
+      {
+        "line": 3,
+        "observation": "5 >= 2 permite o primeiro embarque."
+      },
+      {
+        "line": 5,
+        "observation": "Duas pessoas embarcam. Restam 3 na fila."
+      },
+      {
+        "line": 6,
+        "observation": "Este embarque forma a primeira viagem. O contador passa para 1."
+      },
+      {
+        "line": 3,
+        "observation": "3 >= 2 permite nova viagem. A linha 5 deixa 1 na fila e a linha 6 registra a segunda viagem."
+      },
+      {
+        "line": 3,
+        "observation": "1 >= 2 é falso. A pessoa que sobrou espera e o programa segue para as impressões."
+      },
+      {
+        "line": 8,
+        "observation": "O console recebe 2, o total de viagens."
+      },
+      {
+        "line": 9,
+        "observation": "A próxima linha mostra 1, a pessoa que ainda aguarda."
+      }
+    ],
+    "task": {
+      "context": "O aviso de uma máquina conta os segundos restantes. Uma colega alterou o lugar em que o contador diminui. Preveja quais linhas ela verá com esta versão.",
+      "code": "int segundos = 3;\nwhile (segundos > 1)\n{\n    segundos = segundos - 1;\n    Console.WriteLine(segundos);\n}\nConsole.WriteLine(\"Toque\");",
+      "output": "2\n1\nToque",
+      "hint": "No início de cada volta, escreva em qual linha o contador muda. Só copie para o console o valor que existir quando você chegar ao WriteLine.",
+      "explain": "Com 3 a volta começa e a subtração deixa 2 para a impressão. A volta seguinte começa com 2, subtrai e imprime 1. O teste com 1 encerra, e o aviso Toque fica na linha final.",
+      "errors": [
+        {
+          "guess": "3\n2\nToque",
+          "feedback": "Observe que a subtração vem antes do WriteLine. O primeiro número impresso já sofreu a retirada de uma unidade."
+        },
+        {
+          "guess": "2\nToque",
+          "feedback": "Depois da primeira volta a variável vale 2, que ainda passa no teste 2 > 1."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Uma impressora precisa montar pacotes de três páginas. O operador digita a quantidade de páginas, um inteiro de 0 a 30. O relatório informa quantos pacotes completos consegue montar. Com seis páginas a versão recebida anuncia um pacote. Rastreie a última comparação antes de corrigir.",
+      "code": "bool leu = int.TryParse(Console.ReadLine(), out int paginas);\nif (leu && paginas >= 0 && paginas <= 30)\n{\n    int pacotes = 0;\n    while (paginas > 3)\n    {\n        paginas = paginas - 3;\n        pacotes = pacotes + 1;\n    }\n    Console.WriteLine(pacotes);\n}\nelse\n{\n    Console.WriteLine(\"Informe de 0 a 30\");\n}",
+      "hint": "Faça a pergunta do while quando restarem exatamente três páginas. Elas bastam para formar mais um pacote?",
+      "solution": "bool leu = int.TryParse(Console.ReadLine(), out int paginas);\nif (leu && paginas >= 0 && paginas <= 30)\n{\n    int pacotes = 0;\n    while (paginas >= 3)\n    {\n        paginas = paginas - 3;\n        pacotes = pacotes + 1;\n    }\n    Console.WriteLine(pacotes);\n}\nelse\n{\n    Console.WriteLine(\"Informe de 0 a 30\");\n}",
+      "tests": [
+        {
+          "input": "2",
+          "output": "0"
+        },
+        {
+          "input": "3",
+          "output": "1"
+        },
+        {
+          "input": "6",
+          "output": "2"
+        },
+        {
+          "input": "7",
+          "output": "2"
+        },
+        {
+          "input": "abc",
+          "output": "Informe de 0 a 30"
+        }
+      ],
+      "explanation": "O teste antigo interrompia as voltas também com três páginas restantes. Incluir a igualdade permite montar o último pacote. O teste 3 isola esse instante, e 2 confirma que o programa espera por um pacote inteiro."
+    }
+  },
+  "U15": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "As duas posições iniciais são 0 → cópia e 1 → rede."
+      },
+      {
+        "line": 2,
+        "observation": "Add põe acesso depois de rede, agora na posição 2. A lista tem três itens."
+      },
+      {
+        "line": 3,
+        "observation": "A correção troca o primeiro texto por impressão. Ainda há três itens."
+      },
+      {
+        "line": 4,
+        "observation": "RemoveAt(1) retira rede. O texto acesso passa do índice 2 para o 1."
+      },
+      {
+        "line": 5,
+        "observation": "A quantidade atual é 2. Essa é a primeira linha da saída."
+      },
+      {
+        "line": 8,
+        "observation": "Na primeira volta, categoria contém impressão, que vai para a segunda linha da saída."
+      },
+      {
+        "line": 8,
+        "observation": "Na última volta, categoria contém acesso. Essa é a terceira linha. O laço então termina."
+      }
+    ],
+    "task": {
+      "context": "A biblioteca guardou uma lista de livros separados para entrega. Entre a retirada de um livro e a impressão, uma colega corrigiu o título usando o índice. Descubra qual item foi atingido.",
+      "code": "List<string> livros = [\"Atlas\", \"Lua\", \"Mar\"];\nlivros.RemoveAt(0);\nlivros[1] = \"Sol\";\nlivros.Add(\"Vento\");\nConsole.WriteLine(livros.Count);\nforeach (string livro in livros)\n{\n    Console.WriteLine(livro);\n}",
+      "output": "3\nLua\nSol\nVento",
+      "hint": "Depois da retirada, redesenhe os índices das duas fichas restantes antes de aplicar a correção da linha 3.",
+      "explain": "Saindo Atlas, Lua ocupa o índice 0 e Mar o índice 1. A correção atinge Mar, que vira Sol. Vento entra depois dos dois, portanto a contagem é 3 e a ordem de impressão é Lua, Sol e Vento.",
+      "errors": [
+        {
+          "guess": "3\nSol\nMar\nVento",
+          "feedback": "Essa correção atingiria Lua se o índice antigo fosse preservado. Após RemoveAt(0), recomece em zero ao numerar os títulos restantes."
+        },
+        {
+          "guess": "4\nLua\nSol\nVento",
+          "feedback": "As três linhas de títulos já estão certas. Uma remoção e uma adição mudam a contagem em sentidos opostos."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Na conferência de equipamentos, o programa deve corrigir a etiqueta do segundo item para Tela e manter dois itens ao final. A versão atual deixa a etiqueta errada no relatório e mostra três itens. Descubra em qual instrução uma correção virou uma inclusão.",
+      "code": "List<string> itens = [\"Cabo\", \"Tlea\"];\nitens.Add(\"Tela\");\nConsole.WriteLine(itens.Count);\nforeach (string item in itens)\n{\n    Console.WriteLine(item);\n}",
+      "hint": "Depois de corrigir o inventário haverá uma terceira etiqueta ou o mesmo segundo lugar terá outro texto?",
+      "solution": "List<string> itens = [\"Cabo\", \"Tlea\"];\nitens[1] = \"Tela\";\nConsole.WriteLine(itens.Count);\nforeach (string item in itens)\n{\n    Console.WriteLine(item);\n}",
+      "tests": [
+        {
+          "output": "2\nCabo\nTela"
+        }
+      ],
+      "explanation": "Add mantinha Tlea e acrescentava Tela em um terceiro lugar. Atribuir Tela ao índice 1 corrige o segundo item. Conferir juntos o tamanho e a sequência distingue a correção de uma simples inclusão."
+    }
+  }
+}

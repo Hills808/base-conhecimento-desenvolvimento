@@ -12,7 +12,7 @@ import { getResourceMeta, matchesMaterial } from "./resourceMeta";
 import MaterialFilters from "./MaterialFilters";
 import useUrlFilter from "./useUrlFilter";
 import RouteBoundary from "./RouteBoundary";
-import StudyBackup from "./StudyBackup";
+import StudyBackup from "./StudyBackup.tsx";
 const Formation = lazy(() => import("./Formation"));
 import AnimatedMascot from "./AnimatedMascot";
 import ThemePicker from "./ThemePicker";

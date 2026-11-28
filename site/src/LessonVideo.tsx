@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { guidedVideos } from './data/guidedVideos';
 
 function clock(seconds: number) {
@@ -7,7 +7,6 @@ function clock(seconds: number) {
 
 export default function LessonVideo({ lessonId }: { lessonId: string }) {
   const [showPlayer, setShowPlayer] = useState(false);
-  const playerId = useId();
   const video = guidedVideos[lessonId];
   if (!video) return null;
 
@@ -19,36 +18,30 @@ export default function LessonVideo({ lessonId }: { lessonId: string }) {
   }
   if (video.end !== undefined) player.set('end', String(video.end));
 
+  const length = video.end !== undefined && video.start !== undefined ? video.end - video.start : video.duration;
   return (
-    <details className="course-disclosure course-video" onToggle={event => {
-      if (!event.currentTarget.open) setShowPlayer(false);
-    }}>
-      <summary>Vídeo de apoio em português</summary>
+    <details className="course-disclosure course-video" onToggle={event => setShowPlayer(event.currentTarget.open)}>
+      <summary>Videoaula · {video.title} <span className="course-meta">({clock(length)})</span></summary>
       <div className="course-video-body">
-        <h2>{video.title}</h2>
         <p className="course-meta">
-          {video.channel}{video.start !== undefined && video.end !== undefined && ' · Trecho de ' + clock(video.start) + ' a ' + clock(video.end)}
+          {video.channel} · Áudio em português{video.start !== undefined && video.end !== undefined && ' · Trecho de ' + clock(video.start) + ' a ' + clock(video.end)}
         </p>
-        <p><strong>Depois de assistir:</strong> {video.practice}</p>
+        <p><strong>Enquanto assiste</strong><br />{video.observe}</p>
         {video.note && <p className="course-meta">{video.note}</p>}
-        <div className="course-video-actions">
-          <button type="button" aria-expanded={showPlayer} aria-controls={playerId} onClick={() => setShowPlayer(value => !value)}>
-            {showPlayer ? 'Fechar player' : 'Abrir player do YouTube'}
-          </button>
-          <a href={'https://www.youtube.com/watch?' + watch.toString()} target="_blank" rel="noopener noreferrer">
-            Abrir no YouTube (nova aba)
-          </a>
-        </div>
-        <div id={playerId}>
-          {showPlayer && <iframe
+        {showPlayer && <iframe
             className="course-video-player"
-            title={'Vídeo de apoio: ' + video.title}
+            title={'Videoaula em português · ' + video.title}
             src={'https://www.youtube-nocookie.com/embed/' + video.id + '?' + player.toString()}
             referrerPolicy="strict-origin-when-cross-origin"
             allow="encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
-          />}
+        />}
+        <div className="course-video-actions">
+          <a href={'https://www.youtube.com/watch?' + watch.toString()} target="_blank" rel="noopener noreferrer">
+            Assistir no YouTube (nova aba)
+          </a>
         </div>
+        <p><strong>Depois do vídeo</strong><br />{video.practice}</p>
       </div>
     </details>
   );

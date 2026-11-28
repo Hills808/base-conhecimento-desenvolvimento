@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { missions, diagnostic, type Question } from './data/formation';
-import { canComplete, completeMission, emptyGuidedAttempt, formationEvent, freshAttempt, readFormation, recordGuidedPractice, saveFormation, suggestedMission, type Attempt, type FormationProgress, type GuidedAttempt } from './formationProgress';
+import { canComplete, completeMission, emptyGuidedAttempt, formationEvent, freshAttempt, readFormation, saveFormation, suggestedMission, type Attempt, type FormationProgress, type GuidedAttempt } from './formationProgress';
+import { recordGuidedPractice } from './guidedPractice';
 import GuidedCourse, { guidedHref } from './GuidedCourse';
 import CourseOverview, { StudyProject } from './CourseOverview';
 import StudyCode from './StudyCode';
@@ -50,11 +51,6 @@ export default function Formation({view}:{view:string}) {
   useEffect(()=>{const refresh=()=>setProgress(readFormation());window.addEventListener('storage',refresh);window.addEventListener('curva-aberta-backup-restored',refresh);window.addEventListener(formationEvent,refresh);return()=>{window.removeEventListener('storage',refresh);window.removeEventListener('curva-aberta-backup-restored',refresh);window.removeEventListener(formationEvent,refresh);};},[]);
   useEffect(()=>{if(mission){const p=readFormation();if(p.last!==mission.id)saveFormation({...p,last:mission.id});}},[mission?.id]);
 
-  useEffect(() => {
-    if (!lessonId) return;
-    const current = readFormation();
-    if (current.lastLesson !== lessonId) saveFormation({ ...current, lastLesson: lessonId });
-  }, [lessonId]);
   function persist(p:FormationProgress) {setProgress(p); const ok=saveFormation(p);setNotice(ok?'Salvo neste navegador.':'Disponível apenas nesta visita: o armazenamento está bloqueado. Exporte seu estudo antes de sair.');return ok;}
   function change(patch:Partial<Attempt>) {if(mission)persist({...progress,last:mission.id,attempts:{...progress.attempts,[mission.id]:{...record,...patch}}});}
   function step(n:number) {change({step:n});setShowHint(false);setShowExpected(false);setTimeout(()=>title.current?.focus(),0);}

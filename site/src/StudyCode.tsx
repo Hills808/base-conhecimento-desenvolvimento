@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-const tokens = /("(?:\\.|[^"\\])*"|\/\/.*|\b(?:int|bool|string|if|else|out)\b|\b(?:false|true|null|\d+)\b)/g;
+const tokens = /("(?:\\.|[^"\\])*"|\/\/.*|\b(?:int|bool|string|if|else|out|for|foreach|in|while|new|var|using)\b|\b(?:false|true|null|\d+)\b)/g;
 
 function renderLine(line: string) {
   return line.split(tokens).map((part, index) => {
