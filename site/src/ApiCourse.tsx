@@ -10,7 +10,8 @@ import './api-course.css';
 const base = import.meta.env.BASE_URL;
 const files = base + 'lab/api/';
 const parts = [
-  { id: 'consultar', label: 'Consultar' },
+  { id: 'inicio', label: 'Primeiro pedido' },
+  { id: 'consultar', label: 'Combinar filtros' },
   { id: 'criar', label: 'Criar em C#' },
   { id: 'documentar', label: 'Documentar' }
 ] as const;
@@ -19,6 +20,74 @@ const partHref = (part: Part) => base + '?laboratorio=apis&parte=' + part;
 const tickets = contract.paths['/chamados'].get.responses['200'].content['application/json'].examples.todos.value;
 const command = 'dotnet run --file Chamados.cs -- --urls http://127.0.0.1:5081';
 const localUrl = 'http://127.0.0.1:5081/chamados';
+
+const noteKey = 'curva-aberta-api-primeira-consulta';
+function FirstNote() {
+  const [note, setNote] = useState(() => {
+    try { return localStorage.getItem(noteKey) ?? ''; } catch { return ''; }
+  });
+  const [canSave, setCanSave] = useState(true);
+  return <div className="api-first-note">
+    <label htmlFor="api-note"><b>Meu registro da primeira consulta</b></label>
+    <textarea id="api-note" rows={4} maxLength={2400} value={note} placeholder={'Pedi…\nEsperava… porque…\nRecebi…'} onChange={event => {
+      const value = event.target.value;
+      setNote(value);
+      try { localStorage.setItem(noteKey, value); setCanSave(true); } catch { setCanSave(false); }
+    }} />
+    <small>{canSave ? 'Seu rascunho fica neste navegador e reaparece na parte Documentar.' : 'O navegador bloqueou o salvamento. Copie o texto antes de sair.'}</small>
+  </div>;
+}
+
+function FirstRequest() {
+  const [fetched, setFetched] = useState(false);
+  const [guess, setGuess] = useState<number | null>(null);
+  const [tested, setTested] = useState(false);
+  const open = tickets.filter(t => t.status === 'aberto');
+  return <section className="api-experiment">
+    <h2>Busque sua primeira lista de chamados</h2>
+    <p>Imagine que você começou o turno no suporte. Um chamado é um pedido de ajuda. Você quer descobrir quais pedidos ainda precisam de atenção. Comece pedindo a lista completa.</p>
+    <button className="api-action" onClick={() => setFetched(true)}>Buscar todos os chamados</button>
+    <p><small>Simulação no navegador, com quatro chamados fictícios.</small></p>
+    {fetched && <>
+      <div className="api-result" role="status"><b>Seu pedido</b><p>“Mostre todos os chamados.”</p><b>Resposta recebida</b>
+        <ul>{tickets.map(t => <li key={t.id}>Chamado {t.id} · {t.status}</li>)}</ul>
+      </div>
+      <p>Você acabou de ver os dois lados de uma consulta. O programa que pede é o <b>cliente</b>. O que recebe o pedido e responde é o <b>servidor</b>. A <b>API</b> define quais pedidos ele aceita e como responde. Os números identificam os chamados para você reconhecer o mesmo pedido em duas listas.</p>
+      <details><summary>Prefiro ver alguém fazendo o pedido</summary><p>Na aula em português, procure o trecho “Acessando a API”. Pause quando o instrutor enviar o pedido. Localize o endereço que ele usou e a lista que voltou. Aqui você fez essa mesma troca na simulação.</p><a href="https://www.alura.com.br/conteudo/padroes-api-http-modelagem-apis#aula-2">Assistir à demonstração de consulta · Alura</a></details>
+      <h3>Agora peça só os abertos</h3>
+      <p>A mesma lista pode responder a uma pergunta mais específica. Olhe os quatro chamados acima. Se pedirmos apenas os abertos, qual número deve desaparecer?</p>
+      <details><summary>Preciso de uma pista</summary><p>Leia uma linha por vez como uma frase. A primeira diz “o chamado 101 está aberto”. Ele atende ao pedido, então deve continuar. Faça o mesmo com os outros três até encontrar a linha que deixa de atender.</p></details>
+      <fieldset><legend>Minha previsão</legend>{tickets.map(t => <label className="api-choice" key={t.id}><input type="radio" name="primeira-previsao" checked={guess === t.id} onChange={() => { setGuess(t.id); setTested(false); }} />{t.id}</label>)}</fieldset>
+      <button className="api-action" disabled={guess === null} onClick={() => setTested(true)}>Buscar abertos e conferir</button>
+      {tested && <>
+        <div className="api-result" role="status"><b>Voltaram {open.map(t => t.id).join(', ')}.</b><p>{open.some(t => t.id === guess) ? 'Você previu que o ' + guess + ' sairia. Procure esse número nas duas listas. Ele continua porque está aberto.' : 'Sua previsão bateu. O 103 saiu da resposta porque está fechado.'} O chamado 103 continua na base. O filtro só mudou o que você recebeu.</p></div>
+        <details><summary>Ver o pedido na linguagem da API</summary><pre><code>GET /chamados?status=aberto</code></pre><p>Leia da esquerda para a direita. <code>GET</code> pede para ler, <code>/chamados</code> escolhe a lista e <code>status=aberto</code> indica a condição. No Bruno, você poderá fazer esse mesmo pedido.</p></details>
+        <h3>Conte o que aconteceu</h3><p>Como você provaria para alguém que o filtro fez diferença? Escreva o pedido, sua previsão e um número que ajude a conferir o resultado.</p>
+        <FirstNote />
+        <details><summary>Comparar com um registro de exemplo</summary><p>Pedi apenas os chamados abertos. Eu esperava que o 103 saísse porque estava fechado. Recebi 101, 102 e 104. Nesta base, o resultado bateu com a previsão.</p></details>
+        <a className="api-next" href={partHref('consultar')}>Experimentar um segundo filtro →</a>
+      </>}
+    </>}
+  </section>;
+}
+
+function TraceFilter() {
+  const [index, setIndex] = useState(0);
+  const steps = [
+    { line: 1, text: 'O pedido termina em ?status=fechado. A palavra fechado entra na variável status. O ponto de interrogação em string? permite que o valor falte quando ninguém envia o filtro.' },
+    { line: 7, text: 'Where seleciona itens da lista. Leia chamado => como “para cada chamado, use esta regra”. Vamos acompanhar o primeiro deles, o 101.' },
+    { line: 9, text: 'null significa ausência de valor. Como o pedido trouxe fechado, semFiltro é falso. Uma variável bool só pode guardar verdadeiro ou falso.' },
+    { line: 10, text: 'Compare os dois lados de ==. No 101, chamado.status vale aberto e status vale fechado. São diferentes, então mesmoStatus é falso.' },
+    { line: 11, text: 'Leia || como “ou”. Para incluir o 101, ao menos uma das duas condições teria de ser verdadeira. Ambas são falsas. O 101 fica de fora.' },
+    { line: 10, text: 'Agora vem o 103. O status pedido continua fechado. O chamado também está fechado. mesmoStatus passa a ser verdadeiro e a regra inclui o 103.' },
+    { line: 13, text: 'O return entrega a seleção. Quando o servidor a envia como lista, chega apenas o 103. E se você retirar ?status=fechado? Preveja o valor de semFiltro e teste no Bruno.' }
+  ];
+  return <div className="api-experiment"><StudyCode code={oneFilter} activeLine={steps[index].line} label="Rota de consulta com a linha em estudo destacada" />
+    <p aria-live="polite"><b>Passo {index + 1} de {steps.length}.</b> {steps[index].text}</p>
+    <button className="api-action" disabled={!index} onClick={() => setIndex(index - 1)}>Voltar um passo</button>{' '}
+    <button className="api-action" disabled={index === steps.length - 1} onClick={() => setIndex(index + 1)}>Seguir o valor</button>
+  </div>;
+}
 
 function QueryPractice() {
   const [status, setStatus] = useState('');
@@ -120,12 +189,8 @@ function Create() {
     </details>
     <h3>Faça um valor da URL mudar a resposta</h3>
     <p>Pare o servidor com <kbd>Ctrl</kbd> + <kbd>C</kbd>. Substitua só a linha que começa com <code>app.MapGet</code> por este bloco, salve e execute o mesmo comando.</p>
-    <StudyCode code={oneFilter} label="Rota com dois chamados e um filtro" />
-    <p><code>string? status</code> recebe o texto enviado e pode ficar sem valor. <code>Where</code> percorre a lista e mantém os itens para os quais a expressão é verdadeira. Leia <code>||</code> como “ou”. Sem filtro, a primeira condição inclui todos. Com <code>status=fechado</code>, só a comparação com o status de cada chamado pode incluí-lo.</p>
+    <TraceFilter />
     <p>Envie primeiro <code>/chamados</code> e depois <code>/chamados?status=fechado</code>. Preveja qual ID vai sumir. A mudança observada mostra onde a sua linha de C# fez diferença.</p>
-    <details><summary>Acompanhar o valor “fechado” dentro do código</summary>
-      <p>Ao receber a segunda URL, o servidor preenche <code>status</code> com o texto <code>"fechado"</code>. No chamado 101, <code>status == null</code> é falso e <code>"aberto" == "fechado"</code> também é falso. O 101 fica de fora. No chamado 103, <code>"fechado" == "fechado"</code> é verdadeiro. O 103 entra na lista que o servidor transforma em JSON.</p>
-    </details>
     <details><summary>Meu teste deu outro resultado</summary>
       <p><b>Conexão recusada</b> indica que o cliente não conseguiu se conectar. Confira se o terminal continua aberto e se o endereço e a porta coincidem. <b>404</b> indica que houve resposta HTTP. Confira o caminho registrado em <code>MapGet</code>. Se ainda receber a mensagem da primeira versão, salve o arquivo e reinicie o servidor.</p>
     </details>
@@ -148,6 +213,7 @@ function Document() {
     <h2>Documente para quem vai usar sua API</h2>
     <p>Imagine que amanhã outra pessoa vai integrar a consulta sem abrir o seu C#. Ela precisa conseguir montar a primeira chamada, reconhecer o resultado esperado e entender um erro. Quem lê sua spike tem outra decisão a tomar: o que já foi comprovado e o que ainda precisa de investigação?</p>
     <h3>Escreva o contrato de uso</h3>
+    <details><summary>Transformar meu primeiro registro em documentação</summary><FirstNote /><p>Releia a frase “Pedi…”. Acrescente o método e o caminho para outra pessoa repetir a consulta. Em “Recebi…”, indique o que os números identificam. Guarde a previsão e a comparação para a spike.</p></details>
     <p><b>Exemplo da versão 1.0.0.</b> Para listar os chamados, envie <code>GET /chamados</code>. Os parâmetros opcionais <code>status</code> (aberto ou fechado) e <code>categoria</code> (rede ou acesso) vão na URL. Juntos, restringem a lista aos chamados que atendem a ambos. Cada item devolve ID, status, categoria e prioridade.</p>
     <div className="api-document-example"><code>GET /chamados?status=fechado&amp;categoria=acesso</code><p><b>HTTP 200</b> com <code>[]</code>. As entradas são válidas e nenhum dos quatro registros atende às duas.</p>
       <code>GET /chamados?status=pausado</code><p><b>HTTP 400</b> com <code>{'{"erro":"Use aberto ou fechado em status."}'}</code>. Corrija o valor e repita a consulta.</p></div>
@@ -176,11 +242,11 @@ function Document() {
 }
 
 export default function ApiCourse() {
-  const [part] = useUrlFilter('parte', 'consultar', parts.map(p => p.id));
+  const [part] = useUrlFilter('parte', 'inicio', parts.map(p => p.id));
   return <article className="api-course">
     <a className="api-back" href={base + '?modulo=09'}><ArrowLeft size={16} aria-hidden="true" /> Laboratório de APIs e MCP</a>
     <header><h1>APIs na prática</h1><p>Do primeiro pedido no navegador a uma rota em C# que outra pessoa consegue usar pela sua documentação.</p></header>
     <nav aria-label="Partes da oficina">{parts.map((p, i) => <a key={p.id} href={partHref(p.id)} aria-current={part === p.id ? 'step' : undefined}>{i + 1}. {p.label}</a>)}</nav>
-    <div className="api-lesson">{part === 'criar' ? <Create /> : part === 'documentar' ? <Document /> : <Consult />}</div>
+    <div className="api-lesson">{part === 'criar' ? <Create /> : part === 'documentar' ? <Document /> : part === 'consultar' ? <Consult /> : <FirstRequest />}</div>
   </article>;
 }

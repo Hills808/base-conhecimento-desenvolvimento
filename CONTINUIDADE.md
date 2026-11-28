@@ -348,3 +348,7 @@ Os exemplos executáveis, o contrato OpenAPI 3.0.3 e o caderno em Markdown estã
 Referências técnicas consultadas em 27/11/2026 incluem a [criação de requisições no Bruno](https://docs.usebruno.com/get-started/bruno-basics/create-a-request), os [aplicativos .NET baseados em arquivo](https://learn.microsoft.com/pt-br/dotnet/core/sdk/file-based-apps), os [parâmetros](https://swagger.io/docs/specification/v3_0/describing-parameters/) e as [respostas](https://swagger.io/docs/specification/v3_0/describing-responses/) do OpenAPI.
 
 O teste `node site/scripts/test-api-course.mjs` compila os dois exemplos progressivos e a implementação completa e verifica 11 respostas HTTP contra os exemplos, inclusive combinação, lista vazia e parâmetros inválidos. Em DOM simulado foram conferidos previsão, feedback, troca de filtros, navegação por URL e downloads.
+
+### Primeiro contato com uma API
+
+A entrada da oficina agora oferece quatro partes. “Primeiro pedido” começa pela busca simulada de todos os chamados, apresenta o vocabulário depois da resposta e só então propõe um filtro, com previsão, pista e conferência. O registro escrito neste exercício reaparece em “Documentar” no mesmo navegador. A parte “Combinar filtros” mantém seu endereço anterior. Em C#, a leitura guiada acompanha dois registros pela mesma condição em sete passos. As 11 chamadas HTTP e as interações de previsão, rascunho e navegação foram testadas.
