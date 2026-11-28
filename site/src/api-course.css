@@ -48,6 +48,8 @@
 .api-experiment .api-action:disabled { background: var(--brand-tint); color: var(--brand-muted); border-color: var(--brand-border); cursor: default; }
 .api-result, .api-document-example { margin: 1rem 0; padding: .85rem 1rem; background: var(--brand-tint); border-radius: .5rem; }
 .api-course :focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 3px; }
+.api-choice { display: inline-flex; align-items: center; min-height: 44px; gap: .35rem; margin-right: 1rem; cursor: pointer; }
+.api-first-note textarea { display: block; width: 100%; margin: .4rem 0; padding: .7rem; font: inherit; border-radius: .4rem; color: var(--brand-text); background: var(--brand-surface); border: 1px solid var(--brand-border); }
 @media (max-width: 420px) {
   .api-course { padding-inline: .65rem; }
   .api-course nav a { padding-inline: .55rem; }
