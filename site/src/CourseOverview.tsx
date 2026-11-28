@@ -2,7 +2,7 @@ import { useId, useState, type ReactNode } from 'react';
 import { ArrowUpRight, Check, ChevronRight } from 'lucide-react';
 import { getGuidedGoal, getGuidedLesson, getGuidedTitle, guidedGroups, guidedIds, setupLesson } from './data/guidedCourse';
 import { missions } from './data/formation';
-import { dueMissions, recommendedLesson, type FormationProgress } from './formationProgress';
+import { dueMissions, hasGuidedWork, recommendedLesson, type FormationProgress } from './formationProgress';
 import { guidedHref, guidedStepLabels, pathHref } from './GuidedCourse';
 import StudyCode from './StudyCode';
 
@@ -47,10 +47,10 @@ function Today({ progress }: { progress: FormationProgress }) {
   const lastMission = missions.find(item => item.id === progress.last);
   const hasMissionInProgress = lastMission && progress.attempts[lastMission.id] && !progress.attempts[lastMission.id].completedAt;
   const nextMission = hasMissionInProgress ? lastMission : missions.find(item => !progress.attempts[item.id]?.completedAt);
-  const hasStarted = Boolean(progress.lastLesson);
+  const hasStarted = Object.values(progress.lessons).some(hasGuidedWork);
   const primary = recommended ? guidedHref(recommended) : nextMission ? missionHref(nextMission.id) : pathHref;
   const attempt = recommended ? progress.lessons[recommended] : undefined;
-  const resumeStep = guidedStepLabels.find(item => item.id === attempt?.step);
+  const resumeStep = hasGuidedWork(attempt) && guidedStepLabels.find(item => item.id === attempt?.step);
   const example = recommended && (recommended === setupLesson.id ? setupLesson : getGuidedLesson(recommended));
 
   return (
@@ -66,6 +66,9 @@ function Today({ progress }: { progress: FormationProgress }) {
             {resumeStep && resumeStep.id !== 'exemplo' && <p className="course-meta">Você parou em <strong>{resumeStep.title}</strong>.</p>}
           </div>
           <a className="formation-primary" href={primary}>{recommended ? hasStarted ? 'Continuar aula' : 'Começar do zero' : nextMission ? 'Abrir prática' : 'Rever trilha'}</a>
+          {recommended && recommended !== guidedIds[0] && !progress.lessons[guidedIds[0]]?.completedAt && (
+            <p><a className="course-text-link" href={guidedHref(guidedIds[0])}>Começar pela primeira aula</a></p>
+          )}
         </div>
         {example && <LessonPreview key={recommended} example={example} />}
       </div>
@@ -99,7 +102,7 @@ function Path({ progress }: { progress: FormationProgress }) {
   return (
     <section className="formation course-overview">
       <header className="course-intro course-path-heading">
-        <div><h1>Sua trilha de C#</h1><p>Leia o exemplo ou assista ao vídeo de apoio. Depois, pratique e explique com suas palavras.</p></div>
+        <div><h1>Sua trilha de C#</h1><p>Comece com uma mensagem na tela. Em cada aula, acompanhe um exemplo e descubra sozinho o que outro programa faz.</p></div>
         <GroupProgress title="toda a trilha" ids={guidedIds} progress={progress} />
       </header>
       <div className="course-path">
@@ -141,7 +144,7 @@ function Path({ progress }: { progress: FormationProgress }) {
       </details>
       <details className="course-disclosure">
         <summary>O que vem depois</summary>
-        <p>As próximas aulas planejadas partem de repetições e coleções. Depois entram métodos, objetos e depuração, preparando o caminho para APIs, banco de dados e leitura de arquitetura.</p>
+        <p>Depois das coleções, o percurso planejado passa por métodos, objetos e depuração. Essas etapas preparam a leitura de uma requisição que atravessa uma API, aplica uma regra e chega ao banco de dados. As aulas guiadas dessas etapas ainda estão em preparação.</p>
         <p><a href={base + '?visao=biblioteca'}>Consultar a biblioteca por assunto</a></p>
       </details>
     </section>
@@ -150,6 +153,7 @@ function Path({ progress }: { progress: FormationProgress }) {
 
 export function StudyProject({ progress, children }: { progress: FormationProgress; children: ReactNode }) {
   const notes = guidedIds.filter(id => progress.lessons[id]?.note.trim());
+  const repairs = guidedIds.filter(id => progress.lessons[id]?.repairCode !== undefined);
   return (
     <section className="formation course-overview course-project">
       <header className="course-intro">
@@ -163,6 +167,10 @@ export function StudyProject({ progress, children }: { progress: FormationProgre
         </div>
         <a className="formation-primary" href={guidedHref('U10P')}>Abrir prática do classificador</a>
       </section>
+      <section className="course-project-practice">
+        <div><h2>Relatório da fila</h2><p>Na última aula de Repetições e coleções, acompanhe as mudanças de uma lista e confira o resultado com diferentes filas.</p></div>
+        <a className="course-text-link" href={guidedHref('U15')}>Abrir a prática da fila</a>
+      </section>
       <section className="course-project-notes">
         <h2>Minhas explicações</h2>
         {notes.length
@@ -174,6 +182,13 @@ export function StudyProject({ progress, children }: { progress: FormationProgre
           ))}</ul>
           : <p>Escreva uma explicação na parte <strong>Explicar</strong> de qualquer aula. Ela vai aparecer aqui neste navegador.</p>}
       </section>
+      {repairs.length > 0 && <details className="course-disclosure">
+        <summary>Meus rascunhos de correções</summary>
+        <ul className="course-links">{repairs.map(id => <li key={id}>
+          <a href={guidedHref(id)}>{getGuidedTitle(id)}</a>
+          <pre className="course-answer"><code>{progress.lessons[id].repairCode}</code></pre>
+        </li>)}</ul>
+      </details>}
       <details className="course-disclosure">
         <summary>Registros das práticas extras</summary>
         <ul className="course-links" role="list">{missions.map(mission => {

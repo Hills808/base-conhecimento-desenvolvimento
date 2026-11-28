@@ -9,7 +9,7 @@ import StudyFocus from "./StudyFocus";
 import LabCheckpoint from "./LabCheckpoint";
 import LearningPath from './LearningPath';
 import PracticeStudio from './PracticeStudio';
-import SharedNotes from './SharedNotes';
+import SharedNotes from './SharedNotes.tsx';
 import transferCases from './data/module-transfer.json';
 import "./laboratory.css";
 import "./module-curriculum.css";

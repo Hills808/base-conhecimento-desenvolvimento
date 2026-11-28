@@ -169,18 +169,26 @@ test('formation rejects invalid IDs and keeps drafts when storage is blocked', (
  blocked=true;assert.equal(f.saveFormation(p),false);assert.equal(f.readFormation().attempts.C01.note,'texto');blocked=false;f.saveFormation(p);
 });
 
-test('guided lessons resume in order and require a checked answer to register a concept practice', () => {
-  const f = src('formationProgress');
+test('only an actual guided attempt moves the recommendation; answers and new predictions must be checked', () => {
+  const f = { ...src('formationProgress'), ...src('guidedPractice') };
   const start = f.parseFormation({ last: 'C02', attempts: { C02: { note: 'Registro anterior' } } });
   assert.equal(f.recommendedLesson(start), 'I01');
   assert.equal(f.recordGuidedPractice(start, 'I01'), start);
+  const preview = f.parseFormation({ lastLesson: 'I05', lessons: { I05: { step: 'explicacao' } } });
+  assert.equal(f.recommendedLesson(preview), 'I01');
+  assert.equal(f.hasGuidedWork(preview.lessons.I05), false);
 
-  const draft = f.parseFormation({
+  const oldDraft = f.parseFormation({
     ...start,
     lastLesson: 'U06',
     lessons: { U06: { step: 'explicacao', answer: 2, checked: true, note: 'Igual não é maior.' } },
   });
-  assert.equal(f.recommendedLesson(draft), 'U06');
+  assert.equal(f.recommendedLesson(oldDraft), 'U06');
+  assert.equal(f.recordGuidedPractice(oldDraft, 'U06'), oldDraft);
+  const checked = { ...oldDraft.lessons.U06, prediction: 'False\r\nTrue', predictionChecked: true };
+  const draft = f.parseFormation({ ...oldDraft, lessons: { U06: checked } });
+  assert.equal(f.canRecordGuidedPractice('U06', { ...checked, prediction: 'True\nTrue' }), false);
+  assert.equal(f.canRecordGuidedPractice('U06', { ...checked, predictionChecked: false }), false);
   const recorded = f.recordGuidedPractice(draft, 'U06', Date.parse('2026-11-26'));
   assert.equal(recorded.lessons.U06.note, 'Igual não é maior.');
   assert.equal(recorded.lessons.U06.completedAt, '2026-11-26T00:00:00.000Z');
@@ -188,13 +196,25 @@ test('guided lessons resume in order and require a checked answer to register a 
   assert.equal(recorded.attempts.C02.note, 'Registro anterior');
 });
 
+test('past practice dates survive and setup also requires a checked independent prediction', () => {
+  const f = { ...src('formationProgress'), ...src('guidedPractice') };
+  const legacy = f.parseFormation({ lastLesson: 'I05', lessons: { I01: { completedAt: '2026-11-26T00:00:00Z' } } });
+  assert.equal(f.recommendedLesson(legacy), 'I02');
+  assert.equal(legacy.lessons.I01.completedAt, '2026-11-26T00:00:00Z');
+  assert.equal(f.recordGuidedPractice(legacy, 'I07'), legacy);
+  const setup = f.parseFormation({ lessons: { I07: { prediction: 'Teste de som\n5', predictionChecked: true } } });
+  assert.ok(f.recordGuidedPractice(setup, 'I07').lessons.I07.completedAt);
+});
+
 test('previous study copies keep lesson drafts and new ones merge by lesson', () => {
   const f = src('formationProgress');
-  const current = f.parseFormation({ lastLesson: 'U07', lessons: { U07: { step: 'pratica', note: 'Meu raciocínio' } } });
+  const current = f.parseFormation({ lastLesson: 'U07', lessons: { U07: { step: 'pratica', note: 'Meu raciocínio', prediction: 'Reserva', repairCode: 'int vagas = 2;' } } });
   f.saveFormation(current);
   const currentCopy = backup.parseBackup(JSON.stringify(backup.makeBackup()));
   assert.equal(currentCopy.data[f.formationKey].lastLesson, 'U07');
   assert.equal(currentCopy.data[f.formationKey].lessons.U07.step, 'pratica');
+  assert.equal(currentCopy.data[f.formationKey].lessons.U07.repairCode, 'int vagas = 2;');
+  assert.equal(currentCopy.data[f.formationKey].lessons.U07.prediction, 'Reserva');
   const old = { format: 'curva-aberta', version: 1, exportedAt: '2026-11-06T19:00:00Z',
     data: { [f.formationKey]: { last: 'C02', attempts: { C02: { note: 'De outro navegador' } }, diagnostic: {} } } };
   const previousCopy = backup.parseBackup(JSON.stringify(old)).data[f.formationKey];

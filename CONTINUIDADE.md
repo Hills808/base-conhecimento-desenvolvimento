@@ -313,3 +313,28 @@ Estado atual: Anotações compartilhadas publicadas no Cloudflare Workers + D1 e
 - `site/src/brand.css` concentra as cores dos temas claro e escuro, dos controles e da leitura de código. A tipografia usa Atkinson Hyperlegible Next.
 - A aplicação da identidade abrange o site, os exemplos de código e os ícones do aplicativo. As cores dos estados de erro e alerta continuam com papéis próprios.
 - A [prévia](https://github.com/Hills808/base-conhecimento-desenvolvimento/actions/runs/45917779356) passou em tipos, testes, build e Chromium. Foram conferidos o símbolo nos tamanhos de 32, 96, 192 e 512 px, os temas, o contraste da ação principal e do código, as larguras de 320 a 1280 px e a retomada da aula.
+
+## 27/11/2026 — Ler um programa desconhecido e investigar um defeito
+
+As 14 aulas existentes ganharam uma oficina cada. A unidade Repetições e coleções acrescenta cinco aulas com oficinas, de U11 a U15. A primeira aula começa com uma mensagem editável em um painel simulado. A última pede um relatório das categorias de atendimento, com testes de fila vazia, item único, categoria repetida e entrada ignorada. Métodos, objetos e arquitetura continuam no mapa editorial.
+
+Em Entender, o estudante acompanha o exemplo por linha e observa como os valores mudam. Em Praticar, responde à questão guiada, depois lê outro programa e escreve sua previsão sem alternativas. O retorno identifica um equívoco frequente ou a primeira linha da saída em que há diferença. Em Explicar, há um desafio de construção ou transferência e uma oficina opcional com código defeituoso, rascunho editável, casos de teste, arquivo C# para executar e correção comentada. As soluções ficam recolhidas.
+
+Abrir uma aula, assistir ao vídeo ou navegar entre as partes mantém a recomendação inicial para quem só está explorando. Respostas e rascunhos permitem retomar o trabalho. Novos registros exigem uma previsão correta conferida, a questão guiada quando aplicável e a ação explícita do estudante. O registro inclui autoavaliação de execução e explicação. Datas e evidências de versões anteriores continuam válidas. A cópia de estudo inclui o código editado e as previsões.
+
+As 19 aulas apontam para oito gravações. Cada indicação informa o objetivo de observação, a atividade após o vídeo, o autor e a duração da aula ou do trecho. Fontes originais consultadas em 27/11/2026. Páginas públicas do YouTube devolveram metadados de reprodução, título, autoria e duração. A indicação de legenda automática em português descreve a faixa oferecida pelo player. A reprodução integral das gravações e a qualidade das legendas ficam fora dessa conferência. O site usa os vídeos públicos, sem vincular certificado ao exercício.
+
+| Canal e gravação | Uso nas aulas |
+| --- | --- |
+| [Gustavo Guanabara, Introdução a Algoritmos](https://www.youtube.com/watch?v=8mei6uVttho) | Primeiro contato com instruções; áudio brasileiro e legenda em português. |
+| [Victor Lima, Curso de C#](https://www.youtube.com/watch?v=PKMm-cHe56g) | Primeira mensagem e conceito de variável. |
+| [Fredi, C# e .NET para iniciantes](https://www.youtube.com/watch?v=oTivhgjbhIg) | Expressões, texto, números, execução, comparação, entrada e arrays. A instalação na trilha usa o SDK .NET 10. |
+| [CFBCursos, Condicional IF-ELSE](https://www.youtube.com/watch?v=Ojm98Gg1rVw) | Caminhos de uma decisão. |
+| [André Baltieri, Parse e TryParse](https://www.youtube.com/watch?v=q5TJF2djT58) | Capítulo público sobre conversão. |
+| [Código com o Lopes, Decisões e validação de entrada](https://www.youtube.com/watch?v=oGdRW18rr8w) | Combinar condições, testar fronteiras e planejar casos de teste. |
+| [Código com o Lopes, Laços em C#](https://www.youtube.com/watch?v=l1yo7MDcOYs) | Limite do for e parada do while. |
+| [Oliver Tech, Listas e loops em C#](https://www.youtube.com/watch?v=pyeejgU7kTc) | Acompanhar um subtotal, adicionar itens e consultar Count. |
+
+As explicações e as oficinas são autorais. A sequência de leitura, previsão, investigação e modificação segue a [pedagogia da Raspberry Pi Foundation](https://www.raspberrypi.org/teach/pedagogy). A consulta técnica prioriza o material em português sobre [arrays e foreach](https://learn.microsoft.com/pt-br/training/modules/csharp-arrays/), [repetições](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/statements/iteration-statements), [listas](https://learn.microsoft.com/pt-br/dotnet/api/system.collections.generic.list-1?view=net-10.0) e [execução de um arquivo no .NET 10](https://learn.microsoft.com/pt-br/dotnet/core/tools/dotnet-run).
+
+O teste de exemplos da formação compila o C# e compara as saídas, inclusive as dos programas defeituosos e corrigidos. Testes de progresso cobrem visitas, rascunhos, previsões, compatibilidade e cópia de estudo. Em DOM simulado foram exercitadas as três partes das 19 aulas, o ciclo de abrir e recolher o vídeo, o painel da biblioteca, o registro e o conteúdo do arquivo de correção baixado. O desempenho pedagógico com estudantes reais continua por avaliar.

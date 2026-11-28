@@ -4,7 +4,10 @@ import {
 } from './data/guidedCourse';
 import StudyCode from './StudyCode';
 import LessonVideo from './LessonVideo';
-import { canRecordGuidedPractice, type GuidedAttempt, type GuidedStep } from './formationProgress';
+import { CodeWalkthrough, FirstMessageExperiment, OutputPractice, RepairPractice } from './LessonWorkshop';
+import { guidedWorkshops } from './data/guidedWorkshops';
+import { hasGuidedWork, type GuidedAttempt, type GuidedStep } from './formationProgress';
+import { canRecordGuidedPractice } from './guidedPractice';
 
 const base = import.meta.env.BASE_URL;
 export const pathHref = base + '?visao=formacao';
@@ -35,6 +38,8 @@ function WorkedExample({ lesson }: { lesson: GuidedLesson }) {
         </div>
       </figure>
       <p className="course-example-explanation">{lesson.explanation}</p>
+      {lesson.id === 'I01' && <FirstMessageExperiment />}
+      <CodeWalkthrough code={lesson.code} trace={guidedWorkshops[lesson.id].trace} />
 
       {explore && (
         <details className="course-disclosure">
@@ -75,6 +80,7 @@ function StudyHelp({ lesson }: { lesson: GuidedLesson }) {
     <details className="course-disclosure course-help">
       <summary>Estou com dificuldade na leitura</summary>
       <p><strong>Antes desta aula</strong><br />{lesson.before}</p>
+      <p>{lesson.challengeSteps ? 'Para se organizar, estime 10 a 15 minutos para estudar o exemplo e 20 a 35 para construir e testar o programa.' : 'Para se organizar, estime 5 a 10 minutos para estudar o exemplo e 10 a 20 para experimentar e explicar. Você pode fazer as partes em momentos diferentes.'}</p>
       {lesson.reviewLesson && <p><a href={guidedHref(lesson.reviewLesson)}>Voltar à aula “{getGuidedLesson(lesson.reviewLesson)?.title}”</a></p>}
       {lesson.terms && (
         <dl className="course-terms">{lesson.terms.map(term => (
@@ -111,7 +117,7 @@ function Practice({ lesson, attempt, change, heading }: {
   const feedback = attempt.checked && attempt.answer !== null ? lesson.feedback[attempt.answer] : undefined;
   return (
     <>
-      <h2 ref={heading} tabIndex={-1}>Tente responder</h2>
+      <h2 ref={heading} tabIndex={-1}>Comece com uma questão guiada</h2>
       {lesson.questionCode && <StudyCode code={lesson.questionCode} label="Código do exercício" />}
       <fieldset className="course-options">
         <legend>{lesson.prompt}</legend>
@@ -184,6 +190,7 @@ function Setup({ step, heading }: { step: GuidedStep; heading: Ref<HTMLHeadingEl
         <pre tabIndex={0} aria-label="Comandos no PowerShell"><code>{'dotnet new console -n MeuPrimeiroPrograma --framework net10.0\ncd MeuPrimeiroPrograma'}</code></pre>
         <p>O primeiro comando cria o projeto. O segundo entra na pasta dele. No editor, abra <code>Program.cs</code> dessa pasta, coloque o código abaixo e salve com <kbd>Ctrl</kbd> + <kbd>S</kbd>.</p>
         <StudyCode code={setupLesson.code} />
+        <CodeWalkthrough code={setupLesson.code} trace={guidedWorkshops[setupLesson.id].trace} />
         <p>No terminal em que você entrou na pasta do projeto, digite <code>dotnet run</code>. Você deve ver:</p>
         <pre tabIndex={0} aria-label="Saída esperada"><code>{setupLesson.output}</code></pre>
         <details className="course-disclosure course-help">
@@ -219,11 +226,19 @@ export default function GuidedCourse({ id, attempt, change, record }: {
   const nextId = guidedIds[guidedIds.indexOf(id) + 1];
   const heading = useRef<HTMLHeadingElement>(null);
   const noteId = useId();
-  const step = attempt.step;
+  const workshop = guidedWorkshops[id];
+  const [previewStep, setPreviewStep] = useState<GuidedStep>('exemplo');
+  const studying = hasGuidedWork(attempt);
+  const step = studying ? attempt.step : previewStep;
 
   function moveTo(next: GuidedStep) {
-    change({ step: next });
+    setPreviewStep(next);
+    if (studying) change({ step: next });
     requestAnimationFrame(() => heading.current?.focus());
+  }
+
+  function saveWork(patch: Partial<GuidedAttempt>) {
+    change({ step, ...patch });
   }
 
   const canRecord = canRecordGuidedPractice(id, attempt);
@@ -250,33 +265,35 @@ export default function GuidedCourse({ id, attempt, change, record }: {
       <section className={step === 'exemplo' && lesson ? 'course-lesson-content is-wide' : 'course-lesson-content'} aria-label={guidedStepLabels.find(item => item.id === step)?.title}>
         {!lesson && <Setup step={step} heading={heading} />}
         {lesson && step === 'exemplo' && <Understand lesson={lesson} heading={heading} />}
-        {lesson && step === 'pratica' && <Practice lesson={lesson} attempt={attempt} change={change} heading={heading} />}
+        {lesson && step === 'pratica' && <Practice lesson={lesson} attempt={attempt} change={saveWork} heading={heading} />}
+        {step === 'pratica' && <OutputPractice task={workshop.task} attempt={attempt} change={saveWork} />}
         {lesson && step === 'explicacao' && <Explain lesson={lesson} heading={heading} />}
 
         {step === 'explicacao' && (
           <>
+            <RepairPractice lessonId={id} repair={workshop.repair} attempt={attempt} change={saveWork} />
             <label className="formation-note" htmlFor={noteId}>Minha explicação ou dúvida <span>(opcional)</span></label>
-            <textarea id={noteId} rows={4} maxLength={2000} value={attempt.note} placeholder="O código recebe… Depois verifica… A saída é…" onChange={event => change({ note: event.target.value })} />
+            <textarea id={noteId} rows={4} maxLength={2000} value={attempt.note} placeholder="Na linha… aconteceu… Eu conferi quando…" onChange={event => saveWork({ note: event.target.value })} />
             <p className="course-meta">Sua anotação fica neste navegador e entra na sua cópia de estudo.</p>
             <details className="course-disclosure">
-              <summary>Compare depois de tentar</summary>
+              <summary>Ver uma resposta para o desafio da aula</summary>
               <p className="course-answer">{lesson?.answer ?? 'O programa passa a mostrar a sua mensagem e o número 9. Você alterou e salvou o código no editor. No terminal, dotnet run compilou e executou a versão atual do projeto.'}</p>
               {lesson?.answerCode && <StudyCode code={lesson.answerCode} label="Uma solução possível" />}
             </details>
             {attempt.completedAt
               ? <p className="course-feedback is-correct" role="status">✓ Prática registrada.</p>
-              : <p>{lesson?.checkPrompt ?? (lesson ? 'Registre a prática quando conseguir explicar a resposta com suas palavras.' : 'Registre quando tiver rodado o programa e conferido a sua alteração.')}</p>}
+              : <p>{lesson?.checkPrompt ?? (lesson ? 'Antes de registrar, explique com suas palavras qual linha produz o resultado e o que mudaria em outro caso.' : 'Registre quando tiver rodado o programa e conferido a sua alteração.')} O site confere a previsão de saída. A explicação e a execução são sua autoavaliação.</p>}
           </>
         )}
       </section>
 
       <div className="course-actions">
         {step === 'exemplo' && <button className="formation-primary" onClick={() => moveTo('pratica')}>{lesson ? 'Ir para a prática' : 'Criar meu programa'}</button>}
-        {step === 'pratica' && <button className={!lesson || (attempt.checked && attempt.answer === lesson.correct) ? 'formation-primary' : undefined} onClick={() => moveTo('explicacao')}>Ir para a explicação</button>}
+        {step === 'pratica' && <button className={canRecord ? 'formation-primary' : undefined} onClick={() => moveTo('explicacao')}>Ir para a explicação</button>}
         {step === 'explicacao' && !attempt.completedAt && (
           canRecord
             ? <button className="formation-primary" onClick={record}>Registrar minha prática</button>
-            : <button onClick={() => moveTo('pratica')}>Voltar e conferir a resposta</button>
+            : <button onClick={() => moveTo('pratica')}>{lesson ? 'Voltar e conferir a questão e a previsão' : 'Voltar e conferir a previsão'}</button>
         )}
         {step === 'explicacao' && (
           <a className={attempt.completedAt ? 'formation-primary' : 'course-text-link'} href={nextId ? guidedHref(nextId) : pathHref}>

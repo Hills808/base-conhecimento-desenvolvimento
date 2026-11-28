@@ -1,0 +1,379 @@
+[
+  {
+    "id": "U11",
+    "title": "Encontre uma senha pela posição",
+    "goal": "Ler um array e distinguir a posição, o valor guardado e a quantidade de itens.",
+    "before": "Saber consultar uma variável e comparar um número com zero.",
+    "reviewLesson": "U10",
+    "paragraphs": [
+      "Imagine três senhas sobre a mesa, na ordem em que foram emitidas. A primeira tem o número 24, a segunda tem o número 51 e a terceira tem o número 37. Se alguém pedir a segunda senha, você conta até a segunda ficha e lê o que está escrito nela. O número da ficha e o lugar dela na fila podem ser bem diferentes.",
+      "Em C#, um array guarda vários valores do mesmo tipo em uma ordem definida. Em int[] senhas = [24, 51, 37];, int[] diz que cada item é um inteiro. Os colchetes depois do sinal de igual contêm os valores iniciais na ordem em que serão guardados. Esse array tem três lugares.",
+      "Cada lugar tem um número chamado índice. A contagem começa em zero. Para ler essa fila, escreva os índices 0, 1 e 2 no papel e, embaixo deles, escreva 24, 51 e 37. Para encontrar senhas[1], localize a coluna 1 e desça até o valor. A expressão senhas.Length informa quantos lugares existem.",
+      "O tamanho de um array fica fixo depois que ele é criado. Seus valores podem mudar. Se o tamanho for 3, os índices válidos vão de 0 a 2. Tentar ler senhas[3] nesse caso interrompe a execução com um erro de índice. Um array vazio, escrito int[] senhas = [];, tem tamanho zero e precisa de uma verificação antes de acessar o primeiro item."
+    ],
+    "terms": [
+      {
+        "term": "Array",
+        "meaning": "Sequência com tamanho fixo, que guarda itens de um mesmo tipo. Leia int[] como “array de inteiros”."
+      },
+      {
+        "term": "Índice",
+        "meaning": "Número usado entre colchetes para localizar um item. O primeiro índice é 0."
+      },
+      {
+        "term": "Length",
+        "meaning": "Quantidade de lugares do array. Em um array com pelo menos um item, Length - 1 é o último índice."
+      }
+    ],
+    "code": "int[] senhas = [24, 51, 37];\nint indice = 1;\nConsole.WriteLine(senhas[indice]);\nConsole.WriteLine(senhas.Length);",
+    "output": "51\n3",
+    "explanation": "Na linha 3, substitua indice pelo valor 1 e leia o segundo item. Na última linha a pergunta mudou para “quantos lugares existem?”. Mudar o valor de uma senha afeta a consulta àquela posição e preserva a contagem.",
+    "explore": {
+      "label": "Qual ficha consultar?",
+      "replace": "int indice = 1;",
+      "cases": [
+        {
+          "value": "Primeira ficha",
+          "replacement": "int indice = 0;",
+          "line": 3,
+          "output": "24\n3",
+          "reason": "O índice 0 leva à primeira ficha, que contém 24. O array continua com três itens."
+        },
+        {
+          "value": "Última ficha",
+          "replacement": "int indice = 2;",
+          "line": 3,
+          "output": "37\n3",
+          "reason": "O último índice desta fila é 3 menos 1. A ficha naquela posição contém 37."
+        }
+      ]
+    },
+    "questionCode": "int[] lotes = [12, 8, 40, 3];\nConsole.WriteLine(lotes[2]);",
+    "prompt": "Qual número aparece ao executar este trecho?",
+    "options": [
+      "8",
+      "40",
+      "4"
+    ],
+    "correct": 1,
+    "feedback": [
+      "A segunda ficha contém 8 e ocupa o índice 1. Marque o zero antes de numerar as demais fichas.",
+      "Isso. Os índices 0, 1 e 2 levam a 12, 8 e 40, respectivamente.",
+      "4 é o tamanho do array. A expressão entre colchetes escolhe um dos valores guardados."
+    ],
+    "hint": "Desenhe quatro casas. Escreva os índices acima delas e os valores dentro delas.",
+    "hintDetail": "A primeira casa recebe o índice 0 e contém 12. Desloque o dedo duas casas para a direita até chegar ao índice 2.",
+    "challenge": "Uma portaria precisa anunciar a última senha registrada. Quando a fila estiver vazia, deve mostrar “Sem senhas”. Escreva o programa e teste as filas [], [73] e [24, 51, 37].",
+    "challengeSteps": [
+      "Declare um array de inteiros para as senhas. Antes de ler qualquer posição, verifique seu tamanho.",
+      "Na fila com itens, calcule o índice da última ficha usando o tamanho. Rode novamente com as outras duas filas.",
+      "Explique por que a fila com uma única senha é um bom teste para seu cálculo."
+    ],
+    "answer": "As saídas são Sem senhas, 73 e 37. Um único item ocupa a posição 0 e o tamanho vale 1. A verificação da fila vazia impede que o cálculo produza um acesso ao índice -1.",
+    "answerCode": "int[] senhas = [73];\nif (senhas.Length == 0)\n{\n    Console.WriteLine(\"Sem senhas\");\n}\nelse\n{\n    Console.WriteLine(senhas[senhas.Length - 1]);\n}",
+    "mistake": "Se aparecer IndexOutOfRangeException, anote o índice que o programa tentou usar e o tamanho naquele momento. Com tamanho 3, confira se o índice está entre 0 e 2. Com tamanho 0, o programa precisa seguir um caminho que dispense acessar um item.",
+    "reference": "array"
+  },
+  {
+    "id": "U12",
+    "title": "Some os valores de uma fila",
+    "goal": "Acompanhar um foreach e explicar o que o total guarda depois de cada volta.",
+    "before": "Saber localizar um valor dentro de um array e atualizar uma variável com =.",
+    "reviewLesson": "U11",
+    "paragraphs": [
+      "A recepção anotou três esperas, de 4, 1 e 3 minutos. No papel, você poderia começar do zero, passar o dedo por cada anotação e somar o número ao total do momento. Esse mesmo procedimento serve para uma folha com cinquenta esperas.",
+      "foreach significa “para cada”. Leia foreach (int espera in minutos) como “para cada inteiro do array minutos, chame o valor desta volta de espera”. Na primeira volta, espera vale 4. Quando as instruções entre as chaves terminam, o foreach busca o item seguinte e executa o mesmo bloco com esse outro valor. Cada passagem pelo bloco é uma iteração.",
+      "O total precisa continuar de onde parou. Por isso int total = 0; vem antes do foreach e executa uma vez. Em total = total + espera;, primeiro leia os valores do lado direito. Depois guarde a soma no nome à esquerda. Uma variável que conserva o resultado parcial de várias voltas recebe o nome de acumulador.",
+      "A instrução que mostra total vem depois da chave de fechamento. Ela executa quando todos os itens já foram visitados. Com um array vazio, o bloco não recebe nenhuma visita e essa instrução mostra o valor inicial. Se quiser ver as somas parciais enquanto investiga o programa, coloque um WriteLine dentro do bloco, depois da soma."
+    ],
+    "terms": [
+      {
+        "term": "Item atual",
+        "meaning": "Valor disponível durante uma volta. Em foreach (int espera in minutos), espera recebe uma espera de cada vez."
+      },
+      {
+        "term": "Acumulador",
+        "meaning": "Variável que começa com um valor conhecido e conserva o resultado parcial entre as voltas."
+      }
+    ],
+    "code": "int[] minutos = [4, 1, 3];\nint total = 0;\nforeach (int espera in minutos)\n{\n    total = total + espera;\n}\nConsole.WriteLine(total);",
+    "output": "8",
+    "explanation": "A cada espera, o total parcial é atualizado. Quando entra 4, o total chega a 4. Com a espera de 1 ele chega a 5 e com a última espera, de 3, chega a 8. Como WriteLine está fora do bloco, aparece apenas uma linha.",
+    "explore": {
+      "label": "Esperas registradas",
+      "replace": "int[] minutos = [4, 1, 3];",
+      "cases": [
+        {
+          "value": "Nenhuma espera",
+          "replacement": "int[] minutos = [];",
+          "line": 7,
+          "output": "0",
+          "reason": "O foreach visita zero itens. A última linha executa com o total inicial."
+        },
+        {
+          "value": "Uma espera de 5 minutos",
+          "replacement": "int[] minutos = [5];",
+          "line": 7,
+          "output": "5",
+          "reason": "Há só uma soma, 0 + 5. A impressão vem após essa única volta."
+        }
+      ]
+    },
+    "questionCode": "int[] entregas = [2, 3];\nint total = 10;\nforeach (int quantidade in entregas)\n{\n    total = total + quantidade;\n}\nConsole.WriteLine(total);",
+    "prompt": "O depósito começou o dia com 10 caixas. Quanto aparece depois destas entregas?",
+    "options": [
+      "5",
+      "13",
+      "15"
+    ],
+    "correct": 2,
+    "feedback": [
+      "5 corresponde apenas às entregas. Veja o que total já guardava antes de chegar a elas.",
+      "13 seria 10 + 3. A primeira entrega já tinha levado o total a 12 quando a segunda começou.",
+      "Isso. O depósito vai de 10 a 12 e depois a 15. A segunda volta recebe o total que a primeira deixou."
+    ],
+    "hint": "Faça uma coluna para quantidade e outra para total. Registre também o valor de total antes da primeira volta.",
+    "hintDetail": "No começo, total é 10. A primeira execução de total = total + quantidade soma 2 ao 10. A próxima usa esse novo total.",
+    "challenge": "Conte quantas esperas chegaram a 30 minutos na Mesa de atendimento. Use [29, 30, 45] e faça o console mostrar a quantidade de atendimentos atrasados. Depois mantenha o código e troque apenas o array por [] e por [30].",
+    "challengeSteps": [
+      "Crie um contador com valor inicial zero.",
+      "Percorra as esperas. A cada duração de pelo menos 30 minutos, aumente o contador em uma unidade.",
+      "Mostre o contador após o percurso. Diga qual entrada testa o próprio limite e qual testa a ausência de atendimentos."
+    ],
+    "answer": "Os resultados são 2, 0 e 1. Os valores 30 e 45 acrescentam uma ocorrência cada. Somar as durações daria minutos acumulados, uma resposta para outra pergunta.",
+    "answerCode": "int[] esperas = [29, 30, 45];\nint atrasos = 0;\nforeach (int minutos in esperas)\n{\n    if (minutos >= 30)\n    {\n        atrasos = atrasos + 1;\n    }\n}\nConsole.WriteLine(atrasos);",
+    "mistake": "Se o resultado for apenas o último valor, inspecione a soma na segunda volta. A pergunta é o que total já guardava ao entrar e se a atribuição usou esse valor. Se surgirem várias linhas, confira em qual lado da última chave está a impressão.",
+    "reference": "foreach"
+  },
+  {
+    "id": "U13",
+    "title": "Percorra as posições com for",
+    "goal": "Explicar quando um for começa, avança e termina, e escolher índices seguros.",
+    "before": "Saber como o índice zero e o tamanho do array se relacionam e como funciona uma repetição.",
+    "reviewLesson": "U12",
+    "paragraphs": [
+      "Uma técnica quer saber em quais guichês os atrasos chegaram a cinco minutos. Ela recebeu um array com uma duração por guichê. O índice identifica o guichê no sistema. Se o código só mostrasse a duração, ela perderia a informação sobre onde agir.",
+      "O for permite cuidar da posição em uma variável. Dentro dos parênteses há três partes. Em int i = 0, a letra i é o nome escolhido para o índice. Esse primeiro trecho executa uma vez. Em i < esperas.Length, o programa verifica se a posição ainda existe antes de cada volta. Se a resposta for verdadeira, ele entra nas chaves.",
+      "A terceira parte, i++, vem escrita ao lado da condição, mas só executa depois que o bloco termina. Aqui i++ aumenta o índice em uma unidade, como i = i + 1. O próximo passo é voltar à condição. Leia na ordem de execução. O computador inicia o contador, confere a condição, usa a posição, avança e volta a conferir.",
+      "O array do exemplo tem três posições, de 0 a 2. A condição permite visitar a posição 2. Depois dela, i passa a 3 e a comparação 3 < 3 resulta em false. É essa conferência que protege o acesso esperas[i]. Com um array vazio, a comparação inicial 0 < 0 já encerra o percurso."
+    ],
+    "terms": [
+      {
+        "term": "Contador do for",
+        "meaning": "Variável que acompanha as voltas. Quando ela serve de índice, seu valor também escolhe uma posição da coleção."
+      },
+      {
+        "term": "i++",
+        "meaning": "Aumenta i em uma unidade. No terceiro trecho do for, executa após o bloco de cada volta."
+      }
+    ],
+    "code": "int[] esperas = [2, 7, 1];\nfor (int i = 0; i < esperas.Length; i++)\n{\n    if (esperas[i] >= 5)\n    {\n        Console.WriteLine(i);\n    }\n}",
+    "output": "1",
+    "explanation": "As posições visitadas são 0, 1 e 2. Só o valor 7 satisfaz a regra. Ele está na posição 1, então a impressão é 1. O programa confere o índice novamente antes de tentar outra leitura.",
+    "explore": {
+      "label": "Em quais posições há atraso?",
+      "replace": "int[] esperas = [2, 7, 1];",
+      "cases": [
+        {
+          "value": "Primeira e última",
+          "replacement": "int[] esperas = [5, 2, 6];",
+          "line": 6,
+          "output": "0\n2",
+          "reason": "As esperas 5 e 6 atingem o mínimo. A linha de impressão recebe os índices 0 e 2."
+        },
+        {
+          "value": "Uma posição com atraso",
+          "replacement": "int[] esperas = [8];",
+          "line": 6,
+          "output": "0",
+          "reason": "Uma espera de 8 está no índice 0. O for visita o único item e depois encerra."
+        }
+      ]
+    },
+    "questionCode": "int[] notas = [4, 7, 9];\nfor (int i = 1; i < notas.Length; i++)\n{\n    Console.WriteLine(notas[i]);\n}",
+    "prompt": "Como o ponto de partida desse for altera o que aparece?",
+    "options": [
+      "Aparecem 7 e 9, porque a primeira posição visitada é 1.",
+      "Aparecem 4, 7 e 9, porque um for sempre começa no primeiro item.",
+      "Aparecem 1 e 2, porque esses são os valores de i."
+    ],
+    "correct": 0,
+    "feedback": [
+      "Isso. Os índices 1 e 2 contêm 7 e 9. A posição 0 ficou antes do ponto de partida.",
+      "O primeiro trecho do for escolhe o início. Aqui ele declara i com valor 1.",
+      "Esses são os índices percorridos. Dentro dos parênteses de WriteLine aparece notas[i], o valor de cada posição."
+    ],
+    "hint": "Leia o primeiro trecho entre os parênteses e substitua i por esse valor em notas[i].",
+    "hintDetail": "A primeira leitura é notas[1]. Ao terminar o bloco, i sobe para 2 e o teste 2 < 3 permite mais uma leitura.",
+    "challenge": "Uma inspeção de três caixas anotou [3, 0, 0] peças. Escreva um relatório que mostre o número de cada caixa vazia. Na tela as caixas são numeradas a partir de 1. No array os índices começam em 0.",
+    "challengeSteps": [
+      "Percorra os índices válidos das caixas e consulte a quantidade guardada em cada um.",
+      "Mostre o número que a pessoa vê na etiqueta somente quando a quantidade for zero.",
+      "Verifique [3, 0, 0], [0] e []. Escreva o último índice realmente acessado em cada caso."
+    ],
+    "answer": "Para [3, 0, 0] aparecem as etiquetas 2 e 3. Para [0] aparece a etiqueta 1. Para [] a saída fica vazia. Os últimos índices consultados são 2, 0 e nenhum. A soma de 1 serve apenas para exibir a etiqueta.",
+    "answerCode": "int[] caixas = [3, 0, 0];\nfor (int indice = 0; indice < caixas.Length; indice++)\n{\n    if (caixas[indice] == 0)\n    {\n        Console.WriteLine(indice + 1);\n    }\n}",
+    "mistake": "Se um for com i <= itens.Length tentar ler itens[i], a última volta pode acessar um lugar inexistente. Para investigar, desenhe um único item. Liste o que acontece com i igual a 0 e com i igual a 1. Confira onde ajustar o limite antes do acesso.",
+    "reference": "for"
+  },
+  {
+    "id": "U14",
+    "title": "Saiba quando parar um while",
+    "goal": "Rastrear o que muda a cada volta e mostrar por que um while termina.",
+    "before": "Saber testar uma condição e atualizar um contador dentro de uma repetição.",
+    "reviewLesson": "U13",
+    "paragraphs": [
+      "Uma van sai com duas pessoas por viagem. Cada viagem só começa quando as duas vagas são preenchidas. Com cinco pessoas esperando, saem duas viagens e uma pessoa continua na fila. Um jeito de escrever a regra é repetir o embarque enquanto houver pelo menos duas pessoas.",
+      "while significa “enquanto”. A pergunta entre parênteses é feita antes de entrar no bloco e outra vez depois de cada volta. Se ela já for falsa no início, o programa segue diretamente para a primeira instrução depois das chaves. Esse teste distingue while de uma instrução que deve executar ao menos uma vez.",
+      "Aqui naFila representa quem ainda aguarda e viagens guarda quantas partidas já ocorreram. Durante o embarque, a primeira variável diminui de dois em dois. Isso aproxima a fila de um tamanho menor que dois, que torna a condição falsa. Aumentar só o contador de viagens deixaria a condição verdadeira para sempre quando a fila começasse cheia.",
+      "Antes de rodar um while que você acabou de escrever, aponte no papel a condição de permanência e a linha que muda o dado usado nela. Se ele depende de uma leitura, a nova leitura precisa acontecer a cada volta. Se o programa ficar repetindo sem parar no terminal, use Ctrl + C para interromper e examine essas duas partes."
+    ],
+    "terms": [
+      {
+        "term": "Condição de permanência",
+        "meaning": "Pergunta que autoriza outra volta quando o resultado é verdadeiro."
+      },
+      {
+        "term": "Condição de parada",
+        "meaning": "Situação em que a repetição termina. No exemplo, ter menos de duas pessoas torna a pergunta do while falsa."
+      }
+    ],
+    "code": "int naFila = 5;\nint viagens = 0;\nwhile (naFila >= 2)\n{\n    naFila = naFila - 2;\n    viagens = viagens + 1;\n}\nConsole.WriteLine(viagens);\nConsole.WriteLine(naFila);",
+    "output": "2\n1",
+    "explanation": "O primeiro embarque leva a fila de 5 a 3. O segundo leva a fila de 3 a 1. A terceira pergunta, 1 >= 2, dá false. O console recebe primeiro o número de viagens e depois o de pessoas que aguardam.",
+    "explore": {
+      "label": "Pessoas aguardando no início",
+      "replace": "int naFila = 5;",
+      "cases": [
+        {
+          "value": "Uma pessoa",
+          "replacement": "int naFila = 1;",
+          "line": 8,
+          "output": "0\n1",
+          "reason": "A condição é falsa desde a primeira conferência. As impressões externas ainda acontecem."
+        },
+        {
+          "value": "Quatro pessoas",
+          "replacement": "int naFila = 4;",
+          "line": 9,
+          "output": "2\n0",
+          "reason": "Com dois pares completos ocorrem duas viagens. Depois do segundo embarque a fila chega a zero."
+        }
+      ]
+    },
+    "questionCode": "int estoque = 3;\nwhile (estoque >= 2)\n{\n    estoque = estoque - 2;\n}\nConsole.WriteLine(estoque);",
+    "prompt": "O que o trecho mostra e qual conferência encerra as voltas?",
+    "options": [
+      "0, porque um while sempre continua até chegar a zero.",
+      "1, porque depois da primeira volta 1 >= 2 é falso.",
+      "3, porque a impressão fica fora do bloco."
+    ],
+    "correct": 1,
+    "feedback": [
+      "A condição observa se ainda há pelo menos duas unidades. A retirada deixa apenas uma, que fica no estoque.",
+      "Isso. A primeira verificação permite retirar duas unidades. A seguinte encontra 1 e encerra o laço.",
+      "A impressão está fora do bloco e lê o valor que estoque guarda depois da retirada."
+    ],
+    "hint": "Comece com estoque = 3. Responda à pergunta entre parênteses e escreva o estoque que sobraria depois de uma retirada.",
+    "hintDetail": "Ao alcançar a chave de fechamento, volte à linha do while. Use o valor atualizado nessa segunda conferência.",
+    "challenge": "Escreva um contador de solicitações. A pessoa digita uma descrição por linha e encerra com a palavra fim em minúsculas. Se a entrada acabar por conta própria, termine também. Para este exercício, cada linha recebida antes de fim conta como uma solicitação, inclusive uma linha vazia.",
+    "challengeSteps": [
+      "Leia a primeira linha antes do while e comece o contador em zero. Console.ReadLine() devolve null quando a entrada termina.",
+      "Repita enquanto a linha for diferente de null e diferente de \"fim\". Em C#, != significa “diferente de”. Conte a solicitação e leia a próxima linha.",
+      "Mostre apenas a contagem final. Teste fim na primeira linha e depois uma descrição seguida de fim. Diga o que aconteceria se a segunda leitura estivesse fora das chaves."
+    ],
+    "answer": "Com fim como primeira linha, o total é 0. Com uma descrição e depois fim, o total é 1. A primeira leitura fornece o dado para a primeira decisão. A leitura dentro do laço permite que cada decisão seguinte use outra linha.",
+    "answerCode": "int total = 0;\nstring? linha = Console.ReadLine();\nwhile (linha != null && linha != \"fim\")\n{\n    total = total + 1;\n    linha = Console.ReadLine();\n}\nConsole.WriteLine(total);",
+    "solutionCases": [
+      {
+        "input": "fim",
+        "output": "0"
+      },
+      {
+        "input": "Troca de senha\nfim",
+        "output": "1"
+      },
+      {
+        "input": "Falha de conexão\nCadastro",
+        "output": "2"
+      }
+    ],
+    "mistake": "Uma linha fora da chave pode impedir o progresso do laço. Faça duas voltas no papel. Se a condição vê o mesmo valor nas duas e nenhuma entrada nova pode alterá-lo, investigue antes de executar.",
+    "reference": "while"
+  },
+  {
+    "id": "U15",
+    "title": "Monte um relatório da fila",
+    "goal": "Atualizar uma lista de solicitações e explicar como os itens viram um relatório por categoria.",
+    "before": "Saber percorrer uma coleção com foreach, contar ocorrências e encerrar uma leitura com while.",
+    "reviewLesson": "U14",
+    "paragraphs": [
+      "Num plantão, as solicitações chegam e saem ao longo do dia. Você só descobre quantas existem depois que as pessoas entram na fila. Uma lista guarda os itens em ordem e permite que a quantidade cresça ou diminua durante a execução.",
+      "List<string> significa “lista de textos”. A palavra entre < e > define o tipo de item que entra. Às vezes você verá List<T> em um manual. Esse T representa o lugar do tipo escolhido. Vamos usar o projeto de console da aula de preparação, em que List já está disponível. O primeiro texto da lista ocupa o índice 0, como no array.",
+      "Imagine a lista como uma folha com uma categoria por linha. fila.Add(\"acesso\") acrescenta uma linha no fim. fila[0] = \"impressão\" corrige o texto de uma linha que já existe. fila.RemoveAt(1) retira a linha do índice 1. Quem estava depois dela sobe uma posição. Para fazer a correção ou retirada, o índice precisa existir naquele momento.",
+      "A propriedade Count informa quantos itens a lista contém agora. No relatório final você vai precisar de duas respostas diferentes. A quantidade total vem de Count. Para obter a quantidade de uma categoria, percorra os itens e aumente seu contador quando o texto daquela categoria aparecer."
+    ],
+    "terms": [
+      {
+        "term": "List<string>",
+        "meaning": "Lista cujo tipo de item é string, ou seja, texto. O número de itens pode mudar enquanto o programa roda."
+      },
+      {
+        "term": "Add e RemoveAt",
+        "meaning": "Add(valor) acrescenta o valor ao fim. RemoveAt(indice) retira o item na posição indicada e aproxima os que vêm depois."
+      },
+      {
+        "term": "Count",
+        "meaning": "Quantidade de itens presentes na lista no momento da consulta."
+      }
+    ],
+    "code": "List<string> fila = [\"cópia\", \"rede\"];\nfila.Add(\"acesso\");\nfila[0] = \"impressão\";\nfila.RemoveAt(1);\nConsole.WriteLine(fila.Count);\nforeach (string categoria in fila)\n{\n    Console.WriteLine(categoria);\n}",
+    "output": "2\nimpressão\nacesso",
+    "explanation": "A lista passa de dois itens para três com Add. A correção no índice 0 mantém os três lugares. A retirada no índice 1 remove rede e deixa acesso na posição 1. O foreach visita os dois textos que restaram.",
+    "questionCode": "List<string> pedidos = [\"cabo\", \"papel\"];\npedidos[1] = \"tinta\";\npedidos.Add(\"mouse\");\nConsole.WriteLine(pedidos.Count);\nConsole.WriteLine(pedidos[1]);",
+    "prompt": "Quais são as duas linhas de saída depois das alterações?",
+    "options": [
+      "4 e papel",
+      "3 e mouse",
+      "3 e tinta"
+    ],
+    "correct": 2,
+    "feedback": [
+      "Corrigir um item pelo índice ocupa um lugar que já existe. Confira qual texto substituiu papel.",
+      "3 é a quantidade correta. O mouse entrou depois de tinta e ficou na última posição, o índice 2.",
+      "Isso. A correção troca papel por tinta no índice 1. Só o Add aumenta a quantidade para 3."
+    ],
+    "hint": "Desenhe as duas posições iniciais. Apague o texto da posição 1 e escreva a correção no mesmo lugar. Depois acrescente outra posição ao fim.",
+    "hintDetail": "Ao chegar ao WriteLine de Count, a sequência é cabo, tinta, mouse. A última impressão acessa a posição 1 dessa sequência.",
+    "challenge": "Entregue um relatório do plantão. A Mesa de atendimento recebe uma categoria por linha. As categorias válidas são rede e conta, em minúsculas. A palavra fim encerra o plantão e o fim da entrada também. Outras linhas são ignoradas. Ao final, mostre o total de solicitações válidas e quantas pertencem a cada categoria.",
+    "challengeSteps": [
+      "Em um projeto de console, comece com List<string> fila = []; e leia a primeira linha. No while, acrescente à fila apenas os textos rede e conta. Leia a próxima linha no fim de cada volta.",
+      "Depois que a leitura terminar, use foreach para contar rede e conta. Mostre três linhas com os rótulos Total, Rede e Conta, seguidos de espaço e do número. Por exemplo, a fila vazia produz Total 0, Rede 0 e Conta 0 em linhas distintas.",
+      "Antes de rodar, preveja as três linhas para cada plantão. Comece com fim sozinho. Depois use conta seguida de fim. Termine com rede, conta, rede e fim. Repita o último caso com uma linha desconhecida entre as categorias e confira se os totais se mantêm.",
+      "Explique a um colega em que linha uma solicitação entra na fila, quando ela entra na contagem e qual caso revelaria que uma categoria foi contada duas vezes."
+    ],
+    "answer": "A fila vazia tem contagens 0, 0, 0. Só conta produz 1, 0, 1. Com rede, conta e rede, o relatório dá 3, 2, 1. Uma categoria desconhecida fica fora da lista. Para conferir o resultado, some os dois contadores de categoria e compare com Count.",
+    "answerCode": "List<string> fila = [];\nstring? linha = Console.ReadLine();\nwhile (linha != null && linha != \"fim\")\n{\n    if (linha == \"rede\" || linha == \"conta\")\n    {\n        fila.Add(linha);\n    }\n    linha = Console.ReadLine();\n}\nint redes = 0;\nint contas = 0;\nforeach (string categoria in fila)\n{\n    if (categoria == \"rede\")\n    {\n        redes = redes + 1;\n    }\n    else\n    {\n        contas = contas + 1;\n    }\n}\nConsole.WriteLine(\"Total \" + fila.Count);\nConsole.WriteLine(\"Rede \" + redes);\nConsole.WriteLine(\"Conta \" + contas);",
+    "solutionCases": [
+      {
+        "input": "fim",
+        "output": "Total 0\nRede 0\nConta 0"
+      },
+      {
+        "input": "conta\nfim",
+        "output": "Total 1\nRede 0\nConta 1"
+      },
+      {
+        "input": "rede\nconta\nrede\nfim",
+        "output": "Total 3\nRede 2\nConta 1"
+      },
+      {
+        "input": "rede\noutro\nconta\nrede",
+        "output": "Total 3\nRede 2\nConta 1"
+      }
+    ],
+    "checkPrompt": "Registre depois de rodar o relatório com a fila vazia, um item e categorias repetidas. Mostre uma previsão que confirmou ou precisou corrigir e explique a diferença entre atualizar um item existente e acrescentar um novo.",
+    "mistake": "Se o relatório tiver mais itens do que solicitações aceitas, examine a condição logo antes de Add. Se o total estiver correto, mas as categorias divergirem, acompanhe os contadores do foreach. São duas etapas que você consegue testar separadamente.",
+    "reference": "list"
+  }
+]

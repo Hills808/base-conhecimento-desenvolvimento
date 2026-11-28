@@ -1,4 +1,4 @@
-import { getGuidedLesson, guidedIds, setupLesson } from './data/guidedCourse';
+import { getGuidedLesson, guidedIds } from './data/guidedCourse';
 import { missions, diagnostic } from './data/formation';
 import { isRecord, mapValues, readStored, validDate, writeStored } from './studyStorage';
 export const formationKey = 'curva-aberta-formation-v1';
@@ -10,6 +10,9 @@ export type GuidedAttempt = {
   answer: number | null;
   checked: boolean;
   note: string;
+  prediction: string;
+  predictionChecked: boolean;
+  repairCode?: string;
   completedAt?: string;
 };
 export type FormationProgress = {
@@ -20,7 +23,7 @@ export type FormationProgress = {
   lessons: Record<string, GuidedAttempt>;
 };
 
-export const emptyGuidedAttempt: GuidedAttempt = { step: 'exemplo', answer: null, checked: false, note: '' };
+export const emptyGuidedAttempt: GuidedAttempt = { step: 'exemplo', answer: null, checked: false, note: '', prediction: '', predictionChecked: false };
 
 function parseGuidedAttempt(id: string, value: unknown): GuidedAttempt | undefined {
   if (!isRecord(value)) return undefined;
@@ -32,30 +35,23 @@ function parseGuidedAttempt(id: string, value: unknown): GuidedAttempt | undefin
     answer: validAnswer ? value.answer : null,
     checked: Boolean(validAnswer && value.checked === true),
     note: typeof value.note === 'string' ? value.note.slice(0, 2000) : '',
+    prediction: typeof value.prediction === 'string' ? value.prediction.slice(0, 2000) : '',
+    predictionChecked: typeof value.prediction === 'string' && Boolean(value.prediction.trim()) && value.predictionChecked === true,
   };
+  if (typeof value.repairCode === 'string') result.repairCode = value.repairCode.slice(0, 8000);
   if (validDate(value.completedAt)) result.completedAt = value.completedAt;
   return result;
 }
 
-export function recommendedLesson(progress: FormationProgress) {
-  const { lastLesson, lessons } = progress;
-  if (lastLesson && !lessons[lastLesson]?.completedAt) return lastLesson;
-  return guidedIds.find(id => !lessons[id]?.completedAt);
+export function hasGuidedWork(attempt?: GuidedAttempt): boolean {
+  return Boolean(attempt && (attempt.answer !== null || attempt.note.trim() || attempt.prediction.trim()
+    || attempt.repairCode !== undefined || attempt.completedAt));
 }
 
-export function canRecordGuidedPractice(id: string, attempt: GuidedAttempt) {
-  const lesson = getGuidedLesson(id);
-  return id === setupLesson.id || Boolean(lesson && attempt.checked && attempt.answer === lesson.correct);
-}
-
-export function recordGuidedPractice(progress: FormationProgress, id: string, now = Date.now()): FormationProgress {
-  const attempt = progress.lessons[id] ?? emptyGuidedAttempt;
-  if (attempt.completedAt || !canRecordGuidedPractice(id, attempt)) return progress;
-  return {
-    ...progress,
-    lastLesson: id,
-    lessons: { ...progress.lessons, [id]: { ...attempt, step: 'explicacao', completedAt: new Date(now).toISOString() } },
-  };
+export function recommendedLesson({ lastLesson, lessons }: FormationProgress) {
+  if (lastLesson && hasGuidedWork(lessons[lastLesson]) && !lessons[lastLesson].completedAt) return lastLesson;
+  return guidedIds.find(id => hasGuidedWork(lessons[id]) && !lessons[id].completedAt)
+    ?? guidedIds.find(id => !lessons[id]?.completedAt);
 }
 
 export const freshAttempt = (): Attempt => ({step:0,reviewing:false,answers:{},checked:false,note:'',checks:[false,false]});

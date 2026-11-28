@@ -8,7 +8,7 @@ import { labCheckpoints } from "./data/lab-checkpoints";
 import LabCheckpoint from "./LabCheckpoint";
 import LearningPath from './LearningPath';
 import PracticeStudio from './PracticeStudio';
-import SharedNotes from './SharedNotes';
+import SharedNotes from './SharedNotes.tsx';
 import mastery from './data/lab-mastery.json';
 import StudyFocus from "./StudyFocus";
 import { readLabProgress as readProgress, saveLabProgress, isLabVerified } from "./labProgress";

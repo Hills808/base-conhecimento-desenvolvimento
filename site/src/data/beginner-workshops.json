@@ -1,0 +1,166 @@
+{
+  "I01": {
+    "trace": [
+      {"line": 1, "observation": "Imagine que você atende na recepção. Uma pessoa chega. Que mensagem ela precisa enxergar? Aqui, quem escreveu o programa escolheu Bem-vindo."},
+      {"line": 1, "observation": "Leia de dentro para fora. Entre as aspas está a mensagem. Console.WriteLine é a instrução que faz essas palavras aparecerem no console, a área onde lemos o resultado."},
+      {"line": 1, "observation": "Quando a instrução roda, a pessoa lê Bem-vindo. Você pode trocar o texto no editor e salvar. A nova mensagem aparece quando executar o programa de novo."}
+    ],
+    "task": {
+      "context": "Um colega deixou esta instrução para o painel de uma sala de leitura. Imagine que você está na porta olhando o painel quando o programa roda.",
+      "code": "Console.WriteLine(\"Pode entrar\");",
+      "output": "Pode entrar",
+      "hint": "Cubra tudo antes da primeira aspa e depois da última. Quais palavras ficaram visíveis?",
+      "explain": "A pessoa vê Pode entrar. Console.WriteLine é a ação que o programa executa. As aspas marcam as duas pontas da mensagem no código.",
+      "errors": [
+        {"guess": "\"Pode entrar\"", "feedback": "Você encontrou a mensagem certa. As aspas servem a quem escreve o código. Escreva o que a pessoa na porta consegue ler."},
+        {"guess": "Console.WriteLine(\"Pode entrar\");", "feedback": "Você copiou a instrução que o computador recebe. Imagine que a execução terminou e transcreva só a mensagem do painel."}
+      ]
+    },
+    "repair": {
+      "brief": "A sessão de cinema acabou. A equipe quer que o painel mostre Sessão encerrada. A pessoa na saída ainda vê outra mensagem. Localize o que mudaria e diga como verificaria a troca.",
+      "code": "Console.WriteLine(\"Sessão aberta\");",
+      "hint": "Leia o que está dentro das aspas e compare com as palavras que a equipe pediu.",
+      "solution": "Console.WriteLine(\"Sessão encerrada\");",
+      "tests": [{"output":"Sessão encerrada"}],
+      "explanation": "O painel já sabia mostrar uma mensagem. O defeito estava nas palavras da linha 1. Depois da troca, execute de novo e compare o que apareceu com o aviso da equipe."
+    }
+  },
+  "I02": {
+    "trace": [
+      {"line":1,"observation":"Você quer mandar texto para o console. O ponto em Console.WriteLine liga esse destino à ação que escreve uma linha. Leia o nome como uma unidade por enquanto."},
+      {"line":1,"observation":"Localize o primeiro parêntese e o último. Dentro deles, as duas aspas retas cercam Olá, Ana. A vírgula e o espaço entre as aspas pertencem à mensagem."},
+      {"line":1,"observation":"Ao chegar ao ponto e vírgula, esta instrução está completa. Se a pessoa passar a se chamar Lia, só a parte entre aspas precisa mudar."}
+    ],
+    "task": {
+      "context":"Uma etiqueta deve mostrar a localização de uma sala. Repare nos espaços, no ponto e no que está entre aspas.",
+      "code":"Console.WriteLine(\"Sala B.\");",
+      "output":"Sala B.",
+      "hint":"Há um ponto depois de Console e outro depois de B. Qual deles ficou dentro das aspas?",
+      "explain":"Sala B. inclui o ponto final porque ele pertence ao texto. O ponto depois de Console e o ponto e vírgula após o parêntese fazem parte da instrução.",
+      "errors":[{"guess":"Sala B","feedback":"Leia de novo o último caractere antes da aspa de fechamento. Ele também vai para a etiqueta."}]
+    },
+    "repair": {
+      "brief":"O editor aceita o programa, mas o bilhete precisa dizer Olá, Bia! exatamente assim. A impressão está com um sinal diferente. Qual símbolo você editaria sem quebrar a instrução?",
+      "code":"Console.WriteLine(\"Olá, Bia;\");",
+      "hint":"Existem dois pontos e vírgulas na linha. Observe o que cada um separa e qual aparece quando você lê a mensagem.",
+      "solution":"Console.WriteLine(\"Olá, Bia!\");",
+      "tests":[{"output":"Olá, Bia!"}],
+      "explanation":"Só muda o sinal que fica entre as aspas. O ponto e vírgula depois do parêntese continua encerrando a instrução. Leia o bilhete impresso, incluindo a exclamação."
+    }
+  },
+  "I03": {
+    "trace": [
+      {"line":1,"observation":"Comece com o console vazio. A primeira instrução escreve Abrir atendimento e leva o cursor à linha seguinte."},
+      {"line":2,"observation":"A primeira mensagem continua visível. A segunda instrução acrescenta Confirmar pedido embaixo dela. Você pode reconstruir a tela anotando uma frase por linha."}
+    ],
+    "task": {
+      "context":"Uma oficina de fotografia guarda o roteiro abaixo. Os nomes das etapas parecem fora de ordem. Transcreva a ordem que o programa realmente exibe.",
+      "code":"Console.WriteLine(\"Revelar\");\nConsole.WriteLine(\"Fotografar\");\nConsole.WriteLine(\"Guardar\");",
+      "output":"Revelar\nFotografar\nGuardar",
+      "hint":"Use um papel para cobrir a segunda e a terceira linhas. Registre a primeira mensagem. Desça o papel e repita.",
+      "explain":"Revelar aparece primeiro porque a chamada que contém essa palavra vem primeiro. Cada chamada a WriteLine acrescenta uma linha, mesmo quando o roteiro humano parece invertido.",
+      "errors":[{"guess":"Fotografar\nRevelar\nGuardar","feedback":"Essa sequência faz sentido para um fotógrafo. Agora siga o arquivo como ele foi escrito e descubra qual mensagem chega primeiro ao console."}]
+    },
+    "repair": {
+      "brief":"Um painel de embarque deve pedir o bilhete antes de liberar a catraca. As duas mensagens estão corretas, mas aparecem na ordem errada. Reorganize o programa preservando os textos.",
+      "code":"Console.WriteLine(\"Passe pela catraca\");\nConsole.WriteLine(\"Aproxime o bilhete\");",
+      "hint":"Mover a instrução inteira conserva os símbolos e a mensagem. Qual delas deve executar primeiro?",
+      "solution":"Console.WriteLine(\"Aproxime o bilhete\");\nConsole.WriteLine(\"Passe pela catraca\");",
+      "tests":[{"output":"Aproxime o bilhete\nPasse pela catraca"}],
+      "explanation":"Conferir apenas se as duas frases aparecem deixaria o defeito passar. O teste também precisa verificar a posição de cada frase."
+    }
+  },
+  "I04": {
+    "trace": [
+      {"line":1,"observation":"Leia primeiro o que aparece dentro dos parênteses. Os números 3 e 2 participam de uma soma. O console recebe o resultado 5."},
+      {"line":2,"observation":"Agora uma única dupla de aspas envolve tudo, inclusive os espaços e o sinal. A segunda linha da tela contém os cinco caracteres de 3 + 2."},
+      {"line":3,"observation":"Há dois textos separados. O sinal de + entre eles junta os caracteres pela ordem em que aparecem. A última linha fica 32."}
+    ],
+    "task":{
+      "context":"Uma papelaria cria etiquetas e conta pacotes. As duas primeiras linhas parecem falar da mesma quantidade. Compare onde estão as aspas.",
+      "code":"Console.WriteLine(\"1\" + \"2\");\nConsole.WriteLine(1 + 2);\nConsole.WriteLine(\"1 + 2\");",
+      "output":"12\n3\n1 + 2",
+      "hint":"Classifique cada linha antes de responder. Ela junta dois textos, calcula uma soma ou mostra um único texto?",
+      "explain":"A etiqueta junta os caracteres 1 e 2. A contagem soma dois inteiros. Na última linha, até o sinal de + está dentro da mensagem.",
+      "errors":[{"guess":"3\n3\n1 + 2","feedback":"Confira a primeira linha. Cada algarismo está entre as suas próprias aspas. O + recebe dois textos."}]
+    },
+    "repair":{
+      "brief":"Chegaram 12 camisetas e depois mais 3. O programa imprime 123. A loja precisa da quantidade total. Faça a conta continuar funcionando se o segundo lote mudar.",
+      "code":"Console.WriteLine(\"12\" + \"3\");",
+      "hint":"Os dois lotes são quantidades. Escreva-os na forma em que o C# consegue somá-los.",
+      "solution":"Console.WriteLine(12 + 3);",
+      "tests":[{"output":"15"}],
+      "explanation":"O defeito acontece antes de WriteLine, quando o + recebe textos. Com números, os mesmos lotes somam 15. Se o segundo lote passar a 4, o resultado deve passar a 16. Essa mudança também detecta uma correção que apenas imprimiu 15."
+    }
+  },
+  "I05": {
+    "trace":[
+      {"line":1,"observation":"Imagine uma ficha chamada pedidos. O tipo int diz que esta ficha guarda um número inteiro. Depois da atribuição, leia a ficha como pedidos vale 3. O console segue vazio."},
+      {"line":2,"observation":"Dentro de WriteLine, pedidos aparece sem aspas. Procure a ficha com esse nome e use o número guardado nela. O console mostra 3."},
+      {"line":3,"observation":"Aqui as aspas cercam as letras de pedidos. O console acrescenta a palavra pedidos. O valor guardado na ficha continua sendo 3."}
+    ],
+    "task":{
+      "context":"Você recebeu um pequeno programa que imprime etiquetas de prateleira. Siga a diferença entre o nome que a pessoa escolheu e o número que ele guarda.",
+      "code":"int corredor = 7;\nConsole.WriteLine(\"corredor\");\nConsole.WriteLine(corredor);",
+      "output":"corredor\n7",
+      "hint":"Na declaração, anote corredor = 7 à parte. Só comece uma linha na sua resposta quando chegar a um WriteLine.",
+      "explain":"A declaração dá um nome ao 7 e ainda deixa a tela vazia. A primeira impressão escreve as letras de corredor. A segunda lê o número guardado com esse nome.",
+      "errors":[{"guess":"7\n7","feedback":"Acompanhe a primeira impressão. As aspas pedem que o console escreva exatamente aquelas letras."},{"guess":"7\ncorredor\n7","feedback":"A primeira instrução guarda um valor. Procure quantas instruções do programa mandam escrever na tela."}]
+    },
+    "repair":{
+      "brief":"Uma etiqueta de armário acompanha o número guardado pela equipe. Mesmo quando a equipe muda o número, a etiqueta sai sempre com a palavra armario. Faça a etiqueta acompanhar o valor.",
+      "code":"int armario = 14;\nConsole.WriteLine(\"armario\");",
+      "hint":"A declaração já tem o número certo. Compare as duas formas de se referir a um nome dentro de WriteLine.",
+      "solution":"int armario = 14;\nConsole.WriteLine(armario);",
+      "tests":[{"output":"14"}],
+      "explanation":"Na linha 2, as aspas transformavam o nome em texto fixo. Agora a impressão consulta a variável. Repita com 18 na declaração e confira se a etiqueta muda junto."
+    }
+  },
+  "I06": {
+    "trace":[
+      {"line":1,"observation":"Comece duas anotações. Em valor guardado, escreva 3 para pedidos. Em mensagens na tela, deixe a folha em branco."},
+      {"line":2,"observation":"A soma usa o 3 e produz 5. WriteLine recebe esse 5 e o escreve. Nenhuma atribuição foi feita a pedidos nesta linha."},
+      {"line":3,"observation":"Uma leitura de pedidos ainda encontra 3. Acrescente 3 abaixo de 5 na coluna da tela."},
+      {"line":4,"observation":"Calcule primeiro pedidos + 2 com o valor atual, 3. O sinal = manda guardar o 5 de volta em pedidos. A tela continua com duas linhas."},
+      {"line":5,"observation":"A consulta final encontra o 5 guardado. A sequência impressa é 5, 3 e 5. Nesta última linha o valor vem da variável."}
+    ],
+    "task":{
+      "context":"Um carrinho leva livros para a estante. Leia o programa de outra pessoa e mantenha duas anotações separadas, os livros que ficaram registrados e os valores que apareceram na tela.",
+      "code":"int livros = 9;\nConsole.WriteLine(livros - 2);\nlivros = livros - 4;\nConsole.WriteLine(livros);",
+      "output":"7\n5",
+      "hint":"Quando chegar à terceira linha, volte à última atribuição que ocorreu antes dela. Com que número a subtração começa?",
+      "explain":"A segunda linha calcula 7 para mostrar. Na terceira, livros ainda guarda 9. Guardar 9 menos 4 faz a leitura final encontrar 5.",
+      "errors":[{"guess":"7\n3","feedback":"Seu segundo cálculo começou no 7 impresso. Procure onde esse 7 foi guardado. O que o nome livros ainda representa ao entrar na linha 3?"}]
+    },
+    "repair":{
+      "brief":"Uma caixa começa com 9 peças. A equipe tira 2 e espera que o comprovante e a consulta de estoque mostrem 7. A primeira linha impressa parece certa, mas a segunda denuncia um erro. Corrija o registro.",
+      "code":"int pecas = 9;\nConsole.WriteLine(pecas - 2);\nConsole.WriteLine(pecas);",
+      "hint":"Faça a retirada alterar o valor associado ao nome pecas. Só depois imprima os dois resultados.",
+      "solution":"int pecas = 9;\npecas = pecas - 2;\nConsole.WriteLine(pecas);\nConsole.WriteLine(pecas);",
+      "tests":[{"output":"7\n7"}],
+      "explanation":"No original, o comprovante já imprimia 7, enquanto a segunda consulta ainda imprimia 9. Atualizar pecas uma vez antes das consultas mantém as duas leituras coerentes."
+    }
+  },
+  "I07": {
+    "trace":[
+      {"line":1,"observation":"Este texto pertence ao arquivo Program.cs do seu projeto. Depois de salvá-lo e rodar dotnet run no terminal, a primeira instrução escreve Meu primeiro programa."},
+      {"line":2,"observation":"O programa ainda em execução soma 6 e 2 e imprime 8 na próxima linha. Ao terminar, o terminal volta a aceitar comandos. Você consegue mudar o arquivo e fazer outra execução."}
+    ],
+    "task":{
+      "context":"Você salvou estas linhas no Program.cs e já executou dotnet run na pasta do projeto. Escreva as mensagens do seu programa, uma por linha.",
+      "code":"Console.WriteLine(\"Teste de som\");\nConsole.WriteLine(8 - 3);",
+      "output":"Teste de som\n5",
+      "hint":"dotnet run é o comando que você digita no terminal. Agora procure no arquivo as duas coisas que o próprio programa foi instruído a mostrar.",
+      "explain":"Após a compilação, o programa escreve a mensagem e o resultado da subtração. Você pode repetir a experiência no mesmo projeto alterando apenas o 3 para 1.",
+      "errors":[{"guess":"Teste de som\n8 - 3","feedback":"Repare nas aspas. Na segunda linha, WriteLine recebe o resultado de uma conta."}]
+    },
+    "repair":{
+      "brief":"Seu colega salvou este Program.cs para registrar uma sessão de 12 minutos com mais 3 minutos de ajuste. O terminal mostra a mensagem correta seguida de 12. Faça a saída exibir o tempo total. Salve e execute a nova versão.",
+      "code":"int minutos = 12;\nConsole.WriteLine(\"Sessão de teste\");\nConsole.WriteLine(minutos);\nminutos = minutos + 3;",
+      "hint":"Marque em qual linha o número chega à tela e em qual linha os 3 minutos são guardados. Experimente trocar a ordem dessas duas ações.",
+      "solution":"int minutos = 12;\nConsole.WriteLine(\"Sessão de teste\");\nminutos = minutos + 3;\nConsole.WriteLine(minutos);",
+      "tests":[{"output":"Sessão de teste\n15"}],
+      "explanation":"A soma acontecia depois da impressão. Ao movê-la, a consulta encontra o total 15. Se continuar vendo 12, confira qual Program.cs foi salvo e se a pasta no terminal contém o projeto editado."
+    }
+  }
+}

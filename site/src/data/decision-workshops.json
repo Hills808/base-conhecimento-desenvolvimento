@@ -1,0 +1,425 @@
+{
+  "U06": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "Leia a linha como um registro de tempo. O nome espera passa a guardar o inteiro 30. O console ainda está vazio."
+      },
+      {
+        "line": 2,
+        "observation": "Substitua espera pelo valor que você acabou de anotar. A pergunta fica “30 chegou a 30?”. A igualdade está incluída em >=, então atingiuLimite guarda true. Agora há dois dados distintos: uma duração e a resposta à pergunta sobre ela."
+      },
+      {
+        "line": 3,
+        "observation": "WriteLine recebe a resposta guardada em atingiuLimite. O console escreve True, com T maiúsculo. O número 30 continua disponível em espera."
+      }
+    ],
+    "task": {
+      "context": "Uma biblioteca guarda a resposta à pergunta “resta um livro?” e depois empresta um exemplar. Acompanhe quantos livros há no instante de cada comparação. O que aparece nas duas linhas do console?",
+      "code": "int livros = 2;\nbool restaUm = livros == 1;\nlivros = livros - 1;\nConsole.WriteLine(restaUm);\nConsole.WriteLine(livros == 1);",
+      "output": "False\nTrue",
+      "hint": "Faça duas anotações separadas, uma para livros e outra para restaUm. Em qual dos dois nomes a terceira linha guarda algo?",
+      "explain": "Na segunda linha havia dois livros, então restaUm recebeu false. O empréstimo muda livros para 1. A primeira impressão usa a resposta antiga. A segunda faz a pergunta de novo, agora com um livro.",
+      "errors": [
+        {
+          "guess": "True\nTrue",
+          "feedback": "A última comparação usa o estoque atual. Confira em qual momento restaUm recebeu seu valor e se há outra atribuição a esse nome."
+        },
+        {
+          "guess": "False\nFalse",
+          "feedback": "Localize a subtração. Ela acontece antes da última comparação, que lê livros novamente."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Uma etiqueta deve mostrar True apenas quando o peso da mala passa do limite. Uma mala de exatamente 5 kg cabe no limite de 5 kg, mas este código acende o aviso. Corrija a pergunta da etiqueta.",
+      "code": "int peso = 5;\nint limite = 5;\nbool excedeu = peso >= limite;\nConsole.WriteLine(excedeu);",
+      "hint": "Leia o nome excedeu como uma pergunta. Quando os números são iguais, a mala excedeu a capacidade?",
+      "solution": "int peso = 5;\nint limite = 5;\nbool excedeu = peso > limite;\nConsole.WriteLine(excedeu);",
+      "tests": [
+        {
+          "output": "False"
+        }
+      ],
+      "explanation": "A linha 3 incluía a igualdade no aviso. Com >, a mala de 5 kg dá False. Troque apenas peso por 4 e depois por 6 para observar False e True. O teste com exatamente 5 kg distingue as duas versões."
+    }
+  },
+  "U07": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "O programa começa com duas vagas disponíveis. Guarde esse número para ler a pergunta da linha seguinte."
+      },
+      {
+        "line": 2,
+        "observation": "Ao colocar 2 no lugar de vagas, a pergunta vira “2 é maior que zero?”. A resposta verdadeira leva à primeira chave de abertura."
+      },
+      {
+        "line": 4,
+        "observation": "Dentro desse bloco aparece Reserva disponível. Ao chegar à chave que fecha o bloco, a execução salta o else inteiro, incluindo a mensagem da linha 8."
+      },
+      {
+        "line": 10,
+        "observation": "A chave da linha 9 encerra a decisão. Consulta encerrada está depois dela e aparece como a segunda mensagem. Com duas vagas ou com zero, o programa chega a esta última linha."
+      }
+    ],
+    "task": {
+      "context": "Uma passagem custa quatro créditos. O cartão tem três. Leia o programa da catraca e preveja tanto a mensagem da compra quanto o saldo que fica no cartão.",
+      "code": "int saldo = 3;\nif (saldo >= 4)\n{\n    saldo = saldo - 4;\n    Console.WriteLine(\"Compra aceita\");\n}\nelse\n{\n    Console.WriteLine(\"Saldo insuficiente\");\n}\nConsole.WriteLine(saldo);",
+      "output": "Saldo insuficiente\n3",
+      "hint": "O desconto e a mensagem de compra estão entre as mesmas chaves. Marque o bloco que roda para um saldo de três e continue depois da decisão.",
+      "explain": "Três créditos não cobrem quatro. O programa pula a subtração e mostra Saldo insuficiente no else. A impressão depois da última chave consulta o saldo original de 3.",
+      "errors": [
+        {
+          "guess": "Saldo insuficiente\n-1",
+          "feedback": "Para chegar a −1 seria necessário executar a subtração. Confira se a condição permite entrar no bloco que a contém."
+        },
+        {
+          "guess": "Saldo insuficiente",
+          "feedback": "Você encontrou o ramo certo. Falta seguir a execução depois da chave que fecha o else."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Um jogo entrega um selo a quem acerta pelo menos duas questões. Para toda partida ele registra “Resultado salvo”. Uma jogadora acertou uma questão e, mesmo assim, recebeu a mensagem de emissão do selo. Localize a instrução que precisa mudar de lugar.",
+      "code": "int acertos = 1;\nif (acertos >= 2)\n{\n    Console.WriteLine(\"Aprovado\");\n}\nConsole.WriteLine(\"Emitir selo\");\nConsole.WriteLine(\"Resultado salvo\");",
+      "hint": "Indique com o dedo onde o bloco condicionado termina. Quais mensagens precisam estar antes dessa chave e quais precisam estar depois?",
+      "solution": "int acertos = 1;\nif (acertos >= 2)\n{\n    Console.WriteLine(\"Aprovado\");\n    Console.WriteLine(\"Emitir selo\");\n}\nConsole.WriteLine(\"Resultado salvo\");",
+      "tests": [
+        {
+          "output": "Resultado salvo"
+        }
+      ],
+      "explanation": "Na versão recebida, a linha 6 ficava fora das chaves e rodava até com um acerto. Ao mover a emissão do selo para dentro do if, quem acerta uma questão vê apenas Resultado salvo. Refaça com dois acertos para conferir Aprovado, Emitir selo e Resultado salvo, nessa ordem."
+    }
+  },
+  "U08A": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "A pessoa digita 0 e aperta Enter. ReadLine lê o caractere 0, deixa o Enter de fora e guarda o texto \"0\" em entrada."
+      },
+      {
+        "line": 2,
+        "observation": "Compare os comprimentos mentalmente. \"0\" tem um caractere. \"\" tem zero. Os textos são diferentes, por isso aparece False na primeira linha."
+      },
+      {
+        "line": 3,
+        "observation": "Agora a pergunta mudou. null significa que a leitura chegou ao fim sem encontrar uma linha. Como o programa recebeu uma linha com 0, a comparação dá False de novo, desta vez por outro motivo."
+      }
+    ],
+    "task": {
+      "context": "Um armário tem etiquetas de três caracteres. Alguém digita 007 para localizar sua chave. Veja o que o programa guardou e escreva as duas linhas de saída.",
+      "code": "string? etiqueta = Console.ReadLine();\nConsole.WriteLine(etiqueta == \"7\");\nConsole.WriteLine(etiqueta);",
+      "input": "007",
+      "output": "False\n007",
+      "hint": "Tente ler a etiqueta como leria uma placa. Quantos caracteres há de cada lado de ==? A segunda impressão usa exatamente o texto que chegou.",
+      "explain": "O programa lê três caracteres, 0, 0 e 7. A comparação com o texto de um só caractere produz False. Como nenhuma conversão foi feita, a última linha mostra 007 inteiro.",
+      "errors": [
+        {
+          "guess": "True\n7",
+          "feedback": "Essa resposta faria sentido depois de converter os dois textos em números. Procure no trecho se alguma instrução pediu essa conversão."
+        },
+        {
+          "guess": "False\n7",
+          "feedback": "A comparação está certa. Compare as duas chamadas: a última recebe o texto original guardado em etiqueta."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Um importador lê observações de um arquivo. Uma linha em branco também conta como linha recebida. Só deve aparecer “Fim do arquivo” quando a leitura termina sem encontrar outra linha. Hoje uma observação em branco encerra a leitura cedo demais. Corrija a distinção.",
+      "code": "string? observacao = Console.ReadLine();\nif (observacao == \"\")\n{\n    Console.WriteLine(\"Fim do arquivo\");\n}\nelse\n{\n    Console.WriteLine(\"Linha recebida\");\n}",
+      "hint": "Enter sozinho produz um texto de comprimento zero. Qual valor indica que não havia linha alguma para ler?",
+      "solution": "string? observacao = Console.ReadLine();\nif (observacao == null)\n{\n    Console.WriteLine(\"Fim do arquivo\");\n}\nelse\n{\n    Console.WriteLine(\"Linha recebida\");\n}",
+      "tests": [
+        {
+          "input": "",
+          "output": "Linha recebida"
+        },
+        {
+          "input": "0",
+          "output": "Linha recebida"
+        },
+        {
+          "output": "Fim do arquivo"
+        }
+      ],
+      "explanation": "A linha 2 perguntava se a observação tinha zero caracteres. A correção pergunta se houve fim da entrada. Teste três situações: Enter sozinho, uma linha com o caractere 0 e um arquivo sem nenhuma linha. No último caso, ReadLine devolve null."
+    }
+  },
+  "U08": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "A linha recebida do teclado contém os caracteres 1 e 2. Neste instante, texto guarda \"12\"."
+      },
+      {
+        "line": 2,
+        "observation": "A tentativa de conversão produz duas informações. conseguiu guarda true porque foi possível ler um inteiro. minutos recebe o número 12. A variável texto ainda guarda os caracteres originais."
+      },
+      {
+        "line": 3,
+        "observation": "O if verifica conseguiu. Como a tentativa deu certo, a execução entra no bloco em que podemos usar minutos."
+      },
+      {
+        "line": 5,
+        "observation": "Agora a soma recebe números. O programa calcula 12 + 5 e mostra 17. Ele passa pelo fim da decisão sem mostrar a orientação da linha 9."
+      }
+    ],
+    "task": {
+      "context": "Uma estação de montanha recebe a temperatura na forma de texto. Com uma leitura de −4 graus, o visor mostra se a conversão funcionou e calcula quanto marcaria depois de subir um grau. Preveja a saída.",
+      "code": "string? leitura = Console.ReadLine();\nbool leu = int.TryParse(leitura, out int graus);\nConsole.WriteLine(leu);\nif (leu)\n{\n    Console.WriteLine(graus + 1);\n}\nelse\n{\n    Console.WriteLine(\"Confira o sensor\");\n}",
+      "input": "-4",
+      "output": "True\n-3",
+      "hint": "O sinal de menos faz parte de um inteiro válido. Escreva separadamente o que entra em leu e o que entra em graus.",
+      "explain": "O texto -4 representa um inteiro. A tentativa dá true e produz o número −4. O programa mostra True e entra no if. Subir um grau leva de −4 a −3.",
+      "errors": [
+        {
+          "guess": "False\nConfira o sensor",
+          "feedback": "A pergunta de TryParse é se o texto representa um inteiro. Compare -4 com um texto como frio."
+        },
+        {
+          "guess": "True\n-41",
+          "feedback": "A conversão funcionou. Confira qual variável participa da soma e se ela guarda texto ou um inteiro."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Uma loja registra ajustes no estoque. Zero indica que a contagem já estava certa. Números positivos e negativos também são válidos. O programa deve mostrar o ajuste recebido ou “Digite um inteiro” se o texto for inválido. Descubra por que ele recusa um ajuste de zero.",
+      "code": "string? linha = Console.ReadLine();\nbool leu = int.TryParse(linha, out int ajuste);\nif (ajuste == 0)\n{\n    Console.WriteLine(\"Digite um inteiro\");\n}\nelse\n{\n    Console.WriteLine(ajuste);\n}",
+      "hint": "Compare o que TryParse guarda em leu e em ajuste para as entradas 0 e zero por extenso. Só um desses dois dados diferencia os casos.",
+      "solution": "string? linha = Console.ReadLine();\nbool leu = int.TryParse(linha, out int ajuste);\nif (leu)\n{\n    Console.WriteLine(ajuste);\n}\nelse\n{\n    Console.WriteLine(\"Digite um inteiro\");\n}",
+      "tests": [
+        {
+          "input": "0",
+          "output": "0"
+        },
+        {
+          "input": "zero",
+          "output": "Digite um inteiro"
+        },
+        {
+          "input": "-3",
+          "output": "-3"
+        },
+        {
+          "input": "4",
+          "output": "4"
+        }
+      ],
+      "explanation": "A linha 3 tomava o número 0 como sinal de erro. Com “0”, a tentativa dá true e o número é 0. Com “zero”, a tentativa dá false e essa versão de TryParse também preenche ajuste com 0. Usar leu para escolher o bloco permite distinguir as duas entradas."
+    }
+  },
+  "U09": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "O grupo tem zero pessoas. Ao acompanhar a decisão seguinte, use 0 toda vez que encontrar o nome pessoas."
+      },
+      {
+        "line": 2,
+        "observation": "Para que as duas verificações ligadas por && sejam verdadeiras, a primeira já precisa passar. Aqui 0 > 0 é falso. A execução pode descartar o primeiro bloco sem sequer tentar dividir 8 por 0."
+      },
+      {
+        "line": 8,
+        "observation": "A execução chega ao else e mostra Confira o tamanho do grupo. Se a divisão viesse antes de pessoas > 0, o programa tentaria dividir por zero antes de chegar ao aviso."
+      }
+    ],
+    "task": {
+      "context": "Uma pesquisa aceita até duas tentativas para responder sim. Depois lê o título de um livro. As linhas disponíveis são sim e Atlas, nessa ordem. Cada chamada a ReadLine consome uma linha inteira. O que vai para o console?",
+      "code": "string? primeira = Console.ReadLine();\nbool aceitou = primeira == \"sim\" || Console.ReadLine() == \"sim\";\nstring? livro = Console.ReadLine();\nConsole.WriteLine(aceitou);\nConsole.WriteLine(livro);",
+      "input": "sim\nAtlas",
+      "output": "True\nAtlas",
+      "hint": "Desenhe duas fichas de papel, uma para cada linha. Retire uma ficha por leitura executada. Quando a esquerda de || é verdadeira, o programa já sabe a resposta.",
+      "explain": "A primeira leitura consome sim. A comparação da esquerda já dá true. O || permite pular a segunda tentativa, então Atlas continua disponível para a linha 3. O console mostra True e depois o título.",
+      "errors": [
+        {
+          "guess": "True",
+          "feedback": "A primeira resposta já satisfez o “ou”. Refaça as marcas no papel e procure qual leitura ainda recebe Atlas."
+        },
+        {
+          "guess": "True\nsim",
+          "feedback": "A linha sim foi consumida pela primeira chamada. Uma nova chamada continua da próxima linha disponível."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Uma encomenda só pode sair com coleta agendada e caixa fechada. Na primeira linha chega o estado da coleta e na segunda, o da embalagem. Mesmo com a caixa aberta o programa libera uma coleta agendada. Corrija a decisão e encontre um teste que revelaria o problema antes do envio.",
+      "code": "string? coleta = Console.ReadLine();\nstring? caixa = Console.ReadLine();\nif (coleta == \"agendada\" || caixa == \"fechada\")\n{\n    Console.WriteLine(\"Liberar envio\");\n}\nelse\n{\n    Console.WriteLine(\"Aguardar\");\n}",
+      "hint": "Imagine quatro encomendas. Em uma, ambas as verificações passam. Em duas, só uma passa. Na última, nenhuma passa. Qual dessas encomendas pode sair?",
+      "solution": "string? coleta = Console.ReadLine();\nstring? caixa = Console.ReadLine();\nif (coleta == \"agendada\" && caixa == \"fechada\")\n{\n    Console.WriteLine(\"Liberar envio\");\n}\nelse\n{\n    Console.WriteLine(\"Aguardar\");\n}",
+      "tests": [
+        {
+          "input": "agendada\nfechada",
+          "output": "Liberar envio"
+        },
+        {
+          "input": "agendada\naberta",
+          "output": "Aguardar"
+        },
+        {
+          "input": "pendente\nfechada",
+          "output": "Aguardar"
+        },
+        {
+          "input": "pendente\naberta",
+          "output": "Aguardar"
+        }
+      ],
+      "explanation": "O || da linha 3 liberava o envio quando uma única condição passava. A regra exige as duas, por isso usamos &&. As combinações agendada/aberta e pendente/fechada distinguem as versões. Testar apenas o caso em que tudo está pronto esconderia a falha."
+    }
+  },
+  "U10": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "O relógio marcou exatamente 30 minutos. Esse valor está na divisão entre atendimento no prazo e atendimento atrasado."
+      },
+      {
+        "line": 2,
+        "observation": "30 é maior que zero. A pergunta “30 é menor que zero?” dá false, então o programa pula a mensagem de espera inválida."
+      },
+      {
+        "line": 6,
+        "observation": "Como a primeira condição falhou, chega a vez de “30 é maior ou igual a 30?”. Desta vez a resposta é true, graças à parte igual do operador."
+      },
+      {
+        "line": 8,
+        "observation": "O programa mostra Atrasada e segue para o fim da decisão. O else ficou reservado aos valores que passaram pelas duas perguntas sem entrar em nenhum dos blocos."
+      }
+    ],
+    "task": {
+      "context": "Um colega deixou este código para conceder medalhas por livros lidos. Há duas condições que parecem atender a quem leu 12 livros. Acompanhe o programa como está escrito e diga qual medalha ele mostra.",
+      "code": "int livros = 12;\nif (livros >= 5)\n{\n    Console.WriteLine(\"Bronze\");\n}\nelse if (livros >= 10)\n{\n    Console.WriteLine(\"Prata\");\n}\nelse\n{\n    Console.WriteLine(\"Começando\");\n}",
+      "output": "Bronze",
+      "hint": "Marque a primeira condição que aceita o número 12. Para o programa chegar à expressão de um else if, o que precisa acontecer na condição anterior?",
+      "explain": "O 12 já passa no primeiro teste, pois é maior que 5. O bloco escreve Bronze e a decisão termina. Um leitor pode esperar Prata, mas o programa nunca chega ao teste de 10 para esse valor.",
+      "errors": [
+        {
+          "guess": "Prata",
+          "feedback": "12 também é maior que 10. Agora volte ao começo e descubra se a execução consegue chegar ao segundo teste."
+        },
+        {
+          "guess": "Bronze\nPrata",
+          "feedback": "Os dois testes aceitariam 12 isoladamente. A palavra else conecta o segundo bloco ao primeiro. Confira qual deles pode ser visitado."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Uma biblioteca avisa quando faltam de zero a três dias para devolver um livro, incluindo o terceiro dia. Valores negativos indicam prazo inválido. Com quatro dias ou mais, a mensagem é “Aguardar”. Descubra por que alguém com três dias restantes perdeu o aviso.",
+      "code": "bool leu = int.TryParse(Console.ReadLine(), out int dias);\nif (leu == false)\n{\n    Console.WriteLine(\"Digite um inteiro\");\n}\nelse if (dias < 0)\n{\n    Console.WriteLine(\"Prazo inválido\");\n}\nelse if (dias < 3)\n{\n    Console.WriteLine(\"Avisar\");\n}\nelse\n{\n    Console.WriteLine(\"Aguardar\");\n}",
+      "hint": "Organize 2, 3 e 4 dias numa reta. Passe cada número pelas condições na ordem escrita e compare com o intervalo prometido pela biblioteca.",
+      "solution": "bool leu = int.TryParse(Console.ReadLine(), out int dias);\nif (leu == false)\n{\n    Console.WriteLine(\"Digite um inteiro\");\n}\nelse if (dias < 0)\n{\n    Console.WriteLine(\"Prazo inválido\");\n}\nelse if (dias <= 3)\n{\n    Console.WriteLine(\"Avisar\");\n}\nelse\n{\n    Console.WriteLine(\"Aguardar\");\n}",
+      "tests": [
+        {
+          "input": "2",
+          "output": "Avisar"
+        },
+        {
+          "input": "3",
+          "output": "Avisar"
+        },
+        {
+          "input": "4",
+          "output": "Aguardar"
+        },
+        {
+          "input": "0",
+          "output": "Avisar"
+        },
+        {
+          "input": "-1",
+          "output": "Prazo inválido"
+        },
+        {
+          "input": "x",
+          "output": "Digite um inteiro"
+        }
+      ],
+      "explanation": "A linha 10 usava < 3, excluindo o terceiro dia. Usar <= 3 inclui esse valor. O par 2 e 4 continuaria passando mesmo com o erro. O teste com 3 mostra a diferença e o com −1 confirma que o aviso continua reservado aos prazos válidos."
+    }
+  },
+  "U10P": {
+    "trace": [
+      {
+        "line": 1,
+        "observation": "Uma pessoa digita 0. Neste ponto, texto contém um caractere. Ainda falta saber se a entrada pode representar uma quantidade de vagas."
+      },
+      {
+        "line": 2,
+        "observation": "A conversão é possível. converteu vale true e vagas recebe o inteiro 0. Uma sala cheia continua sendo uma quantidade válida de vagas."
+      },
+      {
+        "line": 3,
+        "observation": "O ! inverte a pergunta. “A conversão falhou?” dá false, então o programa pula o aviso de digitar um inteiro e passa às regras da sala."
+      },
+      {
+        "line": 7,
+        "observation": "0 < 0 dá false. A quantidade não é negativa, de modo que a decisão continua na próxima pergunta."
+      },
+      {
+        "line": 11,
+        "observation": "Agora a pergunta é se vagas vale exatamente 0. Ela dá true e seleciona o bloco de sala cheia."
+      },
+      {
+        "line": 13,
+        "observation": "O console mostra Sala lotada. O último else fica para os inteiros que eram válidos, passaram pela verificação de negativos e chegaram aqui com alguma vaga."
+      }
+    ],
+    "task": {
+      "context": "Uma caixa de mudas comporta oito unidades. O programa lê a quantidade digitada, recusa entradas impossíveis e avisa quando ainda sobra espaço. Uma pessoa digitou 06. Siga as decisões até o bloco escolhido e escreva as linhas de saída.",
+      "code": "string? texto = Console.ReadLine();\nbool leu = int.TryParse(texto, out int mudas);\nif (!leu)\n{\n    Console.WriteLine(\"Digite um inteiro\");\n}\nelse if (mudas < 0 || mudas > 8)\n{\n    Console.WriteLine(\"Confira a quantidade\");\n}\nelse if (mudas == 8)\n{\n    Console.WriteLine(\"Caixa completa\");\n}\nelse\n{\n    Console.WriteLine(\"Ainda cabem\");\n    Console.WriteLine(8 - mudas);\n}",
+      "input": "06",
+      "output": "Ainda cabem\n2",
+      "hint": "Registre o texto recebido e o inteiro convertido em lugares diferentes. Depois elimine, um de cada vez, os blocos que não atendem a esse número.",
+      "explain": "O texto 06 vira o inteiro 6. A conversão passa, 6 está entre 0 e 8 e ainda não completa a caixa. No último bloco aparecem a mensagem e a diferença 8 − 6, cada uma em sua linha.",
+      "errors": [
+        {
+          "guess": "Digite um inteiro",
+          "feedback": "Um zero à esquerda faz parte de um texto que ainda representa o inteiro 6. Releia o teste que vem depois da conversão."
+        },
+        {
+          "guess": "Ainda cabem\n6",
+          "feedback": "Você localizou o bloco executado. Confira se a última impressão recebe a quantidade de mudas ou a diferença em relação à capacidade."
+        }
+      ]
+    },
+    "repair": {
+      "brief": "Um relatório compara as folhas de uma impressora antes e depois do expediente. Ele recebe duas linhas. Se qualquer uma não for um inteiro, deve pedir “Digite dois inteiros”. Contagens negativas são inválidas. Se a final superar a inicial, é preciso conferir a reposição. Nos demais casos, deve mostrar “Folhas usadas” e a diferença. Ao receber 10 e x, o relatório inventa um consumo. Investigue a primeira decisão incorreta.",
+      "code": "bool leuInicio = int.TryParse(Console.ReadLine(), out int inicio);\nbool leuFim = int.TryParse(Console.ReadLine(), out int fim);\nif (!leuInicio && !leuFim)\n{\n    Console.WriteLine(\"Digite dois inteiros\");\n}\nelse if (inicio < 0 || fim < 0)\n{\n    Console.WriteLine(\"Contagem inválida\");\n}\nelse if (fim > inicio)\n{\n    Console.WriteLine(\"Conferir reposição\");\n}\nelse\n{\n    Console.WriteLine(\"Folhas usadas\");\n    Console.WriteLine(inicio - fim);\n}",
+      "hint": "Para as linhas 10 e x, anote leuInicio, leuFim, inicio e fim. Leia a primeira condição como uma frase. Quantas leituras precisam falhar para aquele bloco ser executado?",
+      "solution": "bool leuInicio = int.TryParse(Console.ReadLine(), out int inicio);\nbool leuFim = int.TryParse(Console.ReadLine(), out int fim);\nif (!leuInicio || !leuFim)\n{\n    Console.WriteLine(\"Digite dois inteiros\");\n}\nelse if (inicio < 0 || fim < 0)\n{\n    Console.WriteLine(\"Contagem inválida\");\n}\nelse if (fim > inicio)\n{\n    Console.WriteLine(\"Conferir reposição\");\n}\nelse\n{\n    Console.WriteLine(\"Folhas usadas\");\n    Console.WriteLine(inicio - fim);\n}",
+      "tests": [
+        {
+          "input": "10\nx",
+          "output": "Digite dois inteiros"
+        },
+        {
+          "input": "x\n10",
+          "output": "Digite dois inteiros"
+        },
+        {
+          "input": "x\ny",
+          "output": "Digite dois inteiros"
+        },
+        {
+          "input": "10\n7",
+          "output": "Folhas usadas\n3"
+        },
+        {
+          "input": "7\n7",
+          "output": "Folhas usadas\n0"
+        },
+        {
+          "input": "7\n9",
+          "output": "Conferir reposição"
+        },
+        {
+          "input": "7\n-1",
+          "output": "Contagem inválida"
+        }
+      ],
+      "explanation": "A linha 3 com && exigia duas falhas ao mesmo tempo. Com 10 e x, só a segunda leitura falha e preenche fim com 0. Daí vinha o falso consumo de dez folhas. Com ||, uma falha já seleciona a mensagem. Inverta as entradas inválida e válida para provar que a correção atende aos dois lados."
+    }
+  }
+}
