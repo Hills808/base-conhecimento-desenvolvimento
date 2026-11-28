@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronDown, CircleHelp, Command, ExternalLink, Filter, Play, Search, X } from "lucide-react";
 import { modules, guideUrl } from "./data/modules";
 const AutonomyLab = lazy(() => import("./AutonomyLab"));
+const ApiCourse = lazy(() => import("./ApiCourse"));
 import "./autonomy.css";
 import "./formation.css";
 const Laboratory = lazy(() => import("./Laboratory"));
@@ -40,8 +41,9 @@ function ResourceCard({ item, compact = false }: { item: Resource; compact?: boo
 }
 
 export default function Home() {
-  const [laboratoryView] = useUrlFilter("laboratorio", "", ["", "autonomia"]);
+  const [laboratoryView] = useUrlFilter("laboratorio", "", ["", "autonomia", "apis"]);
   const isAutonomy = laboratoryView === "autonomia";
+  const isApiCourse = laboratoryView === "apis";
   const [rawView] = useUrlFilter("visao", "hoje", ["hoje", "formacao", "projeto", "biblioteca", "diagnostico"]);
   const legacyFilter = ['busca','area','formato','idioma','tempo','certificado','faixa'].some(key=>new URLSearchParams(location.search).has(key));
   const view = rawView === 'hoje' && !new URLSearchParams(location.search).has('visao') && legacyFilter ? 'biblioteca' : rawView;
@@ -105,7 +107,7 @@ export default function Home() {
     return () => window.removeEventListener("popstate", sync);
   }, []);
 
-  useEffect(() => { document.getElementById("conteudo")?.focus({ preventScroll: true }); }, [selected, isAutonomy]);
+  useEffect(() => { document.getElementById("conteudo")?.focus({ preventScroll: true }); }, [selected, laboratoryView]);
   useEffect(() => { if (!notice) return; const timer = window.setTimeout(() => setNotice(""), 5000); return () => window.clearTimeout(timer); }, [notice]);
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -124,9 +126,9 @@ export default function Home() {
     window.history.pushState({}, "", url); window.dispatchEvent(new Event("curva-aberta-location-change"));
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
-  function openAutonomy() {
+  function openLaboratory(lab: "autonomia" | "apis") {
     setSelected(null); setCommandOpen(false); setCommandQuery("");
-    window.history.pushState({}, "", `${import.meta.env.BASE_URL}?laboratorio=autonomia`);
+    window.history.pushState({}, "", `${import.meta.env.BASE_URL}?laboratorio=${lab}`);
     window.dispatchEvent(new PopStateEvent("popstate"));
     window.scrollTo({ top: 0, behavior: "auto" });
   }
@@ -157,8 +159,9 @@ export default function Home() {
 
   const quickItems = useMemo(() => [
     { id:"home", title:"Hoje: minha próxima prática", detail:"Página inicial", action: () => openModule(null) },
-    { id:"autonomy", title:"Laboratório de autonomia", detail:"Construir, explicar e refazer sem pular etapas", action: openAutonomy },
+    { id:"autonomy", title:"Laboratório de autonomia", detail:"Construir, explicar e refazer sem pular etapas", action: () => openLaboratory("autonomia") },
     { id:"lab", title:"Abrir Laboratório MCP com C#", detail:"14 etapas guiadas", action: () => openModule(9) },
+    { id:"api-course", title:"APIs na prática", detail:"Consultar filtros no Bruno, criar uma API em C# e documentar com OpenAPI e spike", action: () => openLaboratory("apis") },
     ...modules.map(module => ({ id:`module-${module.id}`, title:`Módulo ${String(module.id).padStart(2,"0")} · ${module.title}`, detail:module.outcome, action: () => openModule(module.id) })),
     ...curriculum.steps.map((step, index) => ({ id:`lab-${step.id}`, title:`Etapa ${String(index + 1).padStart(2,"0")} · ${step.title}`, detail:`Laboratório · ${step.hours}`, action: () => openLabStep(index) }))
   ], [done]);
@@ -167,7 +170,7 @@ export default function Home() {
     return (q.length < 2 ? quickItems.slice(0, 8) : quickItems.filter(item => normalize(`${item.title} ${item.detail}`).includes(q))).slice(0, 8);
   }, [commandQuery, quickItems]);
 
-  const isLearningPage = selected === null && !isAutonomy;
+  const isLearningPage = selected === null && !laboratoryView;
   const currentDestination = isLearningPage ? view === 'diagnostico' ? 'formacao' : view : 'biblioteca';
   return <div className="site-shell academy-shell">
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -191,8 +194,8 @@ export default function Home() {
       </div>
     </header>
 
-    <main id="conteudo" tabIndex={-1}><RouteBoundary key={isAutonomy ? "autonomy" : selected ?? view}>
-      {isAutonomy ? <div className="home-wrap"><Suspense fallback={<p role="status">Preparando seu laboratório de autonomia…</p>}><AutonomyLab /></Suspense></div> : active ? <div className="detail-wrap">
+    <main id="conteudo" tabIndex={-1}><RouteBoundary key={laboratoryView || (selected ?? view)}>
+      {isApiCourse ? <Suspense fallback={<p role="status">Abrindo a oficina de APIs…</p>}><ApiCourse /></Suspense> : isAutonomy ? <div className="home-wrap"><Suspense fallback={<p role="status">Preparando seu laboratório de autonomia…</p>}><AutonomyLab /></Suspense></div> : active ? <div className="detail-wrap">
         <div className="breadcrumbs"><a href={`${import.meta.env.BASE_URL}?visao=biblioteca`}><ArrowLeft size={16}/> Biblioteca</a><span>/</span><span>Módulo {String(active.id).padStart(2,"0")}</span></div>
         <div className="detail-heading" style={{ "--module-accent": active.color } as React.CSSProperties}>
           <div className="detail-lead">

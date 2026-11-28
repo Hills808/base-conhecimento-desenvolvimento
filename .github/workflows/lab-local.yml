@@ -2,12 +2,25 @@ name: Validar kit local .NET
 on:
   push:
     branches: [main]
-    paths: ["site/public/lab/kit-local/**", ".github/workflows/lab-local.yml"]
+    paths: ["site/public/lab/kit-local/**", "site/public/lab/api/**", "site/src/data/apiExamples.ts", "site/scripts/test-api-course.mjs", ".github/workflows/lab-local.yml"]
   pull_request:
-    paths: ["site/public/lab/kit-local/**", ".github/workflows/lab-local.yml"]
+    paths: ["site/public/lab/kit-local/**", "site/public/lab/api/**", "site/src/data/apiExamples.ts", "site/scripts/test-api-course.mjs", ".github/workflows/lab-local.yml"]
 permissions:
   contents: read
 jobs:
+  oficina-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: site/public/lab/kit-local/global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm ci --no-audit --no-fund
+        working-directory: site
+      - run: node site/scripts/test-api-course.mjs
   lab:
     runs-on: ubuntu-latest
     defaults:

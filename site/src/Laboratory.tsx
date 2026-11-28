@@ -137,6 +137,7 @@ export default function Laboratory() {
   }
   return <section className="lab" aria-label="Percurso guiado de APIs, agentes e MCP">
     <div className="lab-resume-strip"><div><strong>Sua etapa atual</strong><span>Nível {step.phase} · {current + 1} de {steps.length}: {step.title}</span></div><button className="lab-action" onClick={()=>visitSection("header")}>Estudar esta etapa <ArrowRight size={16}/></button></div>
+    <p className="lab-small"><a href={import.meta.env.BASE_URL + "?laboratorio=apis"}>APIs na prática · consultar, criar e documentar uma rota</a></p>
     <div className="lab-welcome">
       <div><span className="eyebrow">LABORATÓRIO GUIADO · DO ZERO AO AVANÇADO</span><h2>Da primeira API à integração confiável.</h2><p>{steps.length} etapas em cinco níveis. Você acompanha o mesmo assistente fictício: ler um perfil, escolher uma tool, integrar por MCP e provar que a resposta é confiável. Pode começar sem programar; hoje basta compreender um pedido e uma resposta.</p></div>
       <div className="lab-progress"><strong>{progress.done.length}<span> / {steps.length}</span></strong><span>etapas com entrega registrada</span><progress value={progress.done.length} max={steps.length} aria-label="Progresso no laboratório"/><small>Salvo somente neste navegador. O progresso antigo de três níveis não equivale às novas entregas.</small></div>
