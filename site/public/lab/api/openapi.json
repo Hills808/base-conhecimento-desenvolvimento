@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Consulta de chamados · Curva Aberta",
+    "version": "1.0.0",
+    "description": "API de estudo com quatro chamados fictícios em memória. Uso local, sem credenciais ou paginação."
+  },
+  "servers": [{ "url": "http://127.0.0.1:5081", "description": "Oficina local" }],
+  "paths": {
+    "/chamados": {
+      "get": {
+        "operationId": "listarChamados",
+        "summary": "Listar chamados que atendem aos filtros informados",
+        "description": "Sem filtros, devolve todos os registros. Quando os dois parâmetros são enviados, cada chamado precisa atender a ambos. Os valores são escritos em minúsculas. prioridade é um campo de saída. A versão 1.0.0 não oferece filtro por prioridade.",
+        "parameters": [
+          {
+            "name": "status", "in": "query", "required": false,
+            "description": "Situação atual do chamado. Omita para incluir todas as situações.",
+            "schema": { "type": "string", "enum": ["aberto", "fechado"] },
+            "example": "aberto"
+          },
+          {
+            "name": "categoria", "in": "query", "required": false,
+            "description": "Área do chamado. Omita para incluir todas as categorias.",
+            "schema": { "type": "string", "enum": ["rede", "acesso"] },
+            "example": "rede"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de chamados. Uma consulta válida sem correspondências devolve uma lista vazia.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Chamado" } },
+                "examples": {
+                  "todos": {
+                    "summary": "Consulta sem parâmetros",
+                    "value": [
+                      { "id": 101, "status": "aberto", "categoria": "rede", "prioridade": "normal" },
+                      { "id": 102, "status": "aberto", "categoria": "acesso", "prioridade": "alta" },
+                      { "id": 103, "status": "fechado", "categoria": "rede", "prioridade": "alta" },
+                      { "id": 104, "status": "aberto", "categoria": "rede", "prioridade": "alta" }
+                    ]
+                  },
+                  "abertosDeRede": {
+                    "summary": "status=aberto e categoria=rede",
+                    "value": [
+                      { "id": 101, "status": "aberto", "categoria": "rede", "prioridade": "normal" },
+                      { "id": 104, "status": "aberto", "categoria": "rede", "prioridade": "alta" }
+                    ]
+                  },
+                  "semCorrespondencias": { "summary": "status=fechado e categoria=acesso", "value": [] }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Valor inválido para status ou categoria. Corrija o parâmetro indicado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object", "required": ["erro"],
+                  "properties": { "erro": { "type": "string" } }
+                },
+                "example": { "erro": "Use aberto ou fechado em status." }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Chamado": {
+        "type": "object", "required": ["id", "status", "categoria", "prioridade"],
+        "properties": {
+          "id": { "type": "integer", "description": "Identificador único do chamado." },
+          "status": { "type": "string", "enum": ["aberto", "fechado"] },
+          "categoria": { "type": "string", "enum": ["rede", "acesso"] },
+          "prioridade": { "type": "string", "enum": ["normal", "alta"] }
+        }
+      }
+    }
+  }
+}
